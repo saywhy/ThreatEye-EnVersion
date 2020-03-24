@@ -174,7 +174,7 @@ export default {
   name: 'Nav',
   data () {
     return {
-      logoSrc: require('@/assets/images/layout/nav/logo.png'),
+      logoSrc: require('@/assets/images/layout/nav/cetc_logo.png'),
       messageSrc: require('@/assets/images/layout/nav/message.png'),
       avatarSrc: require('@/assets/images/layout/nav/avatar.png'),
       pass_state: false,

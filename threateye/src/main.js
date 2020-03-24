@@ -21,9 +21,15 @@ Vue.prototype.$echarts = echarts;
 // 引入axios
 import axios from './https/axios'
 Vue.prototype.$axios = axios;
-// axios.defaults.baseURL = '/api/' // api 即上面 vue.config.js 中配置的地址
+axios.defaults.baseURL = '/api/' // api 即上面 vue.config.js 中配置的地址
 import uploader from 'vue-simple-uploader'
 Vue.use(uploader)
+// 国际化
+
+import i18n from './i18n/i18n'
+Vue.config.productionTip = false
+
+
 
 
 // 引入http
@@ -125,6 +131,8 @@ new Vue({
   el: '#app',
   router,
   store,
+  i18n,
+
   axios,
   components: {
     App

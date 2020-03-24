@@ -5,7 +5,7 @@
                   type="datetimerange"
                   format="yyyy-MM-dd HH:mm"
                   :picker-options="pickerOptions"
-                  range-separator="至"
+                  range-separator="-"
                   @change="chooseTime"
                   clearable
                   start-placeholder="开始日期"
@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     chooseTime () {
-     // console.log(this.option);
+      // console.log(this.option);
       // console.log(this.pickerOptions.time);
       this.$emit("changeTime", this.pickerOptions.time);
     }
