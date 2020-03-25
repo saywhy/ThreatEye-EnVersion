@@ -5,17 +5,17 @@
       <el-tabs v-model="activeName"
                @tab-click="handleClick"
                class="reset_tab">
-        <el-tab-pane label="用户管理"
+        <el-tab-pane label="User management"
                      class="tabs-item"
                      name="first">
           <user-management v-if="tab_show.first"></user-management>
         </el-tab-pane>
-        <el-tab-pane label="角色管理"
+        <el-tab-pane label="Role management"
                      class="tabs-item"
                      name="second">
           <role-management v-if="tab_show.second"></role-management>
         </el-tab-pane>
-        <el-tab-pane label="用户安全策略"
+        <el-tab-pane label="Security Policy"
                      class="tabs-item"
                      name="third">
           <security-policy v-if="tab_show.third"></security-policy>

@@ -47,10 +47,10 @@
           <template slot-scope="scope">
             <el-button type="primary"
                        class="btn_edit"
-                       @click.stop='edit_box(scope.row)'>编辑</el-button>
+                       @click.stop='edit_box(scope.row)'>Edit</el-button>
             <el-button type="primary"
                        class="btn_edit"
-                       @click.stop='del_box(scope.row)'>删除</el-button>
+                       @click.stop='del_box(scope.row)'>Delete</el-button>
           </template>
         </el-table-column>
       </el-table>

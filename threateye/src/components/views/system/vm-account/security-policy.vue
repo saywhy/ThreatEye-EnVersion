@@ -2,85 +2,85 @@
   <div id="security_policy"
        v-loading.fullscreen.lock="security_policy_status.loading">
     <div class="top">
-      <span>是否启用:</span>
+      <span>Enable:</span>
       <el-switch v-model="security_policy_status.switch">
       </el-switch>
     </div>
     <div class="mid">
       <div class="mid_item">
-        <p class="title item_color">密码长度最小值：</p>
+        <p class="title item_color">Minimum password length:</p>
         <el-input-number class="input_box"
                          v-model="security_policy.min_passwd_len"
                          @change="handleChange_pswd_min"
                          :min="8"
                          :max="11"
-                         label="请输入密码长度最小值"></el-input-number>
+                         label="Please enter the minimum password length"></el-input-number>
 
         <span class="red">*</span>
-        <span class="item_color">密码最小长度8-11之间包含大小写字母和数字</span>
+        <span class="item_color">The minimum length of password is 8-11, including upper and lower case letters and numbers.</span>
       </div>
       <div class="mid_item">
-        <p class="title item_color">密码长度最大值：</p>
+        <p class="title item_color">Maximum password length:</p>
         <el-input-number class="input_box"
                          v-model="security_policy.max_passwd_len"
                          @change="handleChange_pswd_max"
                          :min="11"
                          :max="30"
-                         label="请输入密码长度最大值"></el-input-number>
+                         label="Please enter the maximum password length"></el-input-number>
 
         <span class="red">*</span>
-        <span class="item_color">密码最大长度11-30之间包含大小写字母和数字</span>
+        <span class="item_color">The maximum length of password is 11-30, including upper and lower case letters and numbers.</span>
       </div>
       <div class="mid_item">
-        <p class="title item_color">密码定期修改时间：</p>
+        <p class="title item_color">Password periodical modification time:</p>
         <el-input-number class="input_box"
                          v-model="security_policy.passwd_regular_edit_time"
                          :min="1"
                          :max="90"
-                         label="请输入密码定期修改时间"></el-input-number>
+                         label="Please enter the time to change the password periodically"></el-input-number>
 
         <span class="red">*</span>
         <span class="item_color">(1-90)天</span>
       </div>
       <div class="mid_item">
-        <p class="title item_color">最大登录重试次数：</p>
+        <p class="title item_color">Maximum number of login retries:</p>
         <el-input-number class="input_box"
                          v-model="security_policy.admin_faild_logon_time"
                          :min="1"
                          :max="5"
-                         label="请输入最大登录重试次数"></el-input-number>
+                         label="Please enter the maximum number of login retries"></el-input-number>
 
         <span class="red">*</span>
         <span class="item_color">(1-5)次</span>
       </div>
       <div class="mid_item">
-        <p class="title item_color">登录失败阻断时间：</p>
+        <p class="title item_color">Blocking time after login failure:</p>
         <el-input-number class="input_box"
                          v-model="security_policy.admin_logon_delay_time"
                          :min="1"
                          :max="3600"
-                         label="请输入登录失败阻断时间"></el-input-number>
+                         label="Please enter blocking time after login failure"></el-input-number>
 
         <span class="red">*</span>
         <span class="item_color">(1-3600)秒</span>
       </div>
       <div class="mid_item">
-        <p class="title item_color">页面超时时间：</p>
+        <p class="title item_color">Page timeout time:</p>
         <el-input-number class="input_box"
                          v-model="security_policy.session_timeout"
                          :min="1"
                          :max="480"
-                         label="请输入页面超时时间"></el-input-number>
+                         label="Please enter page timeout time"></el-input-number>
         <span class="red">*</span>
         <span class="item_color">(1-480)分钟</span>
       </div>
       <div class="mid_item">
-        <p class="title item_color">同时在线数：</p>
+        <p class="title item_color">Maximum number of logged-in users:</p>
         <el-input-number class="input_box"
                          v-model="security_policy.admin_online_count"
                          :min="1"
                          :max="5"
-                         label="请输入同时在线数"></el-input-number>
+                         label="Please enter maximum number of logged-in users"></el-input-number>
         <span class="red">*</span>
         <span class="item_color">(1-5)个</span>
       </div>
@@ -161,7 +161,7 @@ export default {
           if (response.data.status == 0) {
             this.get_data();
             this.$message({
-              message: '修改成功！',
+              message: 'Update successfully',
               type: 'success'
             });
           } else {

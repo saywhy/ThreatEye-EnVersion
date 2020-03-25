@@ -7,10 +7,10 @@
                  @click="add_box">Add</el-button>
       <el-button type="primary"
                  class="btn_i"
-                 @click="del_router">删除</el-button>
+                 @click="del_router">Delete</el-button>
       <el-button type="primary"
                  class="btn_o"
-                 @click="get_data('refresh')">刷新</el-button>
+                 @click="get_data('refresh')">Refresh</el-button>
     </div>
     <div class="router_table">
       <el-table ref="multipleTable"
@@ -40,18 +40,18 @@
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="net_mask"
-                         label="子网掩码"
+                         label="Subnet Mask"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="next_step"
-                         label="下跳地址"
+                         label="Next Hop Address"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column label="Operation">
           <template slot-scope="scope">
             <el-button type="primary"
                        class="btn_edit"
-                       @click.stop='edit_box(scope.row)'>编辑</el-button>
+                       @click.stop='edit_box(scope.row)'>Edit</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -85,29 +85,29 @@
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入目的地址"
+                    placeholder="Please enter the destination ip"
                     v-model="router_add.ip"
                     clearable>
           </el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">子网掩码</span>
+            <span class="title">Subnet Mask</span>
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入子网掩码"
+                    placeholder="Please enter a subnet mask"
                     v-model="router_add.net_mask"
                     clearable>
           </el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">下跳地址</span>
+            <span class="title">Next Hop Address</span>
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入下跳地址"
+                    placeholder="Please enter the next hop address"
                     v-model="router_add.next_step"
                     clearable>
           </el-input>
@@ -131,7 +131,7 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">编辑路由</span>
+        <span class="title_name">Edit</span>
       </div>
       <div class="content">
         <div class="content_item">
@@ -140,29 +140,29 @@
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入目的地址"
+                    placeholder="Please enter the destination ip"
                     v-model="router_edit.ip"
                     clearable>
           </el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">子网掩码</span>
+            <span class="title">Subnet Mask</span>
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入子网掩码"
+                    placeholder="Please enter a subnet mask"
                     v-model="router_edit.net_mask"
                     clearable>
           </el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">下跳地址</span>
+            <span class="title">Next Hop Address</span>
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入下跳地址"
+                    placeholder="Please enter the next hop address"
                     v-model="router_edit.next_step"
                     clearable>
           </el-input>

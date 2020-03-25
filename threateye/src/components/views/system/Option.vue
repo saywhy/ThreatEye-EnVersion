@@ -7,14 +7,14 @@
           <img class="titile_icon"
                src="@/assets/images/common/date.png"
                alt="">
-          <span>时间与日期</span>
+          <span>Time And Date</span>
         </p>
         <div class="item">
-          <p class="item_title">配置方式</p>
+          <p class="item_title">Configuration Mode</p>
           <el-select class="select_box"
                      v-model="option.method"
                      @change='change_method'
-                     placeholder="请选择配置方式">
+                     placeholder="Please select configuration mode">
             <el-option v-for="item in option.method_list"
                        :key="item.value"
                        :label="item.name"
@@ -23,11 +23,11 @@
           </el-select>
         </div>
         <div class="item">
-          <p class="item_title">日期选择</p>
+          <p class="item_title">Date Selection</p>
           <el-date-picker v-model="option.time"
                           type="datetime"
                           :disabled="disabled.time"
-                          placeholder="选择日期时间">
+                          placeholder="Select date and time">
           </el-date-picker>
           <!-- <el-button type="primary"
                      class="btn_o margin_left">获取本地时间</el-button>
@@ -35,12 +35,12 @@
                      class="btn_o">获取系统时间</el-button> -->
         </div>
         <div class="item">
-          <p class="item_title">时区选择</p>
+          <p class="item_title">Time Zone Selection</p>
           <el-select class="select_box"
                      v-model="option.zone"
                      filterable
                      :disabled="disabled.zone"
-                     placeholder="请选择时区">
+                     placeholder="Please select a time zone">
             <el-option v-for="item in option.zone_list"
                        :key="item"
                        :label="item"
@@ -52,9 +52,9 @@
           <el-checkbox v-model="option.checked">自动与NTP服务器同步</el-checkbox>
         </p> -->
         <div class="item">
-          <p class="item_title">NTP服务器</p>
+          <p class="item_title">NTP Server</p>
           <el-input class="select_box"
-                    placeholder="请输入NTP服务器"
+                    placeholder="Please enter the NTP server"
                     v-model="option.ntp"
                     :disabled="disabled.ntp"
                     clearable>
@@ -71,13 +71,13 @@
           <img class="titile_icon"
                src="@/assets/images/setting/sys.png"
                alt="">
-          <span>登录IP地址设置（最多5个单IP/IP网段）</span>
+          <span>Login IP address settings (up to 5 IP addresses/IP subnets)</span>
         </p>
         <div style="margin-bottom:24px;">
           <div class="item_addrs"
                v-for="(item,index) in option.login_ip">
             <el-input class="select_box"
-                      placeholder="IP地址或网段（CIDR格式如192.168.1.0/24）"
+                      placeholder="IP address or subnets (CIDR format)"
                       v-model="item.ip"
                       clearable>
             </el-input>
@@ -109,15 +109,15 @@ export default {
         method: 2,
         method_list: [
           {
-            name: '手动配置',
+            name: 'Manual configuration',
             value: 1
           },
           {
-            name: '自动同步本地系统时间',
+            name: 'Automatic synchronization of local system time',
             value: 2
           },
           {
-            name: 'NTP服务器时间同步',
+            name: 'NTP server time synchronization',
             value: 3
           },
         ],
@@ -378,7 +378,7 @@ export default {
             this.get_data()
             this.$message(
               {
-                message: '修改成功！',
+                message: 'Update successfully',
                 type: 'success',
               }
             );
@@ -453,7 +453,7 @@ export default {
             this.get_login_ip();
             this.$message(
               {
-                message: '修改成功',
+                message: 'Update successfully',
                 type: 'success',
               }
             );
@@ -473,7 +473,7 @@ export default {
       } else {
         this.$message.warning(
           {
-            message: '最多可以设置5个单IP/IP网段。',
+            message: 'Up to 5 IP addresses /IP subnets can be set',
             offset: 50
           })
       }

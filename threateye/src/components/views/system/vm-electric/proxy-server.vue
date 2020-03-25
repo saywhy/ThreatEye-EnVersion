@@ -2,15 +2,15 @@
   <div id="proxy-server">
     <div class="left">
       <div class="left_item">
-        <span>代理启停:</span>
+        <span>Proxy Start-Stop:</span>
         <el-switch v-model="proxy.proxy_switch">
         </el-switch>
       </div>
       <div class="left_item">
-        <p>代理类型</p>
+        <p>Proxy Type</p>
         <el-select class="select_box"
                    v-model="proxy.type"
-                   placeholder="请选择代理类型">
+                   placeholder="Please select the proxy type">
           <el-option v-for="item in proxy.type_list"
                      :key="item.name"
                      :label="item.name"
@@ -19,17 +19,17 @@
         </el-select>
       </div>
       <div class="left_item">
-        <p>代理地址</p>
+        <p>Proxy Address</p>
         <el-input class="select_box"
-                  placeholder="请输入代理地址"
+                  placeholder="Please enter the proxy address"
                   v-model="proxy.ip"
                   clearable>
         </el-input>
       </div>
       <div class="left_item">
-        <p>端口</p>
+        <p>Port</p>
         <el-input class="select_box"
-                  placeholder="请输入端口"
+                  placeholder="Please enter port"
                   v-model="proxy.port"
                   clearable>
         </el-input>
@@ -42,21 +42,21 @@
     </div>
     <div class="mid">
       <div class="mid_item">
-        <span>密码验证:</span>
+        <span>Password Verification:</span>
         <el-switch v-model="proxy.verify_passwd"></el-switch>
       </div>
       <div class="mid_item">
-        <p>用户名</p>
+        <p>User Name</p>
         <el-input class="select_box"
-                  placeholder="请输入用户名"
+                  placeholder="Please enter a UserName"
                   v-model="proxy.user"
                   clearable>
         </el-input>
       </div>
       <div class="mid_item">
-        <p>用户密码</p>
+        <p>User password</p>
         <el-input class="select_box"
-                  placeholder="请输入用户密码"
+                  placeholder="Please enter the user password"
                   v-model="proxy.password"
                   show-password>
         </el-input>
@@ -153,7 +153,7 @@ export default {
             this.get_data();
             this.$message(
               {
-                message: '修改代理成功',
+                message: 'Proxy updated successfully',
                 type: 'success',
               }
             );

@@ -34,7 +34,7 @@
         </el-button>
       </el-upload>
       <el-button class="btn_o"
-                 @click="del_yara">删除</el-button>
+                 @click="del_yara">Delete</el-button>
     </div>
   </div>
 </template>

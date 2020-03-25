@@ -11,14 +11,16 @@
                  alt="">
           </div>
           <div class="item_right">
-            <p class="item_right_title left_title">引擎</p>
+            <p class="item_right_title left_title">Engine</p>
             <p class="">
               <span class="green"></span>
-              <span>在线：
-                <span>{{equipment_top.engine.online_count}}</span> 台</span>
+              <span>Online:
+                <span>{{equipment_top.engine.online_count}}</span>
+              </span>
               <span class="red"></span>
-              <span>离线：
-                <span>{{equipment_top.engine.offline_count}}</span>台</span>
+              <span> Offline:
+                <span>{{equipment_top.engine.offline_count}}</span>
+              </span>
             </p>
           </div>
         </div>
@@ -31,14 +33,16 @@
                  alt="">
           </div>
           <div class="item_right">
-            <p class="item_right_title ">引擎/探针</p>
+            <p class="item_right_title ">Engine/Sensor</p>
             <p class="">
               <span class="green"></span>
-              <span>在线：
-                <span>{{equipment_top.sensor_engine.online_count}}</span>台</span>
+              <span>Online:
+                <span>{{equipment_top.sensor_engine.online_count}}</span>
+              </span>
               <span class="red"></span>
-              <span>离线：
-                <span>{{equipment_top.sensor_engine.offline_count}}</span>台</span>
+              <span> Offline:
+                <span>{{equipment_top.sensor_engine.offline_count}}</span>
+              </span>
             </p>
           </div>
         </div>
@@ -51,14 +55,16 @@
                  alt="">
           </div>
           <div class="item_right">
-            <p class="item_right_title ">探针</p>
+            <p class="item_right_title ">Sensor</p>
             <p class="">
               <span class="green"></span>
-              <span>在线：
-                <span>{{equipment_top.sensor.online_count}}</span>台</span>
+              <span>Online:
+                <span>{{equipment_top.sensor.online_count}}</span>
+              </span>
               <span class="red"></span>
-              <span>离线：
-                <span>{{equipment_top.sensor.offline_count}}</span>台</span>
+              <span> Offline:
+                <span>{{equipment_top.sensor.offline_count}}</span>
+              </span>
             </p>
           </div>
         </div>
@@ -72,14 +78,16 @@
                  alt="">
           </div>
           <div class="item_right">
-            <p class="item_right_title ">沙箱</p>
+            <p class="item_right_title ">Sandbox</p>
             <p class="">
               <span class="green"></span>
-              <span>在线：
-                <span>{{equipment_top.sandbox.online_count}}</span>台</span>
+              <span>Online:
+                <span>{{equipment_top.sandbox.online_count}}</span>
+              </span>
               <span class="red"></span>
-              <span>离线：
-                <span>{{equipment_top.sandbox.offline_count}}</span>台</span>
+              <span> Offline:
+                <span>{{equipment_top.sandbox.offline_count}}</span>
+              </span>
             </p>
           </div>
         </div>
@@ -92,7 +100,7 @@
                      @click="add_box">Add</el-button>
           <el-button type="primary"
                      class="btn_o"
-                     @click="del_equipment">删除</el-button>
+                     @click="del_equipment">Delete</el-button>
         </div>
         <div class="equipment_table">
           <el-table ref="multipleTable"
@@ -116,38 +124,38 @@
                 {{(equipment_data.page-1)*(equipment_data.rows) + scope.row.index_cn}}
               </template>
             </el-table-column>
-            <el-table-column label='设备名称'>
+            <el-table-column label='Device Name'>
               <template slot-scope="scope">
                 <span class="color_span"
                       @click.stop='alert_detail(scope.row)'>{{scope.row.name}}</span>
               </template>
             </el-table-column>
             <el-table-column prop="type"
-                             label="设备类型"
+                             label="Device Type"
                              show-overflow-tooltip>
               <template slot-scope="scope">
-                <span v-if="scope.row.type=='1'">探针</span>
-                <span v-if="scope.row.type=='2'">引擎</span>
-                <span v-if="scope.row.type=='3'">引擎/探针</span>
-                <span v-if="scope.row.type=='4'">沙箱</span>
+                <span v-if="scope.row.type=='1'">Sensor</span>
+                <span v-if="scope.row.type=='2'">Engine</span>
+                <span v-if="scope.row.type=='3'">Engine/Sensor</span>
+                <span v-if="scope.row.type=='4'">Sandbox</span>
               </template>
             </el-table-column>
-            <el-table-column label='设备IP'>
+            <el-table-column label='Device IP'>
               <template slot-scope="scope">
                 <span class="color_span"
                       @click.stop='alert_detail(scope.row)'>{{scope.row.ip}}</span>
               </template>
             </el-table-column>
-            <el-table-column label="设备状态">
+            <el-table-column label="Device Status">
               <template slot-scope="scope">
                 <span :class="scope.row.status=='offline'?'red_s':'green'"></span>
-                <span v-if="scope.row.status!='offline'">正常</span>
+                <span v-if="scope.row.status!='offline'">Normal</span>
                 <el-popover placement="top"
                             width="50"
                             :content="scope.row.status"
                             trigger="hover"
                             v-if="scope.row.status=='offline'">
-                  <span slot="reference">异常</span>
+                  <span slot="reference">Abnormal</span>
                 </el-popover>
               </template>
             </el-table-column>
@@ -180,28 +188,28 @@
       <div class="content">
         <div class="content_item">
           <p>
-            <span class="title">设备名称</span>
+            <span class="title">Device Name</span>
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入设备名称"
+                    placeholder="Please enter the device name"
                     v-model="equipment_pop.name"
                     clearable>
           </el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">设备类型</span>
+            <span class="title">Device Type</span>
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入设备名称"
+                    placeholder="Please select the device type"
                     v-model="equipment_pop.label"
                     :disabled="true">
           </el-input>
           <!-- <el-select class="select_box"
                      v-model="equipment_pop.type"
-                     placeholder="请选择设备类型">
+                     placeholder="Please select the device type">
             <el-option v-for="(item,index) in equipment_pop.type_list"
                        :key="index"
                        :label="item.label"
@@ -211,11 +219,11 @@
         </div>
         <div class="content_item">
           <p>
-            <span class="title">设备IP</span>
+            <span class="title">Device IP</span>
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入设备IP"
+                    placeholder="Please enter the device ip"
                     v-model="equipment_pop.ip"
                     clearable>
           </el-input>
@@ -244,7 +252,7 @@
           <span>{{equipment_detail.title.name}}</span>
           <span>{{equipment_detail.title.ip}}</span>
           <span>{{equipment_detail.title.type}}</span>
-          <span>的健康情况</span>
+          <span>System Status</span>
         </span>
       </div>
       <div class="sys_detail_content">
@@ -279,10 +287,10 @@ export default {
       equipment_pop: {
         show: false,
         type: '4',
-        label: '沙箱',
+        label: 'Sandbox',
         name: '',
         type_list: [
-          { label: '沙箱', value: '4' },
+          { label: 'Sandbox', value: '4' },
         ],
         ip: '',
       },
@@ -372,7 +380,7 @@ export default {
       if (this.equipment_pop.name == '') {
         this.$message(
           {
-            message: '请输入设备名称',
+            message: 'Please enter the device name',
             type: 'warning',
           }
         );
@@ -381,7 +389,7 @@ export default {
       if (this.equipment_pop.type == '') {
         this.$message(
           {
-            message: '请选择设备类型！',
+            message: 'Please select the device type',
             type: 'warning',
           }
         );
@@ -390,7 +398,7 @@ export default {
       if (this.equipment_pop.ip == '') {
         this.$message(
           {
-            message: '请输入设备IP',
+            message: 'Please enter the device ip',
             type: 'warning',
           }
         );
@@ -503,16 +511,16 @@ export default {
       this.equipment_detail.flow = []
       switch (item.type) {
         case '1':
-          this.equipment_detail.title.type = '探针'
+          this.equipment_detail.title.type = 'Sensor'
           break;
         case '2':
-          this.equipment_detail.title.type = '引擎'
+          this.equipment_detail.title.type = 'Engine'
           break;
         case '3':
-          this.equipment_detail.title.type = '引擎/探针'
+          this.equipment_detail.title.type = 'Engine/Sensor'
           break;
         case '4':
-          this.equipment_detail.title.type = '沙箱'
+          this.equipment_detail.title.type = 'Sandbox'
           break;
 
         default:

@@ -3,11 +3,11 @@
        v-loading.fullscreen.lock="network_loading">
     <div class="left">
       <div class="left_item">
-        <p>网络设备</p>
+        <p>Network Card</p>
         <el-select class="select_box"
                    v-model="network_model.name"
                    @change='change_name'
-                   placeholder="请选择网络设备">
+                   placeholder="Please select network card">
           <el-option v-for="item in network"
                      :key="item.NAME"
                      :label="item.NAME"
@@ -16,11 +16,11 @@
         </el-select>
       </div>
       <div class="left_item">
-        <p>角色</p>
+        <p>Role</p>
         <el-select class="select_box"
                    @change='change_role'
                    v-model="network_model.role_name"
-                   placeholder="请选择角色"
+                   placeholder="Please select a role"
                    clearable>
           <el-option v-for="item in network_model.role"
                      :key="item.name"
@@ -30,11 +30,11 @@
         </el-select>
       </div>
       <div class="left_item">
-        <p>获取IP方式</p>
+        <p>IP Mode</p>
         <el-select class="select_box"
                    v-model="network_model.obtain"
                    @change='change_obtain'
-                   :disabled="network_model.role_name =='镜像口'"
+                   :disabled="network_model.role_name =='Mirror port'"
                    placeholder="请选择获取IP方式">
           <el-option v-for="item in network_model.obtain_list"
                      :key="item.name"
@@ -45,15 +45,15 @@
       </div>
       <div class="left_item"
            v-if="network_model.input_show">
-        <p>IP地址</p>
+        <p>IP</p>
         <el-input class="select_box"
-                  placeholder="请输入IP地址"
+                  placeholder="Please enter IP"
                   v-model="network_model.IPADDR"
                   clearable>
         </el-input>
       </div>
       <div class="left_item">
-        <span>是否启用:</span>
+        <span>Enable:</span>
         <el-switch v-model="network_model.switch">
         </el-switch>
       </div>
@@ -66,36 +66,36 @@
     <div class="mid">
       <div class="mid_item"
            v-if="network_model.input_show">
-        <p>子网掩码</p>
+        <p>Subnet Mask</p>
         <el-input class="select_box"
-                  placeholder="请输入子网掩码"
+                  placeholder="Please enter a subnet mask"
                   v-model="network_model.MASK"
                   clearable>
         </el-input>
       </div>
       <div class="mid_item"
            v-if="network_model.input_show">
-        <p>默认网关</p>
+        <p>Default Gateway</p>
         <el-input class="select_box"
-                  placeholder="请输入默认网关"
+                  placeholder="Please enter the default gateway"
                   v-model="network_model.GATEWAY"
                   clearable>
         </el-input>
       </div>
       <div class="mid_item"
            v-if="network_model.input_show">
-        <p>首选DNS服务器</p>
+        <p>Preferred DNS Server</p>
         <el-input class="select_box"
-                  placeholder="请输入首选DNS服务器"
+                  placeholder="Please enter the preferred DNS server"
                   v-model="network_model.DNS1"
                   clearable>
         </el-input>
       </div>
       <div class="mid_item"
            v-if="network_model.input_show">
-        <p>备用DNS服务器</p>
+        <p>Alternate DNS Server</p>
         <el-input class="select_box"
-                  placeholder="请输入备用DNS服务器"
+                  placeholder="Please enter alternate DNS server"
                   v-model="network_model.DNS2"
                   clearable>
         </el-input>
@@ -117,13 +117,13 @@ export default {
         role_name: "",
         switch: true,
         role: [
-          { name: "管理口" },
-          { name: "通讯口" },
-          { name: "镜像口" },
-          { name: "沙箱口" }
+          { name: "Management port" },
+          { name: "Communication port" },
+          { name: "Mirror port" },
+          { name: "Sandbox port" }
         ],
         obtain: "",
-        obtain_list: [{ name: "手动获取" }, { name: "自动获取" }],
+        obtain_list: [{ name: "Static" }, { name: "DHCP" }],
         input_show: true,
         IPADDR: "",
         GATEWAY: "",
@@ -147,8 +147,10 @@ export default {
   methods: {
     change_role (item) {
       console.log(item);
-      if (item == '镜像口') {
-        this.network_model.obtain = '自动获取'
+      if (item == 'Mirror port') {
+        console.log('1212121');
+
+        this.network_model.obtain = 'DHCP'
         this.network_model.input_show = false
       }
     },
@@ -161,16 +163,16 @@ export default {
               this.network_model.role_name = "";
               break;
             case 1:
-              this.network_model.role_name = "管理口";
+              this.network_model.role_name = "Management port";
               break;
             case 2:
-              this.network_model.role_name = "通讯口";
+              this.network_model.role_name = "Communication port";
               break;
             case 3:
-              this.network_model.role_name = "镜像口";
+              this.network_model.role_name = "Mirror port";
               break;
             case 4:
-              this.network_model.role_name = "沙箱口";
+              this.network_model.role_name = "Sandbox port";
               break;
             default:
               this.network_model.role_name = "";
@@ -178,19 +180,19 @@ export default {
           }
           switch (item.BOOTPROTO) {
             case "static":
-              this.network_model.obtain = "手动获取";
+              this.network_model.obtain = "Static";
               this.network_model.input_show = true;
               break;
             case "none":
-              this.network_model.obtain = "自动获取";
+              this.network_model.obtain = "DHCP";
               this.network_model.input_show = false;
               break;
             case "dhcp":
-              this.network_model.obtain = "自动获取";
+              this.network_model.obtain = "DHCP";
               this.network_model.input_show = false;
               break;
             default:
-              this.network_model.obtain = "自动获取";
+              this.network_model.obtain = "DHCP";
               this.network_model.input_show = false;
               break;
           }
@@ -215,10 +217,10 @@ export default {
     },
     change_obtain (value) {
       switch (value) {
-        case "自动获取":
+        case "DHCP":
           this.network_model.input_show = false;
           break;
-        case "手动获取":
+        case "Static":
           this.network_model.input_show = true;
           break;
         case "":
@@ -248,10 +250,10 @@ export default {
       var ONBOOT = ''
       var PORT = ""
       switch (this.network_model.obtain) {
-        case '手动获取':
+        case 'Static':
           BOOTPROTO = 'static'
           break;
-        case '自动获取':
+        case 'DHCP':
           BOOTPROTO = 'dhcp'
           break;
         default:
@@ -267,16 +269,16 @@ export default {
         case '':
           PORT = 0;
           break;
-        case '管理口':
+        case 'Management port':
           PORT = 1;
           break;
-        case '通讯口':
+        case 'Communication port':
           PORT = 2;
           break;
-        case '镜像口':
+        case 'Mirror port':
           PORT = 3;
           break;
-        case '沙箱口':
+        case 'Sandbox port':
           PORT = 4;
           break;
         default:

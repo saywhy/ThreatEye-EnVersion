@@ -7,7 +7,7 @@
                  @click="add_box">Add</el-button>
       <el-button type="primary"
                  class="btn_o"
-                 @click="del_user">删除</el-button>
+                 @click="del_user">Delete</el-button>
       <!-- <el-button type="primary"
                  class="btn_o"
                  @click="edit_pswd">修改密码</el-button> -->
@@ -36,26 +36,26 @@
           </template>
         </el-table-column>
         <el-table-column prop="username"
-                         label="用户名"
+                         label="User Name"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="department"
-                         label="部门"
+                         label="Department"
                          width="120"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="email_addr"
-                         label="邮箱"
+                         label="Mailbox"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="role"
-                         label="角色"
+                         label="Role"
                          width="120"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="creatorname"
                          width="120"
-                         label="创建人"
+                         label="Reporter"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column label="Created"
@@ -68,7 +68,7 @@
           <template slot-scope="scope">
             <el-button type="primary"
                        class="btn_edit"
-                       @click.stop='edit_box(scope.row)'>编辑</el-button>
+                       @click.stop='edit_box(scope.row)'>Edit</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -98,18 +98,18 @@
       <div class="content">
         <div class="content_item">
           <p>
-            <span class="title">用户名</span>
+            <span class="title">User Name</span>
             <span class="red">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入用户名"
+                    placeholder="Please enter a username"
                     v-model="user_add.username"
                     clearable>
           </el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">密码</span>
+            <span class="title">Password</span>
             <span class="red">*</span>
           </p>
           <el-input class="select_box"
@@ -131,43 +131,43 @@
         </div>
         <div class="content_item">
           <p>
-            <span class="title">邮箱</span>
+            <span class="title">Mailbox</span>
             <span class="red">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入邮箱"
+                    placeholder="Please input your email"
                     v-model="user_add.email_addr"
                     clearable>
           </el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">手机号</span>
+            <span class="title">Cellphone No.</span>
             <span class="red">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入手机号"
+                    placeholder="Please enter a cellphone number"
                     v-model="user_add.mobile"
                     clearable>
           </el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">部门</span>
+            <span class="title">Department</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入部门"
+                    placeholder="Please enter a department"
                     v-model="user_add.department"
                     clearable>
           </el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">角色</span>
+            <span class="title">Role</span>
           </p>
           <el-select class="select_box"
                      v-model="user_add.role"
-                     placeholder="请选择角色">
+                     placeholder="Please select a role">
             <el-option v-for="item in user_add.role_list"
                        :key="item.name"
                        :label="item.name"
@@ -194,12 +194,12 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">编辑用户</span>
+        <span class="title_name">Edit</span>
       </div>
       <div class="content">
         <div class="content_item">
           <p>
-            <span class="title">密码</span>
+            <span class="title">Password</span>
           </p>
           <el-input class="select_box"
                     :placeholder="user_data.placeholder"
@@ -212,50 +212,50 @@
             <span class="title">确认密码</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请再次输入密码"
+                    placeholder="请确认密码"
                     v-model="user_edit.Re_password"
                     show-password>
           </el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">邮箱</span>
+            <span class="title">Mailbox</span>
             <span class="red">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入邮箱"
+                    placeholder="Please input your email"
                     v-model="user_edit.email_addr"
                     clearable>
           </el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">手机号</span>
+            <span class="title">Cellphone No.</span>
             <span class="red">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入手机号"
+                    placeholder="Please enter a cellphone number"
                     v-model="user_edit.mobile"
                     clearable>
           </el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">部门</span>
+            <span class="title">Department</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入部门"
+                    placeholder="Please enter a department"
                     v-model="user_edit.department"
                     clearable>
           </el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">角色</span>
+            <span class="title">Role</span>
           </p>
           <el-select class="select_box"
                      v-model="user_edit.role"
-                     placeholder="请选择角色">
+                     placeholder="Please select a role">
             <el-option v-for="item in user_edit.role_list"
                        :key="item.name"
                        :label="item.name"
@@ -441,7 +441,7 @@ export default {
       if (this.user_add.username == '') {
         this.$message(
           {
-            message: '请输入用户名',
+            message: 'Please enter a user name',
             type: 'warning',
           }
         );
@@ -450,7 +450,7 @@ export default {
       if (this.user_add.password == '') {
         this.$message(
           {
-            message: '请输入密码',
+            message: 'Please enter a password',
             type: 'warning',
           }
         );
@@ -604,7 +604,7 @@ export default {
       if (this.select_list.length == 0) {
         this.$message(
           {
-            message: '请选择需要删除的用户！',
+            message: 'Please select the username to delete',
             type: 'warning',
           }
         );

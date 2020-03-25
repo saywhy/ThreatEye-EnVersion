@@ -8,13 +8,13 @@
                    @click="add_box">Add</el-button>
         <el-button type="primary"
                    class="btn_i"
-                   @click="del_monitor">删除</el-button>
+                   @click="del_monitor">Delete</el-button>
         <el-button type="primary"
                    class="btn_o"
-                   @click="import_box">导入</el-button>
+                   @click="import_box">Import</el-button>
         <el-button type="primary"
                    class="btn_o"
-                   @click="download">导出</el-button>
+                   @click="download">Export</el-button>
       </div>
       <div class="monitor_table">
         <el-table ref="multipleTable"
@@ -40,10 +40,10 @@
             </template>
           </el-table-column>
           <el-table-column prop="name"
-                           label="IP段名称"
+                           label="Name"
                            show-overflow-tooltip>
           </el-table-column>
-          <el-table-column label="IP地址段"
+          <el-table-column label="Subnets"
                            show-overflow-tooltip>
 
             <template slot-scope="scope">
@@ -54,10 +54,10 @@
             </template>
           </el-table-column>
           <el-table-column prop="network_type"
-                           label="网段类型"
+                           label="Subnet type"
                            show-overflow-tooltip>
           </el-table-column>
-          <el-table-column label="标签"
+          <el-table-column label="Labels"
                            width="400">
             <template slot-scope="scope">
               <span class="btn_tag_box"
@@ -70,11 +70,11 @@
             </template>
           </el-table-column>
           <el-table-column prop="person"
-                           label="责任人"
+                           label="Owner"
                            width="100"
                            show-overflow-tooltip>
           </el-table-column>
-          <el-table-column label="更新时间"
+          <el-table-column label="Updated"
                            width="180"
                            show-overflow-tooltip>
             <template slot-scope="scope">{{ scope.row.updated_at*1000 |formatDate }}</template>
@@ -83,7 +83,7 @@
             <template slot-scope="scope">
               <el-button type="primary"
                          class="btn_edit"
-                         @click.stop='edit_box(scope.row)'>编辑</el-button>
+                         @click.stop='edit_box(scope.row)'>Edit</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -114,11 +114,11 @@
           <div class="content_item_box">
             <div class="content_item">
               <p>
-                <span class="title">IP段名称</span>
+                <span class="title">Name</span>
                 <span class="title_color">*</span>
               </p>
               <el-input class="select_box"
-                        placeholder="请输入IP段名称"
+                        placeholder="Please enter a name"
                         v-model="monitor_add.name"
                         clearable>
               </el-input>
@@ -130,7 +130,7 @@
               </p>
               <el-select class="select_box"
                          v-model="monitor_add.type"
-                         placeholder="请选择网段类型">
+                         placeholder="Please select the subnet type">
                 <el-option v-for="item in monitor_add.type_list"
                            :key="item"
                            :label="item"
@@ -145,7 +145,7 @@
               <div class="item_addrs"
                    v-for="(item,index) in monitor_add.tag_list">
                 <el-input class="select_box"
-                          placeholder="请输入标签"
+                          placeholder="Please enter labels"
                           v-model="item.name"
                           clearable>
                 </el-input>
@@ -163,7 +163,7 @@
             </div>
             <div class="content_item">
               <p>
-                <span class="title">注: 标签属性有7个预留字段“**业务” “总部” “**分支” “**部门” “终端” “服务器” “网络设备”。</span>
+                <span class="title">Note: 7 label attributes are reserved:"*** application", "Headquarters", "*** branch", "*** department", "Workstation", "Server", "Network equipment".</span>
               </p>
             </div>
           </div>
@@ -172,13 +172,13 @@
           <div class="content_item_box">
             <div class="content_item">
               <p>
-                <span class="title">IP地址段</span>
+                <span class="title">Subnets</span>
                 <span class="title_color">*</span>
               </p>
               <div class="item_addrs"
                    v-for="(item,index) in monitor_add.ip_segment_list">
                 <el-input class="select_box"
-                          placeholder="请输入IP地址段或IP地址"
+                          placeholder="Please enter IP subnets or IP addresses"
                           v-model="item.name"
                           clearable>
                 </el-input>
@@ -224,17 +224,17 @@
              alt="">
         <div class="title">
           <div class="mask"></div>
-          <span class="title_name">编辑IP段</span>
+          <span class="title_name">Edit</span>
         </div>
         <div class="content">
           <div class="content_item_box">
             <div class="content_item">
               <p>
-                <span class="title">IP段名称</span>
+                <span class="title">Name</span>
                 <span class="title_color">*</span>
               </p>
               <el-input class="select_box"
-                        placeholder="请输入IP段名称"
+                        placeholder="Please enter a name"
                         v-model="monitor_edit.name"
                         clearable>
               </el-input>
@@ -242,12 +242,12 @@
 
             <div class="content_item">
               <p>
-                <span class="title">网段类型</span>
+                <span class="title">Subnet Type</span>
                 <span class="title_color">*</span>
               </p>
               <el-select class="select_box"
                          v-model="monitor_edit.network_type"
-                         placeholder="请选择网段类型">
+                         placeholder="Please select the subnet type">
                 <el-option v-for="item in monitor_edit.type_list"
                            :key="item"
                            :label="item"
@@ -257,12 +257,12 @@
             </div>
             <div class="content_item">
               <p>
-                <span class="title">标签</span>
+                <span class="title">Labels</span>
               </p>
               <div class="item_addrs"
                    v-for="(item,index) in monitor_edit.label_list">
                 <el-input class="select_box"
-                          placeholder="请输入标签"
+                          placeholder="Please enter labels"
                           v-model="item.name"
                           clearable>
                 </el-input>
@@ -280,7 +280,7 @@
             </div>
             <div class="content_item">
               <p>
-                <span class="title">注: 标签属性有7个预留字段“**业务” “总部” “**分支” “**部门” “终端” “服务器” “网络设备”。</span>
+                <span class="title">Note: 7 label attributes are reserved:"*** application", "Headquarters", "*** branch", "*** department", "Workstation", "Server", "Network equipment".</span>
               </p>
             </div>
           </div>
@@ -289,13 +289,13 @@
           <div class="content_item_box">
             <div class="content_item">
               <p>
-                <span class="title">IP地址段</span>
+                <span class="title">Subnets</span>
                 <span class="title_color">*</span>
               </p>
               <div class="item_addrs"
                    v-for="(item,index) in monitor_edit.ip_segment_list">
                 <el-input class="select_box"
-                          placeholder="请输入IP地址段或IP地址"
+                          placeholder="Please enter IP subnets or IP addresses"
                           v-model="item.name"
                           clearable>
                 </el-input>
@@ -313,7 +313,7 @@
             </div>
             <div class="content_item">
               <p>
-                <span class="title">责任人</span>
+                <span class="title">Owner</span>
               </p>
               <el-input class="select_box"
                         placeholder="请输入责任人"
@@ -342,7 +342,7 @@
              alt="">
         <div class="title">
           <div class="mask"></div>
-          <span class="title_name">批量导入</span>
+          <span class="title_name">Import</span>
         </div>
         <div class="content">
           <el-upload class="upload-demo"
@@ -368,9 +368,9 @@
             </div>
           </el-upload>
           <div class="tip_box">
-            <span>温馨提示：请选择 .xls 的文件，且文件大小不得超过10M。没有模板？</span>
+            <span>Note: Please choose .xls file, and file size should not exceed 10M. No templates?</span>
             <span class="download"
-                  @click="download_template">点击这里下载</span>
+                  @click="download_template">Download</span>
           </div>
         </div>
         <div class="btn_box">
@@ -484,7 +484,7 @@ export default {
       if (isRepeat_ip_segment.length == 0) {
         this.$message(
           {
-            message: 'IP地址段不能为空！',
+            message: 'Please enter IP subnets or IP addresses',
             type: 'warning',
           }
         );
@@ -493,7 +493,7 @@ export default {
       if (this.isRepeat(isRepeat_ip_segment)) {
         this.$message(
           {
-            message: 'IP地址或地址段有重复项,请重新输入！',
+            message: 'IP addresses or subnets have duplicates, please re-enter.',
             type: 'warning',
           }
         );
@@ -508,15 +508,14 @@ export default {
       if (this.isRepeat(tag_test)) {
         this.$message(
           {
-            message: '标签有重复项,请重新输入。',
+            message: 'The labels has duplicates. Please re-enter.',
             type: 'warning',
           }
         );
         return false
       }
       tag_test_str = JSON.stringify(tag_test)
-      console.log(tag_test_str.indexOf("终端") != -1);
-      if (tag_test_str.indexOf("终端") != -1 && (tag_test_str.indexOf("服务器") != -1 || tag_test_str.indexOf("网络设备") != -1)) {
+      if (tag_test_str.indexOf("workstation") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
         this.$message(
           {
             message: '“终端”、“服务器”、“网络设备”三类标签只能设置其中的一种，请重新设置！',
@@ -525,7 +524,7 @@ export default {
         );
         return false
       }
-      if (tag_test_str.indexOf("服务器") != -1 && (tag_test_str.indexOf("终端") != -1 || tag_test_str.indexOf("网络设备") != -1)) {
+      if (tag_test_str.indexOf("server") != -1 && (tag_test_str.indexOf("workstation") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
         this.$message(
           {
             message: '“终端”、“服务器”、“网络设备”三类标签只能设置其中的一种，请重新设置！',
@@ -534,7 +533,7 @@ export default {
         );
         return false
       }
-      if (tag_test_str.indexOf("网络设备") != -1 && (tag_test_str.indexOf("服务器") != -1 || tag_test_str.indexOf("终端") != -1)) {
+      if (tag_test_str.indexOf("network equipment") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("workstation") != -1)) {
         this.$message(
           {
             message: '“终端”、“服务器”、“网络设备”三类标签只能设置其中的一种，请重新设置！',
@@ -692,8 +691,7 @@ export default {
         }
       });
       tag_test_str = JSON.stringify(tag_test)
-      console.log(tag_test_str.indexOf("终端") != -1);
-      if (tag_test_str.indexOf("终端") != -1 && (tag_test_str.indexOf("服务器") != -1 || tag_test_str.indexOf("网络设备") != -1)) {
+      if (tag_test_str.indexOf("workstation") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
         this.$message(
           {
             message: '“终端”、“服务器”、“网络设备”三类标签只能设置其中的一种，请重新设置！',
@@ -702,7 +700,7 @@ export default {
         );
         return false
       }
-      if (tag_test_str.indexOf("服务器") != -1 && (tag_test_str.indexOf("终端") != -1 || tag_test_str.indexOf("网络设备") != -1)) {
+      if (tag_test_str.indexOf("server") != -1 && (tag_test_str.indexOf("workstation") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
         this.$message(
           {
             message: '“终端”、“服务器”、“网络设备”三类标签只能设置其中的一种，请重新设置！',
@@ -711,7 +709,7 @@ export default {
         );
         return false
       }
-      if (tag_test_str.indexOf("网络设备") != -1 && (tag_test_str.indexOf("服务器") != -1 || tag_test_str.indexOf("终端") != -1)) {
+      if (tag_test_str.indexOf("network equipment") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("workstation") != -1)) {
         this.$message(
           {
             message: '“终端”、“服务器”、“网络设备”三类标签只能设置其中的一种，请重新设置！',
@@ -768,7 +766,7 @@ export default {
             this.get_data();
             this.$message(
               {
-                message: '修改成功',
+                message: 'Update successfully',
                 type: 'success',
               }
             );
@@ -804,7 +802,7 @@ export default {
       if (this.select_list.length == 0) {
         this.$message(
           {
-            message: '请选择需要删除的IP/IP段！',
+            message: '请选择需要删除的IP/IP段',
             type: 'warning',
           }
         );
@@ -888,7 +886,7 @@ export default {
       let extension = file.name.substring(file.name.lastIndexOf('.') + 1)
       let size = file.size / 1024 / 1024 < 10
       if (!size) {
-        this.$message.warning('上传文件大小不能超过 10MB!');
+        this.$message.warning('File size cannot exceed 10 MB');
       }
       return size
 

@@ -7,7 +7,7 @@
                  @click="add_box">Add</el-button>
       <el-button type="primary"
                  class="btn_o"
-                 @click="del_role">删除</el-button>
+                 @click="del_role">Delete</el-button>
     </div>
     <div class="role_table">
       <el-table ref="multipleTable"
@@ -34,12 +34,12 @@
           </template>
         </el-table-column>
         <el-table-column prop="name"
-                         label="角色名称"
+                         label="Name"
                          width="180"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="description"
-                         label="角色描述"
+                         label="Description"
                          show-overflow-tooltip>
         </el-table-column>
 
@@ -49,7 +49,7 @@
           <template slot-scope="scope">{{ scope.row.created_at*1000 |formatDate }}</template>
         </el-table-column>
         <el-table-column prop="creatorname"
-                         label="创建人"
+                         label="Reporter"
                          width="180"
                          show-overflow-tooltip>
         </el-table-column>
@@ -60,7 +60,7 @@
             <el-button type="primary"
                        v-if="scope.row.creatorname!= 'SYSTEM' "
                        class="btn_edit"
-                       @click.stop='edit_box(scope.row)'>编辑</el-button>
+                       @click.stop='edit_box(scope.row)'>Edit</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -85,23 +85,23 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">添加角色</span>
+        <span class="title_name">Add</span>
       </div>
       <div class="content">
         <div class="content_item">
           <p>
-            <span class="title">角色名称</span>
+            <span class="title">Name</span>
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入角色名称"
+                    placeholder="Please enter the role name"
                     v-model="role_add.name"
                     clearable>
           </el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">角色权限</span>
+            <span class="title">Role permissions</span>
             <span class="red_necessary">*</span>
           </p>
           <el-tree :data="data"
@@ -115,14 +115,14 @@
         </div>
         <div class="content_item">
           <p>
-            <span class="title">角色描述</span>
+            <span class="title">Description</span>
           </p>
           <el-input class="select_box"
                     type="textarea"
                     :rows="2"
                     autosize
                     resize='none'
-                    placeholder="请输入角色描述"
+                    placeholder="Please enter a role description"
                     v-model="role_add.describe">
           </el-input>
         </div>
@@ -145,23 +145,23 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">编辑角色</span>
+        <span class="title_name">Edit</span>
       </div>
       <div class="content">
         <div class="content_item">
           <p>
-            <span class="title">角色名称</span>
+            <span class="title">Name</span>
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入角色名称"
+                    placeholder="Please enter the role name"
                     v-model="role_edit.name"
                     clearable>
           </el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">角色权限</span>
+            <span class="title">Role permissions</span>
             <span class="red_necessary">*</span>
           </p>
           <el-tree :data="data"
@@ -175,14 +175,14 @@
         </div>
         <div class="content_item">
           <p>
-            <span class="title">角色描述</span>
+            <span class="title">Description</span>
           </p>
           <el-input class="select_box"
                     type="textarea"
                     :rows="4"
                     autosize
                     resize='none'
-                    placeholder="请输入角色描述"
+                    placeholder="Please enter a role description"
                     v-model="role_edit.description">
           </el-input>
         </div>
@@ -207,157 +207,156 @@ export default {
         // 首页
         {
           id: 1,
-          label: '首页',
+          label: 'Home',
           children: [{
             id: 2,
-            label: '总览',
+            label: 'Overview',
           }]
         },
         // 处置
         {
           id: 13,
-          label: '处置',
+          label: 'Mitigation',
           children: [
             {
               id: 14,
-              label: '资产维度',
+              label: 'Asset Dimension',
             },
             {
               id: 23,
-              label: '风险维度',
+              label: 'Risk Dimension',
               children: [
                 {
                   id: 24,
-                  label: '外部威胁',
+                  label: 'External Threats',
                 },
                 {
                   id: 32,
-                  label: '横向威胁',
+                  label: 'Lateral Movement',
                 },
                 {
                   id: 40,
-                  label: '外联威胁',
+                  label: 'Outreach Threats',
                 }
               ]
             },
             {
               id: 48,
-              label: '工单中心',
+              label: 'Ticket Center',
             },
           ]
         },
         // 告警
         {
           id: 58,
-          label: '告警',
+          label: 'Alerts',
           children: [{
             id: 59,
-            label: '网络告警',
+            label: 'Alerts',
           }]
         },
         // 追查
         {
           id: 76,
-          label: '追查',
+          label: 'Hunting',
           children: [
             {
               id: 77,
-              label: 'DNS追查',
+              label: 'DNS Hunting',
             },
             {
               id: 81,
-              label: 'IP/URL追查',
+              label: 'IP/URL Hunting',
             },
             {
               id: 85,
-              label: '主机追查',
+              label: 'Host Hunting',
             },
             {
               id: 93,
-              label: '用户追查',
+              label: 'User Hunting',
             },
             {
               id: 97,
-              label: '文件追查',
+              label: 'File Hunting',
             },
             {
               id: 101,
-              label: '数据传输追查',
+              label: 'Data Transmission Hunting',
             },
             {
               id: 105,
-              label: '流量方向追查',
+              label: 'Flow Direction Hunting',
             },
             {
               id: 109,
-              label: 'IOC扫描器',
+              label: 'IOC scanner',
             },
-
           ]
         },
         // 报表
         {
           id: 123,
-          label: '报表',
+          label: 'Reporting',
           children: [
             {
               id: 124,
-              label: '报表生成',
+              label: 'Generate Reports',
             },
             {
               id: 130,
-              label: '报表发送',
+              label: 'Report delivery',
             },
           ]
         },
         // 系统
         {
           id: 132,
-          label: '系统',
+          label: 'System',
           children: [
             {
               id: 133,
-              label: '设备管理',
+              label: 'Device Management',
             },
             {
               id: 139,
-              label: '受监控IP',
+              label: 'Managed IP Subnets',
             },
             {
               id: 144,
-              label: '账号管理',
+              label: 'Account Management',
             },
             {
               id: 157,
-              label: '网络配置',
+              label: 'Network configuration',
             },
             {
               id: 162,
-              label: '系统选项',
+              label: 'System Options',
             },
             {
               id: 169,
-              label: '规则库及白名单',
+              label: 'Libraries and Whitelists',
             },
             {
               id: 183,
-              label: '联动',
+              label: 'Integration',
             },
             {
               id: 187,
-              label: '威胁通知',
+              label: 'Threat Notification',
             },
             {
               id: 191,
-              label: '日志',
+              label: 'Logging',
             },
             {
               id: 204,
-              label: '恢复/重启',
+              label: 'Restore/Restart',
             },
             {
               id: 207,
-              label: '许可证',
+              label: 'License',
             },
           ]
         },
@@ -408,10 +407,10 @@ export default {
           console.log(data.edition);
           if (data.edition == 2) {
             this.data.forEach(element => {
-              if (element.label == '追查') {
+              if (element.label == 'Hunting') {
                 element.children.push({
                   id: 117,
-                  label: '沙箱',
+                  label: 'Sandbox',
                 })
               }
             });
@@ -493,7 +492,7 @@ export default {
       if (this.role_add.name == '') {
         this.$message(
           {
-            message: '请输入角色名称',
+            message: 'Please enter the role name',
             type: 'warning',
           }
         );
@@ -502,7 +501,7 @@ export default {
       if (this.$refs.tree.getCheckedNodes().length == 0) {
         this.$message(
           {
-            message: '请至少选择一项角色权限',
+            message: 'Please select at least one role',
             type: 'warning',
           }
         );
@@ -547,7 +546,7 @@ export default {
       if (this.role_edit.name == '') {
         this.$message(
           {
-            message: '请输入角色名称',
+            message: 'Please enter the role name',
             type: 'warning',
           }
         );
@@ -556,7 +555,7 @@ export default {
       if (this.$refs.tree_edit.getCheckedNodes().length == 0) {
         this.$message(
           {
-            message: '请至少选择一项角色权限',
+            message: 'Please select at least one role',
             type: 'warning',
           }
         );
@@ -582,7 +581,7 @@ export default {
             this.get_data();
             this.$message(
               {
-                message: '修改角色成功！',
+                message: '修改角色成功',
                 type: 'success',
               }
             );
@@ -606,7 +605,7 @@ export default {
       if (this.select_list.length == 0) {
         this.$message(
           {
-            message: '请选择需要删除的角色！',
+            message: 'Please select the role to delete',
             type: 'warning',
           }
         );
