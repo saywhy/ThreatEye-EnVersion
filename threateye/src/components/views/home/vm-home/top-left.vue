@@ -55,7 +55,7 @@ export default {
         },
         series: [
           {
-            name: "系统状态监控",
+            name: "System Monitoring",
             type: "pie",
             legendHoverLink: false,
             radius: ["0%", "65%"],
@@ -81,13 +81,13 @@ export default {
               }
             },
             data: [
-              { value: warning_count, name: "预警", color: "rgba(224,200,64,1)" },
-              { value: healthy_count, name: "健康", color: "rgba(71,202,217,1)" },
-              { value: offline_count, name: "离线", color: "rgba(220,95,95,1)" }
+              { value: warning_count, name: "Warning", color: "rgba(224,200,64,1)" },
+              { value: healthy_count, name: "Healthy", color: "rgba(71,202,217,1)" },
+              { value: offline_count, name: "Offline", color: "rgba(220,95,95,1)" }
             ]
           },
           {
-            name: "访问来源",
+            name: "source",
             type: "pie",
             radius: ["65%", "80%"],
             legendHoverLink: false,
@@ -107,9 +107,9 @@ export default {
               }
             },
             data: [
-              { value: warning_count, name: "预警", color: "rgba(224,200,64,.5)" },
-              { value: healthy_count, name: "健康", color: "rgba(71,202,217,.5)" },
-              { value: offline_count, name: "离线", color: "rgba(220,95,95,.5)" }
+              { value: warning_count, name: "Warning", color: "rgba(224,200,64,.5)" },
+              { value: healthy_count, name: "Healthy", color: "rgba(71,202,217,.5)" },
+              { value: offline_count, name: "Offline", color: "rgba(220,95,95,.5)" }
             ]
           }
         ]

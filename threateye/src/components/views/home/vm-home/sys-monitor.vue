@@ -11,7 +11,7 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">拓扑图</span>
+        <span class="title_name">Topology</span>
       </div>
       <div id="graph">
         <button @click="show_detail">detail</button>
@@ -64,7 +64,7 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">系统状态监控</span>
+        <span class="title_name">System Monitoring</span>
       </div>
       <div class="sys_detail_content">
         <div class="detail_item">
@@ -90,15 +90,15 @@ export default {
   data () {
     return {
       state_detail: false,
-      tips1: '引擎',
-      tips2: '沙箱',
-      tips3: '探针',
+      tips1: 'Engine',
+      tips2: 'Sandbox',
+      tips3: 'Sensor',
       equipment: {
         probe: [],
         engine: [],
         sandbox: []
       },
-      //---   
+      //---
       base64: 'data:image/png;base64,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',
       graph_echart_array: [],
       graph_echart_array_item: [],
@@ -168,9 +168,9 @@ export default {
       this.links_array = [];
       this.sysState_data.dev_info.forEach(item => {
         if (item.status == 'offline') {
-          item.status = '离线'
+          item.status = 'offline'
         } else if (item.status == 'online') {
-          item.status = '在线'
+          item.status = 'online'
         }
         // 判断类型
         if (item.dev_type == '1') {
@@ -184,14 +184,14 @@ export default {
         if (item.dev_type == '3') {
           this.only_one = false;
           this.graph_echart_array_item = {
-            name: '节点0',
-            names: '引擎/探针',
+            name: 'node0',
+            names: 'online/Sensor',
             dev_ip: item.dev_ip,
             status: item.status,
             x: 350,
             y: 200,
             symbol: this.base64,
-            //节点上面的文字	
+            //节点上面的文字
             label: {
               normal: {
                 position: "bottom",
@@ -201,7 +201,7 @@ export default {
                   color: '#666',
                   align: 'center',
                 },
-                formatter: '引擎/探针'
+                formatter: 'Engine/Sensor'
               }
             }
           }
@@ -212,14 +212,14 @@ export default {
         // 多个探针 模版
         this.probe_array.forEach(item => {
           this.data_item1 = {
-            name: '节点1',
+            name: 'node1',
             x: 300,
             y: 100,
             symbol: this.base64,
-            names: '探针',
+            names: 'Sensor',
             dev_ip: item.dev_ip,
             status: item.status,
-            //节点上面的文字	
+            //节点上面的文字
             label: {
               normal: {
                 position: "bottom",
@@ -229,77 +229,77 @@ export default {
                   color: '#666',
                   align: 'center',
                 },
-                formatter: '探针'
+                formatter: 'Sensor'
               }
             }
           };
           this.links_item = {
-            source: '节点0',
-            target: '节点1',
+            source: 'node0',
+            target: 'node1',
             dev_ip: item.dev_ip,
             status: item.status,
-            names: '探针'
+            names: 'Sensor'
           };
           switch (index) {
             case 0:
-              this.data_item1.name = '节点1';
-              this.links_item.target = '节点1';
+              this.data_item1.name = 'node1';
+              this.links_item.target = 'node1';
               this.data_item1.x = 100;
               this.data_item1.y = 200;
               this.graph_echart_array.push(this.data_item1);
               this.links_array.push(this.links_item);
               break;
             case 1:
-              this.data_item1.name = '节点2';
-              this.links_item.target = '节点2';
+              this.data_item1.name = 'node2';
+              this.links_item.target = 'node2';
               this.data_item1.x = 100;
               this.data_item1.y = 100;
               this.graph_echart_array.push(this.data_item1);
               this.links_array.push(this.links_item);
               break;
             case 2:
-              this.data_item1.name = '节点3';
-              this.links_item.target = '节点3';
+              this.data_item1.name = 'node3';
+              this.links_item.target = 'node3';
               this.data_item1.x = 100;
               this.data_item1.y = 300;
               this.graph_echart_array.push(this.data_item1);
               this.links_array.push(this.links_item);
               break;
             case 3:
-              this.data_item1.name = '节点4';
-              this.links_item.target = '节点4';
+              this.data_item1.name = 'node4';
+              this.links_item.target = 'node4';
               this.data_item1.x = 600;
               this.data_item1.y = 200;
               this.graph_echart_array.push(this.data_item1);
               this.links_array.push(this.links_item);
               break;
             case 4:
-              this.data_item1.name = '节点5';
-              this.links_item.target = '节点5';
+              this.data_item1.name = 'node5';
+              this.links_item.target = 'node5';
               this.data_item1.x = 600;
               this.data_item1.y = 100;
               this.graph_echart_array.push(this.data_item1);
               this.links_array.push(this.links_item);
               break;
             case 5:
-              this.data_item1.name = '节点6';
-              this.links_item.target = '节点6';
+              this.data_item1.name = 'node6';
+              this.links_item.target = 'node6';
               this.data_item1.x = 600;
               this.data_item1.y = 300;
               this.graph_echart_array.push(this.data_item1);
               this.links_array.push(this.links_item);
               break;
             case 6:
-              this.data_item1.name = '节点7';
-              this.links_item.target = '节点7';
+              this.data_item1.name = 'node7';
+              this.links_item.target = 'node7';
               this.data_item1.x = 300;
               this.data_item1.y = 100;
               this.graph_echart_array.push(this.data_item1);
               this.links_array.push(this.links_item);
               break;
             case 7:
-              this.links_item.target = '节点8';
-              this.data_item1.name = '节点8';
+              this.links_item.target = 'node8';
+              this.data_item1.name = 'node8';
               this.data_item1.x = 300;
               this.data_item1.y = 300;
               this.graph_echart_array.push(this.data_item1);
@@ -313,11 +313,11 @@ export default {
       if (this.only_to) {
         // 2 一台引擎模版
         this.data_item0 = {
-          name: "节点0",
+          name: "node0",
           x: 350,
           y: 200,
           symbol: this.base64,
-          names: "引擎",
+          names: "Engine",
           dev_ip: this.engine_array[0]
             .dev_ip,
           status: this.engine_array[0]
@@ -332,7 +332,7 @@ export default {
                 color: "#666",
                 align: "center",
               },
-              formatter: "引擎",
+              formatter: "Engine",
             },
           },
         };
@@ -352,7 +352,7 @@ export default {
           tooltip: {
             trigger: 'item',
             formatter: function (params, trigger) {
-              return '设备：' + params.data.names + '</br>' + 'IP地址：' + params.data.dev_ip + '</br>' + '状态：' + params.data.status
+              return 'Equipment:' + params.data.names + '</br>' + 'IP address:' + params.data.dev_ip + '</br>' + 'Status:' + params.data.status
             }
           },
           animationDurationUpdate: 1000,
@@ -433,13 +433,13 @@ export default {
           trigger: "item",
           formatter: function (params, trigger) {
             return (
-              "设备：" +
+              "Equipment:" +
               params.data.names +
               "</br>" +
-              "IP地址：" +
+              "IP address:" +
               params.data.dev_ip +
               "</br>" +
-              "状态：" +
+              "Status:" +
               params.data.status
             );
           }
@@ -472,11 +472,11 @@ export default {
             },
             data: [
               {
-                name: "节点0",
+                name: "node0",
                 x: 350,
                 y: 200,
                 symbol: this.base64,
-                names: "引擎",
+                names: "Engine",
                 dev_ip: "192.168.1.1",
                 status: "0",
                 //节点上面的文字
@@ -489,7 +489,7 @@ export default {
                       color: "#666",
                       align: "center"
                     },
-                    formatter: "引擎"
+                    formatter: "Engine"
                   }
                 }
               }

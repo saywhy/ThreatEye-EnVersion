@@ -5,13 +5,13 @@
               @row-click="detail_click"
               :data="tableData">
       <el-table-column prop="pid"
-                       label="排名"
+                       label="Rank"
                        width="60"
                        align="center"></el-table-column>
       <el-table-column prop="asset_ip"
-                       label="风险资产"
+                       label="Risk Assets"
                        show-overflow-tooltip></el-table-column>
-      <el-table-column label="风险指数">
+      <el-table-column label="Risk Index">
         <template slot-scope="scope">
           <el-progress :show-text="false"
                        :percentage="scope.row.indicator"></el-progress>

@@ -112,7 +112,7 @@ export default {
         series: [
           {
             type: 'bar',
-            stack: '总量',
+            stack: 'all',
             label: {
               show: false
             },

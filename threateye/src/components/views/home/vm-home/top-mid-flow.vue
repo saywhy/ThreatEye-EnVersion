@@ -108,7 +108,7 @@ export default {
         },
         series: [
           {
-            name: "流量",
+            name: "Traffic",
             type: "line",
             symbol: "none",
             data: flow_diff,

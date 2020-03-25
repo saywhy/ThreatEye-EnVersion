@@ -59,7 +59,7 @@ export default {
         },
         legend: {
           show:false,
-          data: ['低危', '中危', '高危']
+          data: ['Low', 'Medium', 'High']
         },
         grid: {
           top: "5%",
@@ -134,23 +134,23 @@ export default {
         },
         series: [
           {
-            name: '低危',
+            name: 'Low',
             type: 'bar',
-            stack: '广告',
+            stack: 'ad',
             barWidth:'20',
             data: low
           },
           {
-            name: '中危',
+            name: 'Medium',
             type: 'bar',
-            stack: '广告',
+            stack: 'ad',
             barWidth:'20',
             data: medium
           },
           {
-            name: '高危',
+            name: 'High',
             type: 'bar',
-            stack: '广告',
+            stack: 'ad',
             barWidth:'20',
             data: high
           }

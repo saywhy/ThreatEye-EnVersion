@@ -8,7 +8,7 @@ export default {
   props: {
     top_mid: {
       type: Object,
-      default: () => { }
+      default: () => {}
     }
   },
   mounted () {
@@ -106,7 +106,7 @@ export default {
         },
         series: [
           {
-            name: "文件",
+            name: "Files",
             type: "line",
             symbol: "none",
             cursor: "pointer",

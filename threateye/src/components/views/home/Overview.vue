@@ -11,16 +11,16 @@
                @click="sys_state">
             <div class="title">
               <p>
-                <span class="title_left">系统状态监控</span>
+                <span class="title_left">System Monitoring</span>
               </p>
             </div>
             <div class="legend">
               <span class="legend_icon color8"></span>
-              <span class="legend_title">预警:{{top_left.warning_count}}</span>
+              <span class="legend_title">Warning:{{top_left.warning_count}}</span>
               <span class="legend_icon color3"></span>
-              <span class="legend_title">健康:{{top_left.healthy_count}}</span>
+              <span class="legend_title">Healthy:{{top_left.healthy_count}}</span>
               <span class="legend_icon color4"></span>
-              <span class="legend_title">离线:{{top_left.offline_count}}</span>
+              <span class="legend_title">Offline:{{top_left.offline_count}}</span>
             </div>
             <div class="top_left_content">
               <top-left :top_left="top_left"
@@ -32,12 +32,12 @@
           <div class="top_item">
             <div class="title">
               <p>
-                <span class="title_left">流量文件监控</span>
+                <span class="title_left">Traffic/Files Monitoring</span>
                 <span class="title_right">
                   <span class="title_right_icon color6"></span>
-                  <span>流量(M/s)</span>
+                  <span>Traffic(M/s)</span>
                   <span class="title_right_icon color2"></span>
-                  <span>文件(个/s)</span>
+                  <span>Files(个/s)</span>
                 </span>
               </p>
             </div>
@@ -57,11 +57,11 @@
           <div class="top_item">
             <div class="title">
               <p>
-                <span class="title_left">协议统计</span>
+                <span class="title_left">Protocal Statistics</span>
               </p>
             </div>
             <div class="legend">
-              <p class="legend_title">单位(P/s)</p>
+              <p class="legend_title">Unit(P/s)</p>
             </div>
             <div class="top_right_content">
               <top-right :top_right="top_right"
@@ -78,14 +78,14 @@
           <div class="top_item">
             <div class="title">
               <p>
-                <span class="title_left">告警</span>
+                <span class="title_left">Alert</span>
                 <span class="title_right">
                   <span class="title_right_icon color3"></span>
-                  <span>低危</span>
+                  <span>Low</span>
                   <span class="title_right_icon color5"></span>
-                  <span>中危</span>
+                  <span>Medium</span>
                   <span class="title_right_icon color4"></span>
-                  <span>高危</span>
+                  <span>High</span>
                 </span>
               </p>
             </div>
@@ -101,14 +101,14 @@
           <div class="top_item">
             <div class="title">
               <p>
-                <span class="title_left">未处理告警</span>
+                <span class="title_left">Unresloved Alerts</span>
                 <span class="title_right">
                   <span class="title_right_icon color3"></span>
-                  <span>低危</span>
+                  <span>Low</span>
                   <span class="title_right_icon color5"></span>
-                  <span>中危</span>
+                  <span>Medium</span>
                   <span class="title_right_icon color4"></span>
-                  <span>高危</span>
+                  <span>High</span>
                 </span>
               </p>
             </div>
@@ -122,7 +122,7 @@
           <div class="top_item">
             <div class="title">
               <p>
-                <span class="title_left">威胁类型</span>
+                <span class="title_left">Threat Category</span>
               </p>
             </div>
             <div class="bom_right_content">
@@ -140,7 +140,7 @@
           <div class="top_item">
             <div class="title">
               <p>
-                <span class="title_left">Top5威胁</span>
+                <span class="title_left">Top5 Threats</span>
               </p>
             </div>
             <div class="bom_left_content">
@@ -155,7 +155,7 @@
           <div class="top_item">
             <div class="title">
               <p>
-                <span class="title_left">Top5风险资产</span>
+                <span class="title_left">Top5 Risk Assets</span>
               </p>
             </div>
             <div class="bom_mid_content">
@@ -167,7 +167,7 @@
           <div class="top_item">
             <div class="title">
               <p>
-                <span class="title_left">最新警告</span>
+                <span class="title_left">Latest Alerts</span>
               </p>
             </div>
             <div class="bom_right_content">
@@ -192,7 +192,7 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">拓扑图</span>
+        <span class="title_name">Topology</span>
       </div>
       <div id="graph">
       </div>
@@ -212,7 +212,7 @@
           <span>{{equipment_detail.title.name}}</span>
           <span>{{equipment_detail.title.ip}}</span>
           <span>{{equipment_detail.title.type}}</span>
-          <span>的健康情况</span>
+          <span>System Status</span>
         </span>
       </div>
       <div class="sys_detail_content">

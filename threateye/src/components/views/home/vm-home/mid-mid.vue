@@ -59,7 +59,7 @@ export default {
         color: ["#DC5F5F", "#E0C840", "#47CAD9"],
         series: [
           {
-            name: "预警",
+            name: "Warning",
             type: "pie",
             radius: ["45%", "80%"],
             avoidLabelOverlap: false,
@@ -94,9 +94,9 @@ export default {
               }
             },
             data: [
-              { value: high, name: "高危预警", selected: true },
-              { value: medium, name: "中危预警" },
-              { value: low, name: "低危预警" }
+              { value: high, name: "High", selected: true },
+              { value: medium, name: "Medium" },
+              { value: low, name: "Low" }
             ]
           }
         ]

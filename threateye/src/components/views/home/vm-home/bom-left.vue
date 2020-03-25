@@ -5,7 +5,7 @@
               @row-click="detail_click"
               :data="tableData">
       <el-table-column prop="index"
-                       label="排名"
+                       label="Rank"
                        width="60"
                        align="center"
                        show-overflow-tooltip></el-table-column>
