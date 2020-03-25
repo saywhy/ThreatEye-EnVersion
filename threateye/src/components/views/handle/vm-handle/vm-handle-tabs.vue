@@ -27,10 +27,10 @@
         tabsData: {
           activeIndex: 0,
           data: [
-            {title: '风险资产总数', count: this.data_top.total},
-            {title: '高危资产数', count: this.data_top.high},
-            {title: '中危资产数', count: this.data_top.medium},
-            {title: '低危资产数', count: this.data_top.low}
+            {title: 'Total Risk Assets', count: this.data_top.total},
+            {title: 'High-risk Assets', count: this.data_top.high},
+            {title: 'Medium-risk Assets', count: this.data_top.medium},
+            {title: 'Low-risk Assets', count: this.data_top.low}
           ]
         }
       }
@@ -60,7 +60,7 @@
         }
         .vat-title{
           font-family: PingFang;
-          width: 120px;
+          width: 180px;
           font-size: 18px;
           color: #333;
           line-height: 24px;

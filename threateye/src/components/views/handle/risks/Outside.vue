@@ -1,7 +1,7 @@
 <template>
   <div class="handle-outside" v-cloak>
     <vm-handle-risks :threats = "threats">
-      <slot slot="name"><span>外部</span></slot>
+      <slot slot="name"><span>External </span></slot>
       <slot>
         <div class="outside-middle">
           <div class="osm-top">

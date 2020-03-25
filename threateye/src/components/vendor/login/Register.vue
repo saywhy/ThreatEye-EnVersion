@@ -42,7 +42,7 @@
 
       <!--确认密码-->
       <el-form-item prop="repassword">
-        <label class="view-label">密码确认</label>
+        <label class="view-label">确认密码</label>
         <el-input class="view-input"
                   @keyup.enter.native="handleLogin"
                   :type="passwordType"

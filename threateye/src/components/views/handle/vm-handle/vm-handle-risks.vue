@@ -5,7 +5,7 @@
     <div class="outside-top">
       <div class="ost ost-1">
         <div class="ost-title">
-          <slot name="name"></slot>威胁资产 Top5</div>
+          <slot name="name"></slot>Threat Asset Top5</div>
         <div class="ost-progress">
           <vm-handle-progress :progress_data="progress_data_source5"
                               v-if="progress_data_source5_show"></vm-handle-progress>

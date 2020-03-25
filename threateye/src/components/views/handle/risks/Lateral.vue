@@ -1,7 +1,7 @@
 <template>
   <div class="handle-lateral" v-cloak>
    <vm-handle-risks :threats = "threats">
-     <slot slot="name"><span>横向</span></slot>
+     <slot slot="name"><span>Lateral </span></slot>
      <slot>
        <div class="outside-middle">
          <div class="osm-top">
