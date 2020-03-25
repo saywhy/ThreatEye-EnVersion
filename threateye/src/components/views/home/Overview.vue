@@ -37,7 +37,7 @@
                   <span class="title_right_icon color6"></span>
                   <span>Traffic(M/s)</span>
                   <span class="title_right_icon color2"></span>
-                  <span>Files(个/s)</span>
+                  <span>Files(F/s)</span>
                 </span>
               </p>
             </div>
