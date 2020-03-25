@@ -62,7 +62,7 @@
           },
           series: [
             {
-              name:'威胁类型',
+              name:'Threat Categories',
               type:'pie',
               center: ['70%', '50%'],
               radius: ['45%', '60%'],

@@ -8,42 +8,42 @@
         <img class="top_left_img"
              src="@/assets/images/handle/others/works.png"
              alt="">
-        <span class="top_left_title">基本信息</span>
+        <span class="top_left_title">Basic Information</span>
       </div>
       <div class="top_right">
         <!--<el-link target="_blank" :href="loadlinks">
               <el-button class="download_btn">下载</el-button>
             </el-link>-->
         <el-button class="download_btn"
-                   @click="worksdownload">下载</el-button>
+                   @click="worksdownload">Download</el-button>
       </div>
     </div>
     <div class="detail_base_mid">
       <div class="bom_item">
         <li>
           <span class="title">
-            <i class="b_i b_name"></i>工单名称：</span>
+            <i class="b_i b_name"></i>Name:</span>
           <span class="content">{{data.name}}</span>
         </li>
         <li>
           <span class="title">
-            <i class="b_i"></i>创建人：</span>
+            <i class="b_i"></i>Reporter:</span>
           <span class="content">{{data.creator}}</span>
         </li>
         <li>
           <span class="title">
-            <i class="b_i"></i>经办人：</span>
+            <i class="b_i"></i>Assignee:</span>
           <span class="content">{{data.new_perator}}</span>
         </li>
         <li>
           <span class="title">
-            <i class="b_i"></i>状态：</span>
+            <i class="b_i"></i>Status:</span>
           <span class="content">{{data.status | work_status}}</span>
         </li>
       </div>
       <div class="bom_item">
         <li>
-          <span class="title">优先级：</span>
+          <span class="title">Priority:</span>
           <span class="content">{{data.priority | priority}}</span>
         </li>
         <li>
@@ -51,11 +51,11 @@
           <span class="content">{{data.created_at | time}}</span>
         </li>
         <li>
-          <span class="title">更新时间：</span>
+          <span class="title">Updated:</span>
           <span class="content">{{data.updated_at | time }}</span>
         </li>
         <li>
-          <span class="title">备注：</span>
+          <span class="title">Remarks:</span>
           <span class="content">{{data.remarks}}</span>
         </li>
       </div>
@@ -64,7 +64,7 @@
       <!-- tabs列表 -->
       <el-tabs v-model="activeName">
 
-        <el-tab-pane :label="table.tabsFlag == 0?'资产':'告警'"
+        <el-tab-pane :label="table.tabsFlag == 0?'Assets':'Alerts'"
                      class="tabs-item"
                      name="first">
           <!-- 资产 -->
@@ -74,14 +74,14 @@
                       tooltip-effect="dark"
                       :data="table.tableData">
               <el-table-column prop="asset_ip"
-                               label="资产"
+                               label="Assets"
                                show-overflow-tooltip></el-table-column>
               <el-table-column prop="new_label"
                                min-width="120"
-                               label="资产组"
+                               label="Asset Groups"
                                show-overflow-tooltip></el-table-column>
               <el-table-column min-width="140"
-                               label="关联威胁">
+                               label="Related Threats">
                 <template slot-scope="scope">
                   <span class="btn_tag_box"
                         v-if="item!=''"
@@ -108,7 +108,7 @@
                     {{ scope.row.fall_certainty | certainty }}</span>
                 </template>
               </el-table-column>
-              <el-table-column label="状态"
+              <el-table-column label="Status"
                                width="80">
                 <template slot-scope="scope">{{ scope.row.status | risk_status }}</template>
               </el-table-column>
@@ -149,7 +149,7 @@
                     {{ scope.row.degree | degree_sino }}</span>
                 </template>
               </el-table-column>
-              <el-table-column label="状态"
+              <el-table-column label="Status"
                                width="80">
                 <template slot-scope="scope">{{ scope.row.status | alert_status }}</template>
               </el-table-column>
@@ -513,9 +513,11 @@ export default {
           let { status, data } = resp.data;
 
           if (status == 0) {
-            this.$message.success('提交成功。');
+            this.$message.success('successfully');
             this.reply = '';
             this.get_reply_works_detail();
+          }else {
+            this.$message.error('failed');
           }
         });
     },

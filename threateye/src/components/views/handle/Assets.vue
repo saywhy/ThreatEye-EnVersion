@@ -248,7 +248,7 @@
            style="font-size:0;text-align: center;">
           <span style="font-size:14px">Please confirm to change the status of the selected </span>
           <span style="font-size:14px">{{table.multipleSelection.length}}</span>
-          <span style="font-size:14px">to "</span>
+          <span style="font-size:14px"> terms to "</span>
           <span style="font-size:14px">{{process_state}}</span>
           <span style="font-size:14px">"?</span>
         </p>
@@ -278,7 +278,7 @@
       <div class="step_box">
         <div class="step_box1">
           <span class="step1_span"
-                :class="task.new_contet?'step_now':'step_past'">Basic information</span>
+                :class="task.new_contet?'step_now':'step_past'">Basic Information</span>
           <img src="@/assets/images/emerge/selected01.png"
                class="selected_img"
                alt="">
@@ -1292,7 +1292,7 @@ export default {
       if (multipe.length == 0) {
         this.$message({ message: 'Please select the assets that need to be added to the ticket', type: 'warning' });
       } else if (multipe.length > 1) {
-        this.$message({ message: '资产/告警不能添加到多个工单，请重新选择！', type: 'warning' });
+        this.$message({ message: 'Assets or alerts cannot be added to multiple tickets, please try again.', type: 'warning' });
       } else {
         console.log('******************')
         this.add_params.id = multipe[0].id;

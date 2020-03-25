@@ -8,17 +8,17 @@
        <el-tabs v-model="activeName" @tab-click="handleClick">
 
          <!--我创建的-->
-         <el-tab-pane label="我创建的" name="first" >
+         <el-tab-pane label="Created by me" name="first" >
            <vm-handle-works :owned="owned" v-if="childUpdate1" @updateNum="updateTopNum"></vm-handle-works>
          </el-tab-pane>
 
          <!--分配给我的-->
-         <el-tab-pane label="分配给我的" name="second">
+         <el-tab-pane label="Assigned to me" name="second">
            <vm-handle-works :owned="owned" v-if="childUpdate2" @updateNum="updateTopNum"></vm-handle-works>
          </el-tab-pane>
 
          <!--所有工单-->
-         <el-tab-pane label="所有工单" name="third" v-if ="number.role == 'admin'">
+         <el-tab-pane label="All tickets" name="third" v-if ="number.role == 'admin'">
            <vm-handle-works :owned="owned" v-if="childUpdate3" @updateNum="updateTopNum"></vm-handle-works>
          </el-tab-pane>
        </el-tabs>
