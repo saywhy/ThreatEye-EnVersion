@@ -35,7 +35,7 @@
                    v-model="network_model.obtain"
                    @change='change_obtain'
                    :disabled="network_model.role_name =='镜像口'"
-                   placeholder="请选择告警类型">
+                   placeholder="请选择获取IP方式">
           <el-option v-for="item in network_model.obtain_list"
                      :key="item.name"
                      :label="item.name"
@@ -60,7 +60,7 @@
       <div class="left_item">
         <el-button type="primary"
                    class="save_btn"
-                   @click="set_network">保存</el-button>
+                   @click="set_network">Save</el-button>
       </div>
     </div>
     <div class="mid">

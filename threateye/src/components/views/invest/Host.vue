@@ -9,7 +9,7 @@
                      class="tabs-item"
                      name="first">
           <div class="invest_top">
-            <el-input placeholder="主机地址"
+            <el-input placeholder="Host"
                       class="search_box"
                       v-model="host_search.host_ip"
                       clearable>
@@ -19,7 +19,7 @@
             <el-button class="btn_i"
                        @click="search_data()"> 搜索</el-button>
             <span class="reset"
-                  @click="reset">重置</span>
+                  @click="reset">Reset</span>
             <el-button class="btn_right"
                        @click="download">下载</el-button>
           </div>
@@ -40,7 +40,7 @@
                         :data="host_network_data.data"
                         tooltip-effect="dark"
                         style="width: 100%">
-                <el-table-column label="序号"
+                <el-table-column label="Item"
                                  width="60">
                   <template slot-scope="scope">
                     {{(host_network_page.page-1)*(host_network_page.rows) + scope.row.index_cn}}
@@ -52,19 +52,19 @@
                                  show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column prop="src_ip"
-                                 label="源地址"
+                                 label="Source IP"
                                  show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column prop="src_port"
-                                 label="源端口"
+                                 label="Source Port"
                                  show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column prop="dest_ip"
-                                 label="目的地址"
+                                 label="Destination IP"
                                  show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column prop="dest_port"
-                                 label="目的端口"
+                                 label="Destination Port"
                                  show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column prop="email"
@@ -72,7 +72,7 @@
                                  show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column prop="application"
-                                 label="应用"
+                                 label="Protocol"
                                  show-overflow-tooltip>
                 </el-table-column>
               </el-table>
@@ -94,7 +94,7 @@
                         :data="host_file_data.data"
                         tooltip-effect="dark"
                         style="width: 100%">
-                <el-table-column label="序号"
+                <el-table-column label="Item"
                                  width="60">
                   <template slot-scope="scope">
                     {{(host_file_page.page-1)*(host_file_page.rows) + scope.row.index_cn}}
@@ -113,11 +113,11 @@
                                  show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column prop="host_ip"
-                                 label="主机地址"
+                                 label="Host"
                                  show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column prop="application"
-                                 label="应用"
+                                 label="Protocol"
                                  show-overflow-tooltip>
                 </el-table-column>
               </el-table>
@@ -139,7 +139,7 @@
                         :data="host_user_data.data"
                         tooltip-effect="dark"
                         style="width: 100%">
-                <el-table-column label="序号"
+                <el-table-column label="Item"
                                  width="60">
                   <template slot-scope="scope">
                     {{(host_user_page.page-1)*(host_user_page.rows) + scope.row.index_cn}}
@@ -150,11 +150,11 @@
                                  show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column prop="host_ip"
-                                 label="主机地址"
+                                 label="Host"
                                  show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column prop="application"
-                                 label="应用"
+                                 label="Protocol"
                                  show-overflow-tooltip>
                 </el-table-column>
               </el-table>

@@ -47,7 +47,7 @@
             <el-button class="s_btn"
                        @click="submitClick();">搜索</el-button>
             <el-link class="s_link"
-                     @click="resetClick();">重置</el-link>
+                     @click="resetClick();">Reset</el-link>
           </el-col>
         </el-row>
 
@@ -101,7 +101,7 @@
             <el-button type="primary"
                        class="bw_btn bw_btn_add"
                        @click="open_task_new();">
-              <span>新增</span>
+              <span>Add</span>
             </el-button>
             <el-button type="primary"
                        class="bw_btn bw_btn_edit"
@@ -130,7 +130,7 @@
               tooltip-effect="dark"
               @selection-change="handleSelChange"
               @row-click="detail_click">
-      <el-table-column label="全选"
+      <el-table-column label="Select All"
                        prop="type"
                        width="50">
         <template slot-scope="scope">
@@ -150,7 +150,7 @@
                        width="100"
                        show-overflow-tooltip>
       </el-table-column>
-      <el-table-column label="创建时间"
+      <el-table-column label="Created"
                        width="180"
                        show-overflow-tooltip>
         <template slot-scope="scope">{{ scope.row.created_at | time }}</template>
@@ -213,9 +213,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="cancel_state"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button @click="ok_state"
-                   class="ok_btn">确定</el-button>
+                   class="ok_btn">Confirm</el-button>
       </div>
     </el-dialog>
     <!-- 弹窗 -->
@@ -334,7 +334,7 @@
         </div>
         <div class="btn_box">
           <el-button @click="closed_task_new"
-                     class="cancel_btn">取消</el-button>
+                     class="cancel_btn">Cancel</el-button>
           <el-button @click="next_task_new"
                      class="next_btn">下一步</el-button>
         </div>
@@ -363,7 +363,7 @@
                             ref="assetTableName"
                             :row-key="getRowKeys_assets"
                             @selection-change="handle_sel_table_assets">
-                    <el-table-column label="全选"
+                    <el-table-column label="Select All"
                                      width="50"></el-table-column>
                     <el-table-column align='left'
                                      type="selection"
@@ -376,7 +376,7 @@
                     <el-table-column prop="label_group"
                                      label="资产组"
                                      show-overflow-tooltip></el-table-column>
-                    <el-table-column label="威胁等级"
+                    <el-table-column label="Severity"
                                      width="140">
                       <template slot-scope="scope">
                         <span class="btn_alert_background"
@@ -409,7 +409,7 @@
                             style="width: 100%"
                             :row-key="getRowKeys_alerts"
                             @selection-change="handle_sel_table_alerts">
-                    <el-table-column label="全选"
+                    <el-table-column label="Select All"
                                      prop="type"
                                      width="50">
                     </el-table-column>
@@ -418,22 +418,22 @@
                                      :reserve-selection="true">
                     </el-table-column>
                     <el-table-column prop="category"
-                                     label="告警类型"
+                                     label="Alert Type"
                                      show-overflow-tooltip>
                     </el-table-column>
                     <el-table-column prop="indicator"
-                                     label="威胁指标"
+                                     label="Threat Indicators"
                                      show-overflow-tooltip>
                     </el-table-column>
-                    <!--<el-table-column prop="src_ip" label="源地址" show-overflow-tooltip>
+                    <!--<el-table-column prop="src_ip" label="Source IP" show-overflow-tooltip>
                      </el-table-column>
-                     <el-table-column prop="dest_ip" label="目的地址" show-overflow-tooltip>
+                     <el-table-column prop="dest_ip" label="Destination IP" show-overflow-tooltip>
                      </el-table-column>-->
                     <el-table-column prop="application"
-                                     label="应用"
+                                     label="Protocol"
                                      show-overflow-tooltip>
                     </el-table-column>
-                    <el-table-column label="威胁等级"
+                    <el-table-column label="Severity"
                                      width="120"
                                      show-overflow-tooltip>
                       <template slot-scope="scope">
@@ -462,13 +462,13 @@
         </div>
         <div class="btn_box">
           <el-button @click="closed_task_new"
-                     class="cancel_btn">取消</el-button>
+                     class="cancel_btn">Cancel</el-button>
           <el-button @click="prev_task_handle"
                      class="prev_btn">上一步</el-button>
           <el-button @click="prev_task_handle_assign"
                      class="prev_btn">分配</el-button>
           <el-button @click="prev_task_handle_save"
-                     class="prev_btn">保存</el-button>
+                     class="prev_btn">Save</el-button>
         </div>
       </div>
     </el-dialog>
@@ -589,7 +589,7 @@
         </div>
         <div class="btn_box">
           <el-button @click="closed_edit_pop"
-                     class="cancel_btn">取消</el-button>
+                     class="cancel_btn">Cancel</el-button>
           <el-button @click="next_task_edit"
                      class="next_btn">下一步</el-button>
         </div>
@@ -617,7 +617,7 @@
                             ref="assetTable"
                             style="width: 100%"
                             @selection-change="handle_sel_assets">
-                    <el-table-column label="全选"
+                    <el-table-column label="Select All"
                                      width="50"></el-table-column>
                     <el-table-column align='left'
                                      :reserve-selection="true"
@@ -628,7 +628,7 @@
                     <el-table-column prop="label_group"
                                      label="资产组"
                                      show-overflow-tooltip></el-table-column>
-                    <el-table-column label="威胁等级"
+                    <el-table-column label="Severity"
                                      width="100">
                       <template slot-scope="scope">
                         <span class="btn_alert_background"
@@ -661,7 +661,7 @@
                             ref="alertTable"
                             style="width: 100%"
                             @selection-change="handle_sel_alert">
-                    <el-table-column label="全选"
+                    <el-table-column label="Select All"
                                      prop="type"
                                      width="50">
                     </el-table-column>
@@ -669,26 +669,26 @@
                                      width="50">
                     </el-table-column>
                     <el-table-column prop="category"
-                                     label="告警类型"
+                                     label="Alert Type"
                                      show-overflow-tooltip>
                     </el-table-column>
                     <el-table-column prop="indicator"
-                                     label="威胁指标"
+                                     label="Threat Indicators"
                                      show-overflow-tooltip>
                     </el-table-column>
                     <el-table-column prop="src_ip"
-                                     label="源地址"
+                                     label="Source IP"
                                      show-overflow-tooltip>
                     </el-table-column>
                     <el-table-column prop="dest_ip"
-                                     label="目的地址"
+                                     label="Destination IP"
                                      show-overflow-tooltip>
                     </el-table-column>
                     <el-table-column prop="application"
-                                     label="应用"
+                                     label="Protocol"
                                      show-overflow-tooltip>
                     </el-table-column>
-                    <el-table-column label="威胁等级"
+                    <el-table-column label="Severity"
                                      width="100"
                                      show-overflow-tooltip>
                       <template slot-scope="scope">
@@ -717,13 +717,13 @@
         </div>
         <div class="btn_box">
           <el-button @click="closed_edit_pop"
-                     class="cancel_btn">取消</el-button>
+                     class="cancel_btn">Cancel</el-button>
           <el-button @click="prev_task_handle_edit"
                      class="prev_btn">上一步</el-button>
           <el-button @click="prev_task_handle_assign_edit"
                      class="prev_btn">分配</el-button>
           <el-button @click="prev_task_handle_save_edit"
-                     class="prev_btn">保存</el-button>
+                     class="prev_btn">Save</el-button>
         </div>
       </div>
     </el-dialog>
@@ -821,7 +821,7 @@ export default {
         new_contet: true,
         status: '',
         id: 0,
-        title: '新增工单'
+        title: 'Add'
       },
       task_params: {
         name: "",
@@ -1297,9 +1297,9 @@ export default {
       if (selected.length == 0) {
         that.$message({ message: '请选择需要删除的工单！', type: 'warning' });
       } else {
-        this.$confirm('是否确定删除?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('This operation deletes the item. Do you want to continue?', 'Message', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           console.log(selected)
@@ -1592,7 +1592,7 @@ export default {
           this.handle.save = false;
           let { status, msg, data } = resp.data;
           if (status == 0) {
-            this.$message.success('保存成功');
+            this.$message.success('Saved successfully');
             this.closed_task_new();
             this.get_list_works();
             this.$emit('updateNum');

@@ -54,7 +54,7 @@
       </div>
       <div class="left_item btn_box">
         <el-button type="primary"
-                   class="save_btn">保存</el-button>
+                   class="save_btn">Save</el-button>
         <el-button type="primary"
                    class="test_btn">发送测试短信</el-button>
       </div>

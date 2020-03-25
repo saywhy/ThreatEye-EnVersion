@@ -37,7 +37,7 @@
           <el-dropdown-menu slot="dropdown"
                             class="dropdown_ul_box">
             <el-dropdown-item command="新建工单">新建工单</el-dropdown-item>
-            <el-dropdown-item command="添加到工单">添加到工单</el-dropdown-item>
+            <el-dropdown-item command="Add to ticket">Add to ticket</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </el-col>
@@ -68,9 +68,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="cancel_state"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button @click="ok_state"
-                   class="ok_btn">确定</el-button>
+                   class="ok_btn">Confirm</el-button>
       </div>
     </el-dialog>
 
@@ -185,7 +185,7 @@
         </div>
         <div class="btn_box">
           <el-button @click="closed_task_new"
-                     class="cancel_btn">取消</el-button>
+                     class="cancel_btn">Cancel</el-button>
           <el-button @click="next_task_new"
                      class="next_btn">下一步</el-button>
         </div>
@@ -204,7 +204,7 @@
                 <el-table :data="table.tableData"
                           tooltip-effect="dark"
                           @selection-change="handle_sel_table_mul">
-                  <el-table-column label="全选"
+                  <el-table-column label="Select All"
                                    width="50"></el-table-column>
                   <el-table-column align='left'
                                    type="selection"
@@ -228,7 +228,7 @@
                   <el-table-column width="100">
                     <template slot-scope="scope">{{ scope.row.degree | degree }}</template>
                   </el-table-column>
-                  <el-table-column label="失陷确定性">
+                  <el-table-column label="Compromise">
                     <template slot-scope="scope">
                       <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
                         {{ scope.row.fall_certainty | certainty }}</span>
@@ -246,29 +246,29 @@
                           tooltip-effect="dark"
                           style="width: 100%"
                           @selection-change="handle_sel_table_mul">
-                  <el-table-column label="全选"
+                  <el-table-column label="Select All"
                                    prop="type"
                                    width="50">
                   </el-table-column>
                   <el-table-column type="selection"
                                    width="40"></el-table-column>
                   <el-table-column prop="category"
-                                   label="告警类型"
+                                   label="Alert Type"
                                    show-overflow-tooltip></el-table-column>
                   <el-table-column prop="indicator"
-                                   label="威胁指标"
+                                   label="Threat Indicators"
                                    show-overflow-tooltip></el-table-column>
                   <el-table-column prop="application"
-                                   label="应用"
+                                   label="Protocol"
                                    show-overflow-tooltip></el-table-column>
-                  <el-table-column label="威胁等级"
+                  <el-table-column label="Severity"
                                    width="100">
                     <template slot-scope="scope">
                       <span :class="{'high':scope.row.degree =='高','mid':scope.row.degree =='中','low':scope.row.degree =='低'}">
                         {{ scope.row.degree | degree_sino }}</span>
                     </template>
                   </el-table-column>
-                  <el-table-column label="失陷确定性"
+                  <el-table-column label="Compromise"
                                    width="100">
                     <template slot-scope="scope">
                       <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
@@ -295,13 +295,13 @@
         </div>
         <div class="btn_box">
           <el-button @click="closed_task_new"
-                     class="cancel_btn">取消</el-button>
+                     class="cancel_btn">Cancel</el-button>
           <el-button @click="prev_task_handle"
                      class="prev_btn">上一步</el-button>
           <el-button @click="prev_task_handle_assign"
                      class="prev_btn">分配</el-button>
           <el-button @click="prev_task_handle_save"
-                     class="prev_btn">保存</el-button>
+                     class="prev_btn">Save</el-button>
         </div>
       </div>
     </el-dialog>
@@ -317,7 +317,7 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">添加到工单</span>
+        <span class="title_name">Add to ticket</span>
       </div>
       <div class="content">
         <el-row class="common-table-pattern">
@@ -327,7 +327,7 @@
                       v-loading="table_add_works.loading"
                       :data="table_add_works.tableData"
                       @current-change="handle_sel_table_add_works">
-              <el-table-column label="单选"
+              <el-table-column label="Select"
                                width="50">
                 <template slot-scope="scope">
                   <el-checkbox v-model="scope.row.checked"></el-checkbox>
@@ -375,9 +375,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="add_closed_state"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button @click="add_ok_state"
-                   class="ok_btn">确定</el-button>
+                   class="ok_btn">Confirm</el-button>
       </div>
     </el-dialog>
   </div>
@@ -489,7 +489,7 @@ export default {
     change_task (command) {
       if (command == "新建工单") {
         this.open_task_new();
-      } else if (command == "添加到工单") {
+      } else if (command == "Add to ticket") {
         this.open_add_new();
       }
     },
@@ -573,7 +573,7 @@ export default {
         if (multiple_attr.includes('3')
           || multiple_attr.includes('4')
           || multiple_attr.includes('5')) {
-          this.$message({ message: '告警状态为已处置、已忽略、误报的不能新建。', type: 'warning' });
+          this.$message({ message: 'Alert whose status is resolved, ignored, false positive cannot create new tickets', type: 'warning' });
         } else {
           this.table.tableData = multiple;
           this.table.count = multiple.length;
@@ -726,7 +726,7 @@ export default {
           .then((resp) => {
             let { status, msg, data } = resp.data;
             if (status == 0) {
-              this.$message.success('保存成功');
+              this.$message.success('Saved successfully');
               //关闭弹窗
               this.closed_task_new();
               this.$emit('updateData');
@@ -762,7 +762,7 @@ export default {
         if (multiple_attr.includes('3')
           || multiple_attr.includes('4')
           || multiple_attr.includes('5')) {
-          this.$message({ message: '告警状态为已处置、已忽略、误报的不能添加到工单。', type: 'warning' });
+          this.$message({ message: 'Alert whose status is resolved, ignored, false positive cannot be added to the ticket', type: 'warning' });
         } else {
           this.add_state_change = true;
           this.get_table_works_list();

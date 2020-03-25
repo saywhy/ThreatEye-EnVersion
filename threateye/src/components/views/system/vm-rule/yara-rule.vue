@@ -147,7 +147,7 @@ export default {
       if (params.status == 'fail') {
         this.$message(
           {
-            message: '上传失败！',
+            message: 'Upload failure',
             type: 'error',
           }
         );
@@ -165,7 +165,7 @@ export default {
         this.get_data();
         this.$message(
           {
-            message: '上传成功！',
+            message: 'Uploaded successfully',
             type: 'success',
           }
         );
@@ -175,7 +175,7 @@ export default {
       if (params.status == 'fail') {
         this.$message(
           {
-            message: '上传失败！',
+            message: 'Upload failure',
             type: 'error',
           }
         );
@@ -183,9 +183,9 @@ export default {
     },
     // 删除
     del_yara () {
-      this.$confirm('此操作删除此文件, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation deletes the item. Do you want to continue?', 'Message', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         this.$axios.get('/yiiapi/yararule/del')
@@ -195,14 +195,14 @@ export default {
               this.get_data();
               this.$message(
                 {
-                  message: '删除成功！',
+                  message: 'Deleted successfully',
                   type: 'success',
                 }
               );
             } else {
               this.$message(
                 {
-                  message: '删除失败！',
+                  message: 'Delete Failure',
                   type: 'error',
                 }
               );
@@ -214,7 +214,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消删除'
+          message: 'Delete Cancelled'
         });
       });
     }

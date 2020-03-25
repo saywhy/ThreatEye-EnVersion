@@ -3,11 +3,11 @@
        v-loading.fullscreen.lock="loading"
        class="container">
     <div class="content_box">
-      <p class="title">系统版本号：
+      <p class="title">System version:
         <span>{{license_version}}</span>
       </p>
       <el-button class="btn_i"
-                 @click="online_active_pop">在线激活</el-button>
+                 @click="online_active_pop">Online activation</el-button>
       <el-upload class="upload-demo"
                  style="display: inline-block;"
                  :http-request="uploadSectionFile"
@@ -25,7 +25,7 @@
                  :on-exceed="handleExceed"
                  :file-list="fileList">
         <el-button class="btn_o"
-                   type="primary">导入许可证</el-button>
+                   type="primary">Import license</el-button>
       </el-upload>
       <div class="licence_table">
         <el-table ref="multipleTable"
@@ -37,7 +37,7 @@
                   @selection-change="handleSelectionChange"
                   @row-click="alert_detail">
           <el-table-column prop="index"
-                           label="序号"
+                           label="Item"
                            width="50"
                            show-overflow-tooltip>
             <template slot-scope="scope">
@@ -46,31 +46,31 @@
           </el-table-column>
           <el-table-column prop="SN"
                            width="300"
-                           label="序列号"
+                           label="Serial NO."
                            show-overflow-tooltip>
           </el-table-column>
           <el-table-column prop="product"
-                           label="受保护机构"
+                           label="Protected Institution"
                            show-overflow-tooltip>
           </el-table-column>
-          <el-table-column label='授权时间'>
+          <el-table-column label='Authorization Time'>
             <template slot-scope="scope"
                       show-overflow-tooltip>{{ scope.row.startTime |formatDate }}</template>
           </el-table-column>
-          <el-table-column label='授权到期时间'>
+          <el-table-column label='Expiration Time'>
             <template slot-scope="scope"
                       show-overflow-tooltip>{{ scope.row.endTime |formatDate }}</template>
           </el-table-column>
           <el-table-column prop="orgName"
-                           label='威胁情报'
+                           label='Threat Intel'
                            show-overflow-tooltip>
             <template slot-scope="scope"
                       show-overflow-tooltip>
-              {{ scope.row.edition=='1'?'企业版':'高级版'}}
+              {{ scope.row.edition=='1'?'Enterprise Edition':'Advanced Edition'}}
             </template>
           </el-table-column>
           <el-table-column prop="status"
-                           label='许可证状态'
+                           label='Status'
                            show-overflow-tooltip>
           </el-table-column>
         </el-table>
@@ -96,23 +96,23 @@
              alt="">
         <div class="title">
           <div class="mask"></div>
-          <span class="title_name">在线激活</span>
+          <span class="title_name">Online activation</span>
         </div>
         <div class="content">
           <div class="content_item">
             <p>
-              <span class="title">序列号</span>
+              <span class="title">Serial NO.</span>
               <span class="red_necessary">*</span>
             </p>
             <el-input class="select_box"
-                      placeholder="请输入序列号"
+                      placeholder="Please enter the serial number"
                       v-model="licence_pop.cdk"
                       clearable>
             </el-input>
           </div>
           <div class="content_item">
             <p>
-              <span class="title">机器码：
+              <span class="title">Machine code:
                 <span>{{licence_pop.key }}</span>
               </span>
             </p>
@@ -120,9 +120,9 @@
         </div>
         <div class="btn_box">
           <el-button @click="closed_add_box"
-                     class="cancel_btn">取消</el-button>
+                     class="cancel_btn">Cancel</el-button>
           <el-button class="ok_btn"
-                     @click="online_active">确定</el-button>
+                     @click="online_active">Confirm</el-button>
         </div>
       </el-dialog>
     </div>
@@ -228,7 +228,7 @@ export default {
       if (this.licence_pop.cdk == '') {
         this.$message(
           {
-            message: '请输入序列号',
+            message: 'Please enter the serial number',
             type: 'warning',
           }
         );
@@ -247,7 +247,7 @@ export default {
               case 'License does not exist':
                 this.$message(
                   {
-                    message: '序列号校验失败，请确认您输入的序列号！',
+                    message: 'The serial number check failed, please confirm the serial number you entered!',
                     type: 'error',
                   }
                 );
@@ -255,7 +255,7 @@ export default {
               case 'Key error':
                 this.$message(
                   {
-                    message: '此序列号已被其他设备使用，请购买新的许可证！',
+                    message: 'This serial number has been used by other devices, please purchase a new license!',
                     type: 'error',
                   }
                 );
@@ -263,7 +263,7 @@ export default {
               default:
                 this.$message(
                   {
-                    message: '序列号激活成功。',
+                    message: 'Serial number activated successfully',
                     type: 'success',
                   }
                 );
@@ -286,7 +286,7 @@ export default {
                 } else {
                   this.$message(
                     {
-                      message: '许可证导入成功！',
+                      message: 'License imported successfully',
                       type: 'success',
                     }
                   );
@@ -320,7 +320,7 @@ export default {
             } else {
               this.$message(
                 {
-                  message: '许可证导入成功！',
+                  message: 'License imported successfully',
                   type: 'success',
                 }
               );
@@ -363,10 +363,10 @@ export default {
       console.log(file);
     },
     handleExceed (files, fileList) {
-      this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+      // this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
     },
     beforeRemove (file, fileList) {
-      return this.$confirm(`确定移除 ${file.name}？`);
+      // return this.$confirm(`确定移除 ${file.name}？`);
     },
     onsuccess (item) {
       console.log(item);

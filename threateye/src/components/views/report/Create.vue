@@ -47,9 +47,9 @@
           </el-col>
           <div class="r_btn_group">
             <el-button class="b_btn b_ok"
-                       @click="create">确定</el-button>
+                       @click="create">Confirm</el-button>
             <el-button class="b_btn b_cancel"
-                       @click="reseet">取消</el-button>
+                       @click="reseet">Cancel</el-button>
           </div>
         </el-row>
       </el-form>
@@ -62,7 +62,7 @@
                     :data="report_lsit.data"
                     style="width: 100%;"
                     @selection-change="handleSelectionChange">
-            <el-table-column label="序号"
+            <el-table-column label="Item"
                              width="80">
               <template slot-scope="scope">
                 {{(report_data.page-1)*(report_data.rows) + scope.row.index_cn}}
@@ -81,7 +81,7 @@
             </el-table-column>
             <el-table-column prop="report_type"
                              label="格式"></el-table-column>
-            <el-table-column label='操作'>
+            <el-table-column label='Operation'>
               <template slot-scope="scope">
                 <img src="@/assets/images/common/download.png"
                      class="img_icon"
@@ -626,9 +626,9 @@ export default {
     },
     // 删除
     del_box (item) {
-      this.$confirm('此操作删除信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation deletes the item. Do you want to continue?', 'Message', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         this.$axios.delete('/yiiapi/report/delete', {
@@ -643,14 +643,14 @@ export default {
               this.get_data();
               this.$message(
                 {
-                  message: '删除成功!',
+                  message: 'Deleted successfully',
                   type: 'success',
                 }
               );
             } else {
               this.$message(
                 {
-                  message: '删除失败!',
+                  message: 'Delete Failure',
                   type: 'error',
                 }
               );
@@ -662,7 +662,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消删除'
+          message: 'Delete Cancelled'
         });
       });
 

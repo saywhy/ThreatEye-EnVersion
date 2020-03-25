@@ -5,7 +5,7 @@
       <div class="monitor_title">
         <el-button type="primary"
                    class="btn_i"
-                   @click="add_box">新增</el-button>
+                   @click="add_box">Add</el-button>
         <el-button type="primary"
                    class="btn_i"
                    @click="del_monitor">删除</el-button>
@@ -25,14 +25,14 @@
                   style="width: 100%"
                   @selection-change="handleSelectionChange"
                   @row-click="alert_detail">
-          <el-table-column label="全选"
+          <el-table-column label="Select All"
                            prop="type"
                            width="50">
           </el-table-column>
           <el-table-column type="selection"
                            width="50">
           </el-table-column>
-          <el-table-column label="序号"
+          <el-table-column label="Item"
                            width="50"
                            show-overflow-tooltip>
             <template slot-scope="scope">
@@ -79,7 +79,7 @@
                            show-overflow-tooltip>
             <template slot-scope="scope">{{ scope.row.updated_at*1000 |formatDate }}</template>
           </el-table-column>
-          <el-table-column label="操作">
+          <el-table-column label="Operation">
             <template slot-scope="scope">
               <el-button type="primary"
                          class="btn_edit"
@@ -108,7 +108,7 @@
              alt="">
         <div class="title">
           <div class="mask"></div>
-          <span class="title_name">新增IP段</span>
+          <span class="title_name">Add</span>
         </div>
         <div class="content">
           <div class="content_item_box">
@@ -208,9 +208,9 @@
         </div>
         <div class="btn_box">
           <el-button @click="closed_add_box"
-                     class="cancel_btn">取消</el-button>
+                     class="cancel_btn">Cancel</el-button>
           <el-button class="ok_btn"
-                     @click="add_data">确定</el-button>
+                     @click="add_data">Confirm</el-button>
         </div>
       </el-dialog>
       <!-- 编辑 -->
@@ -325,9 +325,9 @@
         </div>
         <div class="btn_box">
           <el-button @click="closed_edit_box"
-                     class="cancel_btn">取消</el-button>
+                     class="cancel_btn">Cancel</el-button>
           <el-button class="ok_btn"
-                     @click="edit_data">确定</el-button>
+                     @click="edit_data">Confirm</el-button>
         </div>
       </el-dialog>
       <!-- 批量导入 -->
@@ -364,7 +364,7 @@
                  alt="">
             <!-- <img class="upload_img" src="@/assets/images/setting/upload_e.png" alt=""> -->
             <div class="el-upload__text">
-              <em>点击上传</em>
+              <em>Upload</em>
             </div>
           </el-upload>
           <div class="tip_box">
@@ -375,9 +375,9 @@
         </div>
         <div class="btn_box">
           <el-button @click="closed_import_box"
-                     class="cancel_btn">取消</el-button>
+                     class="cancel_btn">Cancel</el-button>
           <el-button class="ok_btn"
-                     @click="uploadFile">确定</el-button>
+                     @click="uploadFile">Confirm</el-button>
         </div>
       </el-dialog>
     </div>
@@ -569,7 +569,7 @@ export default {
             this.get_data();
             this.$message(
               {
-                message: '添加成功',
+                message: 'Added successfully',
                 type: 'success',
               }
             );
@@ -697,7 +697,7 @@ export default {
         this.$message(
           {
             message: '“终端”、“服务器”、“网络设备”三类标签只能设置其中的一种，请重新设置！',
-            type: 'error',
+            type: 'warning',
           }
         );
         return false
@@ -706,7 +706,7 @@ export default {
         this.$message(
           {
             message: '“终端”、“服务器”、“网络设备”三类标签只能设置其中的一种，请重新设置！',
-            type: 'error',
+            type: 'warning',
           }
         );
         return false
@@ -715,7 +715,7 @@ export default {
         this.$message(
           {
             message: '“终端”、“服务器”、“网络设备”三类标签只能设置其中的一种，请重新设置！',
-            type: 'error',
+            type: 'warning',
           }
         );
         return false
@@ -728,8 +728,8 @@ export default {
       if (this.isRepeat(isRepeat_ip_segment_edit)) {
         this.$message(
           {
-            message: 'IP地址或地址段有重复项,请重新输入。',
-            type: 'error',
+            message: 'IP addresses or subnets have duplicates, please re-enter.',
+            type: 'warning',
           }
         );
         return false
@@ -737,8 +737,8 @@ export default {
       if (this.isRepeat(isRepeat_tag_edit)) {
         this.$message(
           {
-            message: '标签有重复项,请重新输入。',
-            type: 'error',
+            message: 'The labels has duplicates, Please re-enter.',
+            type: 'warning',
           }
         );
         return false
@@ -810,9 +810,9 @@ export default {
         );
         return false
       }
-      this.$confirm('此操作删除信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation deletes the item. Do you want to continue?', 'Message', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         var id_list = []
@@ -830,14 +830,14 @@ export default {
               this.get_data();
               this.$message(
                 {
-                  message: '删除成功！',
+                  message: 'Deleted successfully',
                   type: 'success',
                 }
               );
             } else {
               this.$message(
                 {
-                  message: '删除失败！',
+                  message: 'Delete Failure',
                   type: 'error',
                 }
               );
@@ -849,7 +849,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消删除'
+          message: 'Delete Cancelled'
         });
       });
     },
@@ -908,7 +908,7 @@ export default {
         this.monitor_state.import = false;
         this.$message(
           {
-            message: '上传成功！',
+            message: 'Uploaded successfully',
             type: 'success',
           }
         );

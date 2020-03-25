@@ -4,7 +4,7 @@
     <div class="router_top">
       <el-button type="primary"
                  class="btn_i"
-                 @click="add_box">新增</el-button>
+                 @click="add_box">Add</el-button>
       <el-button type="primary"
                  class="btn_i"
                  @click="del_router">删除</el-button>
@@ -21,14 +21,14 @@
                 style="width: 100%"
                 @selection-change="handleSelectionChange"
                 @row-click="alert_detail">
-        <el-table-column label="全选"
+        <el-table-column label="Select All"
                          prop="type"
                          width="50">
         </el-table-column>
         <el-table-column type="selection"
                          width="50">
         </el-table-column>
-        <el-table-column label="序号"
+        <el-table-column label="Item"
                          width="50"
                          show-overflow-tooltip>
           <template slot-scope="scope">
@@ -36,7 +36,7 @@
           </template>
         </el-table-column>
         <el-table-column prop="ip"
-                         label="目的地址"
+                         label="Destination IP"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="net_mask"
@@ -47,7 +47,7 @@
                          label="下跳地址"
                          show-overflow-tooltip>
         </el-table-column>
-        <el-table-column label="操作">
+        <el-table-column label="Operation">
           <template slot-scope="scope">
             <el-button type="primary"
                        class="btn_edit"
@@ -59,7 +59,7 @@
                      @size-change="handleSizeChange"
                      @current-change="handleCurrentChange"
                      :current-page="router_list.pageNow"
-                      :page-sizes="[10,20,50,100]"
+                     :page-sizes="[10,20,50,100]"
                      :page-size="10"
                      layout="total, sizes, prev, pager, next"
                      :total="router_list.count">
@@ -76,12 +76,12 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">新增路由</span>
+        <span class="title_name">Add</span>
       </div>
       <div class="content">
         <div class="content_item">
           <p>
-            <span class="title">目的地址</span>
+            <span class="title">Destination IP</span>
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
@@ -115,9 +115,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="closed_add_box"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button class="ok_btn"
-                   @click="add_router">确定</el-button>
+                   @click="add_router">Confirm</el-button>
       </div>
     </el-dialog>
     <!-- 编辑 -->
@@ -136,7 +136,7 @@
       <div class="content">
         <div class="content_item">
           <p>
-            <span class="title">目的地址</span>
+            <span class="title">Destination IP</span>
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
@@ -170,9 +170,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="closed_edit_box"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button class="ok_btn"
-                   @click="edit_router">确定</el-button>
+                   @click="edit_router">Confirm</el-button>
       </div>
     </el-dialog>
 
@@ -338,9 +338,9 @@ export default {
         );
         return false
       }
-      this.$confirm('此操作删除信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation deletes the item. Do you want to continue?', 'Message', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         var id_list = []
@@ -358,14 +358,14 @@ export default {
               this.get_data();
               this.$message(
                 {
-                  message: '删除成功！',
+                  message: 'Deleted successfully',
                   type: 'success',
                 }
               );
             } else {
               this.$message(
                 {
-                  message: '删除失败！',
+                  message: 'Delete Failure',
                   type: 'error',
                 }
               );
@@ -377,7 +377,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消删除'
+          message: 'Delete Cancelled'
         });
       });
 

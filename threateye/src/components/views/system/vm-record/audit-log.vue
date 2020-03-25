@@ -14,7 +14,7 @@
       <el-button class="btn_i"
                  @click="get_data"> 搜索</el-button>
       <span class="reset"
-            @click="reset">重置</span>
+            @click="reset">Reset</span>
       <el-button class="btn_right"
                  @click="download">下载</el-button>
     </div>
@@ -26,7 +26,7 @@
                 :data="audit_log.data"
                 tooltip-effect="dark"
                 style="width: 100%">
-        <el-table-column label="序号"
+        <el-table-column label="Item"
                          width="80">
           <template slot-scope="scope">
             {{(audit_data.page-1)*(audit_data.rows) + scope.row.index_cn}}
@@ -45,7 +45,7 @@
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="userip"
-                         label='主机地址'
+                         label='Host'
                          show-overflow-tooltip>
         </el-table-column>
       </el-table>

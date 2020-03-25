@@ -39,9 +39,9 @@ export default {
         })
     },
     restore () {
-      this.$confirm('此操作将恢复出场设置, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This action will restore factory settings. Do you want to continue?', 'Message', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         this.loading = true
@@ -66,14 +66,14 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消操作'
+          message: 'Operation cancelled'
         });
       });
     },
     reboot () {
-      this.$confirm('此操作将重启平台, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation will restart the platform. Do you want to continue?', 'Message', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         this.loading = true
@@ -98,7 +98,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消操作'
+          message: 'Operation cancelled'
         });
       });
     },

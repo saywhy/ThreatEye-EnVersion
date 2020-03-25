@@ -8,7 +8,7 @@
                    @change="set_switch">
         </el-switch>
       </p>
-      <p class="top_tips">本功能实现和第三方设备如防火墙的联动，第三方设备通过URL地址获取恶意IP列表以及恶意域名列表做告警提示或者拦截。</p>
+      <p class="top_tips">This function realizes the integration with third-party devices such as firewalls, the third-party devices obtain the malicious IP list and the malicious URL list through the URL address to do the alerting or blocking.</p>
       <div class="malice_list">
         <div class="list_left">
           <p class="item_title">恶意IP列表</p>
@@ -43,7 +43,7 @@
                          label="密码"
                          show-overflow-tooltip>
         </el-table-column>
-        <el-table-column label='操作'>
+        <el-table-column label='Operation'>
           <template slot-scope="scope">
             <el-button type="primary"
                        class="btn_edit"
@@ -104,9 +104,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="closed_add_box"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button class="ok_btn"
-                   @click="add_user">确定</el-button>
+                   @click="add_user">Confirm</el-button>
       </div>
     </el-dialog>
     <!-- 编辑账号 -->
@@ -138,9 +138,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="closed_edit_box"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button class="ok_btn"
-                   @click="edit_user">确定</el-button>
+                   @click="edit_user">Confirm</el-button>
       </div>
     </el-dialog>
   </div>
@@ -415,9 +415,9 @@ export default {
     // 删除
     del_box (item) {
       console.log(this.item);
-      this.$confirm('此操作删除信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation deletes the item. Do you want to continue?', 'Message', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         this.$axios.delete('/yiiapi/externalaccess/del', {
@@ -431,14 +431,14 @@ export default {
               this.get_user_list();
               this.$message(
                 {
-                  message: '删除成功！',
+                  message: 'Deleted successfully',
                   type: 'success',
                 }
               );
             } else {
               this.$message(
                 {
-                  message: '删除失败！',
+                  message: 'Delete Failure',
                   type: 'error',
                 }
               );
@@ -450,7 +450,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消删除'
+          message: 'Delete Cancelled'
         });
       });
     },

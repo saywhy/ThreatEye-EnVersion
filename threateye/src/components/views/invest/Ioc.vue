@@ -23,13 +23,13 @@
                      src="@/assets/images/setting/upload_s.png"
                      alt="">
                 <div class="el-upload__text">
-                  <em>点击上传</em>
+                  <em>Upload</em>
                 </div>
                 <div slot="tip"
                      class="el-upload__tip">
-                  <span>请选择 .txt
+                  <span>Please choose .txt
                     <span @click="download_template"
-                          class="common_color">(下载模板)</span> 或者 .ioc的格式文件搜索
+                          class="common_color">(template)</span> or .ioc format file to search
                   </span>
                 </div>
               </el-upload>
@@ -50,7 +50,7 @@
                       tooltip-effect="dark"
                       @selection-change="handleSelectionChange"
                       style="width: 100%">
-              <el-table-column label="全选"
+              <el-table-column label="Select All"
                                prop="type"
                                width="50">
               </el-table-column>
@@ -58,7 +58,7 @@
                                :selectable="checkSelectable"
                                width="50">
               </el-table-column>
-              <el-table-column label="序号"
+              <el-table-column label="Item"
                                width="60">
                 <template slot-scope="scope">
                   {{(ioc_data.page-1)*(ioc_data.rows) + scope.row.index_cn}}
@@ -84,7 +84,7 @@
               </el-table-column>
               <el-table-column prop="create_time"
                                width="180"
-                               label="创建时间"
+                               label="Created"
                                show-overflow-tooltip>
               </el-table-column>
             </el-table>
@@ -158,7 +158,7 @@ export default {
       if (params.status == 'fail') {
         this.$message(
           {
-            message: '上传失败!',
+            message: 'Upload failure',
             type: 'error',
           }
         );
@@ -177,7 +177,7 @@ export default {
         this.get_data();
         this.$message(
           {
-            message: '上传成功!',
+            message: 'Uploaded successfully',
             type: 'success',
           }
         );
@@ -187,7 +187,7 @@ export default {
       if (params.status == 'fail') {
         this.$message(
           {
-            message: '上传失败!',
+            message: 'Upload failure',
             type: 'error',
           }
         );
@@ -225,7 +225,7 @@ export default {
       if (this.select_list.length == 0) {
         this.$message(
           {
-            message: '请先选中需下载的信息!',
+            message: 'Please select the item to download',
             type: 'warning',
           }
         );
@@ -246,15 +246,15 @@ export default {
       if (this.select_list.length == 0) {
         this.$message(
           {
-            message: '请先选中要删除的信息',
+            message: 'Please select the item to delete ',
             type: 'warning',
           }
         );
         return false
       }
-      this.$confirm('此操作删除信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation deletes the item. Do you want to continue?', 'Message', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         var id_list = []
@@ -273,14 +273,14 @@ export default {
               this.get_data();
               this.$message(
                 {
-                  message: '删除成功!',
+                  message: 'Deleted successfully',
                   type: 'success',
                 }
               );
             } else {
               this.$message(
                 {
-                  message: '删除失败!',
+                  message: 'Delete Failure',
                   type: 'error',
                 }
               );
@@ -292,7 +292,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消删除'
+          message: 'Delete Cancelled'
         });
       });
 

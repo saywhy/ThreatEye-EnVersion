@@ -33,7 +33,7 @@
             <el-select class="s_key s_key_types"
                        v-model="params.threat"
                        clearable
-                       placeholder="失陷确定性"
+                       placeholder="Compromise"
                        :popper-append-to-body="false">
               <el-option v-for="item in options_threat"
                          :key="item.value"
@@ -58,7 +58,7 @@
             <el-button class="s_btn"
                        @click="submitClick();">搜索</el-button>
             <el-link class="s_link"
-                     @click="resetClick();">重置</el-link>
+                     @click="resetClick();">Reset</el-link>
 
             <el-button class="s_btn_edit"
                        @click="export_box">导出</el-button>
@@ -101,7 +101,7 @@
               <el-dropdown-menu slot="dropdown"
                                 class="dropdown_ul_box">
                 <el-dropdown-item command="新建工单">新建工单</el-dropdown-item>
-                <el-dropdown-item command="添加到工单">添加到工单</el-dropdown-item>
+                <el-dropdown-item command="Add to ticket">Add to ticket</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
 
@@ -118,7 +118,7 @@
                     tooltip-effect="dark"
                     @selection-change="handleSelChange"
                     @row-click="detail_click">
-            <el-table-column label="全选"
+            <el-table-column label="Select All"
                              prop="type"
                              width="50">
               <template slot-scope="scope">
@@ -128,30 +128,30 @@
             </el-table-column>
             <el-table-column type="selection"
                              width="50"></el-table-column>
-            <el-table-column label="告警时间"
+            <el-table-column label="Time"
                              width="180"
                              show-overflow-tooltip>
               <template slot-scope="scope">{{ scope.row.alert_time | time }}</template>
             </el-table-column>
             <el-table-column prop="category"
-                             label="告警类型"
+                             label="Alert Type"
                              width="100"
                              show-overflow-tooltip></el-table-column>
             <el-table-column prop="indicator"
-                             label="威胁指标"
+                             label="Threat Indicators"
                              min-width="120"
                              show-overflow-tooltip></el-table-column>
             <el-table-column prop="src_ip"
-                             label="源地址"
+                             label="Source IP"
                              show-overflow-tooltip></el-table-column>
             <el-table-column prop="dest_ip"
-                             label="目的地址"
+                             label="Destination IP"
                              show-overflow-tooltip></el-table-column>
             <el-table-column prop="application"
-                             label="应用"
+                             label="Protocol"
                              width="60"
                              show-overflow-tooltip></el-table-column>
-            <el-table-column label="威胁等级"
+            <el-table-column label="Severity"
                              width="100">
               <template slot-scope="scope">
                 <span class="btn_alert_background"
@@ -159,7 +159,7 @@
                   {{ scope.row.degree | degree_sino }}</span>
               </template>
             </el-table-column>
-            <el-table-column label="失陷确定性"
+            <el-table-column label="Compromise"
                              width="100">
               <template slot-scope="scope">
                 <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
@@ -172,7 +172,8 @@
             </el-table-column>
           </el-table>
         </el-col>
-        <el-col :span="24" class="e-pagination">
+        <el-col :span="24"
+                class="e-pagination">
           <el-pagination class="handle-pagination"
                          @size-change="handleSizeChange"
                          @current-change="handleCurrentChange"
@@ -211,9 +212,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="cancel_state"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button @click="ok_state"
-                   class="ok_btn">确定</el-button>
+                   class="ok_btn">Confirm</el-button>
       </div>
     </el-dialog>
     <!-- 弹窗 -->
@@ -330,7 +331,7 @@
 
         <div class="btn_box">
           <el-button @click="closed_task_new"
-                     class="cancel_btn">取消</el-button>
+                     class="cancel_btn">Cancel</el-button>
           <el-button @click="next_task_new"
                      class="next_btn">下一步</el-button>
         </div>
@@ -354,22 +355,22 @@
                           :data="table_alerts.tableData_new"
                           tooltip-effect="dark"
                           @selection-change="handle_sel_table_alerts">
-                  <el-table-column label="全选"
+                  <el-table-column label="Select All"
                                    prop="type"
                                    width="50">
                   </el-table-column>
                   <el-table-column type="selection"
                                    width="50"></el-table-column>
                   <el-table-column prop="category"
-                                   label="告警类型"
+                                   label="Alert Type"
                                    show-overflow-tooltip></el-table-column>
                   <el-table-column prop="indicator"
-                                   label="威胁指标"
+                                   label="Threat Indicators"
                                    show-overflow-tooltip></el-table-column>
                   <el-table-column prop="application"
-                                   label="应用"
+                                   label="Protocol"
                                    show-overflow-tooltip></el-table-column>
-                  <el-table-column label="威胁等级"
+                  <el-table-column label="Severity"
                                    width="100">
                     <template slot-scope="scope">
                       <span class="btn_alert_background"
@@ -377,7 +378,7 @@
                         {{ scope.row.degree | degree_sino }}</span>
                     </template>
                   </el-table-column>
-                  <el-table-column label="失陷确定性"
+                  <el-table-column label="Compromise"
                                    width="100">
                     <template slot-scope="scope">
                       <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
@@ -404,13 +405,13 @@
         </div>
         <div class="btn_box">
           <el-button @click="closed_task_new"
-                     class="cancel_btn">取消</el-button>
+                     class="cancel_btn">Cancel</el-button>
           <el-button @click="prev_task_handle"
                      class="prev_btn">上一步</el-button>
           <el-button @click="prev_task_handle_assign"
                      class="prev_btn">分配</el-button>
           <el-button @click="prev_task_handle_save"
-                     class="prev_btn">保存</el-button>
+                     class="prev_btn">Save</el-button>
         </div>
       </div>
     </el-dialog>
@@ -426,7 +427,7 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">添加到工单</span>
+        <span class="title_name">Add to ticket</span>
       </div>
       <div class="content">
         <el-row class="common-table-pattern">
@@ -479,9 +480,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="add_closed_state"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button @click="add_ok_state"
-                   class="ok_btn">确定</el-button>
+                   class="ok_btn">Confirm</el-button>
       </div>
     </el-dialog>
 
@@ -640,7 +641,7 @@ export default {
         notice: ['email'],
         remarks: "",
         multiple: [],
-        old_as:[],
+        old_as: [],
       }
     };
   },
@@ -656,10 +657,10 @@ export default {
           this.e_line.loading = false;
           this.e_line.data_show = true;
 
-          if(response.data.data){
+          if (response.data.data) {
             this.echarts_data = response.data.data;
-          }else{
-            this.echarts_data = [{statistics_time:'',alert_count:0}]
+          } else {
+            this.echarts_data = [{ statistics_time: '', alert_count: 0 }]
           }
         })
         .catch(error => {
@@ -710,10 +711,10 @@ export default {
     },
 
     changeTime (data) {
-      if(data){
+      if (data) {
         this.params.startTime = (data[0].valueOf() / 1000).toFixed(0);
         this.params.endTime = (data[1].valueOf() / 1000).toFixed(0);
-      }else {
+      } else {
         this.params.startTime = ''
         this.params.endTime = ''
       }
@@ -773,7 +774,7 @@ export default {
     change_task (command) {
       if (command == "新建工单") {
         this.open_task_new();
-      } else if (command == "添加到工单") {
+      } else if (command == "Add to ticket") {
         this.open_add_new();
       }
     },
@@ -827,16 +828,16 @@ export default {
         status: change_status
       })
         .then(resp => {
-          let { status,msg, data } = resp.data;
+          let { status, msg, data } = resp.data;
           if (status == 0) {
             this.$message.success('告警状态变更成功！');
             //关闭弹窗
             this.closed_state();
             this.get_list_risk();
           } else {
-            if(msg == ''){
+            if (msg == '') {
               this.$message.error(msg);
-            }else {
+            } else {
               this.$message.error('状态变更失败');
             }
           }
@@ -859,7 +860,7 @@ export default {
         if (sel_table_attr.includes('3')
           || sel_table_attr.includes('4')
           || sel_table_attr.includes('5')) {
-          this.$message({ message: '告警状态为已处置、已忽略、误报的不能新建。', type: 'warning' });
+          this.$message({ message: 'Alert whose status is resolved, ignored, false positive cannot create new tickets', type: 'warning' });
         } else {
           this.table_alerts.tableData = sel_table_data;
           this.table_alerts.count = sel_table_data.length;
@@ -901,7 +902,7 @@ export default {
         notice: ['email'],
         textarea: "",
         multiple: [],
-        remind:['email']
+        remind: ['email']
       };
       this.table_operator.tableData = [];
       this.table_alerts.tableData_new = [];
@@ -1029,7 +1030,7 @@ export default {
           this.handle.save = false;
           let { status, msg, data } = resp.data;
           if (status == 0) {
-            this.$message.success('保存成功');
+            this.$message.success('Saved successfully');
             this.closed_task_new();
             this.get_list_risk();
           } else if (status == 1) {
@@ -1060,7 +1061,7 @@ export default {
         if (sel_table_attr.includes('3')
           || sel_table_attr.includes('4')
           || sel_table_attr.includes('5')) {
-          this.$message({ message: '告警状态为已处置、已忽略、误报的不能添加到工单。', type: 'warning' });
+          this.$message({ message: 'Alert whose status is resolved, ignored, false positive cannot be added to the ticket', type: 'warning' });
         } else {
           this.add_state_change = true;
           this.get_table_works_list();
@@ -1078,7 +1079,7 @@ export default {
         notice: ['email'],
         textarea: "",
         multiple: [],
-        old_as:[]
+        old_as: []
       };
       this.$refs.multipleTable.clearSelection();
     },
@@ -1127,9 +1128,9 @@ export default {
 
       if (multipe.length == 0) {
         this.$message({ message: '请选择需要添加的工单！', type: 'warning' });
-      } else if(multipe.length > 1){
+      } else if (multipe.length > 1) {
         this.$message({ message: '资产/告警不能添加到多个工单，请重新选择！', type: 'warning' });
-      }else{
+      } else {
         console.log('******************')
         this.add_params.id = multipe[0].id;
         this.add_params.name = multipe[0].name;
@@ -1140,7 +1141,7 @@ export default {
 
         this.add_params.old_as = JSON.parse(multipe[0].te_alert);
         //console.log(this.add_params);
-        this.add_params.multiple = [...this.add_params.multiple,...this.add_params.old_as];
+        this.add_params.multiple = [...this.add_params.multiple, ...this.add_params.old_as];
 
         console.log(this.add_params.multiple);
         this.add_params.multiple = [...new Set(this.add_params.multiple)];
@@ -1163,10 +1164,10 @@ export default {
             remarks: this.add_params.remarks,
             te_alert: this.add_params.multiple
           }).then((resp) => {
-          this.handle.save = false;
+            this.handle.save = false;
             let { status, msg, data } = resp.data;
             if (status == 0) {
-              this.$message.success('添加成功');
+              this.$message.success('Added successfully');
               //清空状态
               this.add_closed_state();
               this.get_list_risk();
@@ -1196,20 +1197,20 @@ export default {
     /***************************导出*****************************/
     //导出
     export_box () {
-      this.$confirm('是否确定导出告警列表?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('Please confirm to export the alert list!', 'Message', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
 
         var url1 = "/yiiapi/alert/export-alerts?status=" + this.params.status + '&start_time=' + this.params.startTime
-          +'&end_time=' + this.params.endTime + '&fall_certainty=' + this.params.threat + '&key_word=' + this.params.key;
+          + '&end_time=' + this.params.endTime + '&fall_certainty=' + this.params.threat + '&key_word=' + this.params.key;
         window.location.href = url1;
 
 
       }).catch(() => {
 
-        this.$message({ type: 'info', message: '已取消导出' });
+        this.$message({ type: 'info', message: 'Export cancelled' });
 
         this.$refs.multipleTable.clearSelection();
       });
@@ -1324,8 +1325,7 @@ export default {
   }
 
   // 编辑工单
-  /deep/
-  .task_new_box {
+  /deep/ .task_new_box {
     .el-dialog {
       .el-dialog__header {
         display: none;
@@ -1741,10 +1741,9 @@ export default {
     }
   }
 
-  /deep/
-  .pop_box {
+  /deep/ .pop_box {
     .el-dialog {
-      background: #FFFFFF;
+      background: #ffffff;
       border-radius: 4px;
       position: fixed;
       // top: 200px;

@@ -21,7 +21,7 @@
                       v-model="data_search.flow_duration"
                       clearable>
             </el-input>
-            <el-input placeholder="主机地址"
+            <el-input placeholder="Host"
                       class="search_box"
                       v-model="data_search.host_ip"
                       clearable>
@@ -31,7 +31,7 @@
             <el-button class="btn_i"
                        @click="search"> 搜索</el-button>
             <span class="reset"
-                  @click="reset">重置</span>
+                  @click="reset">Reset</span>
             <el-button class="btn_right"
                        @click="download">下载</el-button>
           </div>
@@ -42,7 +42,7 @@
                       :data="data_list_data.data"
                       tooltip-effect="dark"
                       style="width: 100%">
-              <el-table-column label="序号"
+              <el-table-column label="Item"
                                width="60">
                 <template slot-scope="scope">
                   {{(data_search.page-1)*(data_search.rows) + scope.row.index_cn}}
@@ -54,7 +54,7 @@
                                show-overflow-tooltip>
               </el-table-column>
               <el-table-column prop="host_ip"
-                               label="主机地址"
+                               label="Host"
                                show-overflow-tooltip>
               </el-table-column>
               <el-table-column label="流量"
@@ -70,7 +70,7 @@
                 </template>
               </el-table-column>
               <el-table-column prop="application"
-                               label="应用"
+                               label="Protocol"
                                show-overflow-tooltip>
               </el-table-column>
             </el-table>

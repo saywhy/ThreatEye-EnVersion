@@ -8,8 +8,8 @@
                   range-separator="-"
                   @change="chooseTime"
                   clearable
-                  start-placeholder="开始日期"
-                  end-placeholder="结束日期"
+                  start-placeholder="Start Date"
+                  end-placeholder="End Date"
                   align="center">
   </el-date-picker>
 </template>
@@ -21,7 +21,7 @@ export default {
       pickerOptions: {
         shortcuts: [
           {
-            text: "最近一周",
+            text: "Latest Week",
             onClick (picker) {
               const end = new Date();
               const start = new Date();
@@ -30,7 +30,7 @@ export default {
             }
           },
           {
-            text: "最近一个月",
+            text: "Latest Month",
             onClick (picker) {
               const end = new Date();
               const start = new Date();
@@ -39,7 +39,7 @@ export default {
             }
           },
           {
-            text: "最近三个月",
+            text: "Latest Three Months",
             onClick (picker) {
               const end = new Date();
               const start = new Date();

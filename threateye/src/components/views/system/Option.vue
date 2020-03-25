@@ -64,7 +64,7 @@
         </div>
         <el-button type="primary"
                    class="btn_i"
-                   @click="save_time">保存</el-button>
+                   @click="save_time">Save</el-button>
       </div>
       <div class="bottom">
         <p class="title">
@@ -95,7 +95,7 @@
         </div>
         <el-button type="primary"
                    class="btn_i"
-                   @click="edit_login_ip">保存</el-button>
+                   @click="edit_login_ip">Save</el-button>
       </div>
     </div>
   </div>

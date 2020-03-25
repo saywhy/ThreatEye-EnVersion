@@ -9,22 +9,22 @@
                      class="tabs-item"
                      name="first">
           <div class="invest_top">
-            <el-input placeholder="源地址"
+            <el-input placeholder="Source IP"
                       class="search_box"
                       v-model="url_search.src_ip"
                       clearable>
             </el-input>
-            <el-input placeholder="源端口"
+            <el-input placeholder="Source Port"
                       class="search_box"
                       v-model="url_search.src_port"
                       clearable>
             </el-input>
-            <el-input placeholder="目的地址"
+            <el-input placeholder="Destination IP"
                       class="search_box"
                       v-model="url_search.dst_ip"
                       clearable>
             </el-input>
-            <el-input placeholder="目的端口"
+            <el-input placeholder="Destination Port"
                       class="search_box"
                       v-model="url_search.dst_port"
                       clearable>
@@ -34,7 +34,7 @@
             <el-button class="btn_i"
                        @click="search"> 搜索</el-button>
             <span class="reset"
-                  @click="reset">重置</span>
+                  @click="reset">Reset</span>
             <el-button class="btn_right"
                        @click="download">下载</el-button>
           </div>
@@ -45,7 +45,7 @@
                       :data="url_list_data.data"
                       tooltip-effect="dark"
                       style="width: 100%">
-              <el-table-column label="序号"
+              <el-table-column label="Item"
                                width="60">
                 <template slot-scope="scope">
                   {{(url_search.page-1)*(url_search.rows) + scope.row.index_cn}}
@@ -57,23 +57,23 @@
                                show-overflow-tooltip>
               </el-table-column>
               <el-table-column prop="src_ip"
-                               label="源地址"
+                               label="Source IP"
                                show-overflow-tooltip>
               </el-table-column>
               <el-table-column prop="src_port"
-                               label="源端口"
+                               label="Source Port"
                                show-overflow-tooltip>
               </el-table-column>
               <el-table-column prop="dest_ip"
-                               label="目的地址"
+                               label="Destination IP"
                                show-overflow-tooltip>
               </el-table-column>
               <el-table-column prop="dest_port"
-                               label="目的端口"
+                               label="Destination Port"
                                show-overflow-tooltip>
               </el-table-column>
               <el-table-column prop="application"
-                               label="应用"
+                               label="Protocol"
                                show-overflow-tooltip>
               </el-table-column>
             </el-table>

@@ -21,7 +21,7 @@
                      src="@/assets/images/setting/upload_s.png"
                      alt="">
                 <uploader-drop>
-                  <uploader-btn class="select_btn">点击上传</uploader-btn>
+                  <uploader-btn class="select_btn">Upload</uploader-btn>
                   <span>请选择需要扫描上传的文件(最大100M)</span>
                 </uploader-drop>
                 <uploader-list></uploader-list>
@@ -41,7 +41,7 @@
                     <span :class="scope.row.result==0?'color_red':''">{{scope.row.result_cn}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="创建时间"
+                <el-table-column label="Created"
                                  width='180'
                                  show-overflow-tooltip>
                   <template slot-scope="scope">
@@ -69,7 +69,7 @@
                          @click.stop='download(scope.row)'>
                   </template>
                 </el-table-column>
-                <el-table-column label="操作"
+                <el-table-column label="Operation"
                                  width='100'>
                   <template slot-scope="scope">
                     <img src="@/assets/images/common/delete.png"
@@ -169,7 +169,7 @@ export default {
               this.get_data();
               this.$message(
                 {
-                  message: '上传成功!',
+                  message: 'Uploaded successfully',
                   type: 'success',
                 }
               );
@@ -234,9 +234,9 @@ export default {
     },
     // 删除
     del_box (item) {
-      this.$confirm('此操作删除信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation deletes the item. Do you want to continue?', 'Message', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
 
@@ -251,14 +251,14 @@ export default {
               this.get_data();
               this.$message(
                 {
-                  message: '删除成功!',
+                  message: 'Deleted successfully',
                   type: 'success',
                 }
               );
             } else {
               this.$message(
                 {
-                  message: '删除失败!',
+                  message: 'Delete Failure',
                   type: 'error',
                 }
               );
@@ -270,7 +270,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消删除'
+          message: 'Delete Cancelled'
         });
       });
     },

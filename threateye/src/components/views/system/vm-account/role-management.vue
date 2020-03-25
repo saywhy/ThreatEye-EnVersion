@@ -4,7 +4,7 @@
     <div class="role_title">
       <el-button type="primary"
                  class="btn_i"
-                 @click="add_box">新增</el-button>
+                 @click="add_box">Add</el-button>
       <el-button type="primary"
                  class="btn_o"
                  @click="del_role">删除</el-button>
@@ -17,7 +17,7 @@
                 tooltip-effect="dark"
                 @selection-change="handleSelectionChange"
                 style="width: 100%">
-        <el-table-column label="全选"
+        <el-table-column label="Select All"
                          prop="type"
                          width="50">
         </el-table-column>
@@ -26,7 +26,7 @@
                          width="50">
         </el-table-column>
         <el-table-column prop="index"
-                         label="序号"
+                         label="Item"
                          width="50"
                          show-overflow-tooltip>
           <template slot-scope="scope">
@@ -43,7 +43,7 @@
                          show-overflow-tooltip>
         </el-table-column>
 
-        <el-table-column label="创建时间"
+        <el-table-column label="Created"
                          width="220"
                          show-overflow-tooltip>
           <template slot-scope="scope">{{ scope.row.created_at*1000 |formatDate }}</template>
@@ -53,7 +53,7 @@
                          width="180"
                          show-overflow-tooltip>
         </el-table-column>
-        <el-table-column label="操作"
+        <el-table-column label="Operation"
                          width="150">
 
           <template slot-scope="scope">
@@ -129,9 +129,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="closed_add_box"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button class="ok_btn"
-                   @click="add_role">确定</el-button>
+                   @click="add_role">Confirm</el-button>
       </div>
     </el-dialog>
     <!-- 编辑 -->
@@ -189,9 +189,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="closed_edit_box"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button class="ok_btn"
-                   @click="edit_role">确定</el-button>
+                   @click="edit_role">Confirm</el-button>
       </div>
     </el-dialog>
   </div>
@@ -529,7 +529,7 @@ export default {
             this.get_data();
             this.$message(
               {
-                message: '添加角色成功',
+                message: 'Role added successfully',
                 type: 'success',
               }
             );
@@ -612,9 +612,9 @@ export default {
         );
         return false
       }
-      this.$confirm('此操作删除信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation deletes the item. Do you want to continue?', 'Message', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         var id_list = []
@@ -632,7 +632,7 @@ export default {
               this.get_data();
               this.$message(
                 {
-                  message: '删除成功！',
+                  message: 'Deleted successfully',
                   type: 'success',
                 }
               );
@@ -651,7 +651,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消删除'
+          message: 'Delete Cancelled'
         });
       });
 

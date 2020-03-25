@@ -10,10 +10,10 @@
                        align="center"
                        show-overflow-tooltip></el-table-column>
       <el-table-column prop="indicator"
-                       label="威胁指标"
+                       label="Threat Indicators"
                        show-overflow-tooltip></el-table-column>
       <el-table-column prop="category"
-                       label="告警类型"
+                       label="Alert Type"
                        show-overflow-tooltip></el-table-column>
     </el-table>
   </el-col>

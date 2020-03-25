@@ -28,7 +28,7 @@ export default {
       // 基于准备好的dom，初始化echarts实例
       let myChart = this.$echarts.init(document.getElementById("flow"));
 
-      myChart.showLoading({ text: '正在加载数据...' });
+      myChart.showLoading({ text: 'Loading data.....' });
       myChart.clear();
       // 绘制图表
       myChart.setOption({

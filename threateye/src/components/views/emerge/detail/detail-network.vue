@@ -49,7 +49,7 @@
                 <el-dropdown-menu slot="dropdown"
                                   class="dropdown_ul_box_124">
                   <el-dropdown-item command="1">新建工单</el-dropdown-item>
-                  <el-dropdown-item command="2">添加到工单</el-dropdown-item>
+                  <el-dropdown-item command="2">Add to ticket</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
               <el-button class="edit_btn"
@@ -62,7 +62,7 @@
         <div class="detail_base_bottom_item">
           <ul>
             <li class="item_li">
-              <span class="item_li_title">源地址:</span>
+              <span class="item_li_title">Source IP:</span>
               <el-dropdown @command="change_state_src"
                            trigger="click"
                            class="src_dropdown_box"
@@ -83,7 +83,7 @@
               </el-dropdown>
             </li>
             <li class="item_li">
-              <span class="item_li_title">目的地址:</span>
+              <span class="item_li_title">Destination IP:</span>
               <el-dropdown @command="change_state_dest"
                            trigger="click"
                            class="src_dropdown_box"
@@ -126,15 +126,15 @@
               </div>
             </li>
             <li class="item_li">
-              <span class="item_li_title">告警时间:</span>
+              <span class="item_li_title">Time:</span>
               <span class="item_li_content">{{network_detail.alert_time}}</span>
             </li>
             <li class="item_li">
-              <span class="item_li_title">威胁指标:</span>
+              <span class="item_li_title">Threat Indicators:</span>
               <span class="item_li_content">{{network_detail.indicator}}</span>
             </li>
             <li class="item_li">
-              <span class="item_li_title">告警类型:</span>
+              <span class="item_li_title">Alert Type:</span>
               <span class="item_li_content">{{network_detail.category}}</span>
             </li>
             <li class="item_li">
@@ -146,7 +146,7 @@
         <div class="detail_base_bottom_item">
           <ul>
             <li class="item_li">
-              <span class="item_li_title">应用:</span>
+              <span class="item_li_title">Protocol:</span>
               <span class="item_li_content">{{network_detail.application}}</span>
             </li>
             <li class="item_li">
@@ -154,7 +154,7 @@
               <span class="item_li_content">{{network_detail.detect_engine}}</span>
             </li>
             <li class="item_li">
-              <span class="item_li_title">失陷确定性:</span>
+              <span class="item_li_title">Compromise:</span>
               <span :class="network_detail.fall_certainty == '0'?'':'fall_certainty'">
                 {{network_detail.fall_certainty == '0'?'':'已失陷'}}</span>
             </li>
@@ -460,26 +460,26 @@
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="category"
-                             label="告警类型"
+                             label="Alert Type"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="indicator"
-                             label="威胁指标"
+                             label="Threat Indicators"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="src_ip"
-                             label="源地址"
+                             label="Source IP"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="dest_ip"
-                             label="目的地址"
+                             label="Destination IP"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="application"
-                             label="应用"
+                             label="Protocol"
                              show-overflow-tooltip>
             </el-table-column>
-            <el-table-column label="威胁等级">
+            <el-table-column label="Severity">
               <template slot-scope="scope">
                 <span class="btn_alert_background"
                       :class="{'high_background':scope.row.degree =='高','mid_background':scope.row.degree =='中','low_background':scope.row.degree =='低'}">
@@ -512,26 +512,26 @@
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="category"
-                             label="告警类型"
+                             label="Alert Type"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="indicator"
-                             label="威胁指标"
+                             label="Threat Indicators"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="src_ip"
-                             label="源地址"
+                             label="Source IP"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="dest_ip"
-                             label="目的地址"
+                             label="Destination IP"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="application"
-                             label="应用"
+                             label="Protocol"
                              show-overflow-tooltip>
             </el-table-column>
-            <el-table-column label="威胁等级">
+            <el-table-column label="Severity">
               <template slot-scope="scope">
                 <span class="btn_alert_background"
                       :class="{'high_background':scope.row.degree =='高','mid_background':scope.row.degree =='中','low_background':scope.row.degree =='低'}">
@@ -569,7 +569,7 @@
           <div class="item_addrs"
                v-for="(item,index) in edit_tag.tag_list">
             <el-input class="select_box"
-                      placeholder="请输入标签，最多可以设置5个标签"
+                      placeholder="Please enter up to 5 labels"
                       v-model="item.name"
                       clearable>
             </el-input>
@@ -588,9 +588,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="closed_edit_tag_box"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button class="ok_btn"
-                   @click="edit_tag_true">确定</el-button>
+                   @click="edit_tag_true">Confirm</el-button>
       </div>
     </el-dialog>
     <!-- 弹窗 -->
@@ -606,7 +606,7 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">添加到工单</span>
+        <span class="title_name">Add to ticket</span>
       </div>
       <div class="content">
         <div class="add_works">
@@ -670,9 +670,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="add_closed_state1"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button @click="add_ok_state"
-                   class="ok_btn">确定</el-button>
+                   class="ok_btn">Confirm</el-button>
       </div>
     </el-dialog>
 
@@ -794,7 +794,7 @@
 
         <div class="btn_box">
           <el-button @click="closed_task_new"
-                     class="cancel_btn">取消</el-button>
+                     class="cancel_btn">Cancel</el-button>
           <el-button @click="next_task"
                      class="next_btn">下一步</el-button>
         </div>
@@ -816,26 +816,26 @@
                                  width="40">
                 </el-table-column> -->
                   <el-table-column prop="category"
-                                   label="告警类型"
+                                   label="Alert Type"
                                    show-overflow-tooltip>
                   </el-table-column>
                   <el-table-column prop="indicator"
-                                   label="威胁指标"
+                                   label="Threat Indicators"
                                    show-overflow-tooltip>
                   </el-table-column>
                   <el-table-column prop="src_ip"
-                                   label="源地址"
+                                   label="Source IP"
                                    show-overflow-tooltip>
                   </el-table-column>
                   <el-table-column prop="dest_ip"
-                                   label="目的地址"
+                                   label="Destination IP"
                                    show-overflow-tooltip>
                   </el-table-column>
                   <el-table-column prop="application"
-                                   label="应用"
+                                   label="Protocol"
                                    show-overflow-tooltip>
                   </el-table-column>
-                  <el-table-column label="威胁等级"
+                  <el-table-column label="Severity"
                                    width="100"
                                    show-overflow-tooltip>
                     <template slot-scope="scope">
@@ -844,7 +844,7 @@
                         {{ scope.row.degree | degree }}</span>
                     </template>
                   </el-table-column>
-                  <el-table-column label="失陷确定性"
+                  <el-table-column label="Compromise"
                                    width="100"
                                    show-overflow-tooltip>
                     <template slot-scope="scope">
@@ -863,13 +863,13 @@
         </div>
         <div class="btn_box">
           <el-button @click="closed_task_new"
-                     class="cancel_btn">取消</el-button>
+                     class="cancel_btn">Cancel</el-button>
           <el-button @click="prev_task_handle"
                      class="prev_btn">上一步</el-button>
           <el-button @click="prev_task_handle_assign"
                      class="prev_btn">分配</el-button>
           <el-button @click="prev_task_handle_save"
-                     class="prev_btn">保存</el-button>
+                     class="prev_btn">Save</el-button>
         </div>
       </div>
     </el-dialog>
@@ -1432,7 +1432,7 @@ export default {
       let status = this.table_alerts.tableData[0].status;
 
       if (status == '3' || status == '4' || status == '5') {
-        this.$message({ message: '告警状态为已处置、已忽略、误报的不能添加到工单。', type: 'warning' });
+        this.$message({ message: 'Alert whose status is resolved, ignored, false positive cannot be added to the ticket', type: 'warning' });
       } else {
         this.add_state_change = true;
         this.get_table_works_list();
@@ -1591,7 +1591,7 @@ export default {
             this.loading = false;
             let { status, msg, data } = resp.data;
             if (status == 0) {
-              this.$message.success('添加成功');
+              this.$message.success('Added successfully');
               //清空状态
               this.add_closed_state1();
               this.get_data();
@@ -2089,7 +2089,7 @@ export default {
                     value: item.alert_description.threat,
                   },
                   {
-                    name: "PayLoad信息",
+                    name: "Payload Info",
                     value: "点击下载",
                   },
                 ];
@@ -2410,7 +2410,7 @@ export default {
     },
     // 下载payload
     download (value, item) {
-      if (value.value == "点击下载" && value.name == "PayLoad信息") {
+      if (value.value == "点击下载" && value.name == "Payload Info") {
         var funDownload = function (content, filename) {
           // 创建隐藏的可下载链接
           var eleLink = document.createElement("a");
@@ -2597,7 +2597,7 @@ export default {
             this.get_data();
             this.$message(
               {
-                message: '修改状态成功!',
+                message: 'Change status successfully',
                 type: 'success',
               }
             );
@@ -2735,9 +2735,9 @@ export default {
       }
       //加入外部链接
       if (item == '2') {
-        this.$confirm('本地址会被加入外部动态列表，第三方设备读取后可以对本地址进行告警提示或者拦截。', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('This address will be added to an external dynamic list and can be alerted or blocked by third-party devices after reading it.', 'Message', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           var join = ''
@@ -2776,7 +2776,7 @@ export default {
               if (status == 0) {
                 this.$message(
                   {
-                    message: '加入外部动态列表成功!',
+                    message: 'Added to the external dynamic list successfully',
                     type: 'success',
                   }
                 );
@@ -2795,7 +2795,7 @@ export default {
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消操作'
+            message: 'Operation cancelled'
           });
         });
       }
@@ -2812,9 +2812,9 @@ export default {
       }
       //加入外部链接
       if (item == '2') {
-        this.$confirm('本地址会被加入外部动态列表，第三方设备读取后可以对本地址进行告警提示或者拦截。', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('This address will be added to an external dynamic list and can be alerted or blocked by third-party devices after reading it.', 'Message', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           var join = ''
@@ -2853,7 +2853,7 @@ export default {
               if (status == 0) {
                 this.$message(
                   {
-                    message: '加入外部动态列表成功!',
+                    message: 'Added to the external dynamic list successfully',
                     type: 'success',
                   }
                 );
@@ -2872,7 +2872,7 @@ export default {
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消操作'
+            message: 'Operation cancelled'
           });
         });
       }
@@ -2927,7 +2927,7 @@ export default {
 
         // this.table_alerts.tableData[0].status
         if (this.network_detail.status == '3' || this.network_detail.status == '4' || this.network_detail.status == '5') {
-          this.$message({ message: '告警状态为已处置、已忽略、误报的不能新建工单。', type: 'warning' });
+          this.$message({ message: 'Alert whose status is resolved, ignored, false positive cannot create new tickets', type: 'warning' });
           return false
         }
         this.get_user_list();
@@ -3078,7 +3078,7 @@ export default {
           let { status, msg, data } = resp.data;
           console.log(data);
           if (status == 0) {
-            this.$message.success('添加成功');
+            this.$message.success('Added successfully');
             this.get_data()
           } else if (status == 1) {
             this.$message.error(msg);
@@ -3278,7 +3278,7 @@ export default {
           console.log(data);
           if (status == 0) {
             this.new_worksheets_data.pop = false
-            this.$message.success('添加成功');
+            this.$message.success('Added successfully');
             this.get_data()
           } else if (status == 1) {
             this.$message.error(msg);

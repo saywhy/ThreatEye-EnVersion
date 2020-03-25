@@ -89,7 +89,7 @@
           <el-button type="primary"
                      class="btn_i"
                      v-if="sandbox_show"
-                     @click="add_box">新增</el-button>
+                     @click="add_box">Add</el-button>
           <el-button type="primary"
                      class="btn_o"
                      @click="del_equipment">删除</el-button>
@@ -103,14 +103,14 @@
                     style="width: 100%"
                     @selection-change="handleSelectionChange"
                     @row-click="alert_detail">
-            <el-table-column label="全选"
+            <el-table-column label="Select All"
                              prop=""
                              width="50">
             </el-table-column>
             <el-table-column type="selection"
                              width="50">
             </el-table-column>
-            <el-table-column label="序号"
+            <el-table-column label="Item"
                              width="80">
               <template slot-scope="scope">
                 {{(equipment_data.page-1)*(equipment_data.rows) + scope.row.index_cn}}
@@ -175,7 +175,7 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">新增</span>
+        <span class="title_name">Add</span>
       </div>
       <div class="content">
         <div class="content_item">
@@ -223,9 +223,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="closed_add_box"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button class="ok_btn"
-                   @click="add_equipment">确定</el-button>
+                   @click="add_equipment">Confirm</el-button>
       </div>
     </el-dialog>
     <!-- 设备详情 -->
@@ -430,15 +430,15 @@ export default {
       if (this.select_list.length == 0) {
         this.$message(
           {
-            message: '请先选中要删除的信息',
+            message: 'Please select the item to delete ',
             type: 'warning',
           }
         );
         return false
       }
-      this.$confirm('此操作删除信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation deletes the item. Do you want to continue?', 'Message', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         var id_list = []
@@ -456,14 +456,14 @@ export default {
               this.get_data();
               this.$message(
                 {
-                  message: '删除成功！',
+                  message: 'Deleted successfully',
                   type: 'success',
                 }
               );
             } else {
               this.$message(
                 {
-                  message: '删除失败！',
+                  message: 'Delete Failure',
                   type: 'error',
                 }
               );
@@ -475,7 +475,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消删除'
+          message: 'Delete Cancelled'
         });
       });
     },

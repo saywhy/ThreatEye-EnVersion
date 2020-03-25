@@ -88,10 +88,10 @@
     <div class="bottom">
       <el-button type="primary"
                  class="btn_i"
-                 @click="set_data">保存</el-button>
+                 @click="set_data">Save</el-button>
       <el-button type="primary"
                  class="btn_o"
-                 @click="reset_data">取消</el-button>
+                 @click="reset_data">Cancel</el-button>
 
     </div>
   </div>

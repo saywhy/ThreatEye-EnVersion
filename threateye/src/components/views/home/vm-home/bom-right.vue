@@ -4,36 +4,36 @@
               ref="multipleTable"
               @row-click="detail_click"
               :data="tableData">
-      <el-table-column label="告警时间"
+      <el-table-column label="Time"
                        show-overflow-tooltip>
         <template slot-scope="scope">
           {{scope.row.alert_time | time}}
         </template>
       </el-table-column>
       <el-table-column prop="category"
-                       label="告警类型"
+                       label="Alert Type"
                        show-overflow-tooltip></el-table-column>
       <el-table-column prop="indicator"
-                       label="威胁指标"
+                       label="Threat Indicators"
                        show-overflow-tooltip></el-table-column>
       <el-table-column prop="src_ip"
-                       label="源地址"
+                       label="Source IP"
                        show-overflow-tooltip></el-table-column>
       <el-table-column prop="dest_ip"
-                       label="目的地址"
+                       label="Destination IP"
                        show-overflow-tooltip></el-table-column>
       <el-table-column prop="application"
-                       label="应用"
+                       label="Protocol"
                        width="60"
                        show-overflow-tooltip></el-table-column>
-      <el-table-column label="威胁等级"
+      <el-table-column label="Severity"
                        show-overflow-tooltip>
         <template slot-scope="scope">
-                <span class="btn_alert_background"
-                      :class="{'high_background':scope.row.degree =='高',
+          <span class="btn_alert_background"
+                :class="{'high_background':scope.row.degree =='高',
                       'mid_background':scope.row.degree =='中',
                       'low_background':scope.row.degree =='低'}">
-                  {{ scope.row.degree | degree_sino }}</span>
+            {{ scope.row.degree | degree_sino }}</span>
         </template>
       </el-table-column>
     </el-table>

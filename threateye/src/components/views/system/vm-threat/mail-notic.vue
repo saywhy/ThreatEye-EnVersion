@@ -58,7 +58,7 @@
       <div class="left_item">
         <el-button type="primary"
                    class="save_btn"
-                   @click="send_save">保存</el-button>
+                   @click="send_save">Save</el-button>
         <el-button type="primary"
                    class="test_btn"
                    @click='send_test'>发送测试邮件</el-button>

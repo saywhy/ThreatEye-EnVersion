@@ -47,7 +47,7 @@
           <span class="content">{{data.priority | priority}}</span>
         </li>
         <li>
-          <span class="title">创建时间：</span>
+          <span class="title">Created：</span>
           <span class="content">{{data.created_at | time}}</span>
         </li>
         <li>
@@ -93,7 +93,7 @@
                   </span>
                 </template>
               </el-table-column>
-              <el-table-column label="威胁等级"
+              <el-table-column label="Severity"
                                min-width="100">
                 <template slot-scope="scope">
                   <span class="btn_alert_background"
@@ -101,15 +101,14 @@
                     {{ scope.row.degree | degree }}</span>
                 </template>
               </el-table-column>
-              <el-table-column label="失陷确定性"
+              <el-table-column label="Compromise"
                                min-width="100">
                 <template slot-scope="scope">
                   <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
                     {{ scope.row.fall_certainty | certainty }}</span>
                 </template>
               </el-table-column>
-              <el-table-column
-                               label="状态"
+              <el-table-column label="状态"
                                width="80">
                 <template slot-scope="scope">{{ scope.row.status | risk_status }}</template>
               </el-table-column>
@@ -121,27 +120,27 @@
                       class="handle_table_detail"
                       :data="table.tableData"
                       tooltip-effect="dark">
-              <el-table-column label="告警时间"
+              <el-table-column label="Time"
                                width="180"
                                show-overflow-tooltip>
                 <template slot-scope="scope">{{ scope.row.alert_time | time }}</template>
               </el-table-column>
               <el-table-column prop="category"
-                               label="告警类型"
+                               label="Alert Type"
                                show-overflow-tooltip></el-table-column>
               <el-table-column prop="indicator"
-                               label="威胁指标"
+                               label="Threat Indicators"
                                show-overflow-tooltip></el-table-column>
               <el-table-column prop="src_ip"
-                               label="源地址"
+                               label="Source IP"
                                show-overflow-tooltip></el-table-column>
               <el-table-column prop="dest_ip"
-                               label="目的地址"
+                               label="Destination IP"
                                show-overflow-tooltip></el-table-column>
               <el-table-column prop="application"
-                               label="应用"
+                               label="Protocol"
                                show-overflow-tooltip></el-table-column>
-              <el-table-column label="威胁等级"
+              <el-table-column label="Severity"
                                width="100"
                                show-overflow-tooltip>
                 <template slot-scope="scope">
@@ -312,7 +311,7 @@ export default {
         })
         .then((resp) => {
 
-         // console.log(resp.data)
+          // console.log(resp.data)
 
           let { status, data } = resp.data;
 

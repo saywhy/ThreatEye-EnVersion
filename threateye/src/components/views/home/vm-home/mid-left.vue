@@ -46,7 +46,7 @@ export default {
 
       let myChart = this.$echarts.init(document.getElementById("test"));
 
-      myChart.showLoading({ text: '正在加载数据...' });
+      myChart.showLoading({ text: 'Loading data.....' });
 
       myChart.clear();
       // 绘制图表

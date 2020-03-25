@@ -41,7 +41,7 @@
         let myChart = this.$echarts.init(document.getElementById('threatForm'))
         // 绘制图表
 
-        myChart.showLoading({ text: '正在加载数据...' });
+        myChart.showLoading({ text: 'Loading data.....' });
         myChart.clear();
         myChart.setOption({
           grid: {

@@ -46,7 +46,7 @@
                 <el-select class="s_key s_key_types"
                            v-model="params.threat"
                            clearable
-                           placeholder="失陷确定性"
+                           placeholder="Compromise"
                            @change="currentSelChange">
                   <el-option v-for="item in options_threat"
                              :key="item.value"
@@ -71,7 +71,7 @@
                 <el-button class="s_btn"
                            @click="submitClick();">搜索</el-button>
                 <el-link class="s_link"
-                         @click="resetClick();">重置</el-link>
+                         @click="resetClick();">Reset</el-link>
               </el-col>
             </el-row>
 
@@ -111,7 +111,7 @@
                   <el-dropdown-menu slot="dropdown"
                                     class="dropdown_ul_box">
                     <el-dropdown-item command="新建工单">新建工单</el-dropdown-item>
-                    <el-dropdown-item command="添加到工单">添加到工单</el-dropdown-item>
+                    <el-dropdown-item command="Add to ticket">Add to ticket</el-dropdown-item>
                   </el-dropdown-menu>
                 </el-dropdown>
               </el-col>
@@ -126,7 +126,7 @@
                     :row-style="{cursor:'pointer'}"
                     @selection-change="handleSelChange"
                     @row-click="detail_click">
-            <el-table-column label="全选"
+            <el-table-column label="Select All"
                              prop="type"
                              width="50">
               <template slot-scope="scope">
@@ -138,31 +138,31 @@
                              align="left"
                              width="50">
             </el-table-column>
-            <el-table-column label="告警时间"
+            <el-table-column label="Time"
                              width="180">
               <template slot-scope="scope">{{ scope.row.alert_time | time }}</template>
             </el-table-column>
             <el-table-column prop="category"
-                             label="告警类型"
+                             label="Alert Type"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="indicator"
-                             label="威胁指标"
+                             label="Threat Indicators"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="src_ip"
-                             label="源地址"
+                             label="Source IP"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="dest_ip"
-                             label="目的地址"
+                             label="Destination IP"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="application"
-                             label="应用"
+                             label="Protocol"
                              show-overflow-tooltip>
             </el-table-column>
-            <el-table-column label="威胁等级"
+            <el-table-column label="Severity"
                              width="100">
               <template slot-scope="scope">
                 <span class="btn_alert_background"
@@ -170,7 +170,7 @@
                   {{ scope.row.degree | degree_sino }}</span>
               </template>
             </el-table-column>
-            <el-table-column label="失陷确定性"
+            <el-table-column label="Compromise"
                              width="100">
               <template slot-scope="scope">
                 <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
@@ -185,7 +185,7 @@
           <el-pagination class="handle-pagination"
                          @size-change="handleSizeChange"
                          @current-change="handleCurrentChange"
-                        :page-sizes="[10,20,50,100]"
+                         :page-sizes="[10,20,50,100]"
                          :page-size="table.eachPage"
                          :total="table.count"
                          layout="total, sizes, prev, pager, next">
@@ -221,9 +221,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="cancel_state"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button @click="ok_state"
-                   class="ok_btn">确定</el-button>
+                   class="ok_btn">Confirm</el-button>
       </div>
     </el-dialog>
 
@@ -345,7 +345,7 @@
 
         <div class="btn_box">
           <el-button @click="closed_task_new"
-                     class="cancel_btn">取消</el-button>
+                     class="cancel_btn">Cancel</el-button>
           <el-button @click="next_task_new"
                      class="next_btn">下一步</el-button>
         </div>
@@ -369,22 +369,22 @@
                           :data="table_alerts.tableData_new"
                           tooltip-effect="dark"
                           @selection-change="handle_sel_table_alerts">
-                  <el-table-column label="全选"
+                  <el-table-column label="Select All"
                                    prop="type"
                                    width="50">
                   </el-table-column>
                   <el-table-column type="selection"
                                    width="50"></el-table-column>
                   <el-table-column prop="category"
-                                   label="告警类型"
+                                   label="Alert Type"
                                    show-overflow-tooltip></el-table-column>
                   <el-table-column prop="indicator"
-                                   label="威胁指标"
+                                   label="Threat Indicators"
                                    show-overflow-tooltip></el-table-column>
                   <el-table-column prop="application"
-                                   label="应用"
+                                   label="Protocol"
                                    show-overflow-tooltip></el-table-column>
-                  <el-table-column label="威胁等级"
+                  <el-table-column label="Severity"
                                    width="100">
                     <template slot-scope="scope">
                       <span class="btn_alert_background"
@@ -392,7 +392,7 @@
                         {{ scope.row.degree | degree_sino }}</span>
                     </template>
                   </el-table-column>
-                  <el-table-column label="失陷确定性"
+                  <el-table-column label="Compromise"
                                    width="100">
                     <template slot-scope="scope">
                       <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
@@ -419,13 +419,13 @@
         </div>
         <div class="btn_box">
           <el-button @click="closed_task_new"
-                     class="cancel_btn">取消</el-button>
+                     class="cancel_btn">Cancel</el-button>
           <el-button @click="prev_task_handle"
                      class="prev_btn">上一步</el-button>
           <el-button @click="prev_task_handle_assign"
                      class="prev_btn">分配</el-button>
           <el-button @click="prev_task_handle_save"
-                     class="prev_btn">保存</el-button>
+                     class="prev_btn">Save</el-button>
         </div>
       </div>
     </el-dialog>
@@ -441,7 +441,7 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">添加到工单</span>
+        <span class="title_name">Add to ticket</span>
       </div>
       <div class="content">
         <el-row class="common-table-pattern">
@@ -494,9 +494,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="add_closed_state"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button @click="add_ok_state"
-                   class="ok_btn">确定</el-button>
+                   class="ok_btn">Confirm</el-button>
       </div>
     </el-dialog>
   </div>
@@ -796,7 +796,7 @@ export default {
     change_task (command) {
       if (command == "新建工单") {
         this.open_task_new();
-      } else if (command == "添加到工单") {
+      } else if (command == "Add to ticket") {
         this.open_add_new();
       }
     },
@@ -881,7 +881,7 @@ export default {
         if (sel_table_attr.includes('3')
           || sel_table_attr.includes('4')
           || sel_table_attr.includes('5')) {
-          this.$message({ message: '告警状态为已处置、已忽略、误报的不能新建。', type: 'warning' });
+          this.$message({ message: 'Alert whose status is resolved, ignored, false positive cannot create new tickets', type: 'warning' });
         } else {
           this.table_alerts.tableData = sel_table_data;
           this.table_alerts.count = sel_table_data.length;
@@ -1060,7 +1060,7 @@ export default {
           this.handle.save = false;
           let { status, msg, data } = resp.data;
           if (status == 0) {
-            this.$message.success('保存成功');
+            this.$message.success('Saved successfully');
             this.closed_task_new();
             this.get_list_threat();
           } else if (status == 1) {
@@ -1091,7 +1091,7 @@ export default {
         if (sel_table_attr.includes('3')
           || sel_table_attr.includes('4')
           || sel_table_attr.includes('5')) {
-          this.$message({ message: '告警状态为已处置、已忽略、误报的不能添加到工单。', type: 'warning' });
+          this.$message({ message: 'Alert whose status is resolved, ignored, false positive cannot be added to the ticket', type: 'warning' });
         } else {
           this.add_state_change = true;
           this.get_table_works_list();
@@ -1206,7 +1206,7 @@ export default {
 
             console.log(resp)
             if (status == 0) {
-              this.$message.success('添加成功');
+              this.$message.success('Added successfully');
               //清空状态
               this.add_closed_state();
               this.get_list_threat();

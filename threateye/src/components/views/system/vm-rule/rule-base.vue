@@ -54,7 +54,7 @@
                src="@/assets/images/setting/upload_s.png"
                alt="">
           <uploader-drop>
-            <uploader-btn class="select_btn">点击上传</uploader-btn>
+            <uploader-btn class="select_btn">Upload</uploader-btn>
             <span>请上传文件名为sdk.tgz、ids.tgz、df.tgz的文件</span>
           </uploader-drop>
           <uploader-list></uploader-list>
@@ -62,9 +62,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="closed_upload_box"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button class="ok_btn"
-                   @click="closed_upload_box">确定</el-button>
+                   @click="closed_upload_box">Confirm</el-button>
       </div>
     </el-dialog>
   </div>
@@ -258,7 +258,7 @@ export default {
               this.get_data();
               this.$message(
                 {
-                  message: '上传成功！',
+                  message: 'Uploaded successfully',
                   type: 'success',
                 }
               );

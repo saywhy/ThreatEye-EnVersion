@@ -36,14 +36,14 @@
                 tooltip-effect="dark"
                 @selection-change="handleSelectionChange"
                 style="width: 100%">
-        <el-table-column label="全选"
+        <el-table-column label="Select All"
                          prop=""
                          width="50">
         </el-table-column>
         <el-table-column type="selection"
                          width="50">
         </el-table-column>
-        <el-table-column label="序号"
+        <el-table-column label="Item"
                          width="80">
           <template slot-scope="scope">
             {{(white_data.page-1)*(white_data.rows) + scope.row.index_cn}}
@@ -58,7 +58,7 @@
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="create_time"
-                         label='创建时间'
+                         label='Created'
                          show-overflow-tooltip>
         </el-table-column>
       </el-table>
@@ -116,9 +116,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="closed_add_box"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button class="ok_btn"
-                   @click="add_white">确定</el-button>
+                   @click="add_white">Confirm</el-button>
       </div>
     </el-dialog>
   </div>
@@ -208,7 +208,7 @@ export default {
             this.get_data();
             this.$message(
               {
-                message: '添加成功',
+                message: 'Added successfully',
                 type: 'success',
               }
             );
@@ -247,7 +247,7 @@ export default {
       if (params.status == 'fail') {
         this.$message(
           {
-            message: '上传失败！',
+            message: 'Upload failure',
             type: 'error',
           }
         );
@@ -266,7 +266,7 @@ export default {
         this.get_data();
         this.$message(
           {
-            message: '上传成功！',
+            message: 'Uploaded successfully',
             type: 'success',
           }
         );
@@ -277,7 +277,7 @@ export default {
       if (params.status == 'fail') {
         this.$message(
           {
-            message: '上传失败！',
+            message: 'Upload failure',
             type: 'error',
           }
         );
@@ -300,9 +300,9 @@ export default {
         );
         return false
       }
-      this.$confirm('此操作删除信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation deletes the item. Do you want to continue?', 'Message', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         var id_list = []
@@ -320,14 +320,14 @@ export default {
               this.get_data();
               this.$message(
                 {
-                  message: '删除成功！',
+                  message: 'Deleted successfully',
                   type: 'success',
                 }
               );
             } else {
               this.$message(
                 {
-                  message: '删除失败！',
+                  message: 'Delete Failure',
                   type: 'error',
                 }
               );
@@ -339,7 +339,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消删除'
+          message: 'Delete Cancelled'
         });
       });
 

@@ -158,9 +158,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="closed_edit_box"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button class="ok_btn"
-                   @click="edit_user">确定</el-button>
+                   @click="edit_user">Confirm</el-button>
       </div>
     </el-dialog>
   </div>

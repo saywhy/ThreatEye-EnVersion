@@ -55,7 +55,7 @@
     <!-- 添加IP -->
     <el-dialog class="add_box pop_box"
                :close-on-click-modal="false"
-                 :modal-append-to-body="false"
+               :modal-append-to-body="false"
                :visible.sync="outside_pop.ip.show">
       <img src="@/assets/images/emerge/closed.png"
            @click="closed_ip_box"
@@ -80,15 +80,15 @@
       </div>
       <div class="btn_box">
         <el-button @click="closed_ip_box"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button class="ok_btn"
-                   @click="add_list('1')">确定</el-button>
+                   @click="add_list('1')">Confirm</el-button>
       </div>
     </el-dialog>
     <!-- 添加url -->
     <el-dialog class="add_box pop_box"
                :close-on-click-modal="false"
-                 :modal-append-to-body="false"
+               :modal-append-to-body="false"
                :visible.sync="outside_pop.url.show">
       <img src="@/assets/images/emerge/closed.png"
            @click="closed_url_box"
@@ -113,9 +113,9 @@
       </div>
       <div class="btn_box">
         <el-button @click="closed_url_box"
-                   class="cancel_btn">取消</el-button>
+                   class="cancel_btn">Cancel</el-button>
         <el-button class="ok_btn"
-                   @click="add_list('2')">确定</el-button>
+                   @click="add_list('2')">Confirm</el-button>
       </div>
     </el-dialog>
   </div>
@@ -285,9 +285,9 @@ export default {
     // 删除ip
     del_list (item) {
       console.log(item);
-      this.$confirm('此操作删除信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation deletes the item. Do you want to continue?', 'Message', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
         var id_list = []
@@ -304,14 +304,14 @@ export default {
               this.get_list('2');
               this.$message(
                 {
-                  message: '删除成功！',
+                  message: 'Deleted successfully',
                   type: 'success',
                 }
               );
             } else {
               this.$message(
                 {
-                  message: '删除失败！',
+                  message: 'Delete Failure',
                   type: 'error',
                 }
               );
@@ -323,7 +323,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消删除'
+          message: 'Delete Cancelled'
         });
       });
     },

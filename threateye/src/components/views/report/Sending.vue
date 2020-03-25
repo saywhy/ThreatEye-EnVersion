@@ -84,9 +84,9 @@
         </el-row>
         <div class="r_btn_group">
           <el-button class="b_btn b_ok"
-                     @click="edit_data">确定</el-button>
+                     @click="edit_data">Confirm</el-button>
           <el-button class="b_btn b_cancel"
-                     @click="get_data">取消</el-button>
+                     @click="get_data">Cancel</el-button>
         </div>
       </el-form>
     </div>

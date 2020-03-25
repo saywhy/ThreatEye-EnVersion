@@ -37,7 +37,7 @@
       <div class="left_item">
         <el-button type="primary"
                    class="save_btn"
-                   @click="set_proxy">保存</el-button>
+                   @click="set_proxy">Save</el-button>
       </div>
     </div>
     <div class="mid">
