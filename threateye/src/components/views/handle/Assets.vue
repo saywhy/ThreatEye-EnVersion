@@ -133,13 +133,13 @@
               </el-button>
               <el-dropdown-menu slot="dropdown"
                                 class="dropdown_ul_box">
-                <el-dropdown-item command="处置中"
+                <el-dropdown-item command="In Progress"
                                   class="select_item">In Progress</el-dropdown-item>
-                <el-dropdown-item command="已处置"
+                <el-dropdown-item command="Resolved"
                                   class="select_item">Resolved</el-dropdown-item>
-                <el-dropdown-item command="已忽略"
+                <el-dropdown-item command="Ignored"
                                   class="select_item">Ignored</el-dropdown-item>
-                <el-dropdown-item command="误报"
+                <el-dropdown-item command="False positive"
                                   class="select_item">False positive</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>

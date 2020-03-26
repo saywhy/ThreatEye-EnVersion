@@ -19,10 +19,6 @@ export default {
 
       let data = this.data;
       data = data.reverse();
-
-     // data = [{statistics_time:'0',alert_count:0}]
-
-     // console.log(data);
       // 基于准备好的dom，初始化echarts实例
       let myChart = this.$echarts.init(document.getElementById("emergeLine"));
 
