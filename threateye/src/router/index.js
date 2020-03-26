@@ -35,7 +35,7 @@ export const constantRouterMap = [{
     path: '/LayoutNot',
     name: 'LayoutNot',
     meta: {
-      title: '通知',
+      title: 'Notification',
       icon: 'el-icon-help'
     },
     component: LayoutNot,
@@ -43,7 +43,7 @@ export const constantRouterMap = [{
       path: '/message',
       name: 'message',
       meta: {
-        title: '通知',
+        title: 'Notification',
         auth: '',
         icon: 'el-icon-help',
         parentAuth: ''
@@ -60,14 +60,14 @@ export const constantRouterMap = [{
     path: '/detail',
     name: 'detail',
     meta: {
-      title: '详情'
+      title: 'Details'
     },
     component: LayoutNot,
     children: [{
         path: '/detail/network',
         name: 'detail_network',
         meta: {
-          title: '告警',
+          title: 'Alert',
           auth: '31',
           icon: 'el-icon-picture-outline',
           parentAuth: '58',
@@ -79,7 +79,7 @@ export const constantRouterMap = [{
         path: '/detail/computer',
         name: 'detail_computer',
         meta: {
-          title: '计算机详情',
+          title: 'Computer Details',
           auth: '32',
           icon: 'el-icon-picture-outline',
           parentAuth: '58',
@@ -91,7 +91,7 @@ export const constantRouterMap = [{
         path: '/detail/assets',
         name: 'detail_assets',
         meta: {
-          title: '风险资产详情',
+          title: 'Risk Assets Details',
           auth: '21',
           icon: 'el-icon-picture-outline',
           parentAuth: '13',
@@ -103,7 +103,7 @@ export const constantRouterMap = [{
         path: '/detail/assets/alert',
         name: 'assets_alert',
         meta: {
-          title: '风险资产详情',
+          title: 'Risk Assets Details',
           auth: '21',
           icon: 'el-icon-picture-outline',
           parentAuth: '13',
@@ -115,7 +115,7 @@ export const constantRouterMap = [{
         path: '/detail/works',
         name: 'detail_works',
         meta: {
-          title: '工单详情',
+          title: 'Ticket Details',
           auth: '23',
           icon: 'el-icon-picture-outline',
           parentAuth: '13',
@@ -150,7 +150,7 @@ export const asyncRouterMap = [
     path: '/home',
     name: 'home',
     meta: {
-      title: '首页',
+      title: 'Home',
       icon: 'e-nav-home',
       auth: '1'
     },
@@ -162,7 +162,7 @@ export const asyncRouterMap = [
       path: '/home/overview',
       name: 'overview',
       meta: {
-        title: '总览',
+        title: 'Overview',
         auth: '2',
         icon: 'e-aside-overview',
         parentAuth: '1',
@@ -177,7 +177,7 @@ export const asyncRouterMap = [
     path: '/handle',
     name: 'handle',
     meta: {
-      title: '处置',
+      title: 'Mitigation',
       icon: 'e-nav-handle',
       auth: '13',
       role: ['admin']
@@ -187,7 +187,7 @@ export const asyncRouterMap = [
         path: '/handle/assets',
         name: 'assets',
         meta: {
-          title: '资产维度',
+          title: 'Asset Dimension',
           auth: '14',
           icon: 'e-aside-assets',
           parentAuth: '13',
@@ -200,7 +200,7 @@ export const asyncRouterMap = [
         path: '/handle/risks',
         name: 'risks',
         meta: {
-          title: '风险维度',
+          title: 'Risk Dimension',
           auth: '23',
           icon: 'e-aside-risks',
           parentAuth: '13',
@@ -212,7 +212,7 @@ export const asyncRouterMap = [
             path: '/handle/risks/outside',
             name: 'outside',
             meta: {
-              title: '外部威胁',
+              title: 'External Threats',
               auth: '24',
               icon: 'e-aside-none',
               parentAuth: '23',
@@ -225,7 +225,7 @@ export const asyncRouterMap = [
             path: '/handle/risks/lateral',
             name: 'lateral',
             meta: {
-              title: '横向威胁',
+              title: 'Lateral Movement',
               auth: '32',
               icon: 'e-aside-none',
               parentAuth: '23',
@@ -238,7 +238,7 @@ export const asyncRouterMap = [
             path: '/handle/risks/outreath',
             name: 'outreath',
             meta: {
-              title: '外连威胁',
+              title: 'Outreach Threats',
               auth: '40',
               icon: 'e-aside-none',
               parentAuth: '23',
@@ -253,7 +253,7 @@ export const asyncRouterMap = [
         path: '/handle/works',
         name: 'works',
         meta: {
-          title: '工单中心',
+          title: 'Ticket Center',
           auth: '48',
           icon: 'e-aside-works',
           parentAuth: '13',
@@ -269,7 +269,7 @@ export const asyncRouterMap = [
     path: '/emerge',
     name: 'emerge',
     meta: {
-      title: '告警',
+      title: 'Alert',
       icon: 'e-nav-emerge',
       auth: '58'
     },
@@ -278,7 +278,7 @@ export const asyncRouterMap = [
       path: '/emerge/network',
       name: 'network',
       meta: {
-        title: '告警',
+        title: 'Alert',
         auth: '59',
         icon: 'e-aside-network',
         parentAuth: '58',
@@ -293,7 +293,7 @@ export const asyncRouterMap = [
     path: '/invest',
     name: 'invest',
     meta: {
-      title: '追查',
+      title: 'Hunting',
       icon: 'e-nav-invest',
       auth: '76'
     },
@@ -302,7 +302,7 @@ export const asyncRouterMap = [
         path: '/invest/dns',
         name: 'dns',
         meta: {
-          title: 'DNS追查',
+          title: 'DNS Hunting',
           auth: '77',
           icon: 'e-aside-dns',
           parentAuth: '76',
@@ -315,7 +315,7 @@ export const asyncRouterMap = [
         path: '/invest/url',
         name: 'url',
         meta: {
-          title: 'IP/URL追查',
+          title: 'IP/URL Hunting',
           auth: '81',
           icon: 'e-aside-url',
           parentAuth: '76',
@@ -328,7 +328,7 @@ export const asyncRouterMap = [
         path: '/invest/host',
         name: 'host',
         meta: {
-          title: '主机追查',
+          title: 'Host Hunting',
           auth: '85',
           icon: 'e-aside-host',
           parentAuth: '76',
@@ -341,7 +341,7 @@ export const asyncRouterMap = [
         path: '/invest/user',
         name: 'user',
         meta: {
-          title: '用户追查',
+          title: 'User Hunting',
           auth: '93',
           icon: 'e-aside-user',
           parentAuth: '76',
@@ -354,7 +354,7 @@ export const asyncRouterMap = [
         path: '/invest/file',
         name: 'file',
         meta: {
-          title: '文件追查',
+          title: 'File Hunting',
           auth: '97',
           icon: 'e-aside-file',
           parentAuth: '76',
@@ -367,7 +367,7 @@ export const asyncRouterMap = [
         path: '/invest/data',
         name: 'data',
         meta: {
-          title: '数据传输追查',
+          title: 'Data Transmission Hunting',
           auth: '101',
           icon: 'e-aside-data',
           parentAuth: '76',
@@ -380,7 +380,7 @@ export const asyncRouterMap = [
         path: '/invest/flow',
         name: 'flow',
         meta: {
-          title: '流量方向追查',
+          title: 'Flow Direction Hunting',
           auth: '105',
           icon: 'e-aside-flow',
           parentAuth: '76',
@@ -393,7 +393,7 @@ export const asyncRouterMap = [
         path: '/invest/ioc',
         name: 'ioc',
         meta: {
-          title: 'IOC扫描器',
+          title: 'IOC scanner',
           auth: '109',
           icon: 'e-aside-ioc',
           parentAuth: '76',
@@ -406,7 +406,7 @@ export const asyncRouterMap = [
         path: '/invest/sandbox',
         name: 'sandbox',
         meta: {
-          title: '沙箱',
+          title: 'Sandbox',
           auth: '117',
           icon: 'e-aside-ioc',
           parentAuth: '76',
@@ -422,7 +422,7 @@ export const asyncRouterMap = [
     path: '/report',
     name: 'report',
     meta: {
-      title: '报表',
+      title: 'Reporting',
       icon: 'e-nav-report',
       auth: '123'
     },
@@ -431,7 +431,7 @@ export const asyncRouterMap = [
         path: '/report/create',
         name: 'create',
         meta: {
-          title: '报表生成',
+          title: 'Generate Reports',
           auth: '124',
           icon: 'e-aside-create',
           parentAuth: '123',
@@ -444,7 +444,7 @@ export const asyncRouterMap = [
         path: '/report/sending',
         name: 'sending',
         meta: {
-          title: '报表发送',
+          title: 'Report delivery',
           auth: '130',
           icon: 'e-aside-sending',
           parentAuth: '123',
@@ -460,7 +460,7 @@ export const asyncRouterMap = [
     path: '/system',
     name: 'system',
     meta: {
-      title: '系统',
+      title: 'System',
       icon: 'e-nav-system',
       auth: '132'
     },
@@ -469,7 +469,7 @@ export const asyncRouterMap = [
         path: '/system/manage',
         name: 'manage',
         meta: {
-          title: '设备管理',
+          title: 'Device Management',
           auth: '133',
           icon: 'e-aside-sign',
           parentAuth: '132',
@@ -482,7 +482,7 @@ export const asyncRouterMap = [
         path: '/system/monitor',
         name: 'monitor',
         meta: {
-          title: '受监控IP',
+          title: 'Managed IP Subnets',
           auth: '139',
           icon: 'e-aside-assets',
           parentAuth: '132',
@@ -495,7 +495,7 @@ export const asyncRouterMap = [
         path: '/system/account',
         name: 'account',
         meta: {
-          title: '账号管理',
+          title: 'Account Management',
           auth: '144',
           icon: 'e-aside-works',
           parentAuth: '132',
@@ -508,7 +508,7 @@ export const asyncRouterMap = [
         path: '/system/electric',
         name: 'electric',
         meta: {
-          title: '网络配置',
+          title: 'Network configuration',
           auth: '157',
           icon: 'e-aside-network',
           parentAuth: '132',
@@ -521,7 +521,7 @@ export const asyncRouterMap = [
         path: '/system/option',
         name: 'option',
         meta: {
-          title: '系统选项',
+          title: 'System Options',
           auth: '162',
           icon: 'e-aside-terminal',
           parentAuth: '132',
@@ -534,7 +534,7 @@ export const asyncRouterMap = [
         path: '/system/rule',
         name: 'rule',
         meta: {
-          title: '规则库及白名单',
+          title: 'Libraries and Whitelists',
           auth: '169',
           icon: 'e-aside-journal',
           parentAuth: '132',
@@ -547,7 +547,7 @@ export const asyncRouterMap = [
         path: '/system/react',
         name: 'react',
         meta: {
-          title: '联动',
+          title: 'Integration',
           auth: '183',
           icon: 'e-aside-dns',
           parentAuth: '132',
@@ -560,7 +560,7 @@ export const asyncRouterMap = [
         path: '/system/threat',
         name: 'threat',
         meta: {
-          title: '威胁通知',
+          title: 'Threat Notification',
           auth: '187',
           icon: 'e-aside-user',
           parentAuth: '132',
@@ -573,7 +573,7 @@ export const asyncRouterMap = [
         path: '/system/record',
         name: 'record',
         meta: {
-          title: '日志',
+          title: 'Logging',
           auth: '191',
           icon: 'e-aside-data',
           parentAuth: '132',
@@ -586,7 +586,7 @@ export const asyncRouterMap = [
         path: '/system/resume',
         name: 'resume',
         meta: {
-          title: '恢复/重启',
+          title: 'Restore/Restart',
           auth: '204',
           icon: 'e-aside-flow',
           parentAuth: '132',
@@ -599,7 +599,7 @@ export const asyncRouterMap = [
         path: '/system/licence',
         name: 'licence',
         meta: {
-          title: '许可证',
+          title: 'License',
           auth: '207',
           icon: 'e-aside-ioc',
           parentAuth: '132',
