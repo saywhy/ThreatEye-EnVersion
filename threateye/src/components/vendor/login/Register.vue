@@ -9,12 +9,12 @@
              label-width="0">
       <!--用户名-->
       <el-form-item prop="username">
-        <label class="view-label">账户名称</label>
+        <label class="view-label">User Name</label>
         <el-input class="view-input"
                   @keyup.enter.native="handleLogin"
                   v-model="registerForm.username"
                   auto-complete="off"
-                  placeholder="请输入用户名">
+                  placeholder="Please Enter a User Name">
           <i slot="prefix"
              class="icon-yonghu"></i>
           <div slot="prefix"
@@ -23,13 +23,13 @@
       </el-form-item>
       <!--密码-->
       <el-form-item prop="password">
-        <label class="view-label">用户密码</label>
+        <label class="view-label">Password</label>
         <el-input class="view-input"
                   @keyup.enter.native="handleLogin"
                   :type="passwordType"
                   v-model="registerForm.password"
                   auto-complete="off"
-                  placeholder="请输入密码">
+                  placeholder="Please Enter Your Password">
           <i class="el-icon-view el-input__icon"
              slot="suffix"
              @click="showPassword"></i>
@@ -42,13 +42,13 @@
 
       <!--确认密码-->
       <el-form-item prop="repassword">
-        <label class="view-label">确认密码</label>
+        <label class="view-label">Confirm Password</label>
         <el-input class="view-input"
                   @keyup.enter.native="handleLogin"
                   :type="passwordType"
                   v-model="registerForm.repassword"
                   auto-complete="off"
-                  placeholder="请确认密码">
+                  placeholder="Please confirm the password">
           <i class="el-icon-view el-input__icon"
              slot="suffix"
              @click="showPassword"></i>
@@ -63,7 +63,7 @@
       <el-form-item>
         <el-button type="primary"
                    @click.native.prevent="handleLogin"
-                   class="login-submit">注册管理员</el-button>
+                   class="login-submit">Sign Up</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -104,12 +104,12 @@ export default {
       },
       registerRules: {
         username: [
-          { required: true, message: '用户名不能为空', trigger: 'blur' },
+          { required: true, message: 'User name is required', trigger: 'blur' },
           /*{ min: 2, max: 16, message: '用户名长度为2~16个字符', trigger: 'blur' },*/
           /*{ required: true, trigger: 'blur', validator: validateUsername }*/
         ],
         password: [
-          { required: true, message: '密码不能为空', trigger: 'blur' },
+          { required: true, message: 'Password is required', trigger: 'blur' },
           { min: 8, max: 30, message: '密码长度为8-30位', trigger: 'blur' },
           { required: true, trigger: 'blur', validator: validatePassword }
         ],
@@ -131,7 +131,6 @@ export default {
     },
     handleLogin () {
 
-      console.log('注册')
       this.$refs.registerForm.validate(valid => {
         if (valid) {
           this.$store.dispatch('LoginByUsername', this.registerForm)

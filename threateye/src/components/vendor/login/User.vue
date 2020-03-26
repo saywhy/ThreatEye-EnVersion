@@ -9,12 +9,12 @@
              label-width="0">
       <!--用户名-->
       <el-form-item prop="username">
-        <label class="view-label">账户名称</label>
+        <label class="view-label">User Name</label>
         <el-input class="view-input"
                   @keyup.enter.native="handleLogin"
                   v-model="loginForm.username"
                   auto-complete="off"
-                  placeholder="请输入用户名">
+                  placeholder="Please Enter a User Name">
           <i slot="prefix"
              class="icon-yonghu"></i>
           <div slot="prefix"
@@ -23,13 +23,13 @@
       </el-form-item>
       <!--密码-->
       <el-form-item prop="password">
-        <label class="view-label">用户密码</label>
+        <label class="view-label">Password</label>
         <el-input class="view-input"
                   @keyup.enter.native="handleLogin"
                   :type="passwordType"
                   v-model="loginForm.password"
                   auto-complete="off"
-                  placeholder="请输入密码">
+                  placeholder="Please Enter Your Password">
           <i class="el-icon-view el-input__icon"
              slot="suffix"
              @click="showPassword"></i>
@@ -45,14 +45,14 @@
       <div class="code_info"
            v-show="count >= 3">
         <el-form-item prop="code">
-          <label class="view-label">验证码</label>
+          <label class="view-label">Captcha</label>
           <div class="code-list">
             <el-input class="view-input view-code"
                       maxlength="8"
                       @keyup.enter.native="handleLogin"
                       v-model="loginForm.code"
                       auto-complete="off"
-                      placeholder="请输入图形验证码">
+                      placeholder="Enter CAPTCHA code here">
               <i slot="prefix"
                  class="icon-yanzhengma"></i>
               <div slot="prefix"
@@ -69,7 +69,7 @@
         <div class="code_p3_error">
           <span class="p3_error">
             <i class="el-icon-warning"></i>
-            <span class="p3_error_title">用户名密码输入错误超过三次。</span>
+            <span class="p3_error_title">User name or password entered incorrectly more than three times</span>
             <!-- <a class="p3_tips">点击联系管理员</a>-->
           </span>
         </div>
@@ -79,7 +79,7 @@
       <el-form-item>
         <el-button type="primary"
                    @click.native.prevent="handleLogin"
-                   class="login-submit">登录</el-button>
+                   class="login-submit">Login</el-button>
       </el-form-item>
     </el-form>
 
@@ -126,12 +126,12 @@ export default {
       identifyCode: '',
       loginRules: {
         username: [
-          { required: true, message: '用户名不能为空', trigger: 'blur' },
+          { required: true, message: 'User name is required', trigger: 'blur' },
           /*{ min: 2, max: 16, message: '用户名长度为2~16个字符', trigger: 'blur' },*/
           /*{ required: true, trigger: 'blur', validator: validateUsername }*/
         ],
         password: [
-          { required: true, message: '密码不能为空', trigger: 'blur' },
+          { required: true, message: 'Password is required', trigger: 'blur' },
           /*{ min: 6, message: '密码长度最少为6位', trigger: 'blur' },*/
           /*{ required: true, trigger: 'blur', validator: validatePassword }*/
         ]
@@ -178,14 +178,14 @@ export default {
             this.code = '';
             this.identifyCode = '';
             this.makeCode(this.identifyCodes, 4);
-            callback(new Error('验证码不正确，请重新输入。'))
+            callback(new Error('Incorrect captcha code. Please try again.'))
           } else {
             callback()
           }
         }
         let codeValidate = [
-          { required: true, message: '请输入验证码', trigger: 'blur' },
-          { min: 4, max: 4, message: '验证码长度为4位', trigger: 'blur' },
+          { required: true, message: 'Enter CAPTCHA code here', trigger: 'blur' },
+          { min: 4, max: 4, message: 'Captcha code length is 4', trigger: 'blur' },
           { required: true, validator: validateCode, trigger: 'blur' }
         ]
         this.$set(this.loginRules, 'code', codeValidate);
@@ -197,7 +197,7 @@ export default {
             .then((resp) => {
               //返回成功跳转
               if (resp[0]) {
-                this.$message.success('登录成功');
+                this.$message.success('Login successfully');
                 this.$router.push('/', () => { });//登录成功之后重定向到首页
                 this.count = 0;
                 //失败
