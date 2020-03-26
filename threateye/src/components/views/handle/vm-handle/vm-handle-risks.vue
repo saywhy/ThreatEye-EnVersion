@@ -110,7 +110,7 @@
                   </el-button>
                   <el-dropdown-menu slot="dropdown"
                                     class="dropdown_ul_box">
-                    <el-dropdown-item command="新建工单">Create</el-dropdown-item>
+                    <el-dropdown-item command="Create">Create</el-dropdown-item>
                     <el-dropdown-item command="Add to ticket">Add to ticket</el-dropdown-item>
                   </el-dropdown-menu>
                 </el-dropdown>
@@ -724,7 +724,7 @@ export default {
           this.table.maxPage = maxPage;
           this.table.pageNow = pageNow;
 
-           console.log(data)
+          // console.log(data)
         }
       })
     },
