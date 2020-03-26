@@ -5,7 +5,7 @@
     <div class="invest_box">
       <el-tabs v-model="activeName"
                class="reset_tab">
-        <el-tab-pane label="主机追查"
+        <el-tab-pane label="Host Hunting"
                      class="tabs-item"
                      name="first">
           <div class="invest_top">
@@ -17,20 +17,20 @@
             <vm-emerge-picker @changeTime='changeTime'
                               :option='time_list'></vm-emerge-picker>
             <el-button class="btn_i"
-                       @click="search_data()"> 搜索</el-button>
+                       @click="search_data()">Search</el-button>
             <span class="reset"
                   @click="reset">Reset</span>
             <el-button class="btn_right"
-                       @click="download">下载</el-button>
+                       @click="download">Download</el-button>
           </div>
           <div class="invest_bom">
             <el-button-group>
               <el-button :class="{'active':activeButGroup =='1'}"
-                         @click="activeButGroup = '1'">网络通讯</el-button>
+                         @click="activeButGroup = '1'">Network Communication</el-button>
               <el-button :class="{'active':activeButGroup =='2'}"
-                         @click="activeButGroup = '2'">文件</el-button>
+                         @click="activeButGroup = '2'">Files</el-button>
               <el-button :class="{'active':activeButGroup =='3'}"
-                         @click="activeButGroup = '3'">用户</el-button>
+                         @click="activeButGroup = '3'">Users</el-button>
             </el-button-group>
             <!-- 网络通信 -->
             <div v-show="activeButGroup=='1'">
@@ -48,7 +48,7 @@
                 </el-table-column>
                 <el-table-column prop="timestamp"
                                  width="320"
-                                 label="时间"
+                                 label="Time"
                                  show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column prop="src_ip"
@@ -68,7 +68,7 @@
                                  show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column prop="email"
-                                 label="Email地址"
+                                 label="Email"
                                  show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column prop="application"
@@ -101,15 +101,15 @@
                   </template>
                 </el-table-column>
                 <el-table-column prop="file_name"
-                                 label="文件名"
+                                 label="File Name"
                                  show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column prop="md5"
-                                 label="哈希值"
+                                 label="Hash"
                                  show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column prop="source"
-                                 label="来源"
+                                 label="Source"
                                  show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column prop="host_ip"
@@ -146,7 +146,7 @@
                   </template>
                 </el-table-column>
                 <el-table-column prop="user_name"
-                                 label="用户名"
+                                 label="User Name"
                                  show-overflow-tooltip>
                 </el-table-column>
                 <el-table-column prop="host_ip"
@@ -262,7 +262,7 @@ export default {
           if (data.count > 10000) {
             this.$message({
               type: 'warning',
-              message: '数据超过一万条,请缩小搜索条件!'
+              message: 'Over 10,000 search results returned, please narrow the search conditions.'
             });
             return false
           }
@@ -295,7 +295,7 @@ export default {
           if (data.count > 10000) {
             this.$message({
               type: 'warning',
-              message: '数据超过一万条,请缩小搜索条件!'
+              message: 'Over 10,000 search results returned, please narrow the search conditions.'
             });
             return false
           }
@@ -327,7 +327,7 @@ export default {
           if (data.count > 10000) {
             this.$message({
               type: 'warning',
-              message: '数据超过一万条,请缩小搜索条件!'
+              message: 'Over 10,000 search results returned, please narrow the search conditions.'
             });
             return false
           }
@@ -356,14 +356,14 @@ export default {
           if (!this.host_network.data || this.host_network.data.data.length == 0) {
             this.$message({
               type: 'warning',
-              message: '请先搜索需要下载的数据！'
+              message: 'Please search for data before downloading'
             });
             return false
           }
           if (this.host_network.count > 1000) {
             this.$message({
               type: 'warning',
-              message: '下载数据不能超出1000条！'
+              message: 'Downloaded data cannot exceed 1000 records!'
             });
             return false
           }
@@ -374,14 +374,14 @@ export default {
           if (!this.host_file.data || this.host_file.data.data.length == 0) {
             this.$message({
               type: 'warning',
-              message: '请先搜索需要下载的数据！'
+              message: 'Please search for data before downloading'
             });
             return false
           }
           if (this.host_file.count > 1000) {
             this.$message({
               type: 'warning',
-              message: '下载数据不能超出1000条！'
+              message: 'Downloaded data cannot exceed 1000 records!'
             });
             return false
           }
@@ -392,14 +392,14 @@ export default {
           if (!this.host_user.data || this.host_user.data.data.length == 0) {
             this.$message({
               type: 'warning',
-              message: '请先搜索需要下载的数据！'
+              message: 'Please search for data before downloading'
             });
             return false
           }
           if (this.host_user.count > 1000) {
             this.$message({
               type: 'warning',
-              message: '下载数据不能超出1000条！'
+              message: 'Downloaded data cannot exceed 1000 records!'
             });
             return false
           }

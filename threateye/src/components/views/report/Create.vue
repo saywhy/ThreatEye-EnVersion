@@ -3,13 +3,13 @@
        v-loading.fullscreen.lock="report.loading">
     <div class="r_top">
       <div class="r_content_top">
-        <h3 class="title">报表生成</h3>
+        <h3 class="title">Generate Reports</h3>
       </div>
       <el-form class="r_content_main">
         <el-row type="flex"
                 class="r_main_list">
           <el-col :span="3">
-            <span class="title">时间范围</span>
+            <span class="title">Time Range</span>
           </el-col>
           <el-col :span="21">
             <div class="r_time">
@@ -20,7 +20,7 @@
         <el-row type="flex"
                 class="r_main_list">
           <el-col :span="3">
-            <span class="title">发送格式</span>
+            <span class="title">Format</span>
           </el-col>
           <el-col :span="21">
             <div class="r_radio">
@@ -36,11 +36,11 @@
         <el-row type="flex"
                 class="r_main_list r_special_list">
           <el-col :span="3">
-            <span class="title">报表名称</span>
+            <span class="title">Report name</span>
           </el-col>
           <el-col :span="21">
             <el-input class="report-input"
-                      placeholder="请输入报表名称"
+                      placeholder="Please enter the report name"
                       v-model="report.name"
                       clearable>
             </el-input>
@@ -69,18 +69,18 @@
               </template>
             </el-table-column>
             <el-table-column prop="create_time"
-                             label="日期"></el-table-column>
+                             label="Date"></el-table-column>
             <el-table-column prop="report_name"
-                             label="名称"></el-table-column>
-            <el-table-column label='时间范围'>
+                             label="Name"></el-table-column>
+            <el-table-column label='Time Range'>
               <template slot-scope="scope">
                 <span>{{scope.row.stime}}</span>
-                <span>至</span>
+                <span>-</span>
                 <span>{{scope.row.etime}}</span>
               </template>
             </el-table-column>
             <el-table-column prop="report_type"
-                             label="格式"></el-table-column>
+                             label="Format"></el-table-column>
             <el-table-column label='Operation'>
               <template slot-scope="scope">
                 <img src="@/assets/images/common/download.png"
@@ -174,7 +174,7 @@ export default {
       if (this.report.name == '') {
         this.$message(
           {
-            message: '请输入报表名称',
+            message: 'Please enter the report name',
             type: 'warning',
           }
         );
@@ -183,7 +183,7 @@ export default {
       if (this.report.start_time == '' || this.report.end_time == '') {
         this.$message(
           {
-            message: '请选择时间范围！',
+            message: 'Please select a time range',
             type: 'warning',
           }
         );
@@ -236,7 +236,7 @@ export default {
                     this.get_data();
                     this.$message(
                       {
-                        message: '报表生成成功',
+                        message: 'Report generated successfully',
                         type: 'success',
                       }
                     );
@@ -266,7 +266,7 @@ export default {
               this.get_data();
               this.$message(
                 {
-                  message: '报表生成成功!',
+                  message: 'Report generated successfully',
                   type: 'success',
                 }
               );
@@ -314,7 +314,7 @@ export default {
           bottom: 'center'
         },
         series: [{
-          name: '未处理告警',
+          name: 'Unresolved Alerts',
           type: 'pie',
           animation: false,
           radius: '60%',
@@ -324,7 +324,7 @@ export default {
           selectedMode: 'single',
           data: [{
             value: this.untreatedAlarm_data.high_total_count,
-            name: '高危',
+            name: 'High',
             itemStyle: {
               normal: {
                 color: '#962116'
@@ -333,7 +333,7 @@ export default {
           },
           {
             value: this.untreatedAlarm_data.medium_total_count,
-            name: '中危',
+            name: 'Medium',
             itemStyle: {
               normal: {
                 color: '#F5BF41'
@@ -342,7 +342,7 @@ export default {
           },
           {
             value: this.untreatedAlarm_data.low_total_count,
-            name: '低危',
+            name: 'Low',
             itemStyle: {
               normal: {
                 color: '#4AA46E'
@@ -425,7 +425,7 @@ export default {
           type: 'bar',
           barWidth: 20,
           animation: false,
-          stack: '搜索引擎',
+          stack: 'abc',
           itemStyle: {
             normal: {
               barBorderRadius: [4, 4, 4, 4], //柱形图圆角，初始化效果
@@ -487,7 +487,7 @@ export default {
           }
         },
         series: [{
-          name: '文件',
+          name: 'file',
           type: 'line',
           smooth: true,
           animation: false,
@@ -575,7 +575,7 @@ export default {
           type: 'bar',
           barWidth: 20,
           animation: false,
-          stack: '搜索引擎',
+          stack: 'abc',
           itemStyle: {
             normal: {
               barBorderRadius: [4, 4, 4, 4], //柱形图圆角，初始化效果

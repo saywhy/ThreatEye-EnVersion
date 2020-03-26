@@ -7,16 +7,16 @@
       <el-tabs v-model="activeName"
                @tab-click="handleClick"
                class="reset_tab">
-        <el-tab-pane label="数据传输追查"
+        <el-tab-pane label="Data Transmission Hunting"
                      class="tabs-item"
                      name="first">
           <div class="invest_top">
-            <el-input placeholder="流量超过(B)"
+            <el-input placeholder="Flow over (B)"
                       class="search_box"
                       v-model="data_search.flow_size"
                       clearable>
             </el-input>
-            <el-input placeholder="链接时长超过(S)"
+            <el-input placeholder="Link duration over (S)"
                       class="search_box"
                       v-model="data_search.flow_duration"
                       clearable>
@@ -29,11 +29,11 @@
             <vm-emerge-picker @changeTime='changeTime'
                               :option='time_list'></vm-emerge-picker>
             <el-button class="btn_i"
-                       @click="search"> 搜索</el-button>
+                       @click="search">Search</el-button>
             <span class="reset"
                   @click="reset">Reset</span>
             <el-button class="btn_right"
-                       @click="download">下载</el-button>
+                       @click="download">Download</el-button>
           </div>
           <div class="invest_bom">
             <el-table ref="multipleTable"
@@ -50,20 +50,20 @@
               </el-table-column>
               <el-table-column prop="timestamp"
                                width="320"
-                               label="时间"
+                               label="Time"
                                show-overflow-tooltip>
               </el-table-column>
               <el-table-column prop="host_ip"
                                label="Host"
                                show-overflow-tooltip>
               </el-table-column>
-              <el-table-column label="流量"
+              <el-table-column label="Flow"
                                show-overflow-tooltip>
                 <template slot-scope="scope">
                   <span>{{scope.row.flow_bytes| filterType }}</span>
                 </template>
               </el-table-column>
-              <el-table-column label="链接时长"
+              <el-table-column label="Link Duration"
                                show-overflow-tooltip>
                 <template slot-scope="scope">
                   <span>{{scope.row.flow_duration +' S' }}</span>
@@ -146,7 +146,7 @@ export default {
           if (data.count > 10000) {
             this.$message({
               type: 'warning',
-              message: '数据超过一万条,请缩小搜索条件!'
+              message: 'Over 10,000 search results returned, please narrow the search conditions.'
             });
             return false
           }
@@ -174,14 +174,14 @@ export default {
       if (!this.data_list.data || this.data_list.data.data.length == 0) {
         this.$message({
           type: 'warning',
-          message: '请先搜索需要下载的数据！'
+          message: 'Please search for data before downloading'
         });
         return false
       }
       if (this.data_list.count > 1000) {
         this.$message({
           type: 'warning',
-          message: '下载数据不能超出1000条！'
+          message: 'Downloaded data cannot exceed 1000 records!'
         });
         return false
       }

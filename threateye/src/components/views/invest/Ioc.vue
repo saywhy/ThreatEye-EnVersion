@@ -5,7 +5,7 @@
     <div class="invest_box">
       <el-tabs v-model="activeName"
                class="reset_tab">
-        <el-tab-pane label="IOC扫描器"
+        <el-tab-pane label="IOC Scanner"
                      class="tabs-item"
                      name="first">
           <div class="invest_top">
@@ -36,9 +36,9 @@
             </div>
             <div>
               <el-button class="btn_down"
-                         @click="download_list">下载</el-button>
+                         @click="download_list">Download</el-button>
               <el-button class="btn_del"
-                         @click="del_list">删除</el-button>
+                         @click="del_list">Delete</el-button>
             </div>
 
           </div>
@@ -65,10 +65,10 @@
                 </template>
               </el-table-column>
               <el-table-column prop="upload_file_name"
-                               label="文件名"
+                               label="File Name"
                                show-overflow-tooltip>
               </el-table-column>
-              <el-table-column label="进度"
+              <el-table-column label="Progress"
                                width="100"
                                show-overflow-tooltip>
                 <template slot-scope="scope">
@@ -79,7 +79,7 @@
                                width="100"
                                show-overflow-tooltip>
                 <template slot-scope="scope">
-                  <span>{{scope.row.create_status ==0?"失败":'成功' }}</span>
+                  <span>{{scope.row.create_status ==0?"fail":'success' }}</span>
                 </template>
               </el-table-column>
               <el-table-column prop="create_time"

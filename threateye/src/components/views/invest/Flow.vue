@@ -5,13 +5,13 @@
     <div class="invest_box">
       <el-tabs v-model="activeName"
                class="reset_tab">
-        <el-tab-pane label="流量方向追查"
+        <el-tab-pane label="Flow Direction Hunting"
                      class="tabs-item"
                      name="first">
           <div class="invest_top">
             <el-select class="select_box"
                        v-model="flow_search.direction"
-                       placeholder="流量方向">
+                       placeholder="Flow">
               <el-option v-for="item in flow_search.direction_list"
                          :key="item.type"
                          :label="item.name"
@@ -26,11 +26,11 @@
             <vm-emerge-picker @changeTime='changeTime'
                               :option='time_list'></vm-emerge-picker>
             <el-button class="btn_i"
-                       @click="search"> 搜索</el-button>
+                       @click="search">Search</el-button>
             <span class="reset"
                   @click="reset">Reset</span>
             <el-button class="btn_right"
-                       @click="download">下载</el-button>
+                       @click="download">Download</el-button>
           </div>
           <div class="invest_bom">
             <el-table ref="multipleTable"
@@ -47,20 +47,20 @@
               </el-table-column>
               <el-table-column prop="timestamp"
                                width="320"
-                               label="时间"
+                               label="Time"
                                show-overflow-tooltip>
               </el-table-column>
               <el-table-column prop="host_ip"
                                label="Host"
                                show-overflow-tooltip>
               </el-table-column>
-              <el-table-column label="流量"
+              <el-table-column label="Flow"
                                show-overflow-tooltip>
                 <template slot-scope="scope">
                   <span>{{scope.row.flow_bytes| filterType }}</span>
                 </template>
               </el-table-column>
-              <el-table-column label="链接时长"
+              <el-table-column label="Link Duration"
                                show-overflow-tooltip>
                 <template slot-scope="scope">
                   <span>{{scope.row.flow_duration +' S' }}</span>
@@ -106,10 +106,10 @@ export default {
       flow_search: {
         loading: false,
         direction_list: [
-          { name: '内网到外网', type: '0' },
-          { name: '外网到内网', type: '1' },
-          { name: '内网到内网', type: '2' },
-          { name: '其他', type: '3' },
+          { name: 'Intranet to extranet', type: '0' },
+          { name: 'Extranet to intranet', type: '1' },
+          { name: 'Intranet to intrane', type: '2' },
+          { name: 'Others', type: '3' },
         ],
         direction: '0',
         host_ip: '',
@@ -151,7 +151,7 @@ export default {
           if (data.count > 10000) {
             this.$message({
               type: 'warning',
-              message: '数据超过一万条,请缩小搜索条件!'
+              message: 'Over 10,000 search results returned, please narrow the search conditions.'
             });
             return false
           }
@@ -178,14 +178,14 @@ export default {
       if (!this.flow_list.data || this.flow_list.data.data.length == 0) {
         this.$message({
           type: 'warning',
-          message: '请先搜索需要下载的数据！'
+          message: 'Please search for data before downloading'
         });
         return false
       }
       if (this.flow_list.count > 1000) {
         this.$message({
           type: 'warning',
-          message: '下载数据不能超出1000条！'
+          message: 'Downloaded data cannot exceed 1000 records!'
         });
         return false
       }

@@ -4,13 +4,12 @@
       <div class="invest_box">
         <el-tabs v-model="activeName"
                  class="reset_tab">
-          <el-tab-pane label="沙箱"
+          <el-tab-pane label="Sandbox"
                        class="tabs-item"
                        name="first">
             <div class="top">
               <uploader :options="options"
                         :autoStart='false'
-                        :fileStatusText='fileStatusText'
                         @file-added="onFileAdded"
                         @file-success="onFileSuccess"
                         @file-progress="onFileProgress"
@@ -22,7 +21,7 @@
                      alt="">
                 <uploader-drop>
                   <uploader-btn class="select_btn">Upload</uploader-btn>
-                  <span>请选择需要扫描上传的文件(最大100M)</span>
+                  <span>Please select files to be scanned (maximum 100M)</span>
                 </uploader-drop>
                 <uploader-list></uploader-list>
               </uploader>
@@ -34,7 +33,7 @@
                         :data="sandbox_list.data"
                         tooltip-effect="dark"
                         style="width: 100%">
-                <el-table-column label="结果"
+                <el-table-column label="Result"
                                  width='120'
                                  show-overflow-tooltip>
                   <template slot-scope="scope">
@@ -48,18 +47,18 @@
                     <span>{{scope.row.created_at*1000 | formatDate}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="扫描状态"
+                <el-table-column label="Scanning State"
                                  width='150'
                                  show-overflow-tooltip>
                   <template slot-scope="scope">
-                    <span>{{scope.row.status=='1'?'扫描中':"扫描结束"}}</span>
+                    <span>{{scope.row.status=='1'?'In scanning':"Scan finished"}}</span>
                   </template>
                 </el-table-column>
                 <el-table-column prop="upload_name"
-                                 label='文件名'
+                                 label='File Name'
                                  show-overflow-tooltip>
                 </el-table-column>
-                <el-table-column label='扫描详情'
+                <el-table-column label='Details'
                                  width='100'>
                   <template slot-scope="scope">
                     <img src="@/assets/images/common/download.png"
@@ -108,21 +107,6 @@ export default {
         target: '/yiiapi/sandbox/upload',
         chunkSize: '10048000',   //分块大小
         testChunks: false,     //是否开启服务器分片校验
-        parseTimeRemaining: function (timeRemaining, parsedTimeRemaining) {
-          return parsedTimeRemaining
-            .replace(/\syears?/, '年')
-            .replace(/\days?/, '天')
-            .replace(/\shours?/, '小时')
-            .replace(/\sminutes?/, '分钟')
-            .replace(/\sseconds?/, '秒')
-        }
-      },
-      fileStatusText: {
-        success: '成功',
-        error: '错误',
-        uploading: '上传中',
-        paused: '暂停',
-        waiting: '等待'
       },
       sandbox_list: {
       },
@@ -142,7 +126,7 @@ export default {
       file.pause()
       if (file.size > 100 * 1024 * 1024) {
         this.$message({
-          message: '上传文件大小不能超过 100MB!',
+          message: 'File size cannot exceed 100 MB',
           type: 'warning'
         });
         setTimeout(() => {
@@ -206,10 +190,10 @@ export default {
             this.sandbox_list.data.forEach((item, index) => {
               switch (item.result) {
                 case '0':
-                  item.result_cn = '发现威胁'
+                  item.result_cn = 'Threat detected'
                   break;
                 case '1':
-                  item.result_cn = '未发现威胁'
+                  item.result_cn = 'No threat'
                   break;
                 case '2':
                   item.result_cn = ''

@@ -5,7 +5,7 @@
     <div class="invest_box">
       <el-tabs v-model="activeName"
                class="reset_tab">
-        <el-tab-pane label="IP/URL追查"
+        <el-tab-pane label="IP/URL Hunting"
                      class="tabs-item"
                      name="first">
           <div class="invest_top">
@@ -32,11 +32,11 @@
             <vm-emerge-picker @changeTime='changeTime'
                               :option='time_list'></vm-emerge-picker>
             <el-button class="btn_i"
-                       @click="search"> 搜索</el-button>
+                       @click="search">Search</el-button>
             <span class="reset"
                   @click="reset">Reset</span>
             <el-button class="btn_right"
-                       @click="download">下载</el-button>
+                       @click="download">Download</el-button>
           </div>
           <div class="invest_bom">
             <el-table ref="multipleTable"
@@ -53,7 +53,7 @@
               </el-table-column>
               <el-table-column prop="timestamp"
                                width="320"
-                               label="时间"
+                               label="Time"
                                show-overflow-tooltip>
               </el-table-column>
               <el-table-column prop="src_ip"
@@ -163,7 +163,7 @@ export default {
           if (data.count > 10000) {
             this.$message({
               type: 'warning',
-              message: '数据超过一万条,请缩小搜索条件!'
+              message: 'Over 10,000 search results returned, please narrow the search conditions.'
             });
             return false
           }
@@ -192,14 +192,14 @@ export default {
       if (!this.url_list.data || this.url_list.data.data.length == 0) {
         this.$message({
           type: 'warning',
-          message: '请先搜索需要下载的数据！'
+          message: 'Please search for data before downloading'
         });
         return false
       }
       if (this.url_list.count > 1000) {
         this.$message({
           type: 'warning',
-          message: '下载数据不能超出1000条！'
+          message: 'Downloaded data cannot exceed 1000 records!'
         });
         return false
       }

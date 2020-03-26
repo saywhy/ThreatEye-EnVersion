@@ -2,48 +2,48 @@
   <div id="report-sending">
     <div class="r_top">
       <div class="r_content_top">
-        <h3 class="title">报表发送</h3>
+        <h3 class="title">Report Delivery</h3>
       </div>
       <el-form class="r_content_main">
         <el-row type="flex"
                 class="r_main_list">
           <el-col :span="3">
-            <span class="title">状态</span>
+            <span class="title">Status</span>
           </el-col>
           <el-col :span="21">
             <div class="r_radio">
               <el-radio v-model="send_config.status"
                         label="1"
-                        class="r_radio_item">启用</el-radio>
+                        class="r_radio_item">Enable</el-radio>
               <el-radio v-model="send_config.status"
                         label="0"
-                        class="r_radio_item">停用</el-radio>
+                        class="r_radio_item">Disable</el-radio>
             </div>
           </el-col>
         </el-row>
         <el-row type="flex"
                 class="r_main_list">
           <el-col :span="3">
-            <span class="title">发送周期</span>
+            <span class="title">Cycle</span>
           </el-col>
           <el-col :span="21">
             <div class="r_radio">
               <el-radio v-model="send_config.cycle"
                         label="daily"
-                        class="r_radio_item">每日</el-radio>
+                        class="r_radio_item">Daily</el-radio>
               <el-radio v-model="send_config.cycle"
                         label="weekly"
-                        class="r_radio_item">每周</el-radio>
+                        class="r_radio_item">Weekly</el-radio>
               <el-radio v-model="send_config.cycle"
                         label="monthly"
-                        class="r_radio_item">每月</el-radio>
+                        class="r_radio_item">Monthly</el-radio>
             </div>
           </el-col>
         </el-row>
         <el-row type="flex"
                 class="r_main_list">
           <el-col :span="3">
-            <span class="title">发送格式</span>
+            <span class="title">Format</span>
           </el-col>
           <el-col :span="21">
             <div class="r_radio">
@@ -59,13 +59,13 @@
         <el-row type="flex"
                 class="r_main_list r_special_list">
           <el-col :span="3">
-            <span class="title">收件人邮箱</span>
+            <span class="title">Recipient</span>
           </el-col>
           <el-col :span="21">
             <div class="item_addrs"
                  v-for="(item,index) in send_config.receiver_list">
               <el-input class="select_box"
-                        placeholder="请输收件人邮箱,最多可以设置5个收件人邮箱。"
+                        placeholder="Please enter the recipient's mailbox, up to 5 mailboxes can be set."
                         v-model="item.name"
                         clearable>
               </el-input>
@@ -146,7 +146,7 @@ export default {
       if (this.send_config.receiver_list.length == 0) {
         this.$message(
           {
-            message: '请输入发件人邮箱',
+            message: 'Please enter the sender mailbox',
             type: 'warning',
           }
         );
@@ -171,7 +171,7 @@ export default {
             this.get_data();
             this.$message(
               {
-                message: '修改成功',
+                message: 'Update successfully',
                 type: 'success',
               }
             );
@@ -191,7 +191,7 @@ export default {
       } else {
         this.$message.warning(
           {
-            message: '最多可以设置5个收件人邮箱。',
+            message: 'Up to 5 recipient mailboxes can be set',
             offset: 50
           })
       }
