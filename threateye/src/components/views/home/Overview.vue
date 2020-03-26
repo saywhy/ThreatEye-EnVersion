@@ -904,7 +904,7 @@ export default {
             }
           },
           {
-            name: "内存",
+            name: "Memory",
             type: "line",
             symbol: "none",
             cursor: "pointer",
