@@ -4,7 +4,7 @@
     <a class="back"
        onclick="javascript:window.history.go(-1);">
       <span class="el-icon-arrow-left"></span>
-      <span class="e-title">返回</span>
+      <span class="e-title">Return</span>
     </a>
     <h4 class="e-name">{{titleName}}</h4>
   </div>
@@ -16,7 +16,7 @@ export default {
   props: {
     titleName: {
       type: String,
-      default: "通知消息"
+      default: "Notification Message"
     }
   },
   directives: {

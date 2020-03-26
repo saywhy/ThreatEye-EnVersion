@@ -4,7 +4,7 @@ export default (Vue) => {
         //console.log(binding);
         let more = document.createElement("a");
         more.style = "display:inline-table;color:#0070FF;font-size: 12px;font-family: PingFang;";
-        more.innerHTML = `<span>更多</span><span class="el-icon-d-arrow-right"></span>`;
+        more.innerHTML = `<span>Return</span><span class="el-icon-d-arrow-right"></span>`;
         /*more.onclick = function(){
         }*/
         el.appendChild(more);
@@ -52,7 +52,7 @@ export default (Vue) => {
         let badge = document.createElement("sup");
         badge.className = 'e-badge';
         badge.innerText = '1111';
-        let status = `<div>超小按钮</div>`
+        let status = `<div>Ultra small button</div>`
         el.appendChild(status);
 
         /*if (!binding.value ||
