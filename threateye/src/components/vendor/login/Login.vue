@@ -18,7 +18,7 @@
         <Register v-if="!stu"></Register>
       </div>
     </div>
-    <p class="ty_copyright">©虎特信息科技（上海）有限公司 版权所有</p>
+    <p class="ty_copyright">©Hoohoolab Information Technology (Shanghai) Co., Ltd. All rights reserved</p>
 
   </div>
 </template>

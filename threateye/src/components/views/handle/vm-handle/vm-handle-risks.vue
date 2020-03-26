@@ -724,7 +724,7 @@ export default {
           this.table.maxPage = maxPage;
           this.table.pageNow = pageNow;
 
-          // console.log(data)
+           console.log(data)
         }
       })
     },

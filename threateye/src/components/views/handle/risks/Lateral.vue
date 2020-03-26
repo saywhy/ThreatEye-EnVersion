@@ -11,16 +11,16 @@
          <div class="osm-middle">
            <dl>
              <dt class="osm-dt">Threat Description</dt>
-             <dd class="osm-dd">横向威胁是指攻击者为了了解所处的网络环境或者找到网络内的目标而实施的内网的扫描、暴力破解、漏洞利用、远程账号登录、远程程序以及命令执行等动作。</dd>
+             <dd class="osm-dd">Lateral Movement refers to the internal network scanning, brute force, vulnerability exploitation, remote account login, remote program and command execution and other actions performed by the attacker in order to understand the network environment or find the target in the network.</dd>
            </dl>
            <dl>
              <dt class="osm-dt">Security Recommendations</dt>
              <dd class="osm-dd">
                <ul>
-                 <li>1、及时更新补丁，特别是高危漏洞刚发布的几天是高级攻击的高发期；</li>
-                 <li>2、部署带有静态分析、动态分析、漏洞防御、主机防火墙、主机IPS等多重防御功能的端点安全解决方案；</li>
-                 <li>3、采用端点检测和响应解决方案（EDR）大力提升在端点上的威胁检测和响应的能力，包括合法账号的异常登录、系统自带或者管理员使用的工具的非法使用等；</li>
-                 <li>4、部署东西向流量的网络威胁检测和响应解决方案。</li>
+                 <li>1. Update patches in time, especially the first few days of critical vulnerability releases is a high incidence period of advanced attacks;</li>
+                 <li>2. Deploy endpoint security solutions with multiple defense functions such as static analysis, dynamic analysis, anti-exploitation, host firewall, host IPS, etc;</li>
+                 <li>3. Adopt Endpoint Detection and Response Solution (EDR) to greatly enhance the capability of threat detection and response on endpoints, including abnormal login of legitimate accounts, illegal use of tools provided by the system or used by administrators, etc;</li>
+                 <li>4. Deploy network threat detection and response solutions for east-west traffic.</li>
                </ul>
              </dd>
            </dl>

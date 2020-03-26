@@ -157,7 +157,7 @@
                 v-if="attack_stage_list[0].count>1">
             {{attack_stage_list[0].count}}
           </span>
-          <span :class="attack_stage_list[0].count>0?'count_color':''">初始访问</span>
+          <span :class="attack_stage_list[0].count>0?'count_color':''">Initial Access</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -168,7 +168,7 @@
                 v-if="attack_stage_list[1].count>1">
             {{attack_stage_list[1].count}}
           </span>
-          <span :class="attack_stage_list[1].count>0?'count_color':''">执行</span>
+          <span :class="attack_stage_list[1].count>0?'count_color':''">Execution</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -179,7 +179,7 @@
                 v-if="attack_stage_list[2].count>1">
             {{attack_stage_list[2].count}}
           </span>
-          <span :class="attack_stage_list[2].count>0?'count_color':''">持久化</span>
+          <span :class="attack_stage_list[2].count>0?'count_color':''">Persistence</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -190,7 +190,7 @@
                 v-if="attack_stage_list[3].count>1">
             {{attack_stage_list[3].count}}
           </span>
-          <span :class="attack_stage_list[3].count>0?'count_color':''">提权</span>
+          <span :class="attack_stage_list[3].count>0?'count_color':''">Privilege Escalation</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -201,7 +201,7 @@
                 v-if="attack_stage_list[4].count>1">
             {{attack_stage_list[4].count}}
           </span>
-          <span :class="attack_stage_list[4].count>0?'count_color':''">防御逃逸</span>
+          <span :class="attack_stage_list[4].count>0?'count_color':''">Defense Evasion</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -212,7 +212,7 @@
                 v-if="attack_stage_list[5].count>1">
             {{attack_stage_list[5].count}}
           </span>
-          <span :class="attack_stage_list[5].count>0?'count_color':''">凭证访问</span>
+          <span :class="attack_stage_list[5].count>0?'count_color':''">Credential Access</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -223,7 +223,7 @@
                 v-if="attack_stage_list[6].count>1">
             {{attack_stage_list[6].count}}
           </span>
-          <span :class="attack_stage_list[6].count>0?'count_color':''">信息发现</span>
+          <span :class="attack_stage_list[6].count>0?'count_color':''">Discovery</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -234,7 +234,7 @@
                 v-if="attack_stage_list[7].count>1">
             {{attack_stage_list[7].count}}
           </span>
-          <span :class="attack_stage_list[7].count>0?'count_color':''">横向移动</span>
+          <span :class="attack_stage_list[7].count>0?'count_color':''">Lateral Movement</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -245,7 +245,7 @@
                 v-if="attack_stage_list[8].count>1">
             {{attack_stage_list[8].count}}
           </span>
-          <span :class="attack_stage_list[8].count>0?'count_color':''">信息收集</span>
+          <span :class="attack_stage_list[8].count>0?'count_color':''">Collection</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -256,7 +256,7 @@
                 v-if="attack_stage_list[9].count>1">
             {{attack_stage_list[9].count}}
           </span>
-          <span :class="attack_stage_list[9].count>0?'count_color':''">命令控制</span>
+          <span :class="attack_stage_list[9].count>0?'count_color':''">Command and Control</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -267,7 +267,7 @@
                 v-if="attack_stage_list[10].count>1">
             {{attack_stage_list[10].count}}
           </span>
-          <span :class="attack_stage_list[10].count>0?'count_color':''">信息泄露</span>
+          <span :class="attack_stage_list[10].count>0?'count_color':''">Exfiltration</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -278,7 +278,7 @@
                 v-if="attack_stage_list[11].count>1">
             {{attack_stage_list[11].count}}
           </span>
-          <span :class="attack_stage_list[11].count>0?'count_color':''">毁坏</span>
+          <span :class="attack_stage_list[11].count>0?'count_color':''">Impact</span>
         </div>
       </div>
     </div>
@@ -324,7 +324,7 @@
         <div style="margin-top:12px;"
              v-if="notes">
           <span class="suggest_bom_title"
-                style="color:#ff5f5c">注：本处只提供了本资产一个告警的处置建议，请参考下列告警详情获取所有告警的处置建议。</span>
+                style="color:#ff5f5c">Note: Here only provides recommendations for mitigation one alert of the asset. Please refer to the details of the following alerts for recommendations on mitigation all alerts.</span>
         </div>
       </div>
     </div>
@@ -334,7 +334,7 @@
 
       <el-tabs v-model="activeName">
         <!-- 网络风险视角 -->
-        <el-tab-pane label="告警列表"
+        <el-tab-pane label="Alert List"
                      class="tabs-item"
                      name="first">
           <el-table class="handle_table_detail"
@@ -732,7 +732,7 @@ export default {
       network_times: [],
       network_detail: {},
       detail: {},
-      title_name: "风险资产详情",
+      title_name: "Risk Assets Details",
       activeName: 'first',
       assets_top: {},
       table: {
@@ -901,51 +901,51 @@ export default {
           reinforce: [],
         },
         {
-          name: '恶意文件通讯',
-          des: '攻击者在机器上装了恶意程序，该恶意程序通过常见的协议或者定制的协议和外部服务器通讯。',
+          name: 'malwarecommunication',
+          des: 'An attacker installs a malicious program on a machine that communicates with an external server via a common protocol or custom protocol.',
           handle: [
-            '1、把机器从网络隔离；',
-            '2、根据告警详情里的“网络事件”里的机器端口定位机器的恶意进程；',
-            '3、做安全分析确认根因以及威胁扩散程度。如果安装有EDR解决方案，可以直接通过历史信息做安全事件调查快速定位问题；',
-            '4、安装防病毒软件做全盘扫描。',
+            '1. Isolate the machine from the network;',
+            '2. Locate the malicious process at the machine according to the port in the network event of the alert details;',
+            '3. Do a security analysis to identify the root cause and the extent the threat has spread. If you have an EDR solution installed, you can quickly locate the problem by doing security incident investigation directly through historical information;',
+            '4. Install anti-virus software for full system scanning.',
           ],
           reinforce: [
-            '1、提升端点安全能力；',
-            '2、用网络安全设备禁止不需要联网的设备联网；',
-            '3、用网络威胁检测工具及早发现外联威胁。',
+            '1. Enhance endpoint security capabilities;',
+            '2. Block the network connection of devices that do not need Internet access with network security devices;',
+            '3. Use network threat detection solutions to detect outreach threats as early as possible.',
           ],
         },
         {
-          name: '广告软件	Adware',
-          des: '广告软件是危险性相对较低的恶意软件，但可能会导致更大的威胁发生，所以也需要及时清除。',
+          name: 'Adware',
+          des: 'Adware is of relatively low-risk, but sometimes it can lead to greater threats, thus has to be cleaned up in time.',
           handle: [
-            '1、把机器从网络隔离；',
-            '2、根据告警详情里的“网络事件”里的机器端口定位机器的恶意进程；',
-            '3、做安全分析确认根因以及威胁扩散程度。如果安装有EDR解决方案，可以直接通过历史信息做安全事件调查快速定位问题；',
-            '4、安装防病毒软件做全盘扫描。',
+            '1. Isolate the machine from the network;',
+            '2. Locate the malicious process at the machine according to the port in the network event of the alert details;',
+            '3. Do a security analysis to identify the root cause and the extent the threat has spread. If an EDR solution is installed, you can quickly locate the problem by doing security incident investigation directly through historical information;',
+            '4. Install anti-virus software for full system scanning.',
           ],
           reinforce: [
-            '1、提升端点安全能力；',
-            '2、用网络安全设备禁止不需要联网的设备联网；',
-            '3、用网络威胁检测工具及早发现外联威胁。',
+            '1. Enhance endpoint security capabilities;',
+            '2. Block the network connection of devices that do not need Internet access with network security devices;',
+            '3. Use network threat detection solutions to detect outreach threats as early as possible.',
           ],
         },
         {
-          name: '危险工具	graytool',
-          des: '危险工具有可能被管理员或者是内部的安全工具所使用，但大部分情况是网络失陷的标志。这些工具有可能用于扫描、信息收集或者是控制，需要看具体工具确定攻击目的。',
+          name: 'graytool',
+          des: 'Graytool may be used by administrators as internal security tools, but in most cases they are signs of compromise. These tools may be used for scanning, information collection or control; need to determine the purpose of the attack according to specific tools.',
           handle: [
-            '1、确认是否是管理员或者是安全工具的合法使用；',
-            '2、如果不是，需要根据威胁指标的提示做相应的处置。',
+            '1. Verify whether it is the legit use of an administrator;',
+            '2. If not, it should be dealt with according to the threat indicator.',
           ],
           reinforce: [
-            '根据实际使用的危险工具做具体的加固。'
+            'Strengthening according to the actual use of gray tools.'
           ],
         },
         {
-          name: '漏洞利用	Exploit',
-          des: '攻击者利用机器上所装应用或者服务的漏洞进行漏洞利用攻击。在网络流量中检测到这种漏洞利用行为并不一定代表被攻击机器中漏洞利用的成功。',
+          name: 'Exploit',
+          des: 'An attacker takes advantage of vulnerabilities in an application or service installed on a machine to exploit the vulnerability. Detection of such exploits in network traffic does not necessarily represent success in exploiting vulnerabilities in the machine.',
           handle: [
-            '1、在被攻击机器上确认漏洞利用是否成功；',
+            '1. Verify that the exploitation of the vulnerability is successful on the attacked machine;',
             '2、如果漏洞利用成功， 隔离该机器并做安全分析',
           ],
           reinforce: [
@@ -1234,12 +1234,12 @@ export default {
             this.table_assets.pageNow = 1;
             let base_category = data.label.base_category;
 
-            if (base_category.includes('终端')) {
-              data.new_base_category = ['终端'];
-            } else if (base_category.includes('服务器')) {
-              data.new_base_category = ['服务器'];
-            } else if (base_category.includes('网络设备')) {
-              data.new_base_category = ['网络设备'];
+            if (base_category.includes('Terminal')) {
+              data.new_base_category = ['Terminal'];
+            } else if (base_category.includes('Server')) {
+              data.new_base_category = ['Server'];
+            } else if (base_category.includes('Network device')) {
+              data.new_base_category = ['Network device'];
             }
             data.new_branch = data.label.branch;
             data.new_department = data.label.department;

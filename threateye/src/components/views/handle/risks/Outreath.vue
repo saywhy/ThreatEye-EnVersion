@@ -11,16 +11,16 @@
           <div class="osm-middle">
             <dl>
               <dt class="osm-dt">Threat Description</dt>
-              <dd class="osm-dd">外连威胁是指攻击者通过失陷的资产和外网通讯从而达到控制内网资产或者窃取数据的目的，这个阶段的攻击通常伪装成常规的网络通讯和流量避免被检测。</dd>
+              <dd class="osm-dd">An outreach threat is that attackers maintain contact with internal compromised assets to control the network or exfiltrate information. Attacks at this stage are usually disguised as regular network communications and traffic to avoid detection.</dd>
             </dl>
             <dl>
               <dt class="osm-dt">Security Recommendations</dt>
               <dd class="osm-dd">
                 <ul>
-                  <li>1、及时更新补丁，特别是高危漏洞刚发布的几天是高级攻击的高发期；</li>
-                  <li>2、采用安全网关和端点安全等进行深度防御；</li>
-                  <li>3、采用威胁情报发现C&C服务器信息以及其它高危外连动作；</li>
-                  <li>4、在扎实的安全防御基础上提升网络和端点的威胁检测和响应能力。</li>
+                  <li>1. Update patches in time, especially the first few days of critical vulnerability releases is a high incidence period of advanced attacks;</li>
+                  <li>2. Use security gateway and endpoint security for defense-in-depth;</li>
+                  <li>3. Use threat intelligence to identify C&C servers and other high-risk outreach actions;</li>
+                  <li>4. Enhance threat detection and response capabilities of networks and endpoints on top of solid security defenses.</li>
                 </ul>
               </dd>
             </dl>

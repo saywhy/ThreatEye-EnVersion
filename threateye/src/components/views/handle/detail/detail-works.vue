@@ -172,7 +172,7 @@
         <img class="top_left_img"
              src="@/assets/images/handle/others/works.png"
              alt="">
-        <span class="top_left_title">回复记录</span>
+        <span class="top_left_title">Comments</span>
       </div>
     </div>
     <div class="detail_base_lst">
@@ -205,7 +205,7 @@
     </div>
     <div class="detail_base_anw">
       <el-button class="detail_works_answer"
-                 @click="submitReplyClick">回复</el-button>
+                 @click="submitReplyClick">Reply</el-button>
     </div>
   </div>
 </template>
@@ -472,7 +472,7 @@ export default {
             }
           })
       } else {
-        this.$message({ message: '当前状态下不允许下载工单！', type: 'warning' });
+        this.$message({ message: 'Downloading tickets is not allowed in the current state', type: 'warning' });
       }
     },
 

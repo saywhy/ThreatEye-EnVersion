@@ -11,16 +11,16 @@
           <div class="osm-middle">
             <dl>
               <dt class="osm-dt">Threat Description</dt>
-              <dd class="osm-dd">外部威胁是指对暴露在网络上的资产或者能访问外网的资产发起探测和取得初始访问权的攻击。攻击手法包括扫描、漏洞利用、钓鱼邮件、供应链攻击以及泄露的合法账号登录等。</dd>
+              <dd class="osm-dd">An external threat is an attack on an asset that is exposed on the Internet or that has access to the Internet to scan and obtain initial access. Attacks include scanning, exploiting vulnerabilities, phishing e-mails, supply chain attacks, and leaked legitimate account logins.</dd>
             </dl>
             <dl>
               <dt class="osm-dt">Security Recommendations</dt>
               <dd class="osm-dd">
                 <ul>
-                  <li>1、及时更新补丁，特别是高危漏洞刚发布的几天是高级攻击的高发期；</li>
-                  <li>2、采用安全网关和端点安全等进行深度防御；</li>
-                  <li>3、采用威胁情报发现当下流行的钓鱼地址、恶意证书的信息做及时的阻断；</li>
-                  <li>4、在扎实的安全防御基础上提升威胁检测和响应的能力。</li>
+                  <li>1. Update patches in time, especially the first few days of critical vulnerability releases is a high incidence period of advanced attacks;</li>
+                  <li>2. Use security gateway and endpoint security for defense-in-depth;</li>
+                  <li>3. Using threat intelligence to identify popular phishing addresses, malicious certificates to do timely blocking;</li>
+                  <li>4. Enhance threat detection and response capabilities on top of solid security defenses.</li>
                 </ul>
               </dd>
             </dl>

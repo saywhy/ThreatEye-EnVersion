@@ -57,8 +57,8 @@
           <el-col :span="24"
                   class="common_btn_priority">
             <p class="item_list">
-              <span class="item">共计
-                <span class="num">{{count.count}}</span> 条</span>
+              <span class="item">Total
+                <span class="num">{{count.count}}</span></span>
               <span class="item">Priority</span>
               <el-tag class="e_tag e-tag-1">Critical:
                 <span class="nums">{{count.highest}}</span>
@@ -1259,7 +1259,7 @@ export default {
       if (selected.length == 0) {
         this.$message({ type: 'warning', message: 'Please select the item to download' });
       } else if (selected.length > 1) {
-        this.$message({ type: 'warning', message: '每次只能选择一个工单下载！' });
+        this.$message({ type: 'warning', message: 'Only single ticket can be download at a time' });
       } else {
 
         let stu = selected[0].status;
@@ -1282,7 +1282,7 @@ export default {
               })*/
             })
         } else {
-          this.$message({ message: '当前状态下不允许下载工单！', type: 'warning' });
+          this.$message({ message: 'Downloading tickets is not allowed in the current state', type: 'warning' });
         }
 
       }
@@ -1485,7 +1485,7 @@ export default {
 
       if (this.task_params.type == 'asset') {
         if (multiple_assets.length == 0) {
-          this.$message({ message: '至少选择一条资产/告警！', type: 'warning' });
+          this.$message({ message: 'At least select one asset or alert', type: 'warning' });
         } else {
           multiple_alerts = [];
           let all_params = {
@@ -1502,7 +1502,7 @@ export default {
         }
       } else if (this.task_params.type == 'alert') {
         if (multiple_alerts.length == 0) {
-          this.$message({ message: '至少选择一条资产/告警！', type: 'warning' });
+          this.$message({ message: 'At least select one asset or alert', type: 'warning' });
         } else {
           multiple_assets = [];
 
@@ -1549,7 +1549,7 @@ export default {
 
       if (this.task_params.type == 'asset') {
         if (multiple_assets.length == 0) {
-          this.$message({ message: '至少选择一条资产/告警！', type: 'warning' });
+          this.$message({ message: 'At least select one asset or alert', type: 'warning' });
         } else {
           multiple_alerts = [];
           let all_params = {
@@ -1566,7 +1566,7 @@ export default {
         }
       } else if (this.task_params.type == 'alert') {
         if (multiple_alerts.length == 0) {
-          this.$message({ message: '至少选择一条资产/告警！', type: 'warning' });
+          this.$message({ message: 'At least select one asset or alert', type: 'warning' });
         } else {
           multiple_assets = [];
           let all_params = {
@@ -1659,7 +1659,7 @@ export default {
         return false;
       }
       if (sel_table_data[0].status != '0') {
-        this.$message({ message: '工单状态只有‘待分配’可以被编辑！', type: 'warning' });
+        this.$message({ message: 'Only during "Pending" can be edited', type: 'warning' });
         return false;
       }
       this.edit.data = sel_table_data[0]

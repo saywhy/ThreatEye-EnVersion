@@ -82,7 +82,7 @@ export default {
       }*/
       var reg = new RegExp('(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])');
       if(!reg.test(value)){
-        callback(new Error('密码包含大写、小写、数字和特殊字符其中三项'))
+        callback(new Error('Password must contains three types of characters: uppercase, lowercase, numbers, and special characters.'))
       }else {
         callback();
       }
@@ -90,7 +90,7 @@ export default {
     const validateRePassword = (rule, value, callback) => {
       console.log(this.registerForm.password)
       if (value != this.registerForm.password) {
-        callback(new Error('两次输入的密码不一致'))
+        callback(new Error('Password does not match'))
       } else {
         callback();
       }
@@ -110,11 +110,11 @@ export default {
         ],
         password: [
           { required: true, message: 'Password is required', trigger: 'blur' },
-          { min: 8, max: 30, message: '密码长度为8-30位', trigger: 'blur' },
+          { min: 8, max: 30, message: 'Password length is 8-30', trigger: 'blur' },
           { required: true, trigger: 'blur', validator: validatePassword }
         ],
         repassword: [
-          { required: true, message: '确认密码不能为空', trigger: 'blur' },
+          { required: true, message: 'Confirm password is required', trigger: 'blur' },
           /*{ min: 6, message: '密码长度最少为6位', trigger: 'blur' },*/
           { required: true, trigger: 'blur', validator: validateRePassword }
         ]
@@ -137,7 +137,7 @@ export default {
           .then((resp) => {
             //返回成功跳转
             if (resp[0]) {
-              this.$message.success('注册管理员成功，欢迎首次登录！');
+              this.$message.success('Registered administrator is successful, welcome to access ThreatEye.');
               this.$router.push({path:'/system/licence'});//登录成功之后重定向到首页
               //失败
             } else {
