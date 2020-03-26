@@ -473,7 +473,7 @@
             <el-table-column label="Severity">
               <template slot-scope="scope">
                 <span class="btn_alert_background"
-                      :class="{'high_background':scope.row.degree =='high','mid_background':scope.row.degree =='medium','low_background':scope.row.degree =='low'}">
+                      :class="{'high_background':scope.row.degree =='High risk','mid_background':scope.row.degree =='Medium risk','low_background':scope.row.degree =='Low risk'}">
                   {{ scope.row.degree | degree_sino }}</span>
               </template>
             </el-table-column>
