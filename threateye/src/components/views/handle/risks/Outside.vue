@@ -6,15 +6,15 @@
         <div class="outside-middle">
           <div class="osm-top">
             <img class="osm-img" src="../../../../assets/images/handle/risks/edit.png">
-            <span class="osm-title">威胁及安全建议</span>
+            <span class="osm-title">Threat and Security Recommendations</span>
           </div>
           <div class="osm-middle">
             <dl>
-              <dt class="osm-dt">威胁描述</dt>
+              <dt class="osm-dt">Threat Description</dt>
               <dd class="osm-dd">外部威胁是指对暴露在网络上的资产或者能访问外网的资产发起探测和取得初始访问权的攻击。攻击手法包括扫描、漏洞利用、钓鱼邮件、供应链攻击以及泄露的合法账号登录等。</dd>
             </dl>
             <dl>
-              <dt class="osm-dt">安全建议</dt>
+              <dt class="osm-dt">Security Recommendations</dt>
               <dd class="osm-dd">
                 <ul>
                   <li>1、及时更新补丁，特别是高危漏洞刚发布的几天是高级攻击的高发期；</li>

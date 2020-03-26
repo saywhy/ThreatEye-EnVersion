@@ -6,15 +6,15 @@
         <div class="outside-middle">
           <div class="osm-top">
             <img class="osm-img" src="../../../../assets/images/handle/risks/edit.png">
-            <span class="osm-title">威胁及安全建议</span>
+            <span class="osm-title">Threat and Security Recommendations</span>
           </div>
           <div class="osm-middle">
             <dl>
-              <dt class="osm-dt">威胁描述</dt>
+              <dt class="osm-dt">Threat Description</dt>
               <dd class="osm-dd">外连威胁是指攻击者通过失陷的资产和外网通讯从而达到控制内网资产或者窃取数据的目的，这个阶段的攻击通常伪装成常规的网络通讯和流量避免被检测。</dd>
             </dl>
             <dl>
-              <dt class="osm-dt">安全建议</dt>
+              <dt class="osm-dt">Security Recommendations</dt>
               <dd class="osm-dd">
                 <ul>
                   <li>1、及时更新补丁，特别是高危漏洞刚发布的几天是高级攻击的高发期；</li>

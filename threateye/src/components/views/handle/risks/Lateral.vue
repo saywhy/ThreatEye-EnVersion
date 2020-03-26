@@ -6,15 +6,15 @@
        <div class="outside-middle">
          <div class="osm-top">
            <img class="osm-img" src="../../../../assets/images/handle/risks/edit.png">
-           <span class="osm-title">威胁及安全建议</span>
+           <span class="osm-title">Threat and Security Recommendations</span>
          </div>
          <div class="osm-middle">
            <dl>
-             <dt class="osm-dt">威胁描述</dt>
+             <dt class="osm-dt">Threat Description</dt>
              <dd class="osm-dd">横向威胁是指攻击者为了了解所处的网络环境或者找到网络内的目标而实施的内网的扫描、暴力破解、漏洞利用、远程账号登录、远程程序以及命令执行等动作。</dd>
            </dl>
            <dl>
-             <dt class="osm-dt">安全建议</dt>
+             <dt class="osm-dt">Security Recommendations</dt>
              <dd class="osm-dd">
                <ul>
                  <li>1、及时更新补丁，特别是高危漏洞刚发布的几天是高级攻击的高发期；</li>

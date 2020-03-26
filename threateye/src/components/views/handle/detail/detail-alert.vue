@@ -20,19 +20,19 @@
                        size='148'>
             <el-button type="primary"
                        class="change_btn">
-              <span>状态变更</span>
+              <span>Status change</span>
               <i class="el-icon-arrow-down el-icon--right"></i>
             </el-button>
             <el-dropdown-menu slot="dropdown"
                               class="dropdown_ul_box_detail">
               <el-dropdown-item command='2'
-                                class="select_item">处置中</el-dropdown-item>
+                                class="select_item">In Progress</el-dropdown-item>
               <el-dropdown-item command="3"
-                                class="select_item">已处置</el-dropdown-item>
+                                class="select_item">Resolved</el-dropdown-item>
               <el-dropdown-item command='4'
-                                class="select_item">已忽略</el-dropdown-item>
+                                class="select_item">Ignored</el-dropdown-item>
               <el-dropdown-item command="5"
-                                class="select_item">误报</el-dropdown-item>
+                                class="select_item">False positive</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
           <el-dropdown @command="change_task"
@@ -40,17 +40,17 @@
                        trigger="click">
             <el-button type="primary"
                        class="change_btn">
-              <span>工单任务</span>
+              <span>Ticket Task</span>
               <i class="el-icon-arrow-down el-icon--right"></i>
             </el-button>
             <el-dropdown-menu slot="dropdown"
                               class="dropdown_ul_box_detail">
-              <el-dropdown-item command="1">新建工单</el-dropdown-item>
+              <el-dropdown-item command="1">Create</el-dropdown-item>
               <el-dropdown-item command="2">Add to ticket</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
           <el-button class="edit_btn"
-                     @click="edit_tag_box">编辑标签</el-button>
+                     @click="edit_tag_box">Edit</el-button>
         </div>
       </div>
       <div class="detail_base_bottom">
@@ -68,12 +68,12 @@
                   <i class="el-icon-arrow-down el-icon--right"></i>
                 </el-button>
                 <el-dropdown-menu slot="dropdown"
-                                  style="width200px;"
+                                  style="width:200px;"
                                   class="dropdown_ul_box_detail">
                   <el-dropdown-item command='1'
-                                    class="select_item">威胁追查</el-dropdown-item>
+                                    class="select_item">Threat hunting</el-dropdown-item>
                   <el-dropdown-item command="2"
-                                    class="select_item">添加到外部动态列表</el-dropdown-item>
+                                    class="select_item">Add to the external dynamic list</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </li>
@@ -89,17 +89,17 @@
                   <i class="el-icon-arrow-down el-icon--right"></i>
                 </el-button>
                 <el-dropdown-menu slot="dropdown"
-                                  style="width200px;"
+                                  style="width:200px;"
                                   class="dropdown_ul_box_detail">
                   <el-dropdown-item command='1'
-                                    class="select_item">威胁追查</el-dropdown-item>
+                                    class="select_item">Threat hunting</el-dropdown-item>
                   <el-dropdown-item command="2"
-                                    class="select_item">添加到外部动态列表</el-dropdown-item>
+                                    class="select_item">Add to the external dynamic list</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </li>
             <li class="item_li">
-              <span class="item_li_title">源标签:</span>
+              <span class="item_li_title">Source Labels:</span>
               <div class="item_li_content">
                 <ul v-if="network_detail.src_label_obj.length !=0">
                   <li class="tag_btn_box"
@@ -110,7 +110,7 @@
               </div>
             </li>
             <li class="item_li">
-              <span class="item_li_title">目的标签:</span>
+              <span class="item_li_title">Destination Labels:</span>
               <div class="item_li_content">
                 <ul v-if="network_detail.dest_label_obj.length !=0">
                   <li class="tag_btn_box"
@@ -141,16 +141,16 @@
               <span class="item_li_content">{{network_detail.application}}</span>
             </li>
             <li class="item_li">
-              <span class="item_li_title">检测引擎:</span>
+              <span class="item_li_title">Detection Engine:</span>
               <span class="item_li_content">{{network_detail.detect_engine}}</span>
             </li>
             <li class="item_li">
               <span class="item_li_title">Compromise:</span>
               <span :class="network_detail.fall_certainty == '0'?'':'fall_certainty'">
-                {{network_detail.fall_certainty == '0'?'':'已失陷'}}</span>
+                {{network_detail.fall_certainty == '0'?'':'Compromised'}}</span>
             </li>
             <li class="item_li">
-              <span class="item_li_title">标签:</span>
+              <span class="item_li_title">Labels:</span>
               <div class="item_li_content">
                 <ul v-if="network_detail.label_obj.length !=0">
                   <li class="tag_btn_box"
@@ -161,15 +161,15 @@
               </div>
             </li>
             <li class="item_li">
-              <span class="item_li_title">攻击阶段:</span>
+              <span class="item_li_title">Attack Phase:</span>
               <span class="item_li_content">{{network_detail.attack_stage_cn }}</span>
             </li>
             <li class="item_li">
-              <span class="item_li_title">工单名称:</span>
+              <span class="item_li_title">Name:</span>
               <span class="item_li_content">{{network_detail.work_name}}</span>
             </li>
             <li class="item_li">
-              <span class="item_li_title">工单状态:</span>
+              <span class="item_li_title">Ticket Status:</span>
               <span class="item_li_content">{{network_detail.work_order_status_cn}}</span>
             </li>
           </ul>
@@ -179,7 +179,7 @@
 
     <!-- 检测时间轴 -->
     <div class="detail_time_box">
-      <p class="time_title">检测时间轴</p>
+      <p class="time_title">Detection Timeline</p>
       <div class="time_content">
         <div class="time_left">
           <ul class="time_left_list">
@@ -204,7 +204,7 @@
         <div class="time_right">
           <div v-for="(item,index) in network_times"
                v-show="time_choose==index">
-            <p class="title">详细信息</p>
+            <p class="title">Details</p>
             <div class="time_right_info">
               <div class="time_right_info_top">
                 <!-- <li class="info_top_item">
@@ -240,7 +240,7 @@
                 </div>
               </div>
             </div>
-            <p class="title">网络事件</p>
+            <p class="title">Network Event</p>
             <div class="time_right_net">
               <div class="time_right_net_item"
                    v-for="demo in item.event_list">
@@ -258,7 +258,7 @@
         <img src="@/assets/images/emerge/detai_attack.png"
              alt=""
              class="icon_img">
-        <span class="attack_stage_title">攻击阶段分布</span>
+        <span class="attack_stage_title">Attack Phase Distribution</span>
       </div>
       <div class="attack_stage_bom">
         <div class="stage_item_box">
@@ -397,17 +397,17 @@
         <img src="@/assets/images/emerge/detal_jianyi.png"
              alt=""
              class="icon_img">
-        <span class="suggest_title">威胁及安全建议</span>
+        <span class="suggest_title">Threat and Security Recommendations</span>
       </div>
       <div class="suggest_bom">
-        <p class="suggest_bom_title">威胁描述</p>
+        <p class="suggest_bom_title">Threat Description</p>
         <p class="suggest_bom_des">{{suggest_list[network_detail.safety_suggestion].des}}</p>
-        <p class="suggest_bom_title">安全建议</p>
+        <p class="suggest_bom_title">Security Recommendations</p>
         <p class="suggest_bom_list">
           <img src="@/assets/images/emerge/detail_suggest.png"
                class="suggest_icon"
                alt="">
-          <span class="suggest_bom_title">处置建议</span>
+          <span class="suggest_bom_title">Mitigation Recommendations</span>
         </p>
         <div>
           <p class="suggest_bom_li"
@@ -419,7 +419,7 @@
           <img src="@/assets/images/emerge/detail_suggest.png"
                class="suggest_icon"
                alt="">
-          <span class="suggest_bom_title">加固建议</span>
+          <span class="suggest_bom_title">Security Enhancements</span>
         </p>
         <div>
           <p class="suggest_bom_li"
@@ -434,7 +434,7 @@
       <el-tabs v-model="emerge_list.activeName"
                @tab-click="handleClick"
                class="reset_tab">
-        <el-tab-pane label="当前受威胁资产"
+        <el-tab-pane label="Current Rrisk Assets"
                      class="tabs-item"
                      name="first">
           <el-table class="emerge_table"
@@ -445,7 +445,7 @@
                     style="width: 100%"
                     @selection-change="handleSelectionChange">
             <el-table-column prop="alert_time"
-                             label="时间"
+                             label="Time"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="category"
@@ -486,7 +486,7 @@
                          :total="emerge_list.now.count">
           </el-pagination>
         </el-tab-pane>
-        <el-tab-pane label="历史受威胁资产"
+        <el-tab-pane label="Historical Risk Assets"
                      class="tabs-item"
                      name="second">
           <el-table class="emerge_table"
@@ -497,7 +497,7 @@
                     style="width: 100%"
                     @selection-change="handleSelectionChange">
             <el-table-column prop="alert_time"
-                             label="时间"
+                             label="Time"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="category"
@@ -605,7 +605,7 @@
                     tooltip-effect="dark"
                     @selection-change="handleSelectionChange"
                     style="width: 100%">
-            <el-table-column label="选择"
+            <el-table-column label="Select"
                              width="50">
               <template slot-scope="scope">
                 <el-radio v-model="worksheets_data.tableRadio"
@@ -616,22 +616,22 @@
 
             </el-table-column>
             <el-table-column prop="name"
-                             label="工单名称"
+                             label="Name"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="creator"
-                             label="创建人"
+                             label="Reporter"
                              show-overflow-tooltip>
             </el-table-column>
-            <el-table-column label="优先级"
+            <el-table-column label="Priority"
                              width="120">
               <template slot-scope="scope">{{ scope.row.priority_cn}}</template>
             </el-table-column>
             <el-table-column prop="perator_cn"
-                             label="经办人"
+                             label="Assignee"
                              show-overflow-tooltip>
             </el-table-column>
-            <el-table-column label="状态"
+            <el-table-column label="Status"
                              width="80"
                              show-overflow-tooltip>
               <template slot-scope="scope">{{ scope.row.status | work_status }}</template>
@@ -668,19 +668,19 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">编辑工单</span>
+        <span class="title_name">Edit</span>
       </div>
       <div class="step_box">
         <div class="step_box1">
           <span class="step1_span"
-                :class="new_worksheets_data.new_contet?'step_now':'step_past'">基本信息</span>
+                :class="new_worksheets_data.new_contet?'step_now':'step_past'">Basic Information</span>
           <img src="@/assets/images/emerge/selected01.png"
                class="selected_img"
                alt="">
         </div>
         <div class="step_box2">
           <span class="step2_span"
-                :class="!new_worksheets_data.new_contet?'step_now':'step_past'">处置内容</span>
+                :class="!new_worksheets_data.new_contet?'step_now':'step_past'">Content</span>
         </div>
       </div>
       <!-- 基本信息 -->
@@ -691,11 +691,11 @@
             <div class="content_top_left">
               <li class="left_item">
                 <div class="title">
-                  <span>工单名称</span>
+                  <span>Name</span>
                   <span class="improtant_ico">*</span>
                 </div>
                 <el-input class="task_new_input"
-                          placeholder="请输入工单名称"
+                          placeholder="Please enter a ticket name"
                           v-model="new_worksheets_list.name"
                           show-word-limit
                           maxlength="32"
@@ -704,13 +704,13 @@
               </li>
               <li class="left_item">
                 <div class="title">
-                  <span>经办人</span>
+                  <span>Assignee</span>
                   <span class="improtant_ico">*</span>
                 </div>
                 <el-select class="task_new_input"
                            v-model="new_worksheets_list.operator"
                            clearable
-                           placeholder="请选择经办人">
+                           placeholder="Please select the assignee">
                   <el-option v-for="item in new_worksheets_data.operator_list"
                              @click.native="select_changced(item)"
                              :key="item.id"
@@ -723,13 +723,13 @@
             <div class="content_top_right">
               <li class="right_item">
                 <div class="title">
-                  <span>优先级</span>
+                  <span>Priority</span>
                   <span class="improtant_ico">*</span>
                 </div>
                 <el-select class="task_new_input"
                            v-model="new_worksheets_list.level"
                            clearable
-                           placeholder="请选择优先级">
+                           placeholder="Please select the priority">
                   <el-option v-for="item in new_worksheets_data.level_list"
                              :key="item.value"
                              :label="item.label"
@@ -740,9 +740,9 @@
               <li class="right_item">
                 <el-checkbox-group v-model="new_worksheets_list.notice">
                   <el-checkbox label="email"
-                               value="email">邮件通知</el-checkbox>
+                               value="email">Mail notification</el-checkbox>
                   <el-checkbox label="message"
-                               value="message">短信通知</el-checkbox>
+                               value="message">SMS notification</el-checkbox>
                   <!-- <el-checkbox label="news"
                              value="news">消息中心通知</el-checkbox> -->
                 </el-checkbox-group>
@@ -750,10 +750,10 @@
             </div>
           </div>
           <div class="content_remarks">
-            <p class="title">备注</p>
+            <p class="title">Remarks</p>
             <el-input type="textarea"
                       :rows="4"
-                      placeholder="请输入内容"
+                      placeholder="Please enter the remark"
                       maxlength="500"
                       show-word-limit
                       v-model="new_worksheets_list.textarea">
@@ -763,11 +763,11 @@
             <el-table :data="new_worksheets_data.table_operator.tableData"
                       style="width: 100%">
               <el-table-column prop="username"
-                               label="经办人"></el-table-column>
+                               label="Assignee"></el-table-column>
               <el-table-column prop="department"
-                               label="部门"></el-table-column>
+                               label="Department"></el-table-column>
               <el-table-column prop="email_addr"
-                               label="邮箱"></el-table-column>
+                               label="Mailbox"></el-table-column>
             </el-table>
 
           </div>
@@ -777,7 +777,7 @@
           <el-button @click="closed_task_new"
                      class="cancel_btn">Cancel</el-button>
           <el-button @click="next_task"
-                     class="next_btn">下一步</el-button>
+                     class="next_btn">Next</el-button>
         </div>
       </div>
 
@@ -834,14 +834,14 @@
                     </template>
 
                   </el-table-column>
-                  <el-table-column label="状态"
+                  <el-table-column label="Status"
                                    width="80">
                     <template slot-scope="scope">
                       <span v-if="scope.row.status==0">未确认</span>
                       <span v-if="scope.row.status==1">已确认</span>
-                      <span v-if="scope.row.status==2">已处置</span>
-                      <span v-if="scope.row.status==3">已忽略</span>
-                      <span v-if="scope.row.status==4">误报</span>
+                      <span v-if="scope.row.status==2">Resolved</span>
+                      <span v-if="scope.row.status==3">Ignored</span>
+                      <span v-if="scope.row.status==4">False positive</span>
                     </template>
                   </el-table-column>
                 </el-table>
@@ -853,9 +853,9 @@
           <el-button @click="closed_task_new"
                      class="cancel_btn">Cancel</el-button>
           <el-button @click="prev_task_handle"
-                     class="prev_btn">上一步</el-button>
+                     class="prev_btn">Previous</el-button>
           <el-button @click="prev_task_handle_assign"
-                     class="prev_btn">分配</el-button>
+                     class="prev_btn">Assign</el-button>
           <el-button @click="prev_task_handle_save"
                      class="prev_btn">Save</el-button>
         </div>
@@ -1291,23 +1291,23 @@ export default {
         level_list: [
           {
             value: "highest",
-            label: "极高"
+            label: "Critical"
           },
           {
             value: "high",
-            label: "高"
+            label: "High"
           },
           {
-            value: "midium",
-            label: "中"
+            value: "medium",
+            label: "Medium"
           },
           {
             value: "low",
-            label: "低"
+            label: "Low"
           }
         ],
         status_type: [
-          '无', '待分配', '已分配', '处置中', '已取消', '已处置'
+          'None', 'To be Assigned', 'Assigned', 'In Progress', 'Cancelled', 'Cancelled'
         ]
       },
       worksheets_list: {},
@@ -1329,19 +1329,19 @@ export default {
         level_list: [
           {
             value: "highest",
-            label: "最高"
+            label: "Critical"
           },
           {
             value: "high",
-            label: "高"
+            label: "High"
           },
           {
-            value: "midium",
-            label: "中"
+            value: "medium",
+            label: "Medium"
           },
           {
             value: "low",
-            label: "低"
+            label: "Low"
           }
         ],
         //经办人数组
@@ -1410,22 +1410,22 @@ export default {
               this.network_detail.work_order_status = response.data.data.work_order_status
               switch (response.data.data.work_order_status) {
                 case '':
-                  this.network_detail.work_order_status_cn = '未关联工单'
+                  this.network_detail.work_order_status_cn = 'No ticket associated'
                   break;
                 case '0':
-                  this.network_detail.work_order_status_cn = '待分配'
+                  this.network_detail.work_order_status_cn = 'To be Assigned'
                   break;
                 case '1':
-                  this.network_detail.work_order_status_cn = '已分配'
+                  this.network_detail.work_order_status_cn = 'Assigned'
                   break;
                 case '2':
-                  this.network_detail.work_order_status_cn = '处置中'
+                  this.network_detail.work_order_status_cn = 'In Progress'
                   break;
                 case '3':
-                  this.network_detail.work_order_status_cn = '已处置'
+                  this.network_detail.work_order_status_cn = 'Resolved'
                   break;
                 case '4':
-                  this.network_detail.work_order_status_cn = '已取消'
+                  this.network_detail.work_order_status_cn = 'Cancelled'
                   break;
                 default:
                   break;
@@ -1477,7 +1477,7 @@ export default {
                     value: item.alert_description.mask
                   },
                   {
-                    name: '威胁类型',
+                    name: 'Threat Category',
                     value: item.alert_description.category
                   },
                   {
@@ -1772,16 +1772,16 @@ export default {
               case 'IDS':
                 item.info_list = [
                   {
-                    name: "告警类型",
+                    name: "Alert Type",
                     value: item.alert_description.category,
                   },
                   {
-                    name: "告警描述",
+                    name: "Description",
                     value: item.alert_description.threat,
                   },
                   {
                     name: "Payload Info",
-                    value: "点击下载",
+                    value: "Download",
                   },
                 ];
                 break;
@@ -2228,7 +2228,7 @@ export default {
           if (status == 0) {
             this.$message(
               {
-                message: '修改标签成功!',
+                message: 'Change label successfully!',
                 type: 'success',
               }
             );
@@ -2516,7 +2516,7 @@ export default {
       if (Object.keys(this.worksheets_data.tableRadio).length == 0) {
         this.$message(
           {
-            message: '请选择工单!',
+            message: 'Please select the ticket',
             type: 'warning',
           }
         );
@@ -2576,7 +2576,7 @@ export default {
           this.new_worksheets_data.new_contet = true;
         })
         .catch(err => {
-          console.log('用户列表错误');
+          console.log('User list error');
           console.log(err);
         })
     },
@@ -2588,7 +2588,7 @@ export default {
       let level_list = this.new_worksheets_data.table_operator.tableData;
       let selected_id_attr = level_list.map(x => { return x.id });
       if (selected_id_attr.includes(item.id)) {
-        this.$message.error('已存在');
+        this.$message.error('Exited');
       } else {
         this.new_worksheets_data.table_operator.tableData.unshift(item);
       }
@@ -2607,19 +2607,15 @@ export default {
     //下一步时候验证工单名称，优先级、经办人等参数
     next_task () {
       if (this.new_worksheets_list.name == '') {
-        this.$message.error('工单名称不能为空');
+        this.$message.error('Ticket name is required');
         return false
       }
       if (this.new_worksheets_list.level == '') {
-        this.$message.error('优先级未选择');
-        return false
-      }
-      if (this.new_worksheets_list.level == '') {
-        this.$message.error('优先级未选择');
+        this.$message.error('Please select the priority');
         return false
       }
       if (this.new_worksheets_list.operator == '') {
-        this.$message.error('经办人未选择');
+        this.$message.error('Please select the assignee');
         return false
       }
       this.new_worksheets_data.new_contet = false;
@@ -2664,7 +2660,7 @@ export default {
           if (status == 0) {
             this.get_data();
             this.new_worksheets_data.pop = false
-            this.$message.success('分配成功');
+            this.$message.success('Assigned successfully');
           } else if (status == 1) {
             this.$message.error(msg);
           }
