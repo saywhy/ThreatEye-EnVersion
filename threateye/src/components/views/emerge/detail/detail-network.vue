@@ -156,7 +156,7 @@
             <li class="item_li">
               <span class="item_li_title">Compromise:</span>
               <span :class="network_detail.fall_certainty == '0'?'':'fall_certainty'">
-                {{network_detail.fall_certainty == '0'?'':'已失陷'}}</span>
+                {{network_detail.fall_certainty == '0'?'':'Compromised'}}</span>
             </li>
             <li class="item_li">
               <span class="item_li_title">Labels:</span>
@@ -393,23 +393,23 @@
         </div>
       </div>
     </div>
-    <!-- 威胁及安全建议 -->
+    <!-- Threat and Security Recommendations -->
     <div class="suggest_box">
       <div class="suggest_top">
         <img src="@/assets/images/emerge/detal_jianyi.png"
              alt=""
              class="icon_img">
-        <span class="suggest_title">威胁及安全建议</span>
+        <span class="suggest_title">Threat and Security Recommendations</span>
       </div>
       <div class="suggest_bom">
-        <p class="suggest_bom_title">威胁描述</p>
+        <p class="suggest_bom_title">Threat description</p>
         <p class="suggest_bom_des">{{suggest_list[network_detail.safety_suggestion].des}}</p>
-        <p class="suggest_bom_title">安全建议</p>
+        <p class="suggest_bom_title">Security Recommendations</p>
         <p class="suggest_bom_list">
           <img src="@/assets/images/emerge/detail_suggest.png"
                class="suggest_icon"
                alt="">
-          <span class="suggest_bom_title">处置建议</span>
+          <span class="suggest_bom_title">Mitigation Recommendations</span>
         </p>
         <div>
           <p class="suggest_bom_li"
@@ -421,7 +421,7 @@
           <img src="@/assets/images/emerge/detail_suggest.png"
                class="suggest_icon"
                alt="">
-          <span class="suggest_bom_title">加固建议</span>
+          <span class="suggest_bom_title">Security Enhancements</span>
         </p>
         <div>
           <p class="suggest_bom_li"
@@ -436,7 +436,7 @@
       <el-tabs v-model="emerge_list.activeName"
                @tab-click="handleClick"
                class="reset_tab">
-        <el-tab-pane label="当前受威胁资产"
+        <el-tab-pane label="Current Risk Assets"
                      class="tabs-item"
                      name="first">
           <el-table class="emerge_table"
@@ -447,7 +447,7 @@
                     style="width: 100%"
                     @selection-change="handleSelectionChange">
             <el-table-column prop="alert_time"
-                             label="时间"
+                             label="Time"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="category"
@@ -473,7 +473,7 @@
             <el-table-column label="Severity">
               <template slot-scope="scope">
                 <span class="btn_alert_background"
-                      :class="{'high_background':scope.row.degree =='高','mid_background':scope.row.degree =='中','low_background':scope.row.degree =='低'}">
+                      :class="{'high_background':scope.row.degree =='high','mid_background':scope.row.degree =='medium','low_background':scope.row.degree =='low'}">
                   {{ scope.row.degree | degree_sino }}</span>
               </template>
             </el-table-column>
@@ -488,7 +488,7 @@
                          :total="emerge_list.now.count">
           </el-pagination>
         </el-tab-pane>
-        <el-tab-pane label="历史受威胁资产"
+        <el-tab-pane label="Historical Risk Assets"
                      class="tabs-item"
                      name="second">
           <el-table class="emerge_table"
@@ -499,7 +499,7 @@
                     style="width: 100%"
                     @selection-change="handleSelectionChange">
             <el-table-column prop="alert_time"
-                             label="时间"
+                             label="Time"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="category"
@@ -525,7 +525,7 @@
             <el-table-column label="Severity">
               <template slot-scope="scope">
                 <span class="btn_alert_background"
-                      :class="{'high_background':scope.row.degree =='高','mid_background':scope.row.degree =='中','low_background':scope.row.degree =='低'}">
+                      :class="{'high_background':scope.row.degree =='high','mid_background':scope.row.degree =='medium','low_background':scope.row.degree =='low'}">
                   {{ scope.row.degree | degree_sino }}</span>
               </template>
             </el-table-column>
@@ -553,7 +553,7 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">编辑标签</span>
+        <span class="title_name">Edit</span>
       </div>
       <div class="content">
         <div class="content_item">
@@ -608,41 +608,27 @@
                     tooltip-effect="dark"
                     @selection-change="handle_sel_table_add_works"
                     style="width: 100%">
-            <!--<el-table-column label="选择"
-                             width="55">
-              <template slot-scope="scope">
-                <el-radio v-model="worksheets_data.tableRadio"
-                          :label="scope.row">
-                  <i></i>
-                </el-radio>
-              </template>
-
-            </el-table-column>-->
-            <el-table-column label="选择"
+            <el-table-column label="Select All"
                              width="50"></el-table-column>
             <el-table-column type="selection"
                              width="50"></el-table-column>
             <el-table-column prop="name"
-                             label="工单名称"
+                             label="Name"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="creator"
-                             label="创建人"
+                             label="Reporter"
                              show-overflow-tooltip>
             </el-table-column>
-            <el-table-column label="优先级"
+            <el-table-column label="Priority"
                              width="120">
               <template slot-scope="scope">{{ scope.row.priority | priority}}</template>
             </el-table-column>
-            <!--<el-table-column prop="perator_cn"
-                             label="经办人"
-                             show-overflow-tooltip>
-            </el-table-column>-->
             <el-table-column prop="new_perator"
-                             label="经办人"
+                             label="Assignee"
                              show-overflow-tooltip>
             </el-table-column>
-            <el-table-column label="状态"
+            <el-table-column label="Status"
                              width="80"
                              show-overflow-tooltip>
               <template slot-scope="scope">{{ scope.row.status | work_status }}</template>
@@ -679,19 +665,19 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">编辑工单</span>
+        <span class="title_name">Edit</span>
       </div>
       <div class="step_box">
         <div class="step_box1">
           <span class="step1_span"
-                :class="new_worksheets_data.new_contet?'step_now':'step_past'">基本信息</span>
+                :class="new_worksheets_data.new_contet?'step_now':'step_past'">Basic Information</span>
           <img src="@/assets/images/emerge/selected01.png"
                class="selected_img"
                alt="">
         </div>
         <div class="step_box2">
           <span class="step2_span"
-                :class="!new_worksheets_data.new_contet?'step_now':'step_past'">处置内容</span>
+                :class="!new_worksheets_data.new_contet?'step_now':'step_past'">Content</span>
         </div>
       </div>
       <!-- 基本信息 -->
@@ -702,11 +688,11 @@
             <div class="content_top_left">
               <li class="left_item">
                 <div class="title">
-                  <span>工单名称</span>
+                  <span>Name</span>
                   <span class="improtant_ico">*</span>
                 </div>
                 <el-input class="task_new_input"
-                          placeholder="请输入工单名称"
+                          placeholder="Please enter a ticket name"
                           v-model="new_worksheets_list.name"
                           show-word-limit
                           maxlength="32"
@@ -715,13 +701,13 @@
               </li>
               <li class="left_item">
                 <div class="title">
-                  <span>经办人</span>
+                  <span>Assignee</span>
                   <span class="improtant_ico">*</span>
                 </div>
                 <el-select class="task_new_input"
                            v-model="new_worksheets_list.operator"
                            clearable
-                           placeholder="请选择经办人">
+                           placeholder="Please select the assignee">
                   <el-option v-for="item in new_worksheets_data.operator_list"
                              @click.native="select_changced(item)"
                              :key="item.id"
@@ -734,13 +720,13 @@
             <div class="content_top_right">
               <li class="right_item">
                 <div class="title">
-                  <span>优先级</span>
+                  <span>Priority</span>
                   <span class="improtant_ico">*</span>
                 </div>
                 <el-select class="task_new_input"
                            v-model="new_worksheets_list.level"
                            clearable
-                           placeholder="请选择优先级">
+                           placeholder="Please select the priority">
                   <el-option v-for="item in new_worksheets_data.level_list"
                              :key="item.value"
                              :label="item.label"
@@ -751,9 +737,9 @@
               <li class="right_item">
                 <el-checkbox-group v-model="new_worksheets_list.notice">
                   <el-checkbox label="email"
-                               value="email">邮件通知</el-checkbox>
+                               value="email">Mail notification</el-checkbox>
                   <el-checkbox label="message"
-                               value="message">短信通知</el-checkbox>
+                               value="message">SMS notification</el-checkbox>
                   <!-- <el-checkbox label="news"
                              value="news">消息中心通知</el-checkbox> -->
                 </el-checkbox-group>
@@ -761,10 +747,10 @@
             </div>
           </div>
           <div class="content_remarks">
-            <p class="title">备注</p>
+            <p class="title">Remarks</p>
             <el-input type="textarea"
                       :rows="4"
-                      placeholder="请输入内容"
+                      placeholder="Please enter the remark"
                       maxlength="500"
                       show-word-limit
                       v-model="new_worksheets_list.textarea">
@@ -774,11 +760,11 @@
             <el-table :data="new_worksheets_data.table_operator.tableData"
                       style="width: 100%">
               <el-table-column prop="username"
-                               label="经办人"></el-table-column>
+                               label="Assignee"></el-table-column>
               <el-table-column prop="department"
-                               label="部门"></el-table-column>
+                               label="Department"></el-table-column>
               <el-table-column prop="email_addr"
-                               label="邮箱"></el-table-column>
+                               label="Mailbox"></el-table-column>
             </el-table>
           </div>
         </div>
@@ -787,7 +773,7 @@
           <el-button @click="closed_task_new"
                      class="cancel_btn">Cancel</el-button>
           <el-button @click="next_task"
-                     class="next_btn">下一步</el-button>
+                     class="next_btn">Next</el-button>
         </div>
       </div>
 
@@ -843,7 +829,7 @@
                         {{ scope.row.fall_certainty | certainty }}</span>
                     </template>
                   </el-table-column>
-                  <el-table-column label="状态"
+                  <el-table-column label="Status"
                                    width="80">
                     <template slot-scope="scope">{{ scope.row.status | work_status }}</template>
                   </el-table-column>
@@ -856,9 +842,9 @@
           <el-button @click="closed_task_new"
                      class="cancel_btn">Cancel</el-button>
           <el-button @click="prev_task_handle"
-                     class="prev_btn">上一步</el-button>
+                     class="prev_btn">Previous</el-button>
           <el-button @click="prev_task_handle_assign"
-                     class="prev_btn">分配</el-button>
+                     class="prev_btn">Assign</el-button>
           <el-button @click="prev_task_handle_save"
                      class="prev_btn">Save</el-button>
         </div>
@@ -882,62 +868,62 @@ export default {
       attack_stage_list: [
         {
           name: "Initial Access",
-          value: "初始访问",
+          value: "Initial Access",
           count: 0
         },
         {
           name: "Execution",
-          value: "执行",
+          value: "Execution",
           count: 0
         },
         {
           name: "Persistence",
-          value: "持久化",
+          value: "Persistence",
           count: 0
         },
         {
           name: "Privilege Escalation",
-          value: "提权",
+          value: "Privilege Escalation",
           count: 0
         },
         {
           name: "Defense Evasion",
-          value: "防御逃逸",
+          value: "Defense Evasion",
           count: 0
         },
         {
           name: "Credential Access",
-          value: "凭证访问",
+          value: "Credential Access",
           count: 0
         },
         {
           name: "Discovery",
-          value: "信息发现",
+          value: "Discovery",
           count: 0
         },
         {
           name: "Lateral Movement",
-          value: "横向移动",
+          value: "Lateral Movement",
           count: 0
         },
         {
           name: "Collection",
-          value: "信息收集",
+          value: "Collection",
           count: 0
         },
         {
           name: "Command and Control",
-          value: "命令控制",
+          value: "Command and Control",
           count: 0
         },
         {
           name: "Exfiltration",
-          value: "信息泄露",
+          value: "Exfiltration",
           count: 0
         },
         {
           name: "Impact",
-          value: "毁坏",
+          value: "Impact",
           count: 0
         },
       ],
@@ -949,297 +935,297 @@ export default {
           reinforce: [],
         },
         {
-          name: '恶意文件通讯	',
-          des: '攻击者在机器上装了恶意程序，该恶意程序通过常见的协议或者定制的协议和外部服务器通讯。',
+          name: 'malwarecommunication',
+          des: 'An attacker installs a malicious program on a machine that communicates with an external server via a common protocol or custom protocol.',
           handle: [
-            '1、把机器从网络隔离；',
-            '2、根据告警详情里的“网络事件”里的机器端口定位机器的恶意进程；',
-            '3、做安全分析确认根因以及威胁扩散程度。如果安装有EDR解决方案，可以直接通过历史信息做安全事件调查快速定位问题；',
-            '4、安装防病毒软件做全盘扫描。',
+            '1. Mitigation Recommendations',
+            '2. Locate the malicious process at the machine according to the port in the network event of the alert details;',
+            '3. Do a security analysis to identify the root cause and the extent the threat has spread. If you have an EDR solution installed, you can quickly locate the problem by doing security incident investigation directly through historical information;',
+            '4. Install anti-virus software for full system scanning.',
           ],
           reinforce: [
-            '1、提升端点安全能力；',
-            '2、用网络安全设备禁止不需要联网的设备联网；',
-            '3、用网络威胁检测工具及早发现外联威胁。',
+            '1. Enhance endpoint security capabilities;',
+            '2. Block the network connection of devices that do not need Internet access with network security devices;',
+            '3. Use network threat detection solutions to detect outreach threats as early as possible.',
           ],
         },
         {
           name: '广告软件	Adware',
-          des: '广告软件是危险性相对较低的恶意软件，但可能会导致更大的威胁发生，所以也需要及时清除。',
+          des: 'Adware is of relatively low-risk, but sometimes it can lead to greater threats, thus has to be cleaned up in time.',
           handle: [
-            '1、把机器从网络隔离；',
-            '2、根据告警详情里的“网络事件”里的机器端口定位机器的恶意进程；',
-            '3、做安全分析确认根因以及威胁扩散程度。如果安装有EDR解决方案，可以直接通过历史信息做安全事件调查快速定位问题；',
-            '4、安装防病毒软件做全盘扫描。',
+            '1. Mitigation Recommendations',
+            '2. Locate the malicious process at the machine according to the port in the network event of the alert details;',
+            '3. Do a security analysis to identify the root cause and the extent the threat has spread. If you have an EDR solution installed, you can quickly locate the problem by doing security incident investigation directly through historical information;',
+            '4. Install anti-virus software for full system scanning.',
           ],
           reinforce: [
-            '1、提升端点安全能力；',
-            '2、用网络安全设备禁止不需要联网的设备联网；',
-            '3、用网络威胁检测工具及早发现外联威胁。',
+            '1. Enhance endpoint security capabilities;',
+            '2. Block the network connection of devices that do not need Internet access with network security devices;',
+            '3. Use network threat detection solutions to detect outreach threats as early as possible.',
           ],
         },
         {
           name: '危险工具	graytool',
-          des: '危险工具有可能被管理员或者是内部的安全工具所使用，但大部分情况是网络失陷的标志。这些工具有可能用于扫描、信息收集或者是控制，需要看具体工具确定攻击目的。',
+          des: 'Graytool may be used by administrators as internal security tools, but in most cases they are signs of compromise. These tools may be used for scanning, information collection or control; need to determine the purpose of the attack according to specific tools.',
           handle: [
-            '1、确认是否是管理员或者是安全工具的合法使用；',
-            '2、如果不是，需要根据威胁指标的提示做相应的处置。',
+            '1. Verify whether it is the legit use of an administrator;',
+            '2. If not, it should be dealt with according to the threat indicator.',
           ],
           reinforce: [
-            '根据实际使用的危险工具做具体的加固。'
+            'Strengthening according to the actual use of gray tools.'
           ],
         },
         {
           name: '漏洞利用	Exploit',
-          des: '攻击者利用机器上所装应用或者服务的漏洞进行漏洞利用攻击。在网络流量中检测到这种漏洞利用行为并不一定代表被攻击机器中漏洞利用的成功。',
+          des: 'An attacker takes advantage of vulnerabilities in an application or service installed on a machine to exploit the vulnerability. Detection of such exploits in network traffic does not necessarily represent success in exploiting vulnerabilities in the machine.',
           handle: [
-            '1、在被攻击机器上确认漏洞利用是否成功；',
-            '2、如果漏洞利用成功， 隔离该机器并做安全分析',
+            '1. Verify that the exploitation of the vulnerability is successful on the attacked machine;',
+            '2.If the vulnerability is exploited successfully, isolate the machine and do security analysis.',
           ],
           reinforce: [
-            '1、对Web应用程序采用WAF减小攻击面；',
-            '2、关闭机器上不必要的服务，采用Windows EMET等技术防止漏洞利用；',
-            '3、对机器上的应用和服务采用应用隔离、沙箱、以及最小权限等措施减少被攻击后的访问权限；',
-            '4、做好网络划分，增加横向移动难度；',
-            '5、利用威胁情报以及定期做漏洞扫描发现漏洞，及时打重要漏洞补丁。',
+            '1. Adopt WAF for Web applications to reduce the attack surface;',
+            '2. Turn off unnecessary services on the machine and use technologies such as Windows EMET to prevent vulnerabilities from being exploited;',
+            '3. Apply isolate, sandbox, least privilege and other measures to applications and services on the machine to reduce access rights after the attack;',
+            '4. Segment networks to increase the difficulty of lateral movement;',
+            '5. Use threat intelligence and regular vulnerability scanning to detect vulnerabilities and patch critical vulnerabilities in a timely manner.',
           ],
         },
         {
           name: '其他	Others',
-          des: '无',
-          handle: ['无'],
-          reinforce: ['无'],
+          des: 'N/A',
+          handle: ['N/A'],
+          reinforce: ['N/A'],
         },
         {
           name: 'EICAR	eicar',
-          des: 'EICAR是一个用于测试的不具有危害的但防病毒软件会告警的程序。',
-          handle: ['不需要处置。'],
-          reinforce: ['无'],
+          des: 'EICAR is non-hazardous. Anti-virus software detects it for testing purposes.',
+          handle: ['N/A'],
+          reinforce: ['N/A'],
         },
         {
           name: 'SQL注入	sqlinjection',
-          des: 'SQL注入是攻击者利用数据库设计、开发、缺乏校验等漏洞而导致应用做非设计本意的行为。',
+          des: 'SQL injection is the behavior that an attacker takes advantage of such vulnerabilities as database design, development, and lack of validation to cause an application to do something undersigned.',
           handle: [
-            '1、根据SQL注入脚本确认注入是否成功；',
-            '2、由于SQL注入漏洞的不同，注入可以导致不同的结果。根据具体注入脚本的行为做处置。',
+            '1. Verify that the injection is successful according to the SQL injection script;',
+            '2. Because of the different SQL injection vulnerabilities, injection can lead to different results. Mitigate according to the behavior of the specific injection script.',
           ],
           reinforce: [
-            '1、采用WAF等安全设备减小攻击面；',
-            '2、对机器上的应用和服务采用应用隔离、沙箱、以及最小权限等措施减少被攻击后的访问权限；',
-            '3、定期做漏洞扫描发现漏洞，及时打重要漏洞补丁。',
+            '1. Using WAF and other security equipment to reduce the attack surface;',
+            '2. Apply isolate, sandbox, least privilege and other measures to applications and services on the machine to reduce access rights after the attack;',
+            '3.Do regular vulnerability scanning to detect vulnerabilities and patch critical vulnerabilities in a timely manner.',
           ],
         },
         {
           name: '暴力破解	BruteForce',
-          des: '攻击者采用大量的猜测的账号和密码组合或者是少量的符合网络密码策略的常用密码(password spraying)尝试登录网络，一旦登录成功，就是合法账号登录，极难再被检测到。常见的被暴力破解攻击的服务包括：SSH (22/TCP)、Telnet (23/TCP)、FTP (21/TCP)、NetBIOS / SMB / Samba (139/TCP & 445/TCP)、LDAP (389/TCP)、Kerberos (88/TCP)、RDP / Terminal Services (3389/TCP)、HTTP/HTTP Management Services (80/TCP & 443/TCP)、MSSQL (1433/TCP)、Oracle (1521/TCP)、MySQL (3306/TCP)、VNC (5900/TCP)。',
+          des: "Attackers try to log into the network by spraying a large number of guesswork accounts and password combinations or a small number of common passwords that conform to network password policies. Once the login is successful, it's a legitimate account login, and it's extremely difficult to detect. Common Services that are attacked by brute force include: SSH (22/TCP), Telnet (23/TCP), FTP (21/TCP), NetBIOS/SMB/Samba (139/TCP&445/TCP), LDAP (389/TCP), Kerberos (88/TCP), RDP/Terminal Services (3389/TCP), HTTP/HTTP Management Services (80/TCP&443/TCP), MSSQL (1433/TCP), Oracle (1521/TCP), MySQL (306/TCP), VNC (5TCP).",
           handle: [
-            '1、查看被攻击机器的系统登录日志确认是否暴力破解登录成功。如果成功，修改该账号密码；',
-            '2、如果是外部威胁，在安全网关上阻止该攻击地址。',
+            '1. Check the system login log of the attacked machine to see if the brute force was successful. If successful, change the account password;',
+            '2. If it is an external threat, block the attack address on the security gateway.',
           ],
           reinforce: [
-            '1、采用合适的账号锁定策略，在一定数量的失败登录后锁定账号。但这个策略不能制定太严格，避免在攻击的时候造成被攻击的大量账号全部被锁定。对于关键应用，在一定数量的失败登录后要求格外的验证可以有效解决这个问题；',
-            '2、采用多因素认证；',
-            '3、参考NIST密码策略制定网络密码策略。'
+            "1. Use the appropriate account lockout policy to lock the account after a certain number of failed logins. But the policy can't be too strict to prevent a large number of accounts from being locked out in the event of an attack. For critical applications, requiring extra validation after a certain number of failed logins can effectively solve this problem.",
+            '2. Adopt multi-factor authentication;',
+            '3. Make network password policies according to NIST password policies.'
           ],
         },
         {
           name: 'WebShell	WebShell',
-          des: 'Web Shell是利用失窃账号或者漏洞而放置在Web服务器上用来和攻击者交互的入口。',
+          des: 'A Web Shell is an entry that is placed on a Web server to interact with an attacker using a stolen account or vulnerabilities. ',
           handle: [
-            '1、确认是否成功，如果成功，隔离机器并做清除、扫描和安全分析；',
-            '2、重点关注是否有横向移动的痕迹。',
+            '1. Verify if it was successful, if it was, isolate the machine and do cleaning, scanning and security analysis;',
+            '2. Focus on whether there are signs of lateral movement.',
           ],
           reinforce: [
-            '1、根据根因分析结果打补丁或者修改账号密码；',
-            '2、管理Web服务器的账号需要和内网的账号做区分。',
+            '1. Patch or change the account password according to the result of root cause analysis;',
+            '2. The accounts that are used to manage Web servers should be different from intranet accounts',
           ],
         },
         {
           name: "扫描	Scan",
-          des: '攻击者通过扫描发现运行在机器上的服务，包括可能存在漏洞的服务。 ',
+          des: 'An attacker detects services running on a machine by scanning them, including services that may have vulnerabilities. ',
           handle: [
-            '无',
+            'N/A',
           ],
           reinforce: [
-            '1、及时打重大漏洞补丁；',
-            '2、禁用不需要的服务；',
-            '3、对关键服务，创建访问列表防止未知机器的访问甚至限制远程访问。',
+            '1. Patch critical vulnerabilities in a timely manner;',
+            '2. Disable unnecessary services;',
+            '3. For key services, create access lists to prevent or even restrict remote access from unknown machines.',
           ],
         },
         {
           name: "恶意程序	malwarefile",
-          des: '下载了一个恶意程序到机器里，可能是恶意文件下载、恶意文件拷贝或者是恶意的邮件附件等。',
+          des: '下Download a malicious program to the machine, may be malicious file download, malicious file copy or malicious email attachments and so on.',
           handle: [
-            '1、根据告警详情里的“网络事件”里的机器端口定位是什么进程下载了恶意程序；',
-            '2. 如果机器里安装有防病毒软件，根据本系统检测的文件名或者哈希值确认恶意程序是否已经被查杀；',
-            '3、如果没有被查杀，而且恶意程序没有被执行，手动清除恶意程序；',
-            '4. 如果恶意程序得到了执行，清除执行后的进程、子进程以及可能生成的或者下载的更多的恶意程序。',
+            '1. Refer to machine port of the "network event" in the alert details to locate the process that has downloaded malicious programs;',
+            '2. If anti-virus software is installed on the machine, verify whether the malicious program has been quarantined according to the filename or hash value detected by the system;',
+            '3. If it is not quarantined and the malicious program is not executed, manually remove the malicious program;',
+            '4. If the malicious program is executed, kill the executed process, sub processes, and more malicious programs that may be generated or downloaded.',
           ],
           reinforce: [
-            '1、安装防病毒软件并且及时更新病毒库；',
-            '2、用户安全意识培训避免下载恶意程序或者点击恶意邮件附件。',
+            '1.Install anti-virus software and update virus library in time;',
+            '2. User security awareness training to avoid downloading malicious programs or clicking on malicious email attachments.',
           ],
         },
         {
           name: "恶意地址	malware",
-          des: '机器访问了带有恶意程序的地址。',
+          des: 'The machine visited addresses with malicious programs.',
           handle: [
-            '1、根据告警详情里的“网络事件”里的机器端口定位是什么进程访问了这个恶意地址；',
-            '2、安装防病毒软件并且更新到最新做全盘查杀。',
+            '1. Refer to the machine port of "network event" in the alert details, locate the process that has visited this malicious address;',
+            '2.Install anti-virus software and update to the latest to do the full system scan.',
           ],
           reinforce: [
-            '1、安装防病毒软件并且及时更新病毒库；',
-            '2、用户安全意识培训提升安全意识。',
+            '1.Install anti-virus software and update virus library in time;',
+            '2. User security awareness training to enhance security awareness.',
           ],
         },
         {
           name: "tor出口节点	tor_exit_node",
-          des: '攻击者用Tor隐藏攻击来源和加密通讯通道，但也存在部分用户用Tor保护隐私的情况。',
+          des: 'The attacker uses Tor to hide the source of the attack and encrypt the communication channel, but there are also cases where some users use Tor to protect their privacy.',
           handle: [
-            '1、确认机器的使用者是否合法使用Tor；',
-            '2、如果确认被攻击，根据告警详情里的“网络事件”里的机器端口定位是什么进程访问了这个节点，从而做相应的处置。',
+            '1. Verify that the user of the machine is using Tor legitimately;',
+            '2. If an attack is confirmed, it should be mitigated starting from the process that has visited the node by identifying the machine port in the "network event" in the alert details.',
           ],
           reinforce: [
-            '1、安装防病毒软件并且及时更新病毒库；',
-            '2、考虑用网络安全设备阻止Tor节点地址。',
+            '1.Install anti-virus software and update virus library in time;',
+            '2. Consider using network security devices to block Tor node addresses.',
           ],
         },
         {
           name: "tor入口节点	tor_node",
-          des: '攻击者用Tor隐藏攻击来源和加密通讯通道，但也存在部分用户用Tor保护隐私的情况。',
+          des: 'The attacker uses Tor to hide the source of the attack and encrypt the communication channel, but there are also cases where some users use Tor to protect their privacy.',
           handle: [
-            '1、确认机器的使用者是否合法使用Tor；',
-            '2、如果确认被攻击，根据告警详情里的“网络事件”里的机器端口定位是什么进程访问了这个节点，从而做相应的处置。',
+            '1. Verify that the user of the machine is using Tor legitimately;',
+            '2. If an attack is confirmed, it should be mitigated starting from the process that has visited the node by identifying the machine port in the "network event" in the alert details.',
           ],
           reinforce: [
-            '1、安装防病毒软件并且及时更新病毒库；',
-            '2、考虑用网络安全设备阻止Tor节点地址。',
+            '1.Install anti-virus software and update virus library in time;',
+            '2. Consider using network security devices to block Tor node addresses.',
           ],
         },
         {
           name: "垃圾邮件	spam ",
-          des: '垃圾邮件本身不具有安全威胁，是不想在网络里出现的信息。',
+          des: 'Spam itself does not pose a security threat; it is the information that is not desired in the network.',
           handle: [
-            '无',
+            'N/A',
           ],
           reinforce: [
-            '通过网络安全设备阻止垃圾邮件地址。',
+            'Block spam through network security devices.',
           ],
         },
         {
           name: '僵尸网络C&C	botc&c ',
-          des: '攻击者在机器上装了恶意程序，该恶意程序通过常见的协议或者定制的协议和外部服务器通讯。',
+          des: 'An attacker installs a malicious program on a machine that communicates with an external server via a common protocol or custom protocol.',
           handle: [
-            '1、把机器从网络隔离；',
-            '2、根据告警详情里的“网络事件”里的机器端口定位机器的恶意进程；',
-            '3、做安全分析确认根因以及威胁扩散程度。如果安装有EDR解决方案，可以直接通过历史信息做安全事件调查快速定位问题；',
-            '4、安装防病毒软件做全盘扫描。',
+            '1. Mitigation Recommendations',
+            '2. Locate the malicious process at the machine according to the port in the network event of the alert details;',
+            '3. Do a security analysis to identify the root cause and the extent the threat has spread. If you have an EDR solution installed, you can quickly locate the problem by doing security incident investigation directly through historical information;',
+            '4. Install anti-virus software for full system scanning.',
           ],
           reinforce: [
-            '1、提升端点安全能力；',
-            '2、用网络安全设备禁止不需要联网的设备联网；',
-            '3、用网络威胁检测工具及早发现外联威胁。',
+            '1. Enhance endpoint security capabilities;',
+            '2. Block the network connection of devices that do not need Internet access with network security devices;',
+            '3. Use network threat detection solutions to detect outreach threats as early as possible.',
           ],
         },
         {
           name: '移动恶意软件	mobilemalware',
-          des: '下载了一个恶意程序到机器里，可能是恶意文件下载、恶意文件拷贝或者是恶意的邮件附件等。',
+          des: '下Download a malicious program to the machine, may be malicious file download, malicious file copy or malicious email attachments and so on.',
           handle: [
-            '1、根据告警详情里的“网络事件”里的机器端口定位是什么进程下载了恶意程序；',
-            '2. 如果机器里安装有防病毒软件，根据本系统检测的文件名或者哈希值确认恶意程序是否已经被查杀；',
-            '3、如果没有被查杀，而且恶意程序没有被执行，手动清除恶意程序；',
-            '4. 如果恶意程序得到了执行，清除执行后的进程、子进程以及可能生成的或者下载的更多的恶意程序。',
+            '1. Refer to machine port of the "network event" in the alert details to locate the process that has downloaded malicious programs;',
+            '2. If anti-virus software is installed on the machine, verify whether the malicious program has been quarantined according to the filename or hash value detected by the system;',
+            '3. If it is not quarantined and the malicious program is not executed, manually remove the malicious program;',
+            '4. If the malicious program is executed, kill the executed process, sub processes, and more malicious programs that may be generated or downloaded.',
           ],
           reinforce: [
-            '1、安装防病毒软件并且及时更新病毒库；',
-            '2、用户安全意识培训避免下载恶意程序或者点击恶意邮件附件。',
+            '1.Install anti-virus software and update virus library in time;',
+            '2. User security awareness training to avoid downloading malicious programs or clicking on malicious email attachments.',
           ],
         },
         {
           name: '网络诈骗	fraud',
-          des: '通过社交工程等手段引诱用户上当。',
+          des: 'Entice users by means of social engineering.',
           handle: [
-            '1、如果存在金钱损失等情况应及时做相应的应急处理；',
-            '2、对机器做扫描和安全分析。',
+            '1. If there is a loss of money and other emergencies, corresponding actions should be taken in time;',
+            '2. Scanning and security analysis of the machine.',
           ],
           reinforce: [
-            '1、考虑用网络安全设备拦截网络诈骗地址；',
-            '2、用户通过安全意识培训识别社交工程等手段。',
+            '1. Consider using network security devices to block fraud addresses;',
+            '2. Provide security awareness training to users to help identify social engineering techniques. ',
           ],
         },
         {
           name: '恶意重定向	maliciousredirect',
-          des: '通过重定向把用户引入恶意地址。',
+          des: 'Redirect a user to a malicious address. ',
           handle: [
-            '1、如果存在恶意感染、信息泄露等情况应及时做相应的应急处理；',
-            '2、对机器做扫描和安全分析。',
+            '1. If there is an infection, information leakage and other similar situations, corresponding emergency treatment should be taken in time;；',
+            '2. Scanning and security analysis of the machine.',
           ],
           reinforce: [
-            '1、考虑用网络安全设备拦截恶意重定向地址；',
-            '2、用户通过安全意识培训提升安全意识。',
+            '1. Consider using network security devices to block malicious redirect addresses;',
+            '2. Provide security awareness training to users to help identify social engineering techniques.',
           ],
         },
         {
           name: '网络代理	proxy',
-          des: '攻击者用网络代理隐藏攻击来源和加密通讯通道，但也存在部分用户用网络代理保护隐私的情况。',
+          des: 'Attackers use network proxies to hide the source of the attack and encrypt the communication channel, but some users also use network proxies to protect privacy.',
           handle: [
-            '1、确认机器的使用者是否合法使用网络代理；',
-            '2、如果确认被攻击，根据告警详情里的“网络事件”里的机器端口定位是什么进程访问了这个节点，从而做相应的处置。',
+            '1. Verify that the user of the machine is using the network proxy legitimately;',
+            '2. If an attack is confirmed, it should be mitigated starting from the process that has visited the node by identifying the machine port in the "network event" in the alert details.',
           ],
           reinforce: [
-            '1、安装防病毒软件并且及时更新病毒库；',
-            '2、考虑用网络安全设备阻止网络代理地址。',
+            '1.Install anti-virus software and update virus library in time;',
+            '2. Consider using network security devices to block network proxy addresses.',
           ],
         },
         {
           name: '钓鱼网站	phishing',
-          des: '通过社交工程等手段引诱用户点击某个链接、下载文档甚至可执行文件或者输入账号等信息达到窃取信息、利用浏览器漏洞或者植入恶意程序的目的。',
+          des: 'Use social engineering and other means to entice users to click on a link, download a document or even an executable file, or enter account details to steal information, exploit browser vulnerabilities, or embed malicious programs.',
           handle: [
-            '1、如果存在账号等信息失窃行为应及时更改账号密码和相应的应急处理；',
-            '2、对机器做扫描和安全分析。',
+            '1. If credentials are lost, the account password should be changed and corresponding emergency treatment should be done in a timely manner;',
+            '2. Scanning and security analysis of the machine.',
           ],
           reinforce: [
-            '1、考虑用网络安全设备拦截钓鱼地址；',
-            '2、用户通过安全意识培训识别社交工程等手段。',
+            '1. Consider using network security devices to block phishing addresses;',
+            '2. Provide security awareness training to users to help identify social engineering techniques. ',
           ],
         },
         {
           name: '勒索软件通讯	ransomwareurl',
-          des: '该地址用于下载勒索软件或者是跟勒索软件通讯。',
+          des: 'The address is used to download ransomware or to communicate with ransomware.',
           handle: [
-            '1、把机器从网络隔离；',
-            '2、如果是下载了勒索软件，及时清除该软件；',
-            '3、如果被勒索软件加密，先搜索安全公司的网站看是否有解密工具。',
+            '1. Mitigation Recommendations',
+            '2. If you downloaded the ransomware, remove the software in time;',
+            '3. If it is encrypted by ransomware, search security companies’ websites to see if there is a decryption tool.',
           ],
           reinforce: [
-            '1、用网络安全设备阻止该地址；',
-            '2、安装防病毒软件并且及时更新病毒库。',
+            '1. Block the address with a network security device;',
+            '2. Install anti-virus software and update virus library in time.',
           ],
         },
         {
           name: '已知APT攻击',
-          des: '本威胁是检测到网络与曾经被APT组织使用过的地址通讯或者是相关工具出现在网络中。',
+          des: 'This threat detects indicators that have been used by known APT groups.',
           handle: [
-            '1、确认被检测的威胁指标是否还有效；',
-            '2、如果确认有效，需要根据APT组织的相关情报信息做应急响应并做最高优先级处理。',
+            '1. Identify whether the IOCs being detected are still valid;',
+            '2. If IOCs are still valid, incident response and highest priority processing should be undergoing according to the relevant information of APT groups.',
           ],
           reinforce: [
-            '根据该APT组织的战术、技术和流程（TTP）做相应的安全加固。',
+            'According to the APT group’s tactics, technology and process (TTP) to do the corresponding security enhancements.',
           ],
         },
         {
           name: '恶意证书',
-          des: '机器里的程序采用恶意的ssl证书跟外界通讯。',
+          des: 'The program in the machine uses malicious ssl certificates to communicate with the external world.',
           handle: [
-            '1、把机器从网络隔离；',
-            '2、根据告警详情里的“网络事件”里的机器端口定位机器的恶意进程；',
-            '3、做安全分析确认根因以及威胁扩散程度。如果安装有EDR解决方案，可以直接通过历史信息做安全事件调查快速定位问题；',
-            '4、安装防病毒软件做全盘扫描。',
+            '1. Mitigation Recommendations',
+            '2. Locate the malicious process at the machine according to the port in the network event of the alert details;',
+            '3. Do a security analysis to identify the root cause and the extent the threat has spread. If you have an EDR solution installed, you can quickly locate the problem by doing security incident investigation directly through historical information;',
+            '4. Install anti-virus software for full system scanning.',
           ],
           reinforce: [
-            '1、提升端点安全能力；',
-            '2、用网络安全设备禁止不需要联网的设备联网；',
-            '3、用网络威胁检测工具及早发现外联威胁。',
+            '1. Enhance endpoint security capabilities;',
+            '2. Block the network connection of devices that do not need Internet access with network security devices;',
+            '3. Use network threat detection solutions to detect outreach threats as early as possible.',
           ],
         },
       ],
@@ -1250,7 +1236,7 @@ export default {
         src_label_obj: [],
         dest_label_obj: [],
       },
-      title_name: "告警详情",
+      title_name: "Alert Details",
       network_times: [],
       network_list: {
         new_list: {
@@ -1268,7 +1254,7 @@ export default {
       },
       time_choose: 0,
       emerge_list: {
-        title: ["当前告警资产", "历史告警资产"],
+        title: ["Current Risk Assets", "Historical Risk Assets"],
         activeName: "first",
         choose: 0,
         now_data: {
@@ -1299,23 +1285,23 @@ export default {
         level_list: [
           {
             value: "highest",
-            label: "极高"
+            label: "highest"
           },
           {
             value: "high",
-            label: "高"
+            label: "high"
           },
           {
             value: "medium",
-            label: "中"
+            label: "medium"
           },
           {
             value: "low",
-            label: "低"
+            label: "low"
           }
         ],
         status_type: [
-          '无', '待分配', '已分配', '处置中', '已取消', '已处置'
+          'N/A', 'To be Assigned', 'Assigned', 'In Progress', 'Cancelled', 'Resolved'
         ]
       },
       worksheets_list: {},
@@ -1337,19 +1323,19 @@ export default {
         level_list: [
           {
             value: "highest",
-            label: "最高"
+            label: "highest"
           },
           {
             value: "high",
-            label: "高"
+            label: "high"
           },
           {
             value: "medium",
-            label: "中"
+            label: "medium"
           },
           {
             value: "low",
-            label: "低"
+            label: "low"
           }
         ],
         //经办人数组
@@ -1516,9 +1502,9 @@ export default {
       let multipe = this.table_add_works.multipleSelection;
 
       if (multipe.length == 0) {
-        this.$message({ message: '请选择需要添加的工单！', type: 'warning' });
+        this.$message({ message: 'Please select the assets that need to be added to the ticket', type: 'warning' });
       } else if (multipe.length > 1) {
-        this.$message({ message: '资产/告警不能添加到多个工单，请重新选择！', type: 'warning' });
+        this.$message({ message: 'Alerts cannot be aAssets or alerts cannot be added to multiple tickets, please try again.dded to multiple tickets, please try again.', type: 'warning' });
       } else {
         console.log('******************')
         this.add_params.id = multipe[0].id;
@@ -1701,26 +1687,25 @@ export default {
                 console.log(response.data);
                 this.network_work_order.workorder_id = response.data.data.workorder_id
                 if (response.data.data.workorder_id == '0') {
-                  console.log(213213);
-                  this.network_work_order.work_order_status = '未关联工单'
+                  this.network_work_order.work_order_status = 'No ticket associated'
                   this.network_work_order.work_name = ''
                 } else {
                   if (response.data.data.workorder_status && response.data.data.workorder_name) {
                     switch (response.data.data.workorder_status += '') {
                       case '0':
-                        this.network_work_order.work_order_status = '待分配'
+                        this.network_work_order.work_order_status = 'To be Assigned'
                         break;
                       case '1':
-                        this.network_work_order.work_order_status = '已分配';
+                        this.network_work_order.work_order_status = 'Assigned';
                         break;
                       case '2':
-                        this.network_work_order.work_order_status = '处置中';
+                        this.network_work_order.work_order_status = 'In Progress';
                         break;
                       case '3':
-                        this.network_work_order.work_order_status = '已处置';
+                        this.network_work_order.work_order_status = 'Resolved';
                         break;
                       case '4':
-                        this.network_work_order.work_order_status = '已取消';
+                        this.network_work_order.work_order_status = 'Cancelled';
                         break;
                       default:
                         break;
@@ -1745,7 +1730,7 @@ export default {
             });
           }
           console.log(this.network_times);
-          // 匹配告警类型
+          // 匹配Alert Type
           this.network_times.forEach(item => {
             item.info_list = []
             item.whois_list = [];
@@ -1777,23 +1762,23 @@ export default {
                     value: item.alert_description.mask
                   },
                   {
-                    name: '威胁类型',
+                    name: 'category',
                     value: item.alert_description.category
                   },
                   {
-                    name: '威胁细分',
+                    name: 'threat',
                     value: item.alert_description.threat
                   },
                   {
-                    name: '全球首次发现时间',
+                    name: 'first_seen',
                     value: item.alert_description.first_seen
                   },
                   {
-                    name: '流行度',
+                    name: 'popularity',
                     value: item.alert_description.popularity
                   },
                   {
-                    name: '主要受影响地区',
+                    name: 'geo',
                     value: item.alert_description.geo
                   },
                 ];
@@ -1804,15 +1789,15 @@ export default {
                     value: item.alert_description.mask
                   },
                   {
-                    name: '威胁类型',
+                    name: 'category',
                     value: item.alert_description.category
                   },
                   {
-                    name: '全球首次发现时间',
+                    name: 'first_seen',
                     value: item.alert_description.first_seen
                   },
                   {
-                    name: '流行度',
+                    name: 'popularity',
                     value: item.alert_description.popularity
                   },
                   {
@@ -1828,23 +1813,23 @@ export default {
                     value: item.alert_description.ip
                   },
                   {
-                    name: '威胁类型',
+                    name: 'category',
                     value: item.alert_description.category
                   },
                   {
-                    name: '全球首次发现时间',
+                    name: 'first_seen',
                     value: item.alert_description.first_seen
                   },
                   {
-                    name: '流行度',
+                    name: 'popularity',
                     value: item.alert_description.popularity
                   },
                   {
-                    name: '主要受影响地区',
+                    name: 'geo',
                     value: item.alert_description.geo
                   },
                   {
-                    name: '相关联域名',
+                    name: 'domains',
                     value: item.alert_description.domains
                   },
                 ];
@@ -1860,39 +1845,39 @@ export default {
                     value: item.alert_description.SHA256
                   },
                   {
-                    name: '文件大小',
+                    name: 'file_size',
                     value: item.alert_description.file_size
                   },
                   {
-                    name: '文件类型',
+                    name: 'file_type',
                     value: item.alert_description.file_type
                   },
                   {
-                    name: '常见文件名',
+                    name: 'file_name',
                     value: item.alert_description.file_name
                   },
                   {
-                    name: '威胁类型',
+                    name: 'category',
                     value: item.alert_description.category
                   },
                   {
-                    name: '威胁细分',
+                    name: 'threat',
                     value: item.alert_description.threat
                   },
                   {
-                    name: '全球首次发现时间',
+                    name: 'first_seen',
                     value: item.alert_description.first_seen
                   },
                   {
-                    name: '流行度',
+                    name: 'popularity',
                     value: item.alert_description.popularity
                   },
                   {
-                    name: "主要受影响地区",
+                    name: "geo",
                     value: item.alert_description.geo,
                   },
                   {
-                    name: "样本下载IP地址",
+                    name: "IP",
                     value: item.alert_description.IP,
                   },
                 ];
@@ -1904,23 +1889,23 @@ export default {
                     value: item.alert_description.mask
                   },
                   {
-                    name: '威胁类型',
+                    name: 'category',
                     value: item.alert_description.category
                   },
                   {
-                    name: '全球首次发现时间',
+                    name: 'first_seen',
                     value: item.alert_description.first_seen
                   },
                   {
-                    name: '流行度',
+                    name: 'popularity',
                     value: item.alert_description.popularity
                   },
                   {
-                    name: "主要受影响地区",
+                    name: "geo",
                     value: item.alert_description.geo,
                   },
                   {
-                    name: "相关联恶意文件",
+                    name: "file",
                     value: item.alert_description.file,
                   },
                 ];
@@ -1932,23 +1917,23 @@ export default {
                     value: item.alert_description.mask
                   },
                   {
-                    name: '威胁类型',
+                    name: 'category',
                     value: item.alert_description.category
                   },
                   {
-                    name: '全球首次发现时间',
+                    name: 'first_seen',
                     value: item.alert_description.first_seen
                   },
                   {
-                    name: '流行度',
+                    name: 'popularity',
                     value: item.alert_description.popularity
                   },
                   {
-                    name: "主要受影响地区",
+                    name: "geo",
                     value: item.alert_description.geo,
                   },
                   {
-                    name: "被钓鱼IP",
+                    name: "IP",
                     value: item.alert_description.IP,
                   },
                 ];
@@ -1964,27 +1949,27 @@ export default {
                     value: item.alert_description.SHA256
                   },
                   {
-                    name: '文件大小',
+                    name: 'file_size',
                     value: item.alert_description.file_size
                   },
                   {
-                    name: '威胁类型',
+                    name: 'category',
                     value: item.alert_description.category
                   },
                   {
-                    name: '威胁细分',
+                    name: 'threat',
                     value: item.alert_description.threat
                   },
                   {
-                    name: '全球首次发现时间',
+                    name: 'first_seen',
                     value: item.alert_description.first_seen
                   },
                   {
-                    name: '流行度',
+                    name: 'popularity',
                     value: item.alert_description.popularity
                   },
                   {
-                    name: "主要受影响地区",
+                    name: "geo",
                     value: item.alert_description.geo,
                   },
                 ];
@@ -1992,23 +1977,23 @@ export default {
               case 'sdk':
                 item.info_list = [
                   {
-                    name: '威胁类型',
+                    name: 'category',
                     value: item.alert_description.category
                   },
                   {
-                    name: '文件名',
+                    name: 'file_name',
                     value: item.alert_description.file_name
                   },
                   {
-                    name: '文件大小',
+                    name: 'file_size',
                     value: item.alert_description.file_size
                   },
                   {
-                    name: '文件哈希值',
+                    name: 'md5',
                     value: item.alert_description.md5
                   },
                   {
-                    name: 'SDK检测威胁',
+                    name: 'threat',
                     value: item.alert_description.threat
                   },
                 ];
@@ -2016,19 +2001,19 @@ export default {
               case 'sandbox':
                 item.info_list = [
                   {
-                    name: '威胁类型',
+                    name: 'category',
                     value: item.alert_description.category
                   },
                   {
-                    name: '文件名',
+                    name: 'filename',
                     value: item.alert_description.filename
                   },
                   {
-                    name: '文件大小',
+                    name: 'size',
                     value: item.alert_description.size
                   },
                   {
-                    name: '文件类型',
+                    name: 'type',
                     value: item.alert_description.type
                   },
                   {
@@ -2052,19 +2037,19 @@ export default {
               case 'yara':
                 item.info_list = [
                   {
-                    name: "文件名",
+                    name: "file_name",
                     value: item.alert_description.file_name,
                   },
                   {
-                    name: "文件大小",
+                    name: "file_size",
                     value: item.alert_description.file_size,
                   },
                   {
-                    name: "文件哈希值",
+                    name: "md5",
                     value: item.alert_description.md5,
                   },
                   {
-                    name: "Yara规则名称",
+                    name: "rule_name",
                     value: item.alert_description.rule_name,
                   },
                 ];
@@ -2072,16 +2057,16 @@ export default {
               case 'IDS':
                 item.info_list = [
                   {
-                    name: "告警类型",
+                    name: "category",
                     value: item.alert_description.category,
                   },
                   {
-                    name: "告警描述",
+                    name: "threat",
                     value: item.alert_description.threat,
                   },
                   {
-                    name: "Payload Info",
-                    value: "点击下载",
+                    name: "Payload",
+                    value: "download",
                   },
                 ];
                 break;
@@ -2401,7 +2386,7 @@ export default {
     },
     // 下载payload
     download (value, item) {
-      if (value.value == "点击下载" && value.name == "Payload Info") {
+      if (value.value == "download" && value.name == "Payload") {
         var funDownload = function (content, filename) {
           // 创建隐藏的可下载链接
           var eleLink = document.createElement("a");
@@ -2418,7 +2403,7 @@ export default {
         };
         funDownload(item.network_event.payload, "payload.dat");
       }
-      if (value.value == "点击下载" && value.name == '文件下载') {
+      if (value.value == "download" && value.name == 'download') {
         var window_open = ''
         // horizontalthreat  横向威胁告警  lateral
         // externalthreat  外部威胁告警  outside
@@ -2445,7 +2430,7 @@ export default {
         window.open(window_open + value.md5);
       }
     },
-    // 当前受威胁资产
+    // Current Risk Assets
     new_list () {
       var new_list = ''
       // horizontalthreat  横向威胁告警  lateral
@@ -2496,7 +2481,7 @@ export default {
       this.emerge_list.now_data.page = val;
       this.new_list();
     },
-    // 历史受威胁资产
+    // Historical Risk Assets
     old_list () {
       var new_list = ''
       // horizontalthreat  横向威胁告警  lateral
@@ -2665,7 +2650,7 @@ export default {
           if (status == 0) {
             this.$message(
               {
-                message: '修改标签成功!',
+                message: 'Change label successfully',
                 type: 'success',
               }
             );
@@ -2700,7 +2685,7 @@ export default {
       } else {
         this.$message.warning(
           {
-            message: '最多可以设置5个标签。',
+            message: 'Up to 5 labels can be set',
             offset: 50
           })
       }
@@ -2754,9 +2739,6 @@ export default {
             default:
               break;
           }
-
-
-
           this.$axios.post(join, {
             addr: this.network_detail.src_ip,
             type: 1
@@ -2796,9 +2778,6 @@ export default {
     change_state_dest (item) {
       console.log(item);
       if (item == '1') {
-
-
-
         this.$router.push({ path: "/invest/url", query: { dest_ip: this.network_detail.dest_ip, src_ip: '' } });
       }
       //加入外部链接
@@ -2832,8 +2811,6 @@ export default {
             default:
               break;
           }
-
-
           this.$axios.post(join, {
             addr: this.network_detail.dest_ip,
             type: 1
@@ -2868,9 +2845,6 @@ export default {
         });
       }
     },
-
-
-
     time_active (index) {
       console.log("111");
       this.time_choose = index;
@@ -2893,8 +2867,6 @@ export default {
     //工单任务选择
     change_task (command) {
       if (command == "1") {
-
-
         this.new_worksheets_list.name = ''
         this.new_worksheets_list.level = ''
         this.new_worksheets_list.operator = ''
@@ -2903,7 +2875,6 @@ export default {
         this.new_worksheets_list.textarea = ''
         this.new_worksheets_list.multiple = []
         this.new_worksheets_list.select_list = []
-
         this.new_worksheets_data.operator_list = []
         this.new_worksheets_data.operator_list = []
         this.new_worksheets_data.table_operator.tableData = []
@@ -2915,8 +2886,6 @@ export default {
         this.new_worksheets_data.network_detail = []
         // 存在被创建工单的告警
         console.log(this.network_detail.status);
-
-        // this.table_alerts.tableData[0].status
         if (this.network_detail.status == '3' || this.network_detail.status == '4' || this.network_detail.status == '5') {
           this.$message({ message: 'Alert whose status is resolved, ignored, false positive cannot create new tickets', type: 'warning' });
           return false
@@ -2925,8 +2894,6 @@ export default {
       } else if (command == "2") {
 
         this.open_add_new();
-        // 添加到工单，只有告警状态 0 1
-        // 告警：0新告警，1待处置，2处置中，3已处置，4已忽略，5误报
       }
     },
     // 添加到工单
@@ -3016,7 +2983,7 @@ export default {
       if (Object.keys(this.worksheets_data.tableRadio).length == 0) {
         this.$message(
           {
-            message: '请选择工单！',
+            message: 'Please select the ticket',
             type: 'warning',
           }
         );
@@ -3099,7 +3066,6 @@ export default {
           this.new_worksheets_data.new_contet = true;
         })
         .catch(err => {
-          console.log('用户列表错误');
           console.log(err);
         })
     },
@@ -3111,7 +3077,7 @@ export default {
       let level_list = this.new_worksheets_data.table_operator.tableData;
       let selected_id_attr = level_list.map(x => { return x.id });
       if (selected_id_attr.includes(item.id)) {
-        this.$message.error('已存在');
+        this.$message.error('Exited');
       } else {
         this.new_worksheets_data.table_operator.tableData.unshift(item);
       }
@@ -3130,19 +3096,16 @@ export default {
     //下一步时候验证工单名称，优先级、经办人等参数
     next_task () {
       if (this.new_worksheets_list.name == '') {
-        this.$message.error('工单名称不能为空');
+        this.$message.error('Ticket name is required');
         return false
       }
       if (this.new_worksheets_list.level == '') {
-        this.$message.error('优先级未选择');
+        this.$message.error('Please select the priority');
         return false
       }
-      if (this.new_worksheets_list.level == '') {
-        this.$message.error('优先级未选择');
-        return false
-      }
+
       if (this.new_worksheets_list.operator == '') {
-        this.$message.error('经办人未选择');
+        this.$message.error('Please select the assignee');
         return false
       }
       this.new_worksheets_data.new_contet = false;
@@ -3211,7 +3174,7 @@ export default {
           if (status == 0) {
             this.get_data();
             this.new_worksheets_data.pop = false
-            this.$message.success('分配成功');
+            this.$message.success('Assigned successfully');
           } else if (status == 1) {
             this.$message.error(msg);
           }
