@@ -23,19 +23,19 @@
                            size='148'>
                 <el-button type="primary"
                            class="change_btn">
-                  <span>状态变更</span>
+                  <span>Status Change</span>
                   <i class="el-icon-arrow-down el-icon--right"></i>
                 </el-button>
                 <el-dropdown-menu slot="dropdown"
                                   class="dropdown_ul_box_124">
                   <el-dropdown-item command='2'
-                                    class="select_item">处置中</el-dropdown-item>
+                                    class="select_item">In Progress</el-dropdown-item>
                   <el-dropdown-item command="3"
-                                    class="select_item">已处置</el-dropdown-item>
+                                    class="select_item">Resolved</el-dropdown-item>
                   <el-dropdown-item command='4'
-                                    class="select_item">已忽略</el-dropdown-item>
+                                    class="select_item">Ignored</el-dropdown-item>
                   <el-dropdown-item command="5"
-                                    class="select_item">误报</el-dropdown-item>
+                                    class="select_item">False positive</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
               <el-dropdown @command="change_task"
@@ -43,17 +43,17 @@
                            trigger="click">
                 <el-button type="primary"
                            class="change_btn">
-                  <span>工单任务</span>
+                  <span>Ticket Task</span>
                   <i class="el-icon-arrow-down el-icon--right"></i>
                 </el-button>
                 <el-dropdown-menu slot="dropdown"
                                   class="dropdown_ul_box_124">
-                  <el-dropdown-item command="1">新建工单</el-dropdown-item>
+                  <el-dropdown-item command="1">Create</el-dropdown-item>
                   <el-dropdown-item command="2">Add to ticket</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
               <el-button class="edit_btn"
-                         @click="edit_tag_box">编辑标签</el-button>
+                         @click="edit_tag_box">Tags</el-button>
             </el-col>
           </el-row>
         </div>
@@ -76,9 +76,9 @@
                                   style="width200px;"
                                   class="dropdown_ul_box_detail">
                   <el-dropdown-item command='1'
-                                    class="select_item">威胁追查</el-dropdown-item>
+                                    class="select_item">Threat hunting</el-dropdown-item>
                   <el-dropdown-item command="2"
-                                    class="select_item">添加到外部动态列表</el-dropdown-item>
+                                    class="select_item">Add to the external dynamic list</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </li>
@@ -97,14 +97,14 @@
                                   style="width200px;"
                                   class="dropdown_ul_box_detail">
                   <el-dropdown-item command='1'
-                                    class="select_item">威胁追查</el-dropdown-item>
+                                    class="select_item">Threat hunting</el-dropdown-item>
                   <el-dropdown-item command="2"
-                                    class="select_item">添加到外部动态列表</el-dropdown-item>
+                                    class="select_item">Add to the external dynamic list</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </li>
             <li class="item_li">
-              <span class="item_li_title">源标签:</span>
+              <span class="item_li_title">Source labels:</span>
               <div class="item_li_content">
                 <ul v-if="network_detail.src_label_obj.length !=0">
                   <li class="tag_btn_box"
@@ -115,7 +115,7 @@
               </div>
             </li>
             <li class="item_li">
-              <span class="item_li_title">目的标签:</span>
+              <span class="item_li_title">Destination labels:</span>
               <div class="item_li_content">
                 <ul v-if="network_detail.dest_label_obj.length !=0">
                   <li class="tag_btn_box"
@@ -138,7 +138,7 @@
               <span class="item_li_content">{{network_detail.category}}</span>
             </li>
             <li class="item_li">
-              <span class="item_li_title">状态:</span>
+              <span class="item_li_title">Status:</span>
               <span class="item_li_content">{{network_detail.status | alert_status}}</span>
             </li>
           </ul>
@@ -150,7 +150,7 @@
               <span class="item_li_content">{{network_detail.application}}</span>
             </li>
             <li class="item_li">
-              <span class="item_li_title">检测引擎:</span>
+              <span class="item_li_title">Detection Engine:</span>
               <span class="item_li_content">{{network_detail.detect_engine}}</span>
             </li>
             <li class="item_li">
@@ -159,7 +159,7 @@
                 {{network_detail.fall_certainty == '0'?'':'已失陷'}}</span>
             </li>
             <li class="item_li">
-              <span class="item_li_title">标签:</span>
+              <span class="item_li_title">Labels:</span>
               <div class="item_li_content">
                 <ul v-if="network_detail.label_obj.length !=0">
                   <li class="tag_btn_box"
@@ -170,17 +170,17 @@
               </div>
             </li>
             <li class="item_li">
-              <span class="item_li_title">攻击阶段:</span>
+              <span class="item_li_title">Attack Phase:</span>
               <span class="item_li_content">{{network_detail.attack_stage_cn }}</span>
             </li>
             <li class="item_li">
-              <span class="item_li_title">工单名称:</span>
+              <span class="item_li_title">Name:</span>
               <span class="item_li_content Goto_workorder"
                     @click="Goto_workorder"
                     v-if="network_work_order.work_name!=''">{{network_work_order.work_name}}</span>
             </li>
             <li class="item_li">
-              <span class="item_li_title">工单状态:</span>
+              <span class="item_li_title">Ticket Status:</span>
               <span class="item_li_content">{{network_work_order.work_order_status}}</span>
             </li>
           </ul>
@@ -190,7 +190,7 @@
 
     <!-- 检测时间轴 -->
     <div class="detail_time_box">
-      <p class="time_title">检测时间轴</p>
+      <p class="time_title">Detection Timeline</p>
       <div class="time_content">
         <div class="time_left">
           <ul class="time_left_list">
@@ -215,33 +215,24 @@
         <div class="time_right">
           <div v-for="(item,index) in network_times"
                v-show="time_choose==index">
-            <p class="title">详细信息</p>
+            <p class="title">Details</p>
             <div class="time_right_info">
               <div class="time_right_info_top">
-                <!-- <li class="info_top_item">
-                  <span class="info_top_item_title">检测引擎</span>
-                  <span class="info_top_item_content">{{item.detect_engine}}</span>
-                </li>
-                <li class="info_top_item">
-                  <span class="info_top_item_title">情报类型</span>
-                  <span class="info_top_item_content">{{item.description_type}}</span>
-                </li> -->
                 <li class="info_top_item"
                     v-for="value in item.info_list">
                   <span class="info_top_item_title">{{value.name}}</span>
-                  <span v-if="value.name=='文件大小'">
+                  <span v-if="value.name=='file_size'">
                     {{value.value | filterType }}
                   </span>
                   <span class="info_top_item_content"
-                        v-if="value.name!='文件大小'"
-                        :class="value.value=='点击下载'?'download_text':''"
+                        v-if="value.name!='file_size'"
+                        :class="value.value=='download'?'download_text':''"
                         @click="download(value,item)">{{value.value}}</span>
-
                 </li>
               </div>
               <div class="time_right_info_bom"
                    v-if="item.whois_list.length !=0">
-                <span class="info_bom_title">Whois信息</span>
+                <span class="info_bom_title">Whois</span>
                 <div class="info_bom_item">
                   <div class="info_bom_item_li"
                        v-for="demo in item.whois_list">
@@ -251,7 +242,7 @@
                 </div>
               </div>
             </div>
-            <p class="title">网络事件</p>
+            <p class="title">Network Event</p>
             <div class="time_right_net">
               <div class="time_right_net_item"
                    v-for="demo in item.event_list">
@@ -269,7 +260,7 @@
         <img src="@/assets/images/emerge/detai_attack.png"
              alt=""
              class="icon_img">
-        <span class="attack_stage_title">攻击阶段分布</span>
+        <span class="attack_stage_title">Attack Phase Distribution</span>
       </div>
       <div class="attack_stage_bom">
         <div class="stage_item_box">
@@ -277,7 +268,7 @@
                 v-if="attack_stage_list[0].count>1">
             {{attack_stage_list[0].count}}
           </span>
-          <span :class="attack_stage_list[0].count>0?'count_color':''">初始访问</span>
+          <span :class="attack_stage_list[0].count>0?'count_color':''">Initial Access</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -288,7 +279,7 @@
                 v-if="attack_stage_list[1].count>1">
             {{attack_stage_list[1].count}}
           </span>
-          <span :class="attack_stage_list[1].count>0?'count_color':''">执行</span>
+          <span :class="attack_stage_list[1].count>0?'count_color':''">Execution</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -299,7 +290,7 @@
                 v-if="attack_stage_list[2].count>1">
             {{attack_stage_list[2].count}}
           </span>
-          <span :class="attack_stage_list[2].count>0?'count_color':''">持久化</span>
+          <span :class="attack_stage_list[2].count>0?'count_color':''">Persistence</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -310,7 +301,7 @@
                 v-if="attack_stage_list[3].count>1">
             {{attack_stage_list[3].count}}
           </span>
-          <span :class="attack_stage_list[3].count>0?'count_color':''">提权</span>
+          <span :class="attack_stage_list[3].count>0?'count_color':''">Privilege Escalation</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -321,7 +312,7 @@
                 v-if="attack_stage_list[4].count>1">
             {{attack_stage_list[4].count}}
           </span>
-          <span :class="attack_stage_list[4].count>0?'count_color':''">防御逃逸</span>
+          <span :class="attack_stage_list[4].count>0?'count_color':''">Defense Evasion</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -332,7 +323,7 @@
                 v-if="attack_stage_list[5].count>1">
             {{attack_stage_list[5].count}}
           </span>
-          <span :class="attack_stage_list[5].count>0?'count_color':''">凭证访问</span>
+          <span :class="attack_stage_list[5].count>0?'count_color':''">Credential Access</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -343,7 +334,7 @@
                 v-if="attack_stage_list[6].count>1">
             {{attack_stage_list[6].count}}
           </span>
-          <span :class="attack_stage_list[6].count>0?'count_color':''">信息发现</span>
+          <span :class="attack_stage_list[6].count>0?'count_color':''">Discovery</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -354,7 +345,7 @@
                 v-if="attack_stage_list[7].count>1">
             {{attack_stage_list[7].count}}
           </span>
-          <span :class="attack_stage_list[7].count>0?'count_color':''">横向移动</span>
+          <span :class="attack_stage_list[7].count>0?'count_color':''">Lateral Movement</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -365,7 +356,7 @@
                 v-if="attack_stage_list[8].count>1">
             {{attack_stage_list[8].count}}
           </span>
-          <span :class="attack_stage_list[8].count>0?'count_color':''">信息收集</span>
+          <span :class="attack_stage_list[8].count>0?'count_color':''">Collection</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -376,7 +367,7 @@
                 v-if="attack_stage_list[9].count>1">
             {{attack_stage_list[9].count}}
           </span>
-          <span :class="attack_stage_list[9].count>0?'count_color':''">命令控制</span>
+          <span :class="attack_stage_list[9].count>0?'count_color':''">Command and Control</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -387,7 +378,7 @@
                 v-if="attack_stage_list[10].count>1">
             {{attack_stage_list[10].count}}
           </span>
-          <span :class="attack_stage_list[10].count>0?'count_color':''">信息泄露</span>
+          <span :class="attack_stage_list[10].count>0?'count_color':''">Exfiltration</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
@@ -398,7 +389,7 @@
                 v-if="attack_stage_list[11].count>1">
             {{attack_stage_list[11].count}}
           </span>
-          <span :class="attack_stage_list[11].count>0?'count_color':''">毁坏</span>
+          <span :class="attack_stage_list[11].count>0?'count_color':''">Impact</span>
         </div>
       </div>
     </div>
