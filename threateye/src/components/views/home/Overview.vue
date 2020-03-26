@@ -512,8 +512,8 @@ export default {
       if (this.equipment.engine.probe != 0) {
         this.equipment.probe.forEach((item, index) => {
           var data_item1 = {
-            name: '探针' + index,
-            names: '探针',
+            name: 'Sensor' + index,
+            names: 'Sensor',
             dev_name: item.name,
             dev_ip: item.ip,
             status: item.status,
@@ -530,7 +530,7 @@ export default {
                   color: '#666',
                   align: 'center',
                 },
-                formatter: '探针'
+                formatter: 'Sensor'
               }
             },
             itemStyle: {
@@ -545,8 +545,8 @@ export default {
       // 一个引擎或者一个引擎/探针
       if (this.equipment.engine.length != 0) {
         var data_item2 = {
-          name: '引擎',
-          names: '引擎',
+          name: 'Engine',
+          names: 'Engine',
           dev_name: this.equipment.engine[0].name,
           dev_ip: this.equipment.engine[0].ip,
           status: this.equipment.engine[0].status,
@@ -563,7 +563,7 @@ export default {
                 color: '#666',
                 align: 'center',
               },
-              formatter: '引擎'
+              formatter: 'Engine'
             }
           },
           itemStyle: {
@@ -575,8 +575,8 @@ export default {
         this.equipment.echart_array.push(data_item2);
       } else if (this.equipment.engine_probe.length != 0) {
         var data_item3 = {
-          name: '引擎/探针',
-          names: '引擎/探针',
+          name: 'Engine/Sensor',
+          names: 'Engine/Sensor',
           dev_name: this.equipment.engine_probe[0].name,
           dev_ip: this.equipment.engine_probe[0].ip,
           status: this.equipment.engine_probe[0].status,
@@ -593,7 +593,7 @@ export default {
                 color: '#666',
                 align: 'center',
               },
-              formatter: '引擎/探针'
+              formatter: 'Engine/Sensor'
             }
           },
           itemStyle: {
@@ -608,8 +608,8 @@ export default {
         // 沙箱
         this.equipment.sandbox.forEach((item, index) => {
           var data_item1 = {
-            name: '沙箱' + index,
-            names: '沙箱',
+            name: 'Sandbox' + index,
+            names: 'Sandbox',
             dev_name: item.name,
             dev_ip: item.ip,
             status: item.status,
@@ -626,7 +626,7 @@ export default {
                   color: '#666',
                   align: 'center',
                 },
-                formatter: '沙箱'
+                formatter: 'Sandbox'
               }
             },
             itemStyle: {
@@ -641,27 +641,27 @@ export default {
       console.log(this.equipment.echart_array);
       this.equipment.echart_array.forEach(element => {
         console.log(element.names);
-        if (element.names == '引擎') {
+        if (element.names == 'Engine') {
           this.equipment.echart_array.forEach(item => {
             var obj = {
               source: '',
               target: '',
             }
-            if (item.names == '探针' || item.names == '沙箱') {
+            if (item.names == 'Sensor' || item.names == 'Sandbox') {
               obj.source = item.name
-              obj.target = '引擎'
+              obj.target = 'Engine'
               this.equipment.links_array.push(obj)
             }
           })
-        } else if (element.names == '引擎/探针') {
+        } else if (element.names == 'Engine/Sensor') {
           this.equipment.echart_array.forEach(item => {
             var obj = {
               source: '',
               target: '',
             }
-            if (item.names == '探针' || item.names == '沙箱') {
+            if (item.names == 'Sensor' || item.names == 'Sandbox') {
               obj.source = item.name
-              obj.target = '引擎/探针'
+              obj.target = 'Engine/Sensor'
               this.equipment.links_array.push(obj)
             }
           })
@@ -680,7 +680,7 @@ export default {
             console.log(params);
             console.log(trigger);
             if (params.dataType == 'node') {
-              return '设备：' + params.data.dev_name + '</br>' + 'IP地址：' + params.data.dev_ip + '</br>' + '状态：' + params.data.status
+              return 'Equipment:' + params.data.dev_name + '</br>' + 'IP address:' + params.data.dev_ip + '</br>' + 'Status:' + params.data.status
             } else {
               return ''
             }
@@ -796,10 +796,10 @@ export default {
           selected: {
             // 选中'系列1'
             'CPU': true,
-            '内存': true,
-            '硬盘': true,
+            'Memory': true,
+            'Disk': true,
           },
-          data: ['CPU', '内存', '硬盘']
+          data: ['CPU', 'Memory', 'Disk']
         },
         tooltip: {
           trigger: "axis",
@@ -843,7 +843,7 @@ export default {
           data: this.equipment_detail.statistics_time,
         },
         yAxis: [{
-          name: '单位(%)',
+          name: 'Unit(%)',
           nameTextStyle: {
             color: '#666'
           },
@@ -934,7 +934,7 @@ export default {
             }
           },
           {
-            name: "硬盘",
+            name: "Disk",
             type: "line",
             symbol: "none",
             cursor: "pointer",
@@ -990,9 +990,9 @@ export default {
           },
           selected: {
             // 选中'系列1'
-            '流量': true,
+            'Traffic': true,
           },
-          data: ['流量']
+          data: ['Traffic']
         },
         tooltip: {
           trigger: "axis",
@@ -1037,7 +1037,7 @@ export default {
           data: this.equipment_detail.statistics_time
         },
         yAxis: [{
-          name: '单位(Mbps)',
+          name: 'Unit(Mbps)',
           nameTextStyle: {
             color: '#666'
           },
@@ -1066,7 +1066,7 @@ export default {
         }],
         series: [
           {
-            name: "流量",
+            name: "Traffic",
             type: "line",
             symbol: "none",
             cursor: "pointer",
