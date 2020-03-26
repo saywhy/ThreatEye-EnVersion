@@ -30,12 +30,12 @@ Vue.filter('time', function (value) {
 
 Vue.filter('degree_sino', function (args) {
   let str = '';
-  if (args == '高') {
-    str = '高危';
-  } else if (args == '中') {
-    str = '中危';
-  } else if (args == '低') {
-    str = '低危';
+  if (args == 'High') {
+    str = 'High';
+  } else if (args == 'Medium') {
+    str = 'Medium';
+  } else if (args == 'Low') {
+    str = 'Low';
   }
   return str;
 });
@@ -44,11 +44,11 @@ Vue.filter('degree_sino', function (args) {
 Vue.filter('degree', function (args) {
   let str = '';
   if (args == 'high') {
-    str = '高危';
+    str = 'High';
   } else if (args == 'medium') {
-    str = '中危';
+    str = 'Medium';
   } else if (args == 'low') {
-    str = '低危';
+    str = 'Low';
   }
   return str;
 });
@@ -60,7 +60,7 @@ Vue.filter('certainty', function (args) {
   if (args == '0') {
     str = '';
   } else if (args == '1') {
-    str = '已失陷';
+    str = 'Compromised';
   }
   return str;
 });
@@ -70,15 +70,15 @@ Vue.filter('risk_status', function (args) {
   args += ''
   let str = '';
   if (args == '1') {
-    str = '待处置';
+    str = 'Pending';
   } else if (args == '2') {
-    str = '处置中';
+    str = 'In Progress';
   } else if (args == '3') {
-    str = '已处置'
+    str = 'Resolved'
   } else if (args == '4') {
-    str = '已忽略';
+    str = 'Ignored';
   } else if (args == '5') {
-    str = '误报';
+    str = 'False positive';
   }
   return str;
 });
@@ -88,17 +88,17 @@ Vue.filter('alert_status', function (args) {
   args += ''
   let str = '';
   if (args == '0') {
-    str = '新告警';
+    str = 'New';
   } else if (args == '1') {
-    str = '待处置';
+    str = 'Pending';
   } else if (args == '2') {
-    str = '处置中';
+    str = 'In Progress';
   } else if (args == '3') {
-    str = '已处置';
+    str = 'Resolved';
   } else if (args == '4') {
-    str = '已忽略';
+    str = 'Ignored';
   } else if (args == '5') {
-    str = '误报';
+    str = 'False positive';
   }
   return str;
 });
@@ -111,22 +111,22 @@ Vue.filter('work_status', function (args) {
   let str = '';
   switch (args) {
     case '':
-      str = '未关联工单';
+      str = 'No ticket associated';
       break;
     case '0':
-      str = '待分配';
+      str = 'To be Assigned';
       break;
     case '1':
-      str = '已分配';
+      str = 'Assigned';
       break;
     case '2':
-      str = '处置中';
+      str = 'In Progress';
       break;
     case '3':
-      str = '已处置';
+      str = 'Resolved';
       break;
     case '4':
-      str = '已取消';
+      str = 'Cancelled';
       break;
     default:
       break;
@@ -138,13 +138,13 @@ Vue.filter('work_status', function (args) {
 Vue.filter('priority', function (args) {
   let str = '';
   if (args == 'highest') {
-    str = '最高';
+    str = 'Critical';
   } else if (args == 'high') {
-    str = '高';
+    str = 'High';
   } else if (args == 'medium') {
-    str = '中';
+    str = 'Medium';
   } else if (args == 'low') {
-    str = '低';
+    str = 'Low';
   }
   return str;
 });

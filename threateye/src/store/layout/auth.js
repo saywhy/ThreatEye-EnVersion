@@ -8,7 +8,7 @@ export function forRoleList(auth) {
   let roles = [];
 
   if(auth == '' || auth == undefined){
-    console.log('无权限');
+    console.log('No authority');
 
     roles = null;
 

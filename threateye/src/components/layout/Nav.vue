@@ -65,12 +65,12 @@
               <a target='_blank'
                  @click="modifyPassword()">
                 <el-dropdown-item>
-                  修改个人信息
+                  Update Profile
                 </el-dropdown-item>
               </a>
               <el-dropdown-item divided>
                 <span @click="logout"
-                      style="display:block;">退出</span>
+                      style="display:block;">Exit</span>
               </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
@@ -89,12 +89,12 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">修改个人信息</span>
+        <span class="title_name">Update Profile</span>
       </div>
       <div class="content">
         <div class="content_item">
           <p>
-            <span class="title">密码</span>
+            <span class="title">Password</span>
           </p>
           <el-input class="select_box"
                     :placeholder="user_data.placeholder"
@@ -104,54 +104,54 @@
         </div>
         <div class="content_item">
           <p>
-            <span class="title">确认密码</span>
+            <span class="title">Confirm Password</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请再次输入密码"
+                    placeholder="Please enter the password again"
                     v-model="user_edit.Re_password"
                     show-password></el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">旧密码
+            <span class="title">Old Password
               <span class="it_m">*</span>
             </span>
           </p>
           <el-input class="select_box"
-                    placeholder="请再次输入密码"
+                    placeholder="Please enter the old password again"
                     v-model="user_edit.old_password"
                     show-password></el-input>
         </div>
         <div class="content_item">
           <p>
             <span class="title">
-              邮箱
+              Mailbox
               <span class="it_m">*</span>
             </span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入邮箱"
+                    placeholder="Please input your email"
                     v-model="user_edit.email_addr"
                     clearable></el-input>
         </div>
         <div class="content_item">
           <p>
             <span class="title">
-              手机号
+              Cellphone No.
               <span class="it_m">*</span>
             </span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入手机号"
+                    placeholder="Please enter a cellphone number"
                     v-model="user_edit.mobile"
                     clearable></el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">部门</span>
+            <span class="title">Department</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入部门"
+                    placeholder="Please enter a department"
                     v-model="user_edit.department"
                     clearable></el-input>
         </div>
@@ -226,7 +226,7 @@ export default {
           //console.log(response);
 
           this.user_data.password = response.data.data
-          this.user_data.placeholder = '请输入包含大写、小写、数字和特殊字符其中三项,' + response.data.data.min_passwd_len + '-' + response.data.data.max_passwd_len + '位密码'
+          this.user_data.placeholder = 'Contains three types of characters: uppercase, lowercase, numbers, and special characters,' + response.data.data.min_passwd_len + '-' + response.data.data.max_passwd_len + '位密码'
           //!@#QWEasd123 Lele#easy123 Lele@19930901
 
           this.$axios.get('/yiiapi/site/get-self-password-reset-token')
@@ -298,7 +298,7 @@ export default {
       if (this.user_edit.password != this.user_edit.Re_password) {
         this.$message(
           {
-            message: '两次输入密码不一致',
+            message: 'Password does not match',
             type: 'error',
           }
         );
@@ -307,7 +307,7 @@ export default {
       if (!this.regex(this.user_edit.password) && this.user_edit.password != '') {
         this.$message(
           {
-            message: '密码必须同时包含大写、小写、数字和特殊字符其中三项',
+            message: 'Password must contains three types of characters: uppercase, lowercase, numbers, and special characters',
             type: 'error',
           }
         );
@@ -316,7 +316,7 @@ export default {
       if (this.user_edit.old_password == '') {
         this.$message(
           {
-            message: '旧密码不能为空',
+            message: 'Old password is required',
             type: 'error',
           }
         );
@@ -325,7 +325,7 @@ export default {
       if (this.user_edit.mobile == '') {
         this.$message(
           {
-            message: '手机号不能为空',
+            message: 'Mobile number is required',
             type: 'error',
           }
         );
@@ -334,7 +334,7 @@ export default {
       if (this.user_edit.email_addr == '') {
         this.$message(
           {
-            message: '邮箱不能为空',
+            message: 'Mailbox is required',
             type: 'error',
           }
         );
@@ -410,10 +410,10 @@ export default {
       this.$store.dispatch('LogOut')
         .then((resp) => {
           //In order to re-instantiate the vue-router object to avoid bugs
-          this.$message.success('退出登录成功');
+          this.$message.success('Log out successfully');
           location.reload();
         }).catch(error => {
-          this.$message.error('退出登录操作失败' + error);
+          this.$message.error('Exit failed ' + error);
         })
     },
     //通知点击事件

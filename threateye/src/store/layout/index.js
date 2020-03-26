@@ -81,7 +81,7 @@ export default {
 
           let {status, msg, data} = datas;
 
-          let tips = '输入用户名或密码错误';
+          let tips = 'error';
           if (msg.username) {
             tips = msg.username[0];
           } else if (msg.password) {
