@@ -829,70 +829,68 @@ export default {
         old_as: [],
         remind: ['email']
       },
-      //攻击阶段分布
       attack_stage_list: [
         {
           name: "Initial Access",
-          value: "初始访问",
+          value: "Initial Access",
           count: 0
         },
         {
           name: "Execution",
-          value: "执行",
+          value: "Execution",
           count: 0
         },
         {
           name: "Persistence",
-          value: "持久化",
+          value: "Persistence",
           count: 0
         },
         {
           name: "Privilege Escalation",
-          value: "提权",
+          value: "Privilege Escalation",
           count: 0
         },
         {
           name: "Defense Evasion",
-          value: "防御逃逸",
+          value: "Defense Evasion",
           count: 0
         },
         {
           name: "Credential Access",
-          value: "凭证访问",
+          value: "Credential Access",
           count: 0
         },
         {
           name: "Discovery",
-          value: "信息发现",
+          value: "Discovery",
           count: 0
         },
         {
           name: "Lateral Movement",
-          value: "横向移动",
+          value: "Lateral Movement",
           count: 0
         },
         {
           name: "Collection",
-          value: "信息收集",
+          value: "Collection",
           count: 0
         },
         {
           name: "Command and Control",
-          value: "命令控制",
+          value: "Command and Control",
           count: 0
         },
         {
           name: "Exfiltration",
-          value: "信息泄露",
+          value: "Exfiltration",
           count: 0
         },
         {
           name: "Impact",
-          value: "毁坏",
+          value: "Impact",
           count: 0
         },
       ],
-      //建议列表
       suggest_list: [
         {
           name: '',
@@ -904,7 +902,7 @@ export default {
           name: 'malwarecommunication',
           des: 'An attacker installs a malicious program on a machine that communicates with an external server via a common protocol or custom protocol.',
           handle: [
-            '1. Isolate the machine from the network;',
+            '1. Mitigation Recommendations',
             '2. Locate the malicious process at the machine according to the port in the network event of the alert details;',
             '3. Do a security analysis to identify the root cause and the extent the threat has spread. If you have an EDR solution installed, you can quickly locate the problem by doing security incident investigation directly through historical information;',
             '4. Install anti-virus software for full system scanning.',
@@ -916,12 +914,12 @@ export default {
           ],
         },
         {
-          name: 'Adware',
+          name: '广告软件	Adware',
           des: 'Adware is of relatively low-risk, but sometimes it can lead to greater threats, thus has to be cleaned up in time.',
           handle: [
-            '1. Isolate the machine from the network;',
+            '1. Mitigation Recommendations',
             '2. Locate the malicious process at the machine according to the port in the network event of the alert details;',
-            '3. Do a security analysis to identify the root cause and the extent the threat has spread. If an EDR solution is installed, you can quickly locate the problem by doing security incident investigation directly through historical information;',
+            '3. Do a security analysis to identify the root cause and the extent the threat has spread. If you have an EDR solution installed, you can quickly locate the problem by doing security incident investigation directly through historical information;',
             '4. Install anti-virus software for full system scanning.',
           ],
           reinforce: [
@@ -931,7 +929,7 @@ export default {
           ],
         },
         {
-          name: 'graytool',
+          name: '危险工具	graytool',
           des: 'Graytool may be used by administrators as internal security tools, but in most cases they are signs of compromise. These tools may be used for scanning, information collection or control; need to determine the purpose of the attack according to specific tools.',
           handle: [
             '1. Verify whether it is the legit use of an administrator;',
@@ -942,256 +940,256 @@ export default {
           ],
         },
         {
-          name: 'Exploit',
+          name: '漏洞利用	Exploit',
           des: 'An attacker takes advantage of vulnerabilities in an application or service installed on a machine to exploit the vulnerability. Detection of such exploits in network traffic does not necessarily represent success in exploiting vulnerabilities in the machine.',
           handle: [
             '1. Verify that the exploitation of the vulnerability is successful on the attacked machine;',
-            '2、如果漏洞利用成功， 隔离该机器并做安全分析',
+            '2.If the vulnerability is exploited successfully, isolate the machine and do security analysis.',
           ],
           reinforce: [
-            '1、对Web应用程序采用WAF减小攻击面；',
-            '2、关闭机器上不必要的服务，采用Windows EMET等技术防止漏洞利用；',
-            '3、对机器上的应用和服务采用应用隔离、沙箱、以及最小权限等措施减少被攻击后的访问权限；',
-            '4、做好网络划分，增加横向移动难度；',
-            '5、利用威胁情报以及定期做漏洞扫描发现漏洞，及时打重要漏洞补丁。',
+            '1. Adopt WAF for Web applications to reduce the attack surface;',
+            '2. Turn off unnecessary services on the machine and use technologies such as Windows EMET to prevent vulnerabilities from being exploited;',
+            '3. Apply isolate, sandbox, least privilege and other measures to applications and services on the machine to reduce access rights after the attack;',
+            '4. Segment networks to increase the difficulty of lateral movement;',
+            '5. Use threat intelligence and regular vulnerability scanning to detect vulnerabilities and patch critical vulnerabilities in a timely manner.',
           ],
         },
         {
           name: '其他	Others',
-          des: '无',
-          handle: ['无'],
-          reinforce: ['无'],
+          des: 'N/A',
+          handle: ['N/A'],
+          reinforce: ['N/A'],
         },
         {
           name: 'EICAR	eicar',
-          des: 'EICAR是一个用于测试的不具有危害的但防病毒软件会告警的程序。',
-          handle: ['不需要处置。'],
-          reinforce: ['无'],
+          des: 'EICAR is non-hazardous. Anti-virus software detects it for testing purposes.',
+          handle: ['N/A'],
+          reinforce: ['N/A'],
         },
         {
           name: 'SQL注入	sqlinjection',
-          des: 'SQL注入是攻击者利用数据库设计、开发、缺乏校验等漏洞而导致应用做非设计本意的行为。',
+          des: 'SQL injection is the behavior that an attacker takes advantage of such vulnerabilities as database design, development, and lack of validation to cause an application to do something undersigned.',
           handle: [
-            '1、根据SQL注入脚本确认注入是否成功；',
-            '2、由于SQL注入漏洞的不同，注入可以导致不同的结果。根据具体注入脚本的行为做处置。',
+            '1. Verify that the injection is successful according to the SQL injection script;',
+            '2. Because of the different SQL injection vulnerabilities, injection can lead to different results. Mitigate according to the behavior of the specific injection script.',
           ],
           reinforce: [
-            '1、采用WAF等安全设备减小攻击面；',
-            '2、对机器上的应用和服务采用应用隔离、沙箱、以及最小权限等措施减少被攻击后的访问权限；',
-            '3、定期做漏洞扫描发现漏洞，及时打重要漏洞补丁。',
+            '1. Using WAF and other security equipment to reduce the attack surface;',
+            '2. Apply isolate, sandbox, least privilege and other measures to applications and services on the machine to reduce access rights after the attack;',
+            '3.Do regular vulnerability scanning to detect vulnerabilities and patch critical vulnerabilities in a timely manner.',
           ],
         },
         {
           name: '暴力破解	BruteForce',
-          des: '攻击者采用大量的猜测的账号和密码组合或者是少量的符合网络密码策略的常用密码(password spraying)尝试登录网络，一旦登录成功，就是合法账号登录，极难再被检测到。常见的被暴力破解攻击的服务包括：SSH (22/TCP)、Telnet (23/TCP)、FTP (21/TCP)、NetBIOS / SMB / Samba (139/TCP & 445/TCP)、LDAP (389/TCP)、Kerberos (88/TCP)、RDP / Terminal Services (3389/TCP)、HTTP/HTTP Management Services (80/TCP & 443/TCP)、MSSQL (1433/TCP)、Oracle (1521/TCP)、MySQL (3306/TCP)、VNC (5900/TCP)。',
+          des: "Attackers try to log into the network by spraying a large number of guesswork accounts and password combinations or a small number of common passwords that conform to network password policies. Once the login is successful, it's a legitimate account login, and it's extremely difficult to detect. Common Services that are attacked by brute force include: SSH (22/TCP), Telnet (23/TCP), FTP (21/TCP), NetBIOS/SMB/Samba (139/TCP&445/TCP), LDAP (389/TCP), Kerberos (88/TCP), RDP/Terminal Services (3389/TCP), HTTP/HTTP Management Services (80/TCP&443/TCP), MSSQL (1433/TCP), Oracle (1521/TCP), MySQL (306/TCP), VNC (5TCP).",
           handle: [
-            '1、查看被攻击机器的系统登录日志确认是否暴力破解登录成功。如果成功，修改该账号密码；',
-            '2、如果是外部威胁，在安全网关上阻止该攻击地址。',
+            '1. Check the system login log of the attacked machine to see if the brute force was successful. If successful, change the account password;',
+            '2. If it is an external threat, block the attack address on the security gateway.',
           ],
           reinforce: [
-            '1、采用合适的账号锁定策略，在一定数量的失败登录后锁定账号。但这个策略不能制定太严格，避免在攻击的时候造成被攻击的大量账号全部被锁定。对于关键应用，在一定数量的失败登录后要求格外的验证可以有效解决这个问题；',
-            '2、采用多因素认证；',
-            '3、参考NIST密码策略制定网络密码策略。'
+            "1. Use the appropriate account lockout policy to lock the account after a certain number of failed logins. But the policy can't be too strict to prevent a large number of accounts from being locked out in the event of an attack. For critical applications, requiring extra validation after a certain number of failed logins can effectively solve this problem.",
+            '2. Adopt multi-factor authentication;',
+            '3. Make network password policies according to NIST password policies.'
           ],
         },
         {
           name: 'WebShell	WebShell',
-          des: 'Web Shell是利用失窃账号或者漏洞而放置在Web服务器上用来和攻击者交互的入口。',
+          des: 'A Web Shell is an entry that is placed on a Web server to interact with an attacker using a stolen account or vulnerabilities. ',
           handle: [
-            '1、确认是否成功，如果成功，隔离机器并做清除、扫描和安全分析；',
-            '2、重点关注是否有横向移动的痕迹。',
+            '1. Verify if it was successful, if it was, isolate the machine and do cleaning, scanning and security analysis;',
+            '2. Focus on whether there are signs of lateral movement.',
           ],
           reinforce: [
-            '1、根据根因分析结果打补丁或者修改账号密码；',
-            '2、管理Web服务器的账号需要和内网的账号做区分。',
+            '1. Patch or change the account password according to the result of root cause analysis;',
+            '2. The accounts that are used to manage Web servers should be different from intranet accounts',
           ],
         },
         {
           name: "扫描	Scan",
-          des: '攻击者通过扫描发现运行在机器上的服务，包括可能存在漏洞的服务。 ',
+          des: 'An attacker detects services running on a machine by scanning them, including services that may have vulnerabilities. ',
           handle: [
-            '无',
+            'N/A',
           ],
           reinforce: [
-            '1、及时打重大漏洞补丁；',
-            '2、禁用不需要的服务；',
-            '3、对关键服务，创建访问列表防止未知机器的访问甚至限制远程访问。',
+            '1. Patch critical vulnerabilities in a timely manner;',
+            '2. Disable unnecessary services;',
+            '3. For key services, create access lists to prevent or even restrict remote access from unknown machines.',
           ],
         },
         {
           name: "恶意程序	malwarefile",
-          des: '下载了一个恶意程序到机器里，可能是恶意文件下载、恶意文件拷贝或者是恶意的邮件附件等。',
+          des: '下Download a malicious program to the machine, may be malicious file download, malicious file copy or malicious email attachments and so on.',
           handle: [
-            '1、根据告警详情里的“网络事件”里的机器端口定位是什么进程下载了恶意程序；',
-            '2. 如果机器里安装有防病毒软件，根据本系统检测的文件名或者哈希值确认恶意程序是否已经被查杀；',
-            '3、如果没有被查杀，而且恶意程序没有被执行，手动清除恶意程序；',
-            '4. 如果恶意程序得到了执行，清除执行后的进程、子进程以及可能生成的或者下载的更多的恶意程序。',
+            '1. Refer to machine port of the "network event" in the alert details to locate the process that has downloaded malicious programs;',
+            '2. If anti-virus software is installed on the machine, verify whether the malicious program has been quarantined according to the filename or hash value detected by the system;',
+            '3. If it is not quarantined and the malicious program is not executed, manually remove the malicious program;',
+            '4. If the malicious program is executed, kill the executed process, sub processes, and more malicious programs that may be generated or downloaded.',
           ],
           reinforce: [
-            '1、安装防病毒软件并且及时更新病毒库；',
-            '2、用户安全意识培训避免下载恶意程序或者点击恶意邮件附件。',
+            '1.Install anti-virus software and update virus library in time;',
+            '2. User security awareness training to avoid downloading malicious programs or clicking on malicious email attachments.',
           ],
         },
         {
           name: "恶意地址	malware",
-          des: '机器访问了带有恶意程序的地址。',
+          des: 'The machine visited addresses with malicious programs.',
           handle: [
-            '1、根据告警详情里的“网络事件”里的机器端口定位是什么进程访问了这个恶意地址；',
-            '2、安装防病毒软件并且更新到最新做全盘查杀。',
+            '1. Refer to the machine port of "network event" in the alert details, locate the process that has visited this malicious address;',
+            '2.Install anti-virus software and update to the latest to do the full system scan.',
           ],
           reinforce: [
-            '1、安装防病毒软件并且及时更新病毒库；',
-            '2、用户安全意识培训提升安全意识。',
+            '1.Install anti-virus software and update virus library in time;',
+            '2. User security awareness training to enhance security awareness.',
           ],
         },
         {
           name: "tor出口节点	tor_exit_node",
-          des: '攻击者用Tor隐藏攻击来源和加密通讯通道，但也存在部分用户用Tor保护隐私的情况。',
+          des: 'The attacker uses Tor to hide the source of the attack and encrypt the communication channel, but there are also cases where some users use Tor to protect their privacy.',
           handle: [
-            '1、确认机器的使用者是否合法使用Tor；',
-            '2、如果确认被攻击，根据告警详情里的“网络事件”里的机器端口定位是什么进程访问了这个节点，从而做相应的处置。',
+            '1. Verify that the user of the machine is using Tor legitimately;',
+            '2. If an attack is confirmed, it should be mitigated starting from the process that has visited the node by identifying the machine port in the "network event" in the alert details.',
           ],
           reinforce: [
-            '1、安装防病毒软件并且及时更新病毒库；',
-            '2、考虑用网络安全设备阻止Tor节点地址。',
+            '1.Install anti-virus software and update virus library in time;',
+            '2. Consider using network security devices to block Tor node addresses.',
           ],
         },
         {
           name: "tor入口节点	tor_node",
-          des: '攻击者用Tor隐藏攻击来源和加密通讯通道，但也存在部分用户用Tor保护隐私的情况。',
+          des: 'The attacker uses Tor to hide the source of the attack and encrypt the communication channel, but there are also cases where some users use Tor to protect their privacy.',
           handle: [
-            '1、确认机器的使用者是否合法使用Tor；',
-            '2、如果确认被攻击，根据告警详情里的“网络事件”里的机器端口定位是什么进程访问了这个节点，从而做相应的处置。',
+            '1. Verify that the user of the machine is using Tor legitimately;',
+            '2. If an attack is confirmed, it should be mitigated starting from the process that has visited the node by identifying the machine port in the "network event" in the alert details.',
           ],
           reinforce: [
-            '1、安装防病毒软件并且及时更新病毒库；',
-            '2、考虑用网络安全设备阻止Tor节点地址。',
+            '1.Install anti-virus software and update virus library in time;',
+            '2. Consider using network security devices to block Tor node addresses.',
           ],
         },
         {
           name: "垃圾邮件	spam ",
-          des: '垃圾邮件本身不具有安全威胁，是不想在网络里出现的信息。',
+          des: 'Spam itself does not pose a security threat; it is the information that is not desired in the network.',
           handle: [
-            '无',
+            'N/A',
           ],
           reinforce: [
-            '通过网络安全设备阻止垃圾邮件地址。',
+            'Block spam through network security devices.',
           ],
         },
         {
           name: '僵尸网络C&C	botc&c ',
-          des: '攻击者在机器上装了恶意程序，该恶意程序通过常见的协议或者定制的协议和外部服务器通讯。',
+          des: 'An attacker installs a malicious program on a machine that communicates with an external server via a common protocol or custom protocol.',
           handle: [
-            '1、把机器从网络隔离；',
-            '2、根据告警详情里的“网络事件”里的机器端口定位机器的恶意进程；',
-            '3、做安全分析确认根因以及威胁扩散程度。如果安装有EDR解决方案，可以直接通过历史信息做安全事件调查快速定位问题；',
-            '4、安装防病毒软件做全盘扫描。',
+            '1. Mitigation Recommendations',
+            '2. Locate the malicious process at the machine according to the port in the network event of the alert details;',
+            '3. Do a security analysis to identify the root cause and the extent the threat has spread. If you have an EDR solution installed, you can quickly locate the problem by doing security incident investigation directly through historical information;',
+            '4. Install anti-virus software for full system scanning.',
           ],
           reinforce: [
-            '1、提升端点安全能力；',
-            '2、用网络安全设备禁止不需要联网的设备联网；',
-            '3、用网络威胁检测工具及早发现外联威胁。',
+            '1. Enhance endpoint security capabilities;',
+            '2. Block the network connection of devices that do not need Internet access with network security devices;',
+            '3. Use network threat detection solutions to detect outreach threats as early as possible.',
           ],
         },
         {
           name: '移动恶意软件	mobilemalware',
-          des: '下载了一个恶意程序到机器里，可能是恶意文件下载、恶意文件拷贝或者是恶意的邮件附件等。',
+          des: '下Download a malicious program to the machine, may be malicious file download, malicious file copy or malicious email attachments and so on.',
           handle: [
-            '1、根据告警详情里的“网络事件”里的机器端口定位是什么进程下载了恶意程序；',
-            '2. 如果机器里安装有防病毒软件，根据本系统检测的文件名或者哈希值确认恶意程序是否已经被查杀；',
-            '3、如果没有被查杀，而且恶意程序没有被执行，手动清除恶意程序；',
-            '4. 如果恶意程序得到了执行，清除执行后的进程、子进程以及可能生成的或者下载的更多的恶意程序。',
+            '1. Refer to machine port of the "network event" in the alert details to locate the process that has downloaded malicious programs;',
+            '2. If anti-virus software is installed on the machine, verify whether the malicious program has been quarantined according to the filename or hash value detected by the system;',
+            '3. If it is not quarantined and the malicious program is not executed, manually remove the malicious program;',
+            '4. If the malicious program is executed, kill the executed process, sub processes, and more malicious programs that may be generated or downloaded.',
           ],
           reinforce: [
-            '1、安装防病毒软件并且及时更新病毒库；',
-            '2、用户安全意识培训避免下载恶意程序或者点击恶意邮件附件。',
+            '1.Install anti-virus software and update virus library in time;',
+            '2. User security awareness training to avoid downloading malicious programs or clicking on malicious email attachments.',
           ],
         },
         {
           name: '网络诈骗	fraud',
-          des: '通过社交工程等手段引诱用户上当。',
+          des: 'Entice users by means of social engineering.',
           handle: [
-            '1、如果存在金钱损失等情况应及时做相应的应急处理；',
-            '2、对机器做扫描和安全分析。',
+            '1. If there is a loss of money and other emergencies, corresponding actions should be taken in time;',
+            '2. Scanning and security analysis of the machine.',
           ],
           reinforce: [
-            '1、考虑用网络安全设备拦截网络诈骗地址；',
-            '2、用户通过安全意识培训识别社交工程等手段。',
+            '1. Consider using network security devices to block fraud addresses;',
+            '2. Provide security awareness training to users to help identify social engineering techniques. ',
           ],
         },
         {
           name: '恶意重定向	maliciousredirect',
-          des: '通过重定向把用户引入恶意地址。',
+          des: 'Redirect a user to a malicious address. ',
           handle: [
-            '1、如果存在恶意感染、信息泄露等情况应及时做相应的应急处理；',
-            '2、对机器做扫描和安全分析。',
+            '1. If there is an infection, information leakage and other similar situations, corresponding emergency treatment should be taken in time;；',
+            '2. Scanning and security analysis of the machine.',
           ],
           reinforce: [
-            '1、考虑用网络安全设备拦截恶意重定向地址；',
-            '2、用户通过安全意识培训提升安全意识。',
+            '1. Consider using network security devices to block malicious redirect addresses;',
+            '2. Provide security awareness training to users to help identify social engineering techniques.',
           ],
         },
         {
           name: '网络代理	proxy',
-          des: '攻击者用网络代理隐藏攻击来源和加密通讯通道，但也存在部分用户用网络代理保护隐私的情况。',
+          des: 'Attackers use network proxies to hide the source of the attack and encrypt the communication channel, but some users also use network proxies to protect privacy.',
           handle: [
-            '1、确认机器的使用者是否合法使用网络代理；',
-            '2、如果确认被攻击，根据告警详情里的“网络事件”里的机器端口定位是什么进程访问了这个节点，从而做相应的处置。',
+            '1. Verify that the user of the machine is using the network proxy legitimately;',
+            '2. If an attack is confirmed, it should be mitigated starting from the process that has visited the node by identifying the machine port in the "network event" in the alert details.',
           ],
           reinforce: [
-            '1、安装防病毒软件并且及时更新病毒库；',
-            '2、考虑用网络安全设备阻止网络代理地址。',
+            '1.Install anti-virus software and update virus library in time;',
+            '2. Consider using network security devices to block network proxy addresses.',
           ],
         },
         {
           name: '钓鱼网站	phishing',
-          des: '通过社交工程等手段引诱用户点击某个链接、下载文档甚至可执行文件或者输入账号等信息达到窃取信息、利用浏览器漏洞或者植入恶意程序的目的。',
+          des: 'Use social engineering and other means to entice users to click on a link, download a document or even an executable file, or enter account details to steal information, exploit browser vulnerabilities, or embed malicious programs.',
           handle: [
-            '1、如果存在账号等信息失窃行为应及时更改账号密码和相应的应急处理；',
-            '2、对机器做扫描和安全分析。',
+            '1. If credentials are lost, the account password should be changed and corresponding emergency treatment should be done in a timely manner;',
+            '2. Scanning and security analysis of the machine.',
           ],
           reinforce: [
-            '1、考虑用网络安全设备拦截钓鱼地址；',
-            '2、用户通过安全意识培训识别社交工程等手段。',
+            '1. Consider using network security devices to block phishing addresses;',
+            '2. Provide security awareness training to users to help identify social engineering techniques. ',
           ],
         },
         {
           name: '勒索软件通讯	ransomwareurl',
-          des: '该地址用于下载勒索软件或者是跟勒索软件通讯。',
+          des: 'The address is used to download ransomware or to communicate with ransomware.',
           handle: [
-            '1、把机器从网络隔离；',
-            '2、如果是下载了勒索软件，及时清除该软件；',
-            '3、如果被勒索软件加密，先搜索安全公司的网站看是否有解密工具。',
+            '1. Mitigation Recommendations',
+            '2. If you downloaded the ransomware, remove the software in time;',
+            '3. If it is encrypted by ransomware, search security companies’ websites to see if there is a decryption tool.',
           ],
           reinforce: [
-            '1、用网络安全设备阻止该地址；',
-            '2、安装防病毒软件并且及时更新病毒库。',
+            '1. Block the address with a network security device;',
+            '2. Install anti-virus software and update virus library in time.',
           ],
         },
         {
           name: '已知APT攻击',
-          des: '本威胁是检测到网络与曾经被APT组织使用过的地址通讯或者是相关工具出现在网络中。',
+          des: 'This threat detects indicators that have been used by known APT groups.',
           handle: [
-            '1、确认被检测的威胁指标是否还有效；',
-            '2、如果确认有效，需要根据APT组织的相关情报信息做应急响应并做最高优先级处理。',
+            '1. Identify whether the IOCs being detected are still valid;',
+            '2. If IOCs are still valid, incident response and highest priority processing should be undergoing according to the relevant information of APT groups.',
           ],
           reinforce: [
-            '根据该APT组织的战术、技术和流程（TTP）做相应的安全加固。',
+            'According to the APT group’s tactics, technology and process (TTP) to do the corresponding security enhancements.',
           ],
         },
         {
           name: '恶意证书',
-          des: '机器里的程序采用恶意的ssl证书跟外界通讯。',
+          des: 'The program in the machine uses malicious ssl certificates to communicate with the external world.',
           handle: [
-            '1、把机器从网络隔离；',
-            '2、根据告警详情里的“网络事件”里的机器端口定位机器的恶意进程；',
-            '3、做安全分析确认根因以及威胁扩散程度。如果安装有EDR解决方案，可以直接通过历史信息做安全事件调查快速定位问题；',
-            '4、安装防病毒软件做全盘扫描。',
+            '1. Mitigation Recommendations',
+            '2. Locate the malicious process at the machine according to the port in the network event of the alert details;',
+            '3. Do a security analysis to identify the root cause and the extent the threat has spread. If you have an EDR solution installed, you can quickly locate the problem by doing security incident investigation directly through historical information;',
+            '4. Install anti-virus software for full system scanning.',
           ],
           reinforce: [
-            '1、提升端点安全能力；',
-            '2、用网络安全设备禁止不需要联网的设备联网；',
-            '3、用网络威胁检测工具及早发现外联威胁。',
+            '1. Enhance endpoint security capabilities;',
+            '2. Block the network connection of devices that do not need Internet access with network security devices;',
+            '3. Use network threat detection solutions to detect outreach threats as early as possible.',
           ],
         },
       ],

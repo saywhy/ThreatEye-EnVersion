@@ -435,10 +435,12 @@ export default {
   .nav_user {
     .header-logo {
       .e-image {
-        margin: 9px 0;
-        width: 152px;
-        height: 42px;
+        width: 264px;
+        height: 48px;
+        background-size: 264px 48px;
+        transform:scale(.6);
         cursor: pointer;
+        margin: 5px 0 5px -48px;
       }
     }
     .el-col {
