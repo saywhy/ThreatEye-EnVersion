@@ -30,11 +30,11 @@ Vue.filter('time', function (value) {
 
 Vue.filter('degree_sino', function (args) {
   let str = '';
-  if (args == '高') {
+  if (args == 'High risk') {
     str = 'High';
-  } else if (args == '中') {
+  } else if (args == 'Medium risk') {
     str = 'Medium';
-  } else if (args == '低') {
+  } else if (args == 'Low risk') {
     str = 'Low';
   }
   return str;

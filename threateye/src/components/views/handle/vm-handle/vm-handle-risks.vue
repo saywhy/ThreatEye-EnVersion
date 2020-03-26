@@ -166,7 +166,7 @@
                              width="100">
               <template slot-scope="scope">
                 <span class="btn_alert_background"
-                      :class="{'high_background':scope.row.degree =='高','mid_background':scope.row.degree =='中','low_background':scope.row.degree =='低'}">
+                      :class="{'high_background':scope.row.degree =='High risk','mid_background':scope.row.degree =='Medium risk','low_background':scope.row.degree =='Low risk'}">
                   {{ scope.row.degree | degree_sino }}</span>
               </template>
             </el-table-column>
@@ -264,7 +264,7 @@
             <div class="content_top_left">
               <li class="left_item">
                 <div class="title">
-                  <span>工单名称</span>
+                  <span>Name</span>
                   <span class="improtant_ico">*</span>
                 </div>
                 <el-input class="task_new_input"
@@ -388,7 +388,7 @@
                                    width="100">
                     <template slot-scope="scope">
                       <span class="btn_alert_background"
-                            :class="{'high_background':scope.row.degree =='高','mid_background':scope.row.degree =='中','low_background':scope.row.degree =='低'}">
+                            :class="{'high_background':scope.row.degree =='High risk','mid_background':scope.row.degree =='Medium risk','low_background':scope.row.degree =='Low risk'}">
                         {{ scope.row.degree | degree_sino }}</span>
                     </template>
                   </el-table-column>
