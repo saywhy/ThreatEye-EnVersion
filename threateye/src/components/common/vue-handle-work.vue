@@ -155,9 +155,9 @@
               <li class="right_item">
                 <el-checkbox-group v-model="task_params.notice">
                   <el-checkbox label="email"
-                               value="email">邮件通知</el-checkbox>
+                               value="email">Mail Notification</el-checkbox>
                   <el-checkbox label="message"
-                               value="message">短信通知</el-checkbox>
+                               value="message">SMS Notification</el-checkbox>
                   <!--<el-checkbox label="news" value="news">消息中心通知</el-checkbox>-->
                 </el-checkbox-group>
               </li>

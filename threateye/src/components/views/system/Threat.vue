@@ -6,12 +6,12 @@
         <el-tabs v-model="activeName"
                  @tab-click="handleClick"
                  class="reset_tab">
-          <el-tab-pane label="邮件通知"
+          <el-tab-pane label="Mail Notification"
                        class="tabs-item"
                        name="first">
             <mail-notic></mail-notic>
           </el-tab-pane>
-          <el-tab-pane label="短信通知"
+          <el-tab-pane label="SMS Notification"
                        class="tabs-item"
                        name="second">
             <short-message></short-message>
