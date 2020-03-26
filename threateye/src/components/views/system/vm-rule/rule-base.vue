@@ -1,32 +1,32 @@
 <template>
   <div id="rule_base"
        v-loading.fullscreen.lock="loading">
-    <p class="title">实时更新</p>
+    <p class="title">Rea-time Update</p>
     <p class="item_box"
        v-for="item in rule"
        v-if="item.update_type=='1'">
       <span class="item_name">{{item.key}}</span>
-      <span class="item_time">上次更新时间：
+      <span class="item_time">Last update time:
         <span>{{item.time}}</span>
       </span>
       <span class="item_status">{{item.status_cn}}</span>
     </p>
     <el-button type="primary"
                class="update"
-               @click="update_online">更新</el-button>
-    <p class="title">离线更新</p>
+               @click="update_online">Update</el-button>
+    <p class="title">Offline update</p>
     <p class="item_box"
        v-for="item in rule"
        v-if="item.update_type=='2'">
       <span class="item_name">{{item.key}}</span>
-      <span class="item_time">上次更新时间：
+      <span class="item_time">Last update time:
         <span>{{item.time}}</span>
       </span>
       <span class="item_status">{{item.status_cn}}</span>
     </p>
     <el-button type="primary"
                class="update"
-               @click="open_box">上传更新文件</el-button>
+               @click="open_box">Upload update file</el-button>
     <el-dialog class="import_box pop_box"
                :close-on-click-modal="false"
                :modal-append-to-body="false"
@@ -37,13 +37,12 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">上传更新文件</span>
+        <span class="title_name">Upload update file</span>
       </div>
       <div class="content">
 
         <uploader :options="options"
                   :autoStart='false'
-                  :fileStatusText='fileStatusText'
                   @file-added="onFileAdded"
                   @file-success="onFileSuccess"
                   @file-progress="onFileProgress"
@@ -55,7 +54,7 @@
                alt="">
           <uploader-drop>
             <uploader-btn class="select_btn">Upload</uploader-btn>
-            <span>请上传文件名为sdk.tgz、ids.tgz、df.tgz的文件</span>
+            <span>Please upload files whose name are sdk.tgz, ids.tgz, df.tgz.</span>
           </uploader-drop>
           <uploader-list></uploader-list>
         </uploader>
@@ -80,22 +79,6 @@ export default {
         target: '/yiiapi/rulebase/upload-package',
         chunkSize: '10048000',   //分块大小
         testChunks: false,     //是否开启服务器分片校验
-        parseTimeRemaining: function (timeRemaining, parsedTimeRemaining) {
-          return parsedTimeRemaining
-            .replace(/\syears?/, '年')
-            .replace(/\days?/, '天')
-            .replace(/\shours?/, '小时')
-            .replace(/\sminutes?/, '分钟')
-            .replace(/\sseconds?/, '秒')
-        },
-      },
-
-      fileStatusText: {
-        success: '成功',
-        error: '错误',
-        uploading: '上传中',
-        paused: '暂停',
-        waiting: '等待'
       },
       rule: {},
       rule_data: {
@@ -140,13 +123,13 @@ export default {
             this.rule.forEach(item => {
               switch (item.status) {
                 case '1':
-                  item.status_cn = '更新中'
+                  item.status_cn = 'Updating'
                   break;
                 case '2':
-                  item.status_cn = '成功'
+                  item.status_cn = 'Successfully'
                   break;
                 case '3':
-                  item.status_cn = '失败'
+                  item.status_cn = 'Failed'
                   break;
                 default:
                   break;
@@ -169,13 +152,13 @@ export default {
             this.rule.forEach(item => {
               switch (item.status) {
                 case '1':
-                  item.status_cn = '更新中'
+                  item.status_cn = 'Updating'
                   break;
                 case '2':
-                  item.status_cn = '成功'
+                  item.status_cn = 'Successfully'
                   break;
                 case '3':
-                  item.status_cn = '失败'
+                  item.status_cn = 'Failed'
                   break;
                 default:
                   break;
@@ -235,7 +218,7 @@ export default {
         }, 100)
       } else {
         this.$message({
-          message: '请上传文件名为sdk.tgz、ids.tgz、df.tgz的文件',
+          message: 'Please upload files whose name are sdk.tgz, ids.tgz, df.tgz.',
           type: 'warning'
         });
         setTimeout(() => {

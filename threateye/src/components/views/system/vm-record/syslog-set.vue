@@ -3,7 +3,7 @@
        v-loading.fullscreen.lock="syslog_data.loading">
     <div class="search_box">
       <el-button class="btn_i"
-                 @click="open_add">添加SYSLOG配置</el-button>
+                 @click="open_add">Add SYSLOG Configuration</el-button>
     </div>
     <div class="syslog_table">
       <el-table ref="multipleTable"
@@ -19,20 +19,20 @@
           </template>
         </el-table-column>
         <el-table-column prop="server_ip"
-                         label="SYSLOG服务器IP"
+                         label="SYSLOG server IP"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="server_port"
-                         label="端口"
+                         label="Port"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="protocol"
-                         label='传输协议'
+                         label='Transmission Protocol'
                          show-overflow-tooltip>
         </el-table-column>
-        <el-table-column label='状态'>
+        <el-table-column label='Status'>
           <template slot-scope="scope">
-            <span>{{scope.row.status == '1'?'启用':'未启用'}}</span>
+            <span>{{scope.row.status == '1'?'Enabled':'Not Enabled'}}</span>
           </template>
 
         </el-table-column>
@@ -40,10 +40,10 @@
           <template slot-scope="scope">
             <el-button type="primary"
                        class="btn_edit"
-                       @click.stop='edit_box(scope.row)'>编辑</el-button>
+                       @click.stop='edit_box(scope.row)'>Edit</el-button>
             <el-button type="primary"
                        class="btn_edit"
-                       @click.stop='del_box(scope.row)'>删除</el-button>
+                       @click.stop='del_box(scope.row)'>Delete</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -68,22 +68,22 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">添加SYSLOG配置</span>
+        <span class="title_name">Add</span>
       </div>
       <div class="content">
         <div class="content_item">
           <div class="item_top">
-            <span style="margin-right:10px;">是否启用</span>
+            <span style="margin-right:10px;">Enable</span>
             <el-switch v-model="syslog_pop.add.switch">
             </el-switch>
           </div>
           <div class="item_bottom">
             <p>
-              <span class="title">SYSLOG服务器IP</span>
+              <span class="title">SYSLOG Server IP</span>
               <span class="red_necessary">*</span>
             </p>
             <el-input class="select_box"
-                      placeholder="请输入SYSLOG服务器IP"
+                      placeholder="Please enter SYSLOG Server IP"
                       v-model="syslog_pop.add.server_ip"
                       clearable>
             </el-input>
@@ -92,7 +92,7 @@
         <div class="content_space"></div>
         <div class="content_item">
           <div class="item_top">
-            <span style="margin-right:10px;">状态</span>
+            <span style="margin-right:10px;">Status</span>
             <el-radio v-model="syslog_pop.add.protocol"
                       label="udp"
                       class="r_radio_item">udp</el-radio>
@@ -102,11 +102,11 @@
           </div>
           <div class="item_bottom">
             <p>
-              <span class="title">端口</span>
+              <span class="title">Port</span>
               <span class="red_necessary">*</span>
             </p>
             <el-input class="select_box"
-                      placeholder="请输入端口"
+                      placeholder="Please enter port"
                       v-model="syslog_pop.add.server_port"
                       clearable>
             </el-input>
@@ -131,22 +131,22 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">编辑SYSLOG配置</span>
+        <span class="title_name">Edit</span>
       </div>
       <div class="content">
         <div class="content_item">
           <div class="item_top">
-            <span>是否启用</span>
+            <span>Enable</span>
             <el-switch v-model="syslog_pop.edit.switch">
             </el-switch>
           </div>
           <div class="item_bottom">
             <p>
-              <span class="title">SYSLOG服务器IP</span>
+              <span class="title">SYSLOG Server IP</span>
               <span class="red_necessary">*</span>
             </p>
             <el-input class="select_box"
-                      placeholder="请输入SYSLOG服务器IP"
+                      placeholder="Please enter SYSLOG Server IP"
                       v-model="syslog_pop.edit.ip"
                       clearable>
             </el-input>
@@ -155,7 +155,7 @@
         <div class="content_space"></div>
         <div class="content_item">
           <div class="item_top">
-            <span>状态</span>
+            <span>Status</span>
             <el-radio v-model="syslog_pop.edit.radio"
                       label="udp"
                       class="r_radio_item">udp</el-radio>
@@ -165,11 +165,11 @@
           </div>
           <div class="item_bottom">
             <p>
-              <span class="title">端口</span>
+              <span class="title">Port</span>
               <span class="red_necessary">*</span>
             </p>
             <el-input class="select_box"
-                      placeholder="请输入端口"
+                      placeholder="Please enter port"
                       v-model="syslog_pop.edit.port"
                       clearable>
             </el-input>
@@ -374,7 +374,7 @@ export default {
             this.syslog_pop.edit.show = false
             this.$message({
               type: 'success',
-              message: '修改成功!'
+              message: 'Update successfully'
             });
           }
         })

@@ -238,7 +238,7 @@ export default {
           if (name == "refresh") {
             this.$message(
               {
-                message: '刷新成功',
+                message: 'Refreshed successfully',
                 type: 'success',
               }
             );
@@ -276,7 +276,7 @@ export default {
             this.router_state.add = false;
             this.$message(
               {
-                message: '添加路由成功',
+                message: 'Route added successfully',
                 type: 'success',
               }
             );
@@ -309,7 +309,7 @@ export default {
             this.router_state.edit = false;
             this.get_data();
             this.$message({
-              message: '修改路由成功',
+              message: 'Route updated successfully',
               type: 'success'
             });
           } else {
@@ -332,7 +332,7 @@ export default {
       if (this.select_list.length == 0) {
         this.$message(
           {
-            message: '请选择需要删除的路由！',
+            message: 'Please select the route to delete',
             type: 'warning',
           }
         );

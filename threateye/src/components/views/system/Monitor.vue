@@ -199,7 +199,7 @@
                 <span class="title">责任人</span>
               </p>
               <el-input class="select_box"
-                        placeholder="请输入责任人"
+                        placeholder="Please enter the owner"
                         v-model="monitor_add.person"
                         clearable>
               </el-input>
@@ -316,7 +316,7 @@
                 <span class="title">Owner</span>
               </p>
               <el-input class="select_box"
-                        placeholder="请输入责任人"
+                        placeholder="Please enter the owner"
                         v-model="monitor_edit.person"
                         clearable>
               </el-input>
@@ -518,7 +518,7 @@ export default {
       if (tag_test_str.indexOf("workstation") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
         this.$message(
           {
-            message: '“终端”、“服务器”、“网络设备”三类标签只能设置其中的一种，请重新设置！',
+            message: 'Only set one of the three types of tags:"terminal","server",or"network device".Please try again!',
             type: 'warning',
           }
         );
@@ -527,7 +527,7 @@ export default {
       if (tag_test_str.indexOf("server") != -1 && (tag_test_str.indexOf("workstation") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
         this.$message(
           {
-            message: '“终端”、“服务器”、“网络设备”三类标签只能设置其中的一种，请重新设置！',
+            message: 'Only set one of the three types of tags:"terminal","server",or"network device".Please try again!',
             type: 'warning',
           }
         );
@@ -536,7 +536,7 @@ export default {
       if (tag_test_str.indexOf("network equipment") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("workstation") != -1)) {
         this.$message(
           {
-            message: '“终端”、“服务器”、“网络设备”三类标签只能设置其中的一种，请重新设置！',
+            message: 'Only set one of the three types of tags:"terminal","server",or"network device".Please try again!',
             type: 'warning',
           }
         );
@@ -694,7 +694,7 @@ export default {
       if (tag_test_str.indexOf("workstation") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
         this.$message(
           {
-            message: '“终端”、“服务器”、“网络设备”三类标签只能设置其中的一种，请重新设置！',
+            message: 'Only set one of the three types of tags:"terminal","server",or"network device".Please try again!',
             type: 'warning',
           }
         );
@@ -703,7 +703,7 @@ export default {
       if (tag_test_str.indexOf("server") != -1 && (tag_test_str.indexOf("workstation") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
         this.$message(
           {
-            message: '“终端”、“服务器”、“网络设备”三类标签只能设置其中的一种，请重新设置！',
+            message: 'Only set one of the three types of tags:"terminal","server",or"network device".Please try again!',
             type: 'warning',
           }
         );
@@ -712,7 +712,7 @@ export default {
       if (tag_test_str.indexOf("network equipment") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("workstation") != -1)) {
         this.$message(
           {
-            message: '“终端”、“服务器”、“网络设备”三类标签只能设置其中的一种，请重新设置！',
+            message: 'Only set one of the three types of tags:"terminal","server",or"network device".Please try again!',
             type: 'warning',
           }
         );
@@ -802,7 +802,7 @@ export default {
       if (this.select_list.length == 0) {
         this.$message(
           {
-            message: '请选择需要删除的IP/IP段',
+            message: 'Please select the IP/IP subnet to delete',
             type: 'warning',
           }
         );
@@ -871,7 +871,7 @@ export default {
     // 导入
 
     onExceed (files, fileList) {
-      this.$message.warning('请选择单文件上传!');
+      this.$message.warning('Only single file can be uploaded at a time, please upload again');
       console.log(files)
       // console.log(file.raw)
       console.log(fileList)

@@ -5,12 +5,12 @@
       <el-tabs v-model="activeName"
                @tab-click="handleClick"
                class="reset_tab">
-        <el-tab-pane label="外部动态列表设置"
+        <el-tab-pane label="Integration Setting"
                      class="tabs-item"
                      name="first">
           <outside-set v-if="tab_show.first"></outside-set>
         </el-tab-pane>
-        <el-tab-pane label="外部动态列表"
+        <el-tab-pane label="Dynamic Lists"
                      class="tabs-item"
                      name="second">
           <outside-list v-if="tab_show.second"></outside-list>

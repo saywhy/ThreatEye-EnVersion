@@ -5,17 +5,17 @@
       <el-tabs v-model="activeName"
                @tab-click="handleClick"
                class="reset_tab">
-        <el-tab-pane label="审计日志"
+        <el-tab-pane label="Audit Logs"
                      class="tabs-item"
                      name="first">
           <audit-log v-if="tab_show.first"></audit-log>
         </el-tab-pane>
-        <el-tab-pane label="SYSLOG配置"
+        <el-tab-pane label="SYSLOG Configuration"
                      class="tabs-item"
                      name="second">
           <syslog-set v-if="tab_show.second"></syslog-set>
         </el-tab-pane>
-        <el-tab-pane label="故障日志"
+        <el-tab-pane label="Troubleshooting Logs"
                      class="tabs-item"
                      name="third">
           <fault-log v-if="tab_show.third"></fault-log>

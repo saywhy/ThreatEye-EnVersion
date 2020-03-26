@@ -2,15 +2,15 @@
   <div id="outside_list">
     <div class="outside_content">
       <div class="content_left content_common">
-        <p class="title">恶意IP列表：</p>
+        <p class="title">Malicious IP List:</p>
         <p>
-          <span>{{hostip}}/MaliciousIP?uname=账号&passwd=密码</span>
+          <span>{{hostip}}/MaliciousIP?uname=account&passwd=password</span>
         </p>
         <div class="list_box">
           <p class="list_title_box">
             <span>IP:</span>
             <el-button class="btn_i"
-                       @click="add_ip">添加</el-button>
+                       @click="add_ip">Add</el-button>
           </p>
           <div class="item_box"
                v-for="(item,index) in outside_list.ip"
@@ -27,15 +27,15 @@
         </div>
       </div>
       <div class="content_right content_common">
-        <p class="title">恶意域名列表：</p>
+        <p class="title">Malicious URl List:</p>
         <p>
-          <span>{{hostip}}/MaliciousURL?uname=账号&passwd=密码</span>
+          <span>{{hostip}}/MaliciousURL?uname=account&passwd=password</span>
         </p>
         <div class="list_box">
           <p class="list_title_box">
-            <span>域名:</span>
+            <span>URL:</span>
             <el-button class="btn_i"
-                       @click="add_url">添加</el-button>
+                       @click="add_url">ADD</el-button>
           </p>
           <div class="item_box"
                v-for="(item,index) in outside_list.url"
@@ -63,7 +63,7 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">添加IP</span>
+        <span class="title_name">Add</span>
       </div>
       <div class="content">
         <div class="content_item">
@@ -72,7 +72,7 @@
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入IP"
+                    placeholder="Please enter a ip"
                     v-model="outside_pop.ip.ip"
                     clearable>
           </el-input>
@@ -96,16 +96,16 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">添加域名</span>
+        <span class="title_name">Add</span>
       </div>
       <div class="content">
         <div class="content_item">
           <p>
-            <span class="title">域名</span>
+            <span class="title">Domain</span>
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入域名"
+                    placeholder="Please enter Domain"
                     v-model="outside_pop.url.url"
                     clearable>
           </el-input>
@@ -212,7 +212,7 @@ export default {
           if (this.outside_pop.ip.ip == '') {
             this.$message(
               {
-                message: '请输入ip地址',
+                message: 'Please enter a ip',
                 type: 'warning',
               }
             );
@@ -224,7 +224,7 @@ export default {
           if (this.outside_pop.url.url == '') {
             this.$message(
               {
-                message: '请输入域名',
+                message: 'Please enter domain',
                 type: 'warning',
               }
             );
@@ -255,7 +255,7 @@ export default {
                 this.outside_pop.ip.show = false;
                 this.$message(
                   {
-                    message: '添加IP成功',
+                    message: 'IP added successfully',
                     type: 'success',
                   }
                 );
@@ -265,7 +265,7 @@ export default {
                 this.outside_pop.url.show = false;
                 this.$message(
                   {
-                    message: '添加域名成功',
+                    message: 'Domain added successfully',
                     type: 'success',
                   }
                 );

@@ -1,56 +1,48 @@
 <template>
   <div id="mail_notic">
     <div class="left">
-      <p class="title">邮件服务器设置</p>
+      <p class="title">Mail Server Settings</p>
       <div class="left_item">
-        <p>SMTP服务器
+        <p>SMTP Server
           <span class="red_necessary">*</span>
         </p>
         <el-input class="select_box"
-                  placeholder="请输入SMTP服务器"
+                  placeholder="Please enter SMTP server"
                   v-model="mail.host"
                   clearable>
         </el-input>
       </div>
       <div class="left_item">
-        <p>SMTP端口
+        <p>SMTP Port
           <span class="red_necessary">*</span>
         </p>
         <el-input class="select_box"
-                  placeholder="请输入SMTP端口"
+                  placeholder="Please enter SMTP port"
                   v-model="mail.port"
                   clearable>
         </el-input>
       </div>
       <p class="title">
-        SMTP启用安全连接SSL启用
+        SMTP Enable Secure Connection SSL Enable
         <el-switch v-model="mail.ssl_switch">
         </el-switch>
       </p>
-      <!-- <div class="left_item">
-        <p>发件邮箱账号:</p>
-        <el-input class="select_box"
-                  placeholder="请输入发件邮箱账号"
-                  v-model="mail.user"
-                  clearable>
-        </el-input>
-      </div> -->
       <div class="left_item">
-        <p>邮箱地址
+        <p>Email Address
           <span class="red_necessary">*</span>
         </p>
         <el-input class="select_box"
-                  placeholder="请输入邮箱地址"
+                  placeholder="Please enter your email address"
                   v-model="mail.username"
                   clearable>
         </el-input>
       </div>
       <div class="left_item">
-        <p>邮箱密码
+        <p>Email Password
           <span class="red_necessary">*</span>
         </p>
         <el-input class="select_box"
-                  placeholder="请输入邮箱密码"
+                  placeholder="Please enter your email password"
                   v-model="mail.password"
                   show-password>
         </el-input>
@@ -61,19 +53,19 @@
                    @click="send_save">Save</el-button>
         <el-button type="primary"
                    class="test_btn"
-                   @click='send_test'>发送测试邮件</el-button>
+                   @click='send_test'>Send test mail</el-button>
       </div>
     </div>
     <div class="mid">
-      <p class="title">收件邮箱账号</p>
+      <p class="title">Recipient</p>
       <div class="mid_item">
-        <p>邮箱地址
+        <p>Email Address
           <span class="red_necessary">*</span>
         </p>
         <div class="item_addrs"
              v-for="(item,index) in mail.alertEmail_list">
           <el-input class="select_box"
-                    placeholder="请输入邮箱地址，最多可以设置5个收件邮箱账号"
+                    placeholder="Please enter email addresses and up to 5 mail accounts can be set"
                     v-model="item.name"
                     clearable>
           </el-input>
@@ -90,7 +82,7 @@
         </div>
       </div>
       <div class="mid_item">
-        <p>发送内容</p>
+        <p>Content</p>
         <div style="display:flex">
           <el-input class="select_box"
                     type="textarea"
@@ -99,7 +91,7 @@
                     maxlength="500"
                     show-word-limit
                     resize='none'
-                    placeholder="请输入发送内容"
+                    placeholder="Please enter the content to be sent"
                     v-model="mail.content"
                     clearable>
           </el-input>
@@ -107,7 +99,7 @@
         </div>
       </div>
       <p class="title">
-        发生警告时给此邮箱发送通知邮件
+        Send a notification message to this mailbox when alerts generated
         <el-switch v-model="mail.send">
         </el-switch>
       </p>
@@ -200,7 +192,7 @@ export default {
       if (alertEmail.length == 0) {
         this.$message(
           {
-            message: '请输入收件箱地址',
+            message: 'Please enter your email address',
             type: 'warning',
           }
         );
@@ -209,7 +201,7 @@ export default {
       if (this.mail.password == '') {
         this.$message(
           {
-            message: '请输入邮箱密码',
+            message: 'Please enter your email password',
             type: 'warning',
           }
         );
@@ -238,7 +230,7 @@ export default {
             // this.get_data()
             this.$message(
               {
-                message: '发送测试邮件通知成功',
+                message: 'Send test mail notification successfully',
                 type: 'success',
               }
             );
@@ -270,7 +262,7 @@ export default {
       if (alertEmail.length == 0) {
         this.$message(
           {
-            message: '请输入收件箱地址',
+            message: 'Please enter your email address',
             type: 'warning',
           }
         );
@@ -279,7 +271,7 @@ export default {
       if (this.mail.password == '') {
         this.$message(
           {
-            message: '请输入邮箱密码',
+            message: 'Please enter your email password',
             type: 'warning',
           }
         );
@@ -308,7 +300,7 @@ export default {
             this.get_data()
             this.$message(
               {
-                message: '设置邮件通知成功',
+                message: 'Mail notifications setting success',
                 type: 'success',
               }
             );
@@ -329,7 +321,7 @@ export default {
       } else {
         this.$message.warning(
           {
-            message: '最多可以设置5个收件邮箱账号。',
+            message: 'You can set up to 5 recipient email addresses',
             offset: 50
           })
       }

@@ -120,11 +120,11 @@
         </div>
         <div class="content_item">
           <p>
-            <span class="title">确认密码</span>
+            <span class="title">Confirm password</span>
             <span class="red">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请确认密码"
+                    placeholder="Please confirm your password"
                     v-model="user_add.Re_password"
                     show-password>
           </el-input>
@@ -209,10 +209,10 @@
         </div>
         <div class="content_item">
           <p>
-            <span class="title">确认密码</span>
+            <span class="title">Confirm password</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请确认密码"
+                    placeholder="Please confirm your password"
                     v-model="user_edit.Re_password"
                     show-password>
           </el-input>
@@ -425,7 +425,7 @@ export default {
         .then(response => {
           console.log(response);
           this.user_data.password = response.data.data
-          this.user_data.placeholder = '请输入包含大写、小写、数字和特殊字符其中三项,' + response.data.data.min_passwd_len + '-' + response.data.data.max_passwd_len + '位密码'
+          this.user_data.placeholder = 'Use at least' + response.data.data.min_passwd_len + 'and at most' + response.data.data.max_passwd_len + 'characters,including at least three types of characters:lowercase,uppercase,number and special character'
         })
         .catch(error => {
           console.log(error);
@@ -459,7 +459,7 @@ export default {
       if (this.user_add.password != this.user_add.Re_password) {
         this.$message(
           {
-            message: '两次输入密码不一致',
+            message: 'Password does not match',
             type: 'warning',
           }
         );
@@ -468,7 +468,7 @@ export default {
       if (!this.regex(this.user_add.password)) {
         this.$message(
           {
-            message: '密码必须同时包含大写、小写、数字和特殊字符其中三项',
+            message: 'Password must contains three types of characters: uppercase, lowercase, numbers, and special characters',
             type: 'warning',
           }
         );
@@ -497,7 +497,7 @@ export default {
             this.user_state.add = false;
             this.$message(
               {
-                message: '添加用户成功',
+                message: 'User added successfully',
                 type: 'success',
               }
             );
@@ -578,7 +578,7 @@ export default {
               if (response.data.status == 0) {
                 this.get_data();
                 this.$message({
-                  message: '修改用户成功',
+                  message: 'User updated successfully',
                   type: 'success'
                 });
               } else {

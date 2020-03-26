@@ -6,17 +6,17 @@
         <el-tabs v-model="activeName"
                  @tab-click="handleClick"
                  class="reset_tab">
-          <el-tab-pane label="规则库更新"
+          <el-tab-pane label="Libraries Update"
                        class="tabs-item"
                        name="first">
             <rule-base v-if="tab_show.first"></rule-base>
           </el-tab-pane>
-          <el-tab-pane label="YARA规则"
+          <el-tab-pane label="YARA Setting"
                        class="tabs-item"
                        name="second">
             <yara-rule v-if="tab_show.second"></yara-rule>
           </el-tab-pane>
-          <el-tab-pane label="白名单设置"
+          <el-tab-pane label="Whitelist Setting"
                        class="tabs-item"
                        name="third">
             <white-list v-if="tab_show.third"></white-list>

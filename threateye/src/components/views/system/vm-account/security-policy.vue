@@ -40,7 +40,7 @@
                          label="Please enter the time to change the password periodically"></el-input-number>
 
         <span class="red">*</span>
-        <span class="item_color">(1-90)天</span>
+        <span class="item_color">(1-90)Day</span>
       </div>
       <div class="mid_item">
         <p class="title item_color">Maximum number of login retries:</p>
@@ -51,7 +51,7 @@
                          label="Please enter the maximum number of login retries"></el-input-number>
 
         <span class="red">*</span>
-        <span class="item_color">(1-5)次</span>
+        <span class="item_color">(1-5)Times</span>
       </div>
       <div class="mid_item">
         <p class="title item_color">Blocking time after login failure:</p>
@@ -62,7 +62,7 @@
                          label="Please enter blocking time after login failure"></el-input-number>
 
         <span class="red">*</span>
-        <span class="item_color">(1-3600)秒</span>
+        <span class="item_color">(1-3600)Secs</span>
       </div>
       <div class="mid_item">
         <p class="title item_color">Page timeout time:</p>
@@ -72,7 +72,7 @@
                          :max="480"
                          label="Please enter page timeout time"></el-input-number>
         <span class="red">*</span>
-        <span class="item_color">(1-480)分钟</span>
+        <span class="item_color">(1-480)Mins</span>
       </div>
       <div class="mid_item">
         <p class="title item_color">Maximum number of logged-in users:</p>
@@ -82,7 +82,7 @@
                          :max="5"
                          label="Please enter maximum number of logged-in users"></el-input-number>
         <span class="red">*</span>
-        <span class="item_color">(1-5)个</span>
+        <span class="item_color">(1-5)</span>
       </div>
     </div>
     <div class="bottom">

@@ -2,11 +2,11 @@
   <div id="short_message">
     <div class="left">
       <div class="left_item">
-        <p>短信平台
+        <p>SMS Platform
           <span class="red_necessary">*</span>
         </p>
         <el-input class="select_box"
-                  placeholder="请输入短信平台 "
+                  placeholder="Please enter the SMS platform"
                   v-model="message.type"
                   clearable>
         </el-input>
@@ -16,7 +16,7 @@
           <span class="red_necessary">*</span>
         </p>
         <el-input class="select_box"
-                  placeholder="请输入AccessKey ID"
+                  placeholder="Please enter accessKey id"
                   v-model="message.id"
                   clearable>
         </el-input>
@@ -26,28 +26,28 @@
           <span class="red_necessary">*</span>
         </p>
         <el-input class="select_box"
-                  placeholder="请输入AccessKey Secret"
+                  placeholder="Please enter accessKey secret"
                   v-model="message.key"
                   clearable>
         </el-input>
       </div>
       <div class="left_item">
-        <p>短信签名
+        <p>SMS Signature
         </p>
         <el-input class="select_box"
-                  placeholder="请输入短信签名"
+                  placeholder="Please enter SMS signature"
                   v-model="message.name"
                   clearable>
         </el-input>
       </div>
       <div class="left_item">
-        <p>短信模板</p>
+        <p>SMS Template</p>
         <el-input class="select_box"
                   type="textarea"
                   :rows="10"
                   autosize
                   resize='none'
-                  placeholder="请输入短信模板"
+                  placeholder="Please enter the SMS template"
                   v-model="message.model"
                   clearable>
         </el-input>
@@ -56,7 +56,7 @@
         <el-button type="primary"
                    class="save_btn">Save</el-button>
         <el-button type="primary"
-                   class="test_btn">发送测试短信</el-button>
+                   class="test_btn">Send test SMS</el-button>
       </div>
     </div>
     <div class="mid">

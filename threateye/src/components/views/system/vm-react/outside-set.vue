@@ -3,7 +3,7 @@
   <div id="outside_set">
     <div class="set_top">
       <p>
-        <span>是否启用:</span>
+        <span>Enable:</span>
         <el-switch v-model="outside_set.switch"
                    @change="set_switch">
         </el-switch>
@@ -11,21 +11,21 @@
       <p class="top_tips">This function realizes the integration with third-party devices such as firewalls, the third-party devices obtain the malicious IP list and the malicious URL list through the URL address to do the alerting or blocking.</p>
       <div class="malice_list">
         <div class="list_left">
-          <p class="item_title">恶意IP列表</p>
+          <p class="item_title">Malicious IP List:</p>
           <p class="item_content">
-            <span>{{hostip}}/MaliciousIP?uname=账号&passwd=密码</span>
+            <span>{{hostip}}/MaliciousIP?uname=account&passwd=password</span>
           </p>
         </div>
         <div class="list_right">
-          <p class="item_title">恶意域名列表</p>
+          <p class="item_title">Malicious URl List:</p>
           <p class="item_content">
-            <span>{{hostip}}/MaliciousURL?uname=账号&passwd=密码</span>
+            <span>{{hostip}}/MaliciousURL?uname=account&passwd=password</span>
           </p>
         </div>
       </div>
     </div>
     <el-button class="btn_i"
-               @click="add_box">创建账号</el-button>
+               @click="add_box">Create Accounts</el-button>
     <div class="outside_table">
       <el-table ref="multipleTable"
                 class="reset_table"
@@ -36,11 +36,11 @@
                 @selection-change="handleSelectionChange"
                 @row-click="alert_detail">
         <el-table-column prop="uname"
-                         label="用户名"
+                         label="User Name"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="passwd"
-                         label="密码"
+                         label="Password"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column label='Operation'>
@@ -75,27 +75,27 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">创建用户</span>
+        <span class="title_name">Add</span>
       </div>
       <div class="content">
         <div class="content_item">
           <p>
-            <span class="title">用户名</span>
+            <span class="title">User Name</span>
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入用户名"
+                    placeholder="Please enter a user name"
                     v-model="outside_pop.add.user"
                     clearable>
           </el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">密码</span>
+            <span class="title">Password</span>
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入密码"
+                    placeholder="Please enter a password"
                     v-model="outside_pop.add.pswd"
                     clearable
                     show-password>
@@ -120,16 +120,16 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">编辑用户</span>
+        <span class="title_name">Edit</span>
       </div>
       <div class="content">
         <div class="content_item">
           <p>
-            <span class="title">密码</span>
+            <span class="title">Password</span>
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入密码"
+                    placeholder="Please enter a password"
                     v-model="outside_pop.edit.pswd"
                     show-password>
           </el-input>
@@ -252,14 +252,14 @@ export default {
             if (switch_status == 0) {
               this.$message(
                 {
-                  message: '关闭成功',
+                  message: 'Closed successfully',
                   type: 'success',
                 }
               );
             } else {
               this.$message(
                 {
-                  message: '开启成功',
+                  message: 'Enable successfully',
                   type: 'success',
                 }
               );
@@ -311,7 +311,7 @@ export default {
       if (this.outside_pop.add.user == '') {
         this.$message(
           {
-            message: '请输入用户名',
+            message: 'Please enter a user name',
             type: 'warning',
           }
         );
@@ -320,7 +320,7 @@ export default {
       if (this.outside_pop.add.pswd == '') {
         this.$message(
           {
-            message: '请输入密码',
+            message: 'Please enter a password',
             type: 'warning',
           }
         );
@@ -344,7 +344,7 @@ export default {
             this.outside_pop.add.show = false
             this.$message(
               {
-                message: '添加账号成功',
+                message: 'Account added successfully',
                 type: 'success',
               }
             );
@@ -366,19 +366,10 @@ export default {
       this.outside_pop.edit.pswd = item_obj.passwd
     },
     edit_user () {
-      if (this.outside_pop.edit.user == '') {
-        this.$message(
-          {
-            message: '请输入用户名',
-            type: 'warning',
-          }
-        );
-        return false
-      }
       if (this.outside_pop.add.pswd == '') {
         this.$message(
           {
-            message: '请输入密码',
+            message: 'Please enter a password',
             type: 'warning',
           }
         );
@@ -401,7 +392,7 @@ export default {
             this.outside_pop.add.show = false
             this.$message(
               {
-                message: '修改账号成功',
+                message: 'Account updated successfully',
                 type: 'success',
               }
             );

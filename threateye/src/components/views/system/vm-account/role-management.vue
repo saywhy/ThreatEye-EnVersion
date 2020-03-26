@@ -581,7 +581,7 @@ export default {
             this.get_data();
             this.$message(
               {
-                message: '修改角色成功',
+                message: 'Role updated successfully',
                 type: 'success',
               }
             );

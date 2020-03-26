@@ -3,12 +3,12 @@
        v-loading.fullscreen.lock="loading"
        class="container">
     <div class="content_box">
-      <p class="title">恢复出厂设置</p>
+      <p class="title">Factory Reset</p>
       <el-button class="btn_i"
-                 @click="restore">恢复出厂设置</el-button>
-      <p class="title marin_top">重启平台</p>
+                 @click="restore">Restore</el-button>
+      <p class="title marin_top">Restart System</p>
       <el-button class="btn_i"
-                 @click="reboot">立即重启</el-button>
+                 @click="reboot">Restart</el-button>
     </div>
   </div>
 </template>
@@ -52,7 +52,7 @@ export default {
             if (status == 0) {
               this.$message(
                 {
-                  message: '执行恢复出场设置成功',
+                  message: 'Factory settings restored successfully',
                   type: 'success',
                 }
               );
@@ -84,7 +84,7 @@ export default {
             if (status == 0) {
               this.$message(
                 {
-                  message: '执行重启平台成功',
+                  message: 'Platform restarted successfully',
                   type: 'success',
                 }
               );

@@ -4,14 +4,14 @@
     <p>
       <img src=""
            alt="">
-      <span>文件大小：{{rule_data.file_size | filterType}}</span>
+      <span>File Size:{{rule_data.file_size | filterType}}</span>
     </p>
-    <p class="updata_time">上次更新时间：
+    <p class="updata_time">Last Update Time:
       <span>{{rule_data.update_time}}</span>
     </p>
     <div class="btn_box">
       <el-button class="btn_i"
-                 @click="download">下载</el-button>
+                 @click="download">Download</el-button>
       <el-upload class="upload-demo"
                  style="display: inline-block;"
                  action="/yiiapi/yararule/upload"
@@ -47,7 +47,7 @@ export default {
       rule_data: {
         file_size: '',
         update_time: '',
-        name: '上传',
+        name: 'Upload',
       },
       rule: {
         upload_pop: false
@@ -85,11 +85,11 @@ export default {
           if (response.data.status == 0) {
             this.rule_data.file_size = response.data.data.file_size
             this.rule_data.update_time = response.data.data.update_time
-            this.rule_data.name = '替换'
+            this.rule_data.name = 'Replace'
           } else if (response.data.status == 1) {
             this.rule_data.file_size = response.data.msg.file_size
             this.rule_data.update_time = response.data.msg.update_time
-            this.rule_data.name = '上传'
+            this.rule_data.name = 'Upload'
           }
           setTimeout(() => {
             this.loading = false
@@ -105,7 +105,7 @@ export default {
       if (this.rule_data.file_size == '') {
         this.$message(
           {
-            message: '并未发现任何yara规则文件，请先上传规则库文件！',
+            message: 'No yara rule file was found, please upload the rule file first!',
             type: 'warning',
           }
         );

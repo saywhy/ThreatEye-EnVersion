@@ -3,11 +3,11 @@
        v-loading.fullscreen.lock="loading">
     <div class="fault_top">
       <el-button class="btn_i"
-                 @click="faultlog_testing">故障检测</el-button>
+                 @click="faultlog_testing">Fault Detection</el-button>
       <el-button class="btn_i"
-                 @click="faultlog_download">下载</el-button>
+                 @click="faultlog_download">Download</el-button>
       <el-button class="btn_o"
-                 @click="faultlog_del">删除</el-button>
+                 @click="faultlog_del">Delete</el-button>
     </div>
     <div class="fault_table">
       <el-table ref="multipleTable"
@@ -25,12 +25,12 @@
         <el-table-column type="selection"
                          width="50">
         </el-table-column>
-        <el-table-column label="时间"
+        <el-table-column label="Time"
                          show-overflow-tooltip>
           <template slot-scope="scope">{{ scope.row.time*1000 |formatDate }}</template>
         </el-table-column>
         <el-table-column prop="file"
-                         label="日志文件"
+                         label="Log Name"
                          show-overflow-tooltip>
         </el-table-column>
       </el-table>
@@ -102,7 +102,7 @@ export default {
             this.get_data()
             this.$message({
               type: 'success',
-              message: '检测成功!'
+              message: 'Detection success'
             });
           } else {
             this.$message({
@@ -121,13 +121,13 @@ export default {
       if (this.select_list.length == 0) {
         this.$message(
           {
-            message: '请选择需要下载的故障日志！',
+            message: 'Please select the troubleshooting log to download',
             type: 'warning',
           }
         );
         return false
       }
-      this.$confirm('此操作下载信息, 是否继续?', 'Message', {
+      this.$confirm('This operation download the item. Do you want to continue?', 'Message', {
         confirmButtonText: 'Confirm',
         cancelButtonText: 'Cancel',
         type: 'warning'
@@ -146,7 +146,7 @@ export default {
         this.select_list = []
         this.$message({
           type: 'info',
-          message: '已取消下载'
+          message: 'Download cancelled'
         });
       });
     },
@@ -155,7 +155,7 @@ export default {
       if (this.select_list.length == 0) {
         this.$message(
           {
-            message: '请选择需要删除的故障日志！',
+            message: 'Please select the troubleshooting log to delete',
             type: 'warning',
           }
         );

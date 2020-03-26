@@ -3,7 +3,7 @@
        v-loading.fullscreen.lock="loading">
     <div class="search_box">
       <el-input class="search_key"
-                placeholder="搜索关键词"
+                placeholder="Search keywords"
                 v-model="audit_data.key"
                 clearable>
         <i slot="prefix"
@@ -12,11 +12,11 @@
       <vm-emerge-picker @changeTime='changeTime'
                         :option='time_list'></vm-emerge-picker>
       <el-button class="btn_i"
-                 @click="get_data"> 搜索</el-button>
+                 @click="get_data">Search</el-button>
       <span class="reset"
             @click="reset">Reset</span>
       <el-button class="btn_right"
-                 @click="download">下载</el-button>
+                 @click="download">Download</el-button>
     </div>
     <p class="line"></p>
     <div class="audit_table">
@@ -33,15 +33,15 @@
           </template>
         </el-table-column>
         <el-table-column prop="created_at"
-                         label="时间"
+                         label="Time"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="username"
-                         label="用户标识"
+                         label="User"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="info"
-                         label='描述'
+                         label='Description'
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="userip"

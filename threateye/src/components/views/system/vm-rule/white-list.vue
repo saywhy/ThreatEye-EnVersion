@@ -3,9 +3,9 @@
        v-loading.fullscreen.lock="loading">
     <div class="btn_box">
       <el-button class="btn_i"
-                 @click="open_add_box">添加白名单</el-button>
+                 @click="open_add_box">Add</el-button>
       <el-button class="btn_i"
-                 @click="download">下载模板</el-button>
+                 @click="download">Template</el-button>
       <el-upload class="upload-demo"
                  style="display: inline-block;"
                  action="/yiiapi/whitelist/add-import"
@@ -22,11 +22,11 @@
                  :on-exceed="handleExceed"
                  :file-list="fileList">
         <el-button class="btn_o"
-                   type="primary">批量导入</el-button>
+                   type="primary">Import</el-button>
       </el-upload>
 
       <el-button class="btn_o"
-                 @click="del_white">删除</el-button>
+                 @click="del_white">Delete</el-button>
     </div>
     <div class="user_table">
       <el-table ref="multipleTable"
@@ -50,11 +50,11 @@
           </template>
         </el-table-column>
         <el-table-column prop="indicator"
-                         label="指标"
+                         label="Index"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="alert_type"
-                         label="类型"
+                         label="Type"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="create_time"
@@ -83,28 +83,28 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">添加白名单</span>
+        <span class="title_name">Add</span>
       </div>
       <div class="content">
         <div class="content_item">
           <p>
-            <span class="title">指标</span>
+            <span class="title">Index</span>
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="请输入指标"
+                    placeholder="Please enter index"
                     v-model="white_add.indicator"
                     clearable>
           </el-input>
         </div>
         <div class="content_item">
           <p>
-            <span class="title">类型</span>
+            <span class="title">Type</span>
             <span class="red_necessary">*</span>
           </p>
           <el-select class="select_box"
                      v-model="white_add.type"
-                     placeholder="请选择类型">
+                     placeholder="Please select the type">
             <el-option v-for="item in white_add.type_list"
                        :key="item"
                        :label="item"
@@ -185,7 +185,7 @@ export default {
       if (this.white_add.indicator == '') {
         this.$message(
           {
-            message: '请输入指标',
+            message: 'Please enter index',
             type: 'warning',
           }
         );
@@ -294,7 +294,7 @@ export default {
       if (this.select_list.length == 0) {
         this.$message(
           {
-            message: '请选择需要删除的白名单！',
+            message: 'Please select the whitelist to delete',
             type: 'warning',
           }
         );

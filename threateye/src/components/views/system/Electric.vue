@@ -6,17 +6,17 @@
         <el-tabs v-model="activeName"
                  @tab-click="handleClick"
                  class="reset_tab">
-          <el-tab-pane label="网卡配置"
+          <el-tab-pane label="Network Configuration"
                        class="tabs-item"
                        name="first">
             <network-card v-if="tab_show.first"></network-card>
           </el-tab-pane>
-          <el-tab-pane label="代理服务器"
+          <el-tab-pane label="Proxy Setting"
                        class="tabs-item"
                        name="second">
             <proxy-server v-if="tab_show.second"></proxy-server>
           </el-tab-pane>
-          <el-tab-pane label="路由设置"
+          <el-tab-pane label="Routing Setting"
                        class="tabs-item"
                        name="third">
             <router-set v-if="tab_show.third"></router-set>

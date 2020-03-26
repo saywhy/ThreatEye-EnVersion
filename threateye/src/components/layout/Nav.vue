@@ -358,7 +358,7 @@ export default {
           if (response.data.status == 0) {
 
             this.$message({
-              message: '修改用户成功',
+              message: 'User updated successfully',
               type: 'success'
             });
             if (this.user_edit.password != '') {
