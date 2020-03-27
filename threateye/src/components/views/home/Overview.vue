@@ -209,8 +209,8 @@
       <div class="title">
         <div class="mask"></div>
         <span class="title_name">
-          <span>{{equipment_detail.title.name}}</span>
-          <span>{{equipment_detail.title.ip}}</span>
+         <!-- <span>{{equipment_detail.title.name}}</span>
+          <span>{{equipment_detail.title.ip}}</span>-->
           <span>{{equipment_detail.title.type}}</span>
           <span>System Status</span>
         </span>
