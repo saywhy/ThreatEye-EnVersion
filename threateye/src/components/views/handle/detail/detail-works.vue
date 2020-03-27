@@ -167,38 +167,41 @@
         </el-tab-pane>
       </el-tabs>
     </div>
-    <div class="detail_base_cot">
-      <div class="top_left">
-        <img class="top_left_img"
-             src="@/assets/images/handle/others/works.png"
-             alt="">
-        <span class="top_left_title">Comments</span>
+    <div v-if="table_reply.tableData.length > 0">
+      <div class="detail_base_cot">
+        <div class="top_left">
+          <img class="top_left_img"
+               src="@/assets/images/handle/others/works.png"
+               alt="">
+          <span class="top_left_title">Comments</span>
+        </div>
+      </div>
+      <div class="detail_base_lst">
+        <ul class="lit-list">
+          <li class="item"
+              v-for="item in table_reply.tableData"
+              :key="item.id">
+            <img class="lst_left_img"
+                 src="@/assets/images/handle/others/user.png"
+                 alt="">
+            <span class="lst_left_title">{{item.username}}</span>
+            <span class="lst_left_time">
+            <i class="lst_time"></i>{{item.created_at | time}}</span>
+            <p class="lst_left_content">{{item.comment}}</p>
+          </li>
+        </ul>
+        <el-pagination class="detail_pagination"
+                       @size-change="handleSizeChangeReply"
+                       @current-change="handleCurrentChangeReply"
+                       :current-page="table_reply.pageNow"
+                       :page-sizes="[10,20,50,100]"
+                       :page-size="table_reply.eachPage"
+                       :total="table_reply.count"
+                       layout="total, sizes, prev, pager, next">
+        </el-pagination>
       </div>
     </div>
-    <div class="detail_base_lst">
-      <ul class="lit-list">
-        <li class="item"
-            v-for="item in table_reply.tableData"
-            :key="item.id">
-          <img class="lst_left_img"
-               src="@/assets/images/handle/others/user.png"
-               alt="">
-          <span class="lst_left_title">{{item.username}}</span>
-          <span class="lst_left_time">
-            <i class="lst_time"></i>{{item.created_at | time}}</span>
-          <p class="lst_left_content">{{item.comment}}</p>
-        </li>
-      </ul>
-      <el-pagination class="detail_pagination"
-                     @size-change="handleSizeChangeReply"
-                     @current-change="handleCurrentChangeReply"
-                     :current-page="table_reply.pageNow"
-                     :page-sizes="[10,20,50,100]"
-                     :page-size="table_reply.eachPage"
-                     :total="table_reply.count"
-                     layout="total, sizes, prev, pager, next">
-      </el-pagination>
-    </div>
+
     <div class="detail_base_fot">
       <textarea class="detail_works_reply"
                 v-model="reply"></textarea>
@@ -222,7 +225,7 @@ export default {
       id: 0,
       page_show: true,
       loadlinks: '/yiiapi/workorder/download?id=',
-      title_name: "工单详情",
+      title_name: "Ticket Details",
       activeName: 'first',
       data: {
         created_at: '1583753107',
@@ -612,11 +615,12 @@ export default {
           .b_i {
             width: 18px;
             height: 18px;
+            margin-right: 8px;
             display: inline-block;
             &.b_name {
-              vertical-align: middle;
+              vertical-align: unset;
               background-repeat: no-repeat;
-              background-size: 18px;
+              background-size: 18px 16px;
               background-image: url('../../../../assets/images/handle/others/works-name.png');
             }
           }
