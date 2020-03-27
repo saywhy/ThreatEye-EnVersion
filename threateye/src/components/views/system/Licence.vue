@@ -46,7 +46,7 @@
           </el-table-column>
           <el-table-column prop="SN"
                            width="300"
-                           label="Serial NO."
+                           label="Serial No."
                            show-overflow-tooltip>
           </el-table-column>
           <el-table-column prop="product"
@@ -101,7 +101,7 @@
         <div class="content">
           <div class="content_item">
             <p>
-              <span class="title">Serial NO.</span>
+              <span class="title">Serial No.</span>
               <span class="red_necessary">*</span>
             </p>
             <el-input class="select_box"

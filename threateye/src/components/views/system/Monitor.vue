@@ -159,7 +159,7 @@
             </div>
             <div class="content_item">
               <p>
-                <span class="title">Note: 7 label attributes are reserved:"*** application", "Headquarters", "*** branch", "*** department", "Workstation", "Server", "Network equipment".</span>
+                <span class="title">Note: 7 label attributes are reserved:"*** application", "Headquarters", "*** branch", "*** department", "Terminal", "Server", "Network equipment".</span>
               </p>
             </div>
           </div>
@@ -174,7 +174,7 @@
               <div class="item_addrs"
                    v-for="(item,index) in monitor_add.ip_segment_list">
                 <el-input class="select_box"
-                          placeholder="Please enter IP subnets or IP addresses"
+                          placeholder="Please enter IP subnets or IP addresses(CIDR format)"
                           v-model="item.name"
                           clearable>
                 </el-input>
@@ -276,7 +276,7 @@
             </div>
             <div class="content_item">
               <p>
-                <span class="title">Note: 7 label attributes are reserved:"*** application", "Headquarters", "*** branch", "*** department", "Workstation", "Server", "Network equipment".</span>
+                <span class="title">Note: 7 label attributes are reserved:"*** application", "Headquarters", "*** branch", "*** department", "Terminal", "Server", "Network equipment".</span>
               </p>
             </div>
           </div>
@@ -511,7 +511,7 @@ export default {
         return false
       }
       tag_test_str = JSON.stringify(tag_test)
-      if (tag_test_str.indexOf("workstation") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
+      if (tag_test_str.indexOf("Terminal") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
         this.$message(
           {
             message: 'Only set one of the three types of tags:"terminal","server",or"network device".Please try again!',
@@ -520,7 +520,7 @@ export default {
         );
         return false
       }
-      if (tag_test_str.indexOf("server") != -1 && (tag_test_str.indexOf("workstation") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
+      if (tag_test_str.indexOf("server") != -1 && (tag_test_str.indexOf("Terminal") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
         this.$message(
           {
             message: 'Only set one of the three types of tags:"terminal","server",or"network device".Please try again!',
@@ -529,7 +529,7 @@ export default {
         );
         return false
       }
-      if (tag_test_str.indexOf("network equipment") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("workstation") != -1)) {
+      if (tag_test_str.indexOf("network equipment") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("Terminal") != -1)) {
         this.$message(
           {
             message: 'Only set one of the three types of tags:"terminal","server",or"network device".Please try again!',
@@ -687,7 +687,7 @@ export default {
         }
       });
       tag_test_str = JSON.stringify(tag_test)
-      if (tag_test_str.indexOf("workstation") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
+      if (tag_test_str.indexOf("Terminal") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
         this.$message(
           {
             message: 'Only set one of the three types of tags:"terminal","server",or"network device".Please try again!',
@@ -696,7 +696,7 @@ export default {
         );
         return false
       }
-      if (tag_test_str.indexOf("server") != -1 && (tag_test_str.indexOf("workstation") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
+      if (tag_test_str.indexOf("server") != -1 && (tag_test_str.indexOf("Terminal") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
         this.$message(
           {
             message: 'Only set one of the three types of tags:"terminal","server",or"network device".Please try again!',
@@ -705,7 +705,7 @@ export default {
         );
         return false
       }
-      if (tag_test_str.indexOf("network equipment") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("workstation") != -1)) {
+      if (tag_test_str.indexOf("network equipment") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("Terminal") != -1)) {
         this.$message(
           {
             message: 'Only set one of the three types of tags:"terminal","server",or"network device".Please try again!',

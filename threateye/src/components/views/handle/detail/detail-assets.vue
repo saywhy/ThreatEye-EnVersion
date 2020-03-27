@@ -901,7 +901,7 @@ export default {
           name: 'malwarecommunication',
           des: 'An attacker installs a malicious program on a machine that communicates with an external server via a common protocol or custom protocol.',
           handle: [
-            '1. Mitigation Recommendations',
+            '1. Isolate the machine from the network;',
             '2. Locate the malicious process at the machine according to the port in the network event of the alert details;',
             '3. Do a security analysis to identify the root cause and the extent the threat has spread. If you have an EDR solution installed, you can quickly locate the problem by doing security incident investigation directly through historical information;',
             '4. Install anti-virus software for full system scanning.',
@@ -916,7 +916,7 @@ export default {
           name: '广告软件	Adware',
           des: 'Adware is of relatively low-risk, but sometimes it can lead to greater threats, thus has to be cleaned up in time.',
           handle: [
-            '1. Mitigation Recommendations',
+            '1. Isolate the machine from the network;',
             '2. Locate the malicious process at the machine according to the port in the network event of the alert details;',
             '3. Do a security analysis to identify the root cause and the extent the threat has spread. If you have an EDR solution installed, you can quickly locate the problem by doing security incident investigation directly through historical information;',
             '4. Install anti-virus software for full system scanning.',
@@ -1079,7 +1079,7 @@ export default {
           name: '僵尸网络C&C	botc&c ',
           des: 'An attacker installs a malicious program on a machine that communicates with an external server via a common protocol or custom protocol.',
           handle: [
-            '1. Mitigation Recommendations',
+            '1. Isolate the machine from the network;',
             '2. Locate the malicious process at the machine according to the port in the network event of the alert details;',
             '3. Do a security analysis to identify the root cause and the extent the threat has spread. If you have an EDR solution installed, you can quickly locate the problem by doing security incident investigation directly through historical information;',
             '4. Install anti-virus software for full system scanning.',
@@ -1156,7 +1156,7 @@ export default {
           name: '勒索软件通讯	ransomwareurl',
           des: 'The address is used to download ransomware or to communicate with ransomware.',
           handle: [
-            '1. Mitigation Recommendations',
+            '1. Isolate the machine from the network;',
             '2. If you downloaded the ransomware, remove the software in time;',
             '3. If it is encrypted by ransomware, search security companies’ websites to see if there is a decryption tool.',
           ],
@@ -1180,7 +1180,7 @@ export default {
           name: '恶意证书',
           des: 'The program in the machine uses malicious ssl certificates to communicate with the external world.',
           handle: [
-            '1. Mitigation Recommendations',
+            '1. Isolate the machine from the network;',
             '2. Locate the malicious process at the machine according to the port in the network event of the alert details;',
             '3. Do a security analysis to identify the root cause and the extent the threat has spread. If you have an EDR solution installed, you can quickly locate the problem by doing security incident investigation directly through historical information;',
             '4. Install anti-virus software for full system scanning.',
