@@ -589,7 +589,7 @@ export default {
           },
           {
             value: "low",
-            label: "Medium"
+            label: "Low"
           }
         ],
         operator_list: [],

@@ -1283,19 +1283,19 @@ export default {
         level_list: [
           {
             value: "highest",
-            label: "highest"
+            label: "Critical"
           },
           {
             value: "high",
-            label: "high"
+            label: "High"
           },
           {
             value: "medium",
-            label: "medium"
+            label: "Medium"
           },
           {
             value: "low",
-            label: "low"
+            label: "Low"
           }
         ],
         status_type: [
@@ -1321,19 +1321,19 @@ export default {
         level_list: [
           {
             value: "highest",
-            label: "highest"
+            label: "Critical"
           },
           {
             value: "high",
-            label: "high"
+            label: "High"
           },
           {
             value: "medium",
-            label: "medium"
+            label: "Medium"
           },
           {
             value: "low",
-            label: "low"
+            label: "Low"
           }
         ],
         //经办人数组
