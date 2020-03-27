@@ -9,12 +9,12 @@
                      class="tabs-item"
                      name="first">
           <div class="invest_top">
-            <el-input placeholder="Host ip"
+            <el-input placeholder="Host IP"
                       class="search_box"
                       v-model="dns_search.host_ip"
                       clearable>
             </el-input>
-            <el-input placeholder="DNS server ip"
+            <el-input placeholder="DNS server IP"
                       class="search_box"
                       v-model="dns_search.dns_ip"
                       clearable>

@@ -9,7 +9,7 @@
                      class="tabs-item"
                      name="first">
           <div class="invest_top">
-            <el-input placeholder="Source ip"
+            <el-input placeholder="Source IP"
                       class="search_box"
                       v-model="url_search.src_ip"
                       clearable>
@@ -19,7 +19,7 @@
                       v-model="url_search.src_port"
                       clearable>
             </el-input>
-            <el-input placeholder="Destination ip"
+            <el-input placeholder="Destination IP"
                       class="search_box"
                       v-model="url_search.dst_ip"
                       clearable>
