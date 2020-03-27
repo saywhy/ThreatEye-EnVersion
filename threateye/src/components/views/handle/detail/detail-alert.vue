@@ -1471,23 +1471,23 @@ export default {
                     value: item.alert_description.mask
                   },
                   {
-                    name: 'category',
+                    name: 'Category',
                     value: item.alert_description.category
                   },
                   {
-                    name: 'threat',
+                    name: 'Threat',
                     value: item.alert_description.threat
                   },
                   {
-                    name: 'first_seen',
+                    name: 'First_seen',
                     value: item.alert_description.first_seen
                   },
                   {
-                    name: 'popularity',
+                    name: 'Popularity',
                     value: item.alert_description.popularity
                   },
                   {
-                    name: 'geo',
+                    name: 'Geo',
                     value: item.alert_description.geo
                   },
                 ];
@@ -1498,15 +1498,15 @@ export default {
                     value: item.alert_description.mask
                   },
                   {
-                    name: 'category',
+                    name: 'Category',
                     value: item.alert_description.category
                   },
                   {
-                    name: 'first_seen',
+                    name: 'First_seen',
                     value: item.alert_description.first_seen
                   },
                   {
-                    name: 'popularity',
+                    name: 'Popularity',
                     value: item.alert_description.popularity
                   },
                   {
@@ -1522,23 +1522,23 @@ export default {
                     value: item.alert_description.ip
                   },
                   {
-                    name: 'category',
+                    name: 'Category',
                     value: item.alert_description.category
                   },
                   {
-                    name: 'first_seen',
+                    name: 'First_seen',
                     value: item.alert_description.first_seen
                   },
                   {
-                    name: 'popularity',
+                    name: 'Popularity',
                     value: item.alert_description.popularity
                   },
                   {
-                    name: 'geo',
+                    name: 'Geo',
                     value: item.alert_description.geo
                   },
                   {
-                    name: 'domains',
+                    name: 'Domains',
                     value: item.alert_description.domains
                   },
                 ];
@@ -1554,35 +1554,35 @@ export default {
                     value: item.alert_description.SHA256
                   },
                   {
-                    name: 'file_size',
+                    name: 'File_size',
                     value: item.alert_description.file_size
                   },
                   {
-                    name: 'file_type',
+                    name: 'File_type',
                     value: item.alert_description.file_type
                   },
                   {
-                    name: 'file_name',
+                    name: 'File_name',
                     value: item.alert_description.file_name
                   },
                   {
-                    name: 'category',
+                    name: 'Category',
                     value: item.alert_description.category
                   },
                   {
-                    name: 'threat',
+                    name: 'Threat',
                     value: item.alert_description.threat
                   },
                   {
-                    name: 'first_seen',
+                    name: 'First_seen',
                     value: item.alert_description.first_seen
                   },
                   {
-                    name: 'popularity',
+                    name: 'Popularity',
                     value: item.alert_description.popularity
                   },
                   {
-                    name: "geo",
+                    name: "Geo",
                     value: item.alert_description.geo,
                   },
                   {
@@ -1598,23 +1598,23 @@ export default {
                     value: item.alert_description.mask
                   },
                   {
-                    name: 'category',
+                    name: 'Category',
                     value: item.alert_description.category
                   },
                   {
-                    name: 'first_seen',
+                    name: 'First_seen',
                     value: item.alert_description.first_seen
                   },
                   {
-                    name: 'popularity',
+                    name: 'Popularity',
                     value: item.alert_description.popularity
                   },
                   {
-                    name: "geo",
+                    name: "Geo",
                     value: item.alert_description.geo,
                   },
                   {
-                    name: "file",
+                    name: "File",
                     value: item.alert_description.file,
                   },
                 ];
@@ -1626,19 +1626,19 @@ export default {
                     value: item.alert_description.mask
                   },
                   {
-                    name: 'category',
+                    name: 'Category',
                     value: item.alert_description.category
                   },
                   {
-                    name: 'first_seen',
+                    name: 'First_seen',
                     value: item.alert_description.first_seen
                   },
                   {
-                    name: 'popularity',
+                    name: 'Popularity',
                     value: item.alert_description.popularity
                   },
                   {
-                    name: "geo",
+                    name: "Geo",
                     value: item.alert_description.geo,
                   },
                   {
@@ -1658,27 +1658,27 @@ export default {
                     value: item.alert_description.SHA256
                   },
                   {
-                    name: 'file_size',
+                    name: 'File_size',
                     value: item.alert_description.file_size
                   },
                   {
-                    name: 'category',
+                    name: 'Category',
                     value: item.alert_description.category
                   },
                   {
-                    name: 'threat',
+                    name: 'Threat',
                     value: item.alert_description.threat
                   },
                   {
-                    name: 'first_seen',
+                    name: 'First_seen',
                     value: item.alert_description.first_seen
                   },
                   {
-                    name: 'popularity',
+                    name: 'Popularity',
                     value: item.alert_description.popularity
                   },
                   {
-                    name: "geo",
+                    name: "Geo",
                     value: item.alert_description.geo,
                   },
                 ];
@@ -1686,23 +1686,23 @@ export default {
               case 'sdk':
                 item.info_list = [
                   {
-                    name: 'category',
+                    name: 'Category',
                     value: item.alert_description.category
                   },
                   {
-                    name: 'file_name',
+                    name: 'File_name',
                     value: item.alert_description.file_name
                   },
                   {
-                    name: 'file_size',
+                    name: 'File_size',
                     value: item.alert_description.file_size
                   },
                   {
-                    name: 'md5',
+                    name: 'MD5',
                     value: item.alert_description.md5
                   },
                   {
-                    name: 'threat',
+                    name: 'Threat',
                     value: item.alert_description.threat
                   },
                 ];
@@ -1710,19 +1710,19 @@ export default {
               case 'sandbox':
                 item.info_list = [
                   {
-                    name: 'category',
+                    name: 'Category',
                     value: item.alert_description.category
                   },
                   {
-                    name: 'filename',
+                    name: 'Filename',
                     value: item.alert_description.filename
                   },
                   {
-                    name: 'size',
+                    name: 'Size',
                     value: item.alert_description.size
                   },
                   {
-                    name: 'type',
+                    name: 'Type',
                     value: item.alert_description.type
                   },
                   {
@@ -1738,7 +1738,7 @@ export default {
                     value: item.alert_description.sha256
                   },
                   {
-                    name: 'taskID',
+                    name: 'TaskID',
                     value: item.alert_description.taskID
                   },
                 ];
@@ -1746,19 +1746,19 @@ export default {
               case 'yara':
                 item.info_list = [
                   {
-                    name: "file_name",
+                    name: "File_name",
                     value: item.alert_description.file_name,
                   },
                   {
-                    name: "file_name",
-                    value: item.alert_description.file_name,
+                    name: "File_size",
+                    value: item.alert_description.file_size,
                   },
                   {
-                    name: "md5",
+                    name: "MD5",
                     value: item.alert_description.md5,
                   },
                   {
-                    name: "rule_name",
+                    name: "Rule_name",
                     value: item.alert_description.rule_name,
                   },
                 ];
@@ -1766,15 +1766,15 @@ export default {
               case 'IDS':
                 item.info_list = [
                   {
-                    name: "category",
+                    name: "Category",
                     value: item.alert_description.category,
                   },
                   {
-                    name: "threat",
+                    name: "Threat",
                     value: item.alert_description.threat,
                   },
                   {
-                    name: "PayLoad",
+                    name: "Payload",
                     value: "download",
                   },
                 ];
