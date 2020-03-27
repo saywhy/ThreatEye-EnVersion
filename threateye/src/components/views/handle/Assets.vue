@@ -1397,6 +1397,8 @@ export default {
         color: #333333;
         font-size: 18px;
         margin-top: 16px;
+        text-align: left;
+        padding-left: 24px;
         font-family: PingFangMedium;
       }
 

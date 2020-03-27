@@ -197,7 +197,7 @@ export default {
             .then((resp) => {
               //返回成功跳转
               if (resp[0]) {
-                this.$message.success('Login successfully');
+                this.$message.success('Login successful');
                 this.$router.push('/', () => { });//登录成功之后重定向到首页
                 this.count = 0;
                 //失败
