@@ -12,7 +12,7 @@
       <el-table-column prop="indicator"
                        label="Indicator"
                        show-overflow-tooltip></el-table-column>
-      <el-table-column prop="Type"
+      <el-table-column prop="category"
                        label="Type"
                        show-overflow-tooltip></el-table-column>
     </el-table>

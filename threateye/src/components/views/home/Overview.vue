@@ -1193,7 +1193,7 @@ export default {
             display: inline-block;
           }
           .legend_title {
-            margin-right: 10px;
+            margin-right: 6px;
           }
         }
         // 第一个
