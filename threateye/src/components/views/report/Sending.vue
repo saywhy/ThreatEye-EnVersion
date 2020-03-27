@@ -65,7 +65,7 @@
             <div class="item_addrs"
                  v-for="(item,index) in send_config.receiver_list">
               <el-input class="select_email"
-                        placeholder="Please enter the recipient's Email, up to 5 Emailes can be set."
+                        placeholder="Please enter the recipient's email, up to 5 emails can be set."
                         v-model="item.name"
                         clearable>
               </el-input>
@@ -146,7 +146,7 @@ export default {
       if (this.send_config.receiver_list.length == 0) {
         this.$message(
           {
-            message: 'Please enter the sender Email',
+            message: 'Please enter the sender email',
             type: 'warning',
           }
         );
@@ -191,7 +191,7 @@ export default {
       } else {
         this.$message.warning(
           {
-            message: 'Up to 5 recipient Emailes can be set',
+            message: 'Up to 5 recipient emails can be set',
             offset: 50
           })
       }

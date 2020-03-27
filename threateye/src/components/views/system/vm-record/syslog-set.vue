@@ -79,11 +79,11 @@
           </div>
           <div class="item_bottom">
             <p>
-              <span class="title">SYSLOG Server IP</span>
+              <span class="title">Server IP</span>
               <span class="red_necessary">*</span>
             </p>
             <el-input class="select_box"
-                      placeholder="Please enter SYSLOG Server IP"
+                      placeholder="Please enter SYSLOG server IP"
                       v-model="syslog_pop.add.server_ip"
                       clearable>
             </el-input>
@@ -142,11 +142,11 @@
           </div>
           <div class="item_bottom">
             <p>
-              <span class="title">SYSLOG Server IP</span>
+              <span class="title">Server IP</span>
               <span class="red_necessary">*</span>
             </p>
             <el-input class="select_box"
-                      placeholder="Please enter SYSLOG Server IP"
+                      placeholder="Please enter SYSLOG server IP"
                       v-model="syslog_pop.edit.ip"
                       clearable>
             </el-input>

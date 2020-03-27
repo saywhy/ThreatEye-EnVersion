@@ -87,7 +87,7 @@
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="Please enter indicators"
+                    placeholder="Please enter indicator"
                     v-model="white_add.indicator"
                     clearable>
           </el-input>
@@ -180,7 +180,7 @@ export default {
       if (this.white_add.indicator == '') {
         this.$message(
           {
-            message: 'Please enter indicators',
+            message: 'Please enter indicator',
             type: 'warning',
           }
         );
