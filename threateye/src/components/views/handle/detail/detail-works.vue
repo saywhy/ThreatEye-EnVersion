@@ -605,7 +605,7 @@ export default {
         margin-bottom: 16px;
         line-height: 36px;
         .title {
-          width: 120px;
+          width: 136px;
           font-family: PingFang;
           font-size: 16px;
           color: #333333;

@@ -4,7 +4,7 @@
     <a class="back"
        onclick="javascript:window.history.go(-1);">
       <span class="el-icon-arrow-left"></span>
-      <span class="e-title">Return</span>
+      <span class="e-title">Back</span>
     </a>
     <h4 class="e-name">{{titleName}}</h4>
   </div>

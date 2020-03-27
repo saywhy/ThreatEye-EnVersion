@@ -450,7 +450,7 @@ export default {
         > a.item {
           flex: 1;
           text-decoration: none;
-          max-width: 134px;
+          max-width: 142px;
           .el-menu-item {
             color: #fff;
             height: 60px;

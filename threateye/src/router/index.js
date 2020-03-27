@@ -302,7 +302,7 @@ export const asyncRouterMap = [
         path: '/invest/dns',
         name: 'dns',
         meta: {
-          title: 'DNS Hunting',
+          title: 'DNS',
           auth: '77',
           icon: 'e-aside-dns',
           parentAuth: '76',
@@ -315,7 +315,7 @@ export const asyncRouterMap = [
         path: '/invest/url',
         name: 'url',
         meta: {
-          title: 'IP/URL Hunting',
+          title: 'IP/URL',
           auth: '81',
           icon: 'e-aside-url',
           parentAuth: '76',
@@ -328,7 +328,7 @@ export const asyncRouterMap = [
         path: '/invest/host',
         name: 'host',
         meta: {
-          title: 'Host Hunting',
+          title: 'Host',
           auth: '85',
           icon: 'e-aside-host',
           parentAuth: '76',
@@ -341,7 +341,7 @@ export const asyncRouterMap = [
         path: '/invest/user',
         name: 'user',
         meta: {
-          title: 'User Hunting',
+          title: 'User',
           auth: '93',
           icon: 'e-aside-user',
           parentAuth: '76',
@@ -354,7 +354,7 @@ export const asyncRouterMap = [
         path: '/invest/file',
         name: 'file',
         meta: {
-          title: 'File Hunting',
+          title: 'File',
           auth: '97',
           icon: 'e-aside-file',
           parentAuth: '76',
@@ -367,7 +367,7 @@ export const asyncRouterMap = [
         path: '/invest/data',
         name: 'data',
         meta: {
-          title: 'Data Transmission Hunting',
+          title: 'Data Transmission',
           auth: '101',
           icon: 'e-aside-data',
           parentAuth: '76',
@@ -380,7 +380,7 @@ export const asyncRouterMap = [
         path: '/invest/flow',
         name: 'flow',
         meta: {
-          title: 'Flow Direction Hunting',
+          title: 'Flow Direction',
           auth: '105',
           icon: 'e-aside-flow',
           parentAuth: '76',
@@ -393,7 +393,7 @@ export const asyncRouterMap = [
         path: '/invest/ioc',
         name: 'ioc',
         meta: {
-          title: 'IOC scanner',
+          title: 'IOC Scanner',
           auth: '109',
           icon: 'e-aside-ioc',
           parentAuth: '76',
@@ -444,7 +444,7 @@ export const asyncRouterMap = [
         path: '/report/sending',
         name: 'sending',
         meta: {
-          title: 'Report delivery',
+          title: 'Report Delivery',
           auth: '130',
           icon: 'e-aside-sending',
           parentAuth: '123',

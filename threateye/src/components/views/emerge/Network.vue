@@ -4,7 +4,7 @@
        v-cloak>
     <div class="e_line"
          v-loading="e_line.loading">
-      <p class="title">Real-time Alert Monitoring</p>
+      <p class="title">Real-time Alerts Monitoring</p>
       <vm-emerge-line :data='echarts_data'
                       v-if="e_line.data_show"></vm-emerge-line>
     </div>
@@ -12,7 +12,7 @@
     <!--告警-->
     <div class="alert_risk">
       <el-form class="common-pattern">
-        <h3 class="title">Alert Monitoring</h3>
+        <h3 class="title">Alerts Monitoring</h3>
         <el-row class="common_box"
                 style="padding: 15px 0;">
           <el-col :span="24"

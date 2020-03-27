@@ -170,6 +170,7 @@
                     :data="table.tableData"
                     @row-click="detailClick"
                     @selection-change="handleSelChange">
+            <el-table-column prop="type" width="20"></el-table-column>
             <el-table-column type="selection"
                              width="50"></el-table-column>
             <el-table-column prop="asset_ip"
