@@ -574,27 +574,26 @@
                         tooltip-effect="dark"
                         style="width: 100%"
                         @selection-change="handle_sel_table_assets">
-
+                <el-table-column prop="type" width="20"></el-table-column>
                 <el-table-column type="selection"
-                                 width="50"></el-table-column>
+                                 width="30"></el-table-column>
                 <el-table-column prop="asset_ip"
                                  label="Assets"
                                  show-overflow-tooltip></el-table-column>
                 <el-table-column prop="label_group"
-                                 label="Asset groups"
-                                 width="90"
+                                 label="Asset Groups"
+
                                  show-overflow-tooltip></el-table-column>
-                <el-table-column label="Related threats"
-                                 show-overflow-tooltip>
+                <el-table-column label="Related Threats"  min-width="100" show-overflow-tooltip>
                   <template slot-scope="scope">
-                    <span class="btn_tag_box"
-                          v-if="item!=''"
-                          v-for="item in scope.row.category">
-                      <el-button type="primary"
-                                 class="btn_tag">
-                        {{item}}
-                      </el-button>
-                    </span>
+                <span class="btn_tag_box"
+                      v-if="item!=''"
+                      v-for="item in scope.row.category">
+                  <el-button type="primary"
+                             class="btn_tag">
+                    {{item}}
+                  </el-button>
+                </span>
                   </template>
                 </el-table-column>
                 <el-table-column label="Severity">
@@ -604,7 +603,7 @@
                       {{ scope.row.degree | degree }}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="Compromise">
+                <el-table-column label="Compromise" width="120">
                   <template slot-scope="scope">
                     <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
                       {{ scope.row.fall_certainty | certainty }}</span>
@@ -662,8 +661,7 @@
                       v-loading="table_add_works.loading"
                       :data="table_add_works.tableData"
                       @selection-change="handle_sel_table_add_works">
-              <el-table-column label="Select"
-                               width="50"></el-table-column>
+              <el-table-column width="20"></el-table-column>
               <el-table-column type="selection"
                                width="50"></el-table-column>
               <el-table-column prop="name"
@@ -683,7 +681,7 @@
                                show-overflow-tooltip>
               </el-table-column>
               <el-table-column label="Status"
-                               width="80"
+                               width="120"
                                show-overflow-tooltip>
                 <template slot-scope="scope">{{ scope.row.status | work_status }}</template>
               </el-table-column>

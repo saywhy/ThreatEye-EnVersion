@@ -612,7 +612,8 @@
                             ref="assetTable"
                             style="width: 100%"
                             @selection-change="handle_sel_assets">
-                    <el-table-column align='left'
+                    <el-table-column width="20"></el-table-column>
+                    <el-table-column
                                      :reserve-selection="true"
                                      type="selection"
                                      width="50"></el-table-column>
@@ -654,7 +655,10 @@
                             ref="alertTable"
                             style="width: 100%"
                             @selection-change="handle_sel_alert">
+
+                    <el-table-column width="20"></el-table-column>
                     <el-table-column type="selection"
+                                     :reserve-selection="true"
                                      width="50">
                     </el-table-column>
                     <el-table-column prop="category"

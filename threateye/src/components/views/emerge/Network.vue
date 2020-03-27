@@ -354,6 +354,7 @@
                           :data="table_alerts.tableData_new"
                           tooltip-effect="dark"
                           @selection-change="handle_sel_table_alerts">
+                  <el-table-column width="20"></el-table-column>
                   <el-table-column type="selection"
                                    width="50"></el-table-column>
                   <el-table-column prop="category"
