@@ -138,7 +138,7 @@
                              show-overflow-tooltip></el-table-column>
             <el-table-column prop="indicator"
                              label="Threat Indicators"
-                             min-width="120"
+                             min-width="100"
                              show-overflow-tooltip></el-table-column>
             <el-table-column prop="src_ip"
                              label="Source IP"
@@ -148,10 +148,10 @@
                              show-overflow-tooltip></el-table-column>
             <el-table-column prop="application"
                              label="Protocol"
-                             width="60"
+                             min-width="80"
                              show-overflow-tooltip></el-table-column>
             <el-table-column label="Severity"
-                             width="100">
+                             min-width="100">
               <template slot-scope="scope">
                 <span class="btn_alert_background"
                       :class="{'high_background':scope.row.degree =='High risk','mid_background':scope.row.degree =='Medium risk','low_background':scope.row.degree =='Low risk'}">
@@ -159,7 +159,7 @@
               </template>
             </el-table-column>
             <el-table-column label="Compromise"
-                             width="100">
+                             min-width="100">
               <template slot-scope="scope">
                 <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
                   {{ scope.row.fall_certainty | certainty }}</span>
@@ -197,7 +197,7 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">Status change</span>
+        <span class="title_name">Change</span>
       </div>
       <div class="content">
         <p class="content_p"

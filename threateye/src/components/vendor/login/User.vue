@@ -14,7 +14,7 @@
                   @keyup.enter.native="handleLogin"
                   v-model="loginForm.username"
                   auto-complete="off"
-                  placeholder="Please Enter a User Name">
+                  placeholder="Please enter a user name">
           <i slot="prefix"
              class="icon-yonghu"></i>
           <div slot="prefix"
@@ -29,7 +29,7 @@
                   :type="passwordType"
                   v-model="loginForm.password"
                   auto-complete="off"
-                  placeholder="Please Enter Your Password">
+                  placeholder="Please enter your password">
           <i class="el-icon-view el-input__icon"
              slot="suffix"
              @click="showPassword"></i>
@@ -52,7 +52,7 @@
                       @keyup.enter.native="handleLogin"
                       v-model="loginForm.code"
                       auto-complete="off"
-                      placeholder="Enter CAPTCHA code here">
+                      placeholder="Enter captcha code here">
               <i slot="prefix"
                  class="icon-yanzhengma"></i>
               <div slot="prefix"
@@ -184,7 +184,7 @@ export default {
           }
         }
         let codeValidate = [
-          { required: true, message: 'Enter CAPTCHA code here', trigger: 'blur' },
+          { required: true, message: 'Enter captcha code here', trigger: 'blur' },
           { min: 4, max: 4, message: 'Captcha code length is 4', trigger: 'blur' },
           { required: true, validator: validateCode, trigger: 'blur' }
         ]

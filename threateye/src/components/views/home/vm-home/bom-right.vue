@@ -11,10 +11,10 @@
         </template>
       </el-table-column>
       <el-table-column prop="category"
-                       label="Alert Type"
+                       label="Type"
                        show-overflow-tooltip></el-table-column>
       <el-table-column prop="indicator"
-                       label="Threat Indicators"
+                       label="Indicator"
                        show-overflow-tooltip></el-table-column>
       <el-table-column prop="src_ip"
                        label="Source IP"
@@ -22,17 +22,15 @@
       <el-table-column prop="dest_ip"
                        label="Destination IP"
                        show-overflow-tooltip></el-table-column>
-      <el-table-column prop="application"
+      <!--<el-table-column prop="application"
                        label="Protocol"
-                       width="60"
-                       show-overflow-tooltip></el-table-column>
-      <el-table-column label="Severity"
-                       show-overflow-tooltip>
+                       show-overflow-tooltip></el-table-column>-->
+      <el-table-column label="Severity" show-overflow-tooltip>
         <template slot-scope="scope">
           <span class="btn_alert_background"
-                :class="{'high_background':scope.row.degree =='高',
-                      'mid_background':scope.row.degree =='中',
-                      'low_background':scope.row.degree =='低'}">
+                :class="{'high_background':scope.row.degree =='High risk',
+                      'mid_background':scope.row.degree =='Medium risk',
+                      'low_background':scope.row.degree =='Low risk'}">
             {{ scope.row.degree | degree_sino }}</span>
         </template>
       </el-table-column>
@@ -64,4 +62,8 @@ export default {
 }
 </script>
 <style lang="less">
+  .btn_alert_background{
+    line-height: unset;
+    height: auto;
+  }
 </style>
