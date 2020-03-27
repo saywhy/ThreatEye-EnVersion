@@ -67,7 +67,7 @@ export const constantRouterMap = [{
         path: '/detail/network',
         name: 'detail_network',
         meta: {
-          title: 'Alert',
+          title: 'Alerts',
           auth: '31',
           icon: 'el-icon-picture-outline',
           parentAuth: '58',
@@ -269,7 +269,7 @@ export const asyncRouterMap = [
     path: '/emerge',
     name: 'emerge',
     meta: {
-      title: 'Alert',
+      title: 'Alerts',
       icon: 'e-nav-emerge',
       auth: '58'
     },
@@ -278,7 +278,7 @@ export const asyncRouterMap = [
       path: '/emerge/network',
       name: 'network',
       meta: {
-        title: 'Alert',
+        title: 'Alerts',
         auth: '59',
         icon: 'e-aside-network',
         parentAuth: '58',

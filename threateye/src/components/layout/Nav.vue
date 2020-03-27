@@ -168,7 +168,6 @@
 
 <script type="text/ecmascript-6">
 import { mapState, mapGetters } from 'vuex';
-
 import { getToken, setToken, removeToken } from "@/store/layout/cookie";
 export default {
   name: 'Nav',
@@ -451,7 +450,7 @@ export default {
         > a.item {
           flex: 1;
           text-decoration: none;
-          max-width: 104px;
+          max-width: 134px;
           .el-menu-item {
             color: #fff;
             height: 60px;
