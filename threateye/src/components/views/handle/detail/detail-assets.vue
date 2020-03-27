@@ -1902,7 +1902,7 @@ export default {
       display: flex;
       justify-content: space-between;
       .stage_item_box {
-        width: 104px;
+        width: 114px;
         height: 56px;
        /* line-height: 48px;*/
         background: #eef6ff;
