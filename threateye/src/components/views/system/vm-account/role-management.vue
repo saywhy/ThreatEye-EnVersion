@@ -97,7 +97,7 @@
         </div>
         <div class="content_item">
           <p>
-            <span class="title">Role permissions</span>
+            <span class="title">Role Permissions</span>
             <span class="red_necessary">*</span>
           </p>
           <el-tree :data="data"
@@ -157,7 +157,7 @@
         </div>
         <div class="content_item">
           <p>
-            <span class="title">Role permissions</span>
+            <span class="title">Role Permissions</span>
             <span class="red_necessary">*</span>
           </p>
           <el-tree :data="data"
@@ -258,31 +258,31 @@ export default {
           children: [
             {
               id: 77,
-              label: 'DNS Hunting',
+              label: 'DNS',
             },
             {
               id: 81,
-              label: 'IP/URL Hunting',
+              label: 'IP/URL',
             },
             {
               id: 85,
-              label: 'Host Hunting',
+              label: 'Host',
             },
             {
               id: 93,
-              label: 'User Hunting',
+              label: 'User',
             },
             {
               id: 97,
-              label: 'File Hunting',
+              label: 'File',
             },
             {
               id: 101,
-              label: 'Data Transmission Hunting',
+              label: 'Data Transmission',
             },
             {
               id: 105,
-              label: 'Flow Direction Hunting',
+              label: 'Flow Direction',
             },
             {
               id: 109,

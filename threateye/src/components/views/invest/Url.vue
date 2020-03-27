@@ -5,26 +5,26 @@
     <div class="invest_box">
       <el-tabs v-model="activeName"
                class="reset_tab">
-        <el-tab-pane label="IP/URL Hunting"
+        <el-tab-pane label="IP/URL"
                      class="tabs-item"
                      name="first">
           <div class="invest_top">
-            <el-input placeholder="Source IP"
+            <el-input placeholder="Source ip"
                       class="search_box"
                       v-model="url_search.src_ip"
                       clearable>
             </el-input>
-            <el-input placeholder="Source Port"
+            <el-input placeholder="Source port"
                       class="search_box"
                       v-model="url_search.src_port"
                       clearable>
             </el-input>
-            <el-input placeholder="Destination IP"
+            <el-input placeholder="Destination ip"
                       class="search_box"
                       v-model="url_search.dst_ip"
                       clearable>
             </el-input>
-            <el-input placeholder="Destination Port"
+            <el-input placeholder="Destination port"
                       class="search_box"
                       v-model="url_search.dst_port"
                       clearable>

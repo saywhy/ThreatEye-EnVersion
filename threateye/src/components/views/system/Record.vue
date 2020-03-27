@@ -10,12 +10,12 @@
                      name="first">
           <audit-log v-if="tab_show.first"></audit-log>
         </el-tab-pane>
-        <el-tab-pane label="SYSLOG Configuration"
+        <el-tab-pane label="SYSLOG"
                      class="tabs-item"
                      name="second">
           <syslog-set v-if="tab_show.second"></syslog-set>
         </el-tab-pane>
-        <el-tab-pane label="Troubleshooting Logs"
+        <el-tab-pane label="Troubleshooting"
                      class="tabs-item"
                      name="third">
           <fault-log v-if="tab_show.third"></fault-log>

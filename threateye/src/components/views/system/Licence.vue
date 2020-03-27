@@ -3,11 +3,11 @@
        v-loading.fullscreen.lock="loading"
        class="container">
     <div class="content_box">
-      <p class="title">System version:
+      <p class="title">System Version:
         <span>{{license_version}}</span>
       </p>
       <el-button class="btn_i"
-                 @click="online_active_pop">Online activation</el-button>
+                 @click="online_active_pop">Activate</el-button>
       <el-upload class="upload-demo"
                  style="display: inline-block;"
                  :http-request="uploadSectionFile"
@@ -25,7 +25,7 @@
                  :on-exceed="handleExceed"
                  :file-list="fileList">
         <el-button class="btn_o"
-                   type="primary">Import license</el-button>
+                   type="primary">Import</el-button>
       </el-upload>
       <div class="licence_table">
         <el-table ref="multipleTable"
@@ -46,11 +46,11 @@
           </el-table-column>
           <el-table-column prop="SN"
                            width="300"
-                           label="Serial NO."
+                           label="Serial No."
                            show-overflow-tooltip>
           </el-table-column>
           <el-table-column prop="product"
-                           label="Protected Institution"
+                           label="Organization"
                            show-overflow-tooltip>
           </el-table-column>
           <el-table-column label='Authorization Time'>
@@ -62,7 +62,7 @@
                       show-overflow-tooltip>{{ scope.row.endTime |formatDate }}</template>
           </el-table-column>
           <el-table-column prop="orgName"
-                           label='Threat Intel'
+                           label='Edition'
                            show-overflow-tooltip>
             <template slot-scope="scope"
                       show-overflow-tooltip>
@@ -101,7 +101,7 @@
         <div class="content">
           <div class="content_item">
             <p>
-              <span class="title">Serial NO.</span>
+              <span class="title">Serial No.</span>
               <span class="red_necessary">*</span>
             </p>
             <el-input class="select_box"

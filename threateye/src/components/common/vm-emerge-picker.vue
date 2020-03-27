@@ -8,8 +8,8 @@
                   range-separator="-"
                   @change="chooseTime"
                   clearable
-                  start-placeholder="Start Date"
-                  end-placeholder="End Date"
+                  start-placeholder="Start date"
+                  end-placeholder="End date"
                   align="center">
   </el-date-picker>
 </template>

@@ -5,16 +5,16 @@
     <div class="invest_box">
       <el-tabs v-model="activeName"
                class="reset_tab">
-        <el-tab-pane label="DNS Hunting"
+        <el-tab-pane label="DNS"
                      class="tabs-item"
                      name="first">
           <div class="invest_top">
-            <el-input placeholder="Host IP"
+            <el-input placeholder="Host ip"
                       class="search_box"
                       v-model="dns_search.host_ip"
                       clearable>
             </el-input>
-            <el-input placeholder="DNS Server IP"
+            <el-input placeholder="DNS server ip"
                       class="search_box"
                       v-model="dns_search.dns_ip"
                       clearable>

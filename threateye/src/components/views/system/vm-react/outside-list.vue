@@ -364,7 +364,7 @@ export default {
     margin-top: 12px;
     display: flex;
     .content_common {
-      width: 560px;
+      width: 580px;
       word-break: break-all;
       white-space: pre-wrap;
       word-wrap: break-word;

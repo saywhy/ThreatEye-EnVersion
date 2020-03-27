@@ -24,7 +24,6 @@
         <el-button class="btn_o"
                    type="primary">Import</el-button>
       </el-upload>
-
       <el-button class="btn_o"
                  @click="del_white">Delete</el-button>
     </div>
@@ -46,7 +45,7 @@
           </template>
         </el-table-column>
         <el-table-column prop="indicator"
-                         label="Index"
+                         label="Indicators"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="alert_type"
@@ -84,11 +83,11 @@
       <div class="content">
         <div class="content_item">
           <p>
-            <span class="title">Index</span>
+            <span class="title">Indicators</span>
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="Please enter index"
+                    placeholder="Please enter indicators"
                     v-model="white_add.indicator"
                     clearable>
           </el-input>
@@ -181,7 +180,7 @@ export default {
       if (this.white_add.indicator == '') {
         this.$message(
           {
-            message: 'Please enter index',
+            message: 'Please enter indicators',
             type: 'warning',
           }
         );
@@ -345,7 +344,7 @@ export default {
 };
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 #white_list {
   padding-right: 24px;
   .btn_box {
@@ -354,6 +353,8 @@ export default {
       height: 42px;
       background: #0070ff;
       color: #fff;
+      margin: 0;
+      padding: 0;
     }
     .btn_o {
       width: 148px;
@@ -361,6 +362,9 @@ export default {
       background: #fff;
       border: 1px solid #0070ff;
       color: #0070ff;
+      margin: 0;
+      padding: 0;
+      margin-left: 2px;
     }
     margin-bottom: 24px;
   }

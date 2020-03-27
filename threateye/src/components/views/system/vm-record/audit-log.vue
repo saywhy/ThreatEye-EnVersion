@@ -178,7 +178,7 @@ export default {
     }
     .btn_right {
       padding: 0;
-      width: 148px;
+      width: 102px;
       height: 38px;
       background: #0070ff;
       color: #fff;

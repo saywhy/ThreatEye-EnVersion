@@ -7,7 +7,7 @@
           <img class="titile_icon"
                src="@/assets/images/common/date.png"
                alt="">
-          <span>Time And Date</span>
+          <span>Time and Date</span>
         </p>
         <div class="item">
           <p class="item_title">Configuration Mode</p>

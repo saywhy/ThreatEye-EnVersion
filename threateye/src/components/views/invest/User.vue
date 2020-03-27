@@ -5,11 +5,11 @@
     <div class="invest_box">
       <el-tabs v-model="activeName"
                class="reset_tab">
-        <el-tab-pane label="User Hunting"
+        <el-tab-pane label="User"
                      class="tabs-item"
                      name="first">
           <div class="invest_top">
-            <el-input placeholder="User Name"
+            <el-input placeholder="User name"
                       class="search_box"
                       v-model="user_search.username"
                       clearable>

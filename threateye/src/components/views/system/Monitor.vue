@@ -364,7 +364,7 @@
             </div>
           </el-upload>
           <div class="tip_box">
-            <span>Note: Please choose .xls file, and file size should not exceed 10M. No templates?</span>
+            <span>Note: Please choose .xls file, and file size should not exceed 10M. No template?</span>
             <span class="download"
                   @click="download_template">Download</span>
           </div>

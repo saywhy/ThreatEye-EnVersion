@@ -1,7 +1,7 @@
 <template>
   <div id="rule_base"
        v-loading.fullscreen.lock="loading">
-    <p class="title">Rea-time Update</p>
+    <p class="title">Live Update</p>
     <p class="item_box"
        v-for="item in rule"
        v-if="item.update_type=='1'">
@@ -14,7 +14,7 @@
     <el-button type="primary"
                class="update"
                @click="update_online">Update</el-button>
-    <p class="title">Offline update</p>
+    <p class="title">Offline Update</p>
     <p class="item_box"
        v-for="item in rule"
        v-if="item.update_type=='2'">
@@ -26,7 +26,7 @@
     </p>
     <el-button type="primary"
                class="update"
-               @click="open_box">Upload update file</el-button>
+               @click="open_box">Upload</el-button>
     <el-dialog class="import_box pop_box"
                :close-on-click-modal="false"
                :modal-append-to-body="false"
@@ -196,7 +196,7 @@ export default {
           if (status == 0) {
             this.$message({
               type: 'success',
-              message: 'Start updating'
+              message: 'Start update'
             });
             setTimeout(() => {
               this.get_data()
@@ -279,7 +279,7 @@ export default {
     }
     .item_time {
       display: inline-block;
-      width: 296px;
+      width: 350px;
     }
   }
   .update {

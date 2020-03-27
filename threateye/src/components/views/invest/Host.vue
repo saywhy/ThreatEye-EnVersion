@@ -5,7 +5,7 @@
     <div class="invest_box">
       <el-tabs v-model="activeName"
                class="reset_tab">
-        <el-tab-pane label="Host Hunting"
+        <el-tab-pane label="Host"
                      class="tabs-item"
                      name="first">
           <div class="invest_top">
@@ -468,8 +468,8 @@ export default {
       background: #fff;
       font-size: 14px;
       color: #0070ff;
-      width: 112px;
-      height: 34px;
+      width: 200px;
+      height: 44px;
       padding: 0;
       font-family: PingFang;
       &.active {

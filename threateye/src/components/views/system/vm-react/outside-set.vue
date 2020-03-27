@@ -25,7 +25,7 @@
       </div>
     </div>
     <el-button class="btn_i"
-               @click="add_box">Create Accounts</el-button>
+               @click="add_box">Create Account</el-button>
     <div class="outside_table">
       <el-table ref="multipleTable"
                 class="reset_table"

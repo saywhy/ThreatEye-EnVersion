@@ -245,8 +245,8 @@
       <div class="title">
         <div class="mask"></div>
         <span class="title_name">
-          <span>{{equipment_detail.title.name}}</span>
-          <span>{{equipment_detail.title.ip}}</span>
+          <!-- <span>{{equipment_detail.title.name}}</span>
+          <span>{{equipment_detail.title.ip}}</span> -->
           <span>{{equipment_detail.title.type}}</span>
           <span>System Status</span>
         </span>
@@ -565,9 +565,9 @@ export default {
       // 绘制图表
       myChart.setOption({
         grid: {
-          top: "10%",
-          left: '2%',
-          right: "5%",
+          top: "18%",
+          left: '5%',
+          right: "3%",
           bottom: "20%",
           containLabel: true
         },
@@ -581,10 +581,10 @@ export default {
           selected: {
             // 选中'系列1'
             'CPU': true,
-            '内存': true,
-            '硬盘': true,
+            'Memory': true,
+            'Disk': true,
           },
-          data: ['CPU', '内存', '硬盘']
+          data: ['CPU', 'Memory', 'Disk']
         },
         tooltip: {
           trigger: "axis",
@@ -627,7 +627,11 @@ export default {
           },
           data: this.equipment_detail.statistics_time,
         },
-        yAxis: {
+        yAxis: [{
+          name: 'Unit(%)',
+          nameTextStyle: {
+            color: '#666'
+          },
           splitLine: {
             show: true,
             lineStyle: {
@@ -643,6 +647,7 @@ export default {
             }
           },
           axisLabel: {
+
             textStyle: {
               color: "#666666"
             }
@@ -650,7 +655,7 @@ export default {
           axisTick: {
             show: false
           }
-        },
+        }],
         color: ["rgba(2,136,209,0.9)", "rgba(205,220,57,0.9)", "rgba(76,175,80,0.9)"],
         series: [
           {
@@ -684,7 +689,7 @@ export default {
             }
           },
           {
-            name: "内存",
+            name: "Memory",
             type: "line",
             symbol: "none",
             cursor: "pointer",
@@ -714,7 +719,7 @@ export default {
             }
           },
           {
-            name: "硬盘",
+            name: "Disk",
             type: "line",
             symbol: "none",
             cursor: "pointer",
@@ -755,9 +760,9 @@ export default {
       // 绘制图表
       myChart.setOption({
         grid: {
-          top: "10%",
-          left: '2%',
-          right: "5%",
+          top: "18%",
+          left: '5%',
+          right: "3%",
           bottom: "20%",
           containLabel: true
         },
@@ -770,9 +775,9 @@ export default {
           },
           selected: {
             // 选中'系列1'
-            '流量': true,
+            'Traffic': true,
           },
-          data: ['流量']
+          data: ['Traffic']
         },
         tooltip: {
           trigger: "axis",
@@ -816,7 +821,11 @@ export default {
           },
           data: this.equipment_detail.statistics_time
         },
-        yAxis: {
+        yAxis: [{
+          name: 'Unit(Mbps)',
+          nameTextStyle: {
+            color: '#666'
+          },
           splitLine: {
             show: true,
             lineStyle: {
@@ -839,10 +848,10 @@ export default {
           axisTick: {
             show: false
           }
-        },
+        }],
         series: [
           {
-            name: "流量",
+            name: "Traffic",
             type: "line",
             symbol: "none",
             cursor: "pointer",

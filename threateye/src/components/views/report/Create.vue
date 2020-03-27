@@ -36,7 +36,7 @@
         <el-row type="flex"
                 class="r_main_list r_special_list">
           <el-col :span="3">
-            <span class="title">Report name</span>
+            <span class="title">Report Name</span>
           </el-col>
           <el-col :span="21">
             <el-input class="report-input"
@@ -47,7 +47,7 @@
           </el-col>
           <div class="r_btn_group">
             <el-button class="b_btn b_ok"
-                       @click="create">Confirm</el-button>
+                       @click="create">Generate</el-button>
             <el-button class="b_btn b_cancel"
                        @click="reseet">Cancel</el-button>
           </div>
@@ -69,7 +69,7 @@
               </template>
             </el-table-column>
             <el-table-column prop="create_time"
-                             label="Date"></el-table-column>
+                             label="Created"></el-table-column>
             <el-table-column prop="report_name"
                              label="Name"></el-table-column>
             <el-table-column label='Time Range'>

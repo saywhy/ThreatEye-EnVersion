@@ -64,7 +64,7 @@
           <el-col :span="21">
             <div class="item_addrs"
                  v-for="(item,index) in send_config.receiver_list">
-              <el-input class="select_box"
+              <el-input class="select_email"
                         placeholder="Please enter the recipient's Email, up to 5 Emailes can be set."
                         v-model="item.name"
                         clearable>
@@ -84,7 +84,7 @@
         </el-row>
         <div class="r_btn_group">
           <el-button class="b_btn b_ok"
-                     @click="edit_data">Confirm</el-button>
+                     @click="edit_data">Save</el-button>
           <el-button class="b_btn b_cancel"
                      @click="get_data">Cancel</el-button>
         </div>
@@ -276,17 +276,12 @@ export default {
     }
   }
   .item_addrs {
-    // line-height: 38px;
-    .select_box {
-      width: 340px;
+    .select_email {
+      width: 490px !important;
       height: 38px;
       line-height: 38px;
-    }
-    /deep/ .el-input__inner {
-      height: 38px;
-      width: 340px;
-      background: #f8f8f8;
       border: 0;
+      background: #f8f8f8;
     }
     .img_box {
       width: 16px;

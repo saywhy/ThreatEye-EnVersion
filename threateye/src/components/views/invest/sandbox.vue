@@ -47,11 +47,11 @@
                     <span>{{scope.row.created_at*1000 | formatDate}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="Scanning State"
+                <el-table-column label="Scanning Status"
                                  width='150'
                                  show-overflow-tooltip>
                   <template slot-scope="scope">
-                    <span>{{scope.row.status=='1'?'In scanning':"Scan finished"}}</span>
+                    <span>{{scope.row.status=='1'?'Scanning':"Scan finished"}}</span>
                   </template>
                 </el-table-column>
                 <el-table-column prop="upload_name"

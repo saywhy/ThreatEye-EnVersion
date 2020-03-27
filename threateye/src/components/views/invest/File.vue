@@ -6,11 +6,11 @@
     <div class="invest_box">
       <el-tabs v-model="activeName"
                class="reset_tab">
-        <el-tab-pane label="File Hunting"
+        <el-tab-pane label="File"
                      class="tabs-item"
                      name="first">
           <div class="invest_top">
-            <el-input placeholder="File Name"
+            <el-input placeholder="File name"
                       class="search_box"
                       v-model="file_search.file_name"
                       clearable>

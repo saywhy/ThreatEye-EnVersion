@@ -3,7 +3,7 @@
        v-loading.fullscreen.lock="syslog_data.loading">
     <div class="search_box">
       <el-button class="btn_i"
-                 @click="open_add">Add SYSLOG Configuration</el-button>
+                 @click="open_add">Add</el-button>
     </div>
     <div class="syslog_table">
       <el-table ref="multipleTable"
@@ -19,7 +19,7 @@
           </template>
         </el-table-column>
         <el-table-column prop="server_ip"
-                         label="SYSLOG server IP"
+                         label="Server IP"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="server_port"
@@ -27,7 +27,7 @@
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="protocol"
-                         label='Transmission Protocol'
+                         label='Protocol'
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column label='Status'>

@@ -23,7 +23,7 @@
         </el-input>
       </div>
       <p class="title">
-        SMTP Enable Secure Connection SSL Enable
+        SSL Enable
         <el-switch v-model="mail.ssl_switch">
         </el-switch>
       </p>
@@ -53,7 +53,7 @@
                    @click="send_save">Save</el-button>
         <el-button type="primary"
                    class="test_btn"
-                   @click='send_test'>Send test mail</el-button>
+                   @click='send_test'>Test</el-button>
       </div>
     </div>
     <div class="mid">
@@ -99,7 +99,7 @@
         </div>
       </div>
       <p class="title">
-        Send a notification message to this Email when alerts generated
+        Mail notification upon new alerts
         <el-switch v-model="mail.send">
         </el-switch>
       </p>

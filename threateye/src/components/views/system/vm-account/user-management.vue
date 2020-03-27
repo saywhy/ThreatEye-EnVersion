@@ -116,7 +116,7 @@
         </div>
         <div class="content_item">
           <p>
-            <span class="title">Confirm password</span>
+            <span class="title">Confirm Password</span>
             <span class="red">*</span>
           </p>
           <el-input class="select_box"
@@ -205,7 +205,7 @@
         </div>
         <div class="content_item">
           <p>
-            <span class="title">Confirm password</span>
+            <span class="title">Confirm Password</span>
           </p>
           <el-input class="select_box"
                     placeholder="Please confirm your password"

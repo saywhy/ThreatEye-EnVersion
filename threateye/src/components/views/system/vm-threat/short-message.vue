@@ -56,7 +56,7 @@
         <el-button type="primary"
                    class="save_btn">Save</el-button>
         <el-button type="primary"
-                   class="test_btn">Send test SMS</el-button>
+                   class="test_btn">Test</el-button>
       </div>
     </div>
     <div class="mid">

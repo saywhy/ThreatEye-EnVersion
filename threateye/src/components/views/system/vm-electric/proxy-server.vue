@@ -54,7 +54,7 @@
         </el-input>
       </div>
       <div class="mid_item">
-        <p>User password</p>
+        <p>User Password</p>
         <el-input class="select_box"
                   placeholder="Please enter the user password"
                   v-model="proxy.password"

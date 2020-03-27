@@ -7,16 +7,16 @@
       <el-tabs v-model="activeName"
                @tab-click="handleClick"
                class="reset_tab">
-        <el-tab-pane label="Data Transmission Hunting"
+        <el-tab-pane label="Data Transmission"
                      class="tabs-item"
                      name="first">
           <div class="invest_top">
-            <el-input placeholder="Flow over (B)"
+            <el-input placeholder="Flow (B)"
                       class="search_box"
                       v-model="data_search.flow_size"
                       clearable>
             </el-input>
-            <el-input placeholder="Link duration over (S)"
+            <el-input placeholder="Link duration (S)"
                       class="search_box"
                       v-model="data_search.flow_duration"
                       clearable>

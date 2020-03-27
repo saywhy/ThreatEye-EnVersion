@@ -5,7 +5,7 @@
     <div class="invest_box">
       <el-tabs v-model="activeName"
                class="reset_tab">
-        <el-tab-pane label="Flow Direction Hunting"
+        <el-tab-pane label="Flow Direction"
                      class="tabs-item"
                      name="first">
           <div class="invest_top">
