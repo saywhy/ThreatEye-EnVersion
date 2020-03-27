@@ -143,11 +143,12 @@
       </el-table-column>
       <el-table-column prop="name"
                        label="Name"
+                       width="100"
                        show-overflow-tooltip>
       </el-table-column>
       <el-table-column prop="creator"
                        label="Created By"
-                       width="100"
+                       width="140"
                        show-overflow-tooltip>
       </el-table-column>
       <el-table-column label="Created"
