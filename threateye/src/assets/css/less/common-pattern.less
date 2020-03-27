@@ -3,53 +3,61 @@
  *创建者ycl 时间2020-01-05
 **/
 @import './common-dropdown.less';
+
 .common-pattern {
   text-align: left;
+
   .title {
     text-align: left;
     font-size: 18px;
     color: #333;
   }
+
   .common_box {
     padding: 9px 0;
     line-height: normal;
     border-bottom: 1px solid #ececec;
+
     .common_box_list {
       font-size: 0;
       text-align: left;
+
       .s_key {
         height: 40px;
-        width: 164px;
+        width: 190px;
         margin-right: 8px;
         line-height: 40px;
         display: inline-block;
-        /deep/
-        .el-input__inner {
+
+        /deep/ .el-input__inner {
           border-width: 0;
           font-size: 14px;
           height: 40px;
           background: #F8F8F8;
           font-family: PingFang;
         }
-        &.s_key_types{
+
+        &.s_key_types {
           margin-left: 8px;
         }
       }
-      /deep/
-      .el-date-editor{
+
+      /deep/ .el-date-editor {
         /*border: 1px solid #F8F8F8;*/
         height: 40px;
         vertical-align: bottom;
-        min-width: 250px!important;
-        .el-range-input{
+        min-width: 250px !important;
+
+        .el-range-input {
           font-size: 14px;
-          &:hover{
+
+          &:hover {
             font-size: 14px;
           }
         }
       }
-      /deep/
-      .b_btn{
+
+      /deep/ .b_btn {
         background: #F8F8F8;
         border-width: 0;
         height: 40px;
@@ -59,14 +67,14 @@
         font-size: 14px;
         color: #BBBBBB;
       }
-      /deep/
-      .dropdown_ul_box{
+
+      /deep/ .dropdown_ul_box {
         width: 164px;
         margin-left: 8px;
         background: red;
       }
-      /deep/
-      .s_btn {
+
+      /deep/ .s_btn {
         display: inline-block;
         width: 102px;
         height: 40px;
@@ -78,14 +86,15 @@
         background: #0070FF;
         font-family: PingFang;
         font-size: 16px;
-        .el-input__inner{
-          &:hover{
+
+        .el-input__inner {
+          &:hover {
             font-size: 16px;
           }
         }
       }
-      /deep/
-      .s_link {
+
+      /deep/ .s_link {
         color: #0070FF;
         margin-left: 8px;
         vertical-align: baseline;
@@ -93,8 +102,8 @@
         font-family: PingFang;
         font-size: 16px;
       }
-      /deep/
-      .s_btn_edit{
+
+      /deep/ .s_btn_edit {
         background: #fff;
         height: 40px;
         width: 102px;
@@ -109,5 +118,3 @@
   }
 
 }
-
-

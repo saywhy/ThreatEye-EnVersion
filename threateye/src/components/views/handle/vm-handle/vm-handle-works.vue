@@ -10,7 +10,7 @@
 
             <!--搜索关键词-->
             <el-input class="s_key"
-                      placeholder="Search Keywords"
+                      placeholder="Search keywords"
                       v-model="params.key"
                       clearable>
               <i slot="prefix"
