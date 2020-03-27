@@ -14,7 +14,7 @@
                   @keyup.enter.native="handleLogin"
                   v-model="registerForm.username"
                   auto-complete="off"
-                  placeholder="Please Enter a User Name">
+                  placeholder="Please enter a user name">
           <i slot="prefix"
              class="icon-yonghu"></i>
           <div slot="prefix"
@@ -29,7 +29,7 @@
                   :type="passwordType"
                   v-model="registerForm.password"
                   auto-complete="off"
-                  placeholder="Please Enter Your Password">
+                  placeholder="Please enter your password">
           <i class="el-icon-view el-input__icon"
              slot="suffix"
              @click="showPassword"></i>
