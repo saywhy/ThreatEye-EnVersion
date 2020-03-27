@@ -508,7 +508,7 @@ export const asyncRouterMap = [
         path: '/system/electric',
         name: 'electric',
         meta: {
-          title: 'Network configuration',
+          title: 'Network Configuration',
           auth: '157',
           icon: 'e-aside-network',
           parentAuth: '132',

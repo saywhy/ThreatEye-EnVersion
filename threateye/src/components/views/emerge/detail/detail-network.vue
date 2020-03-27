@@ -174,7 +174,7 @@
               <span class="item_li_content">{{network_detail.attack_stage_cn }}</span>
             </li>
             <li class="item_li">
-              <span class="item_li_title">Name:</span>
+              <span class="item_li_title">Ticket Name:</span>
               <span class="item_li_content Goto_workorder"
                     @click="Goto_workorder"
                     v-if="network_work_order.work_name!=''">{{network_work_order.work_name}}</span>
@@ -3851,7 +3851,7 @@ export default {
             }
           }
           .item_li_title {
-            width: 96px;
+            width: 180px;
             font-size: 16px;
             color: #333333;
             font-family: PingFangMedium;
