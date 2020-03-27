@@ -3286,6 +3286,7 @@ export default {
 .dropdown_ul_box_detail {
   // width: 124px;
   // top: 209px !important;
+  width: 320px!important;
   .el-dropdown-menu__item:hover {
     color: #606266;
   }

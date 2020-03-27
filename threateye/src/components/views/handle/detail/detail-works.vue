@@ -8,7 +8,7 @@
         <img class="top_left_img"
              src="@/assets/images/handle/others/works.png"
              alt="">
-        <span class="top_left_title">Basic Info</span>
+        <span class="top_left_title">Basic Information</span>
       </div>
       <div class="top_right">
         <!--<el-link target="_blank" :href="loadlinks">

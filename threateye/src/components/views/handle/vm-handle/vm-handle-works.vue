@@ -172,7 +172,7 @@
                        show-overflow-tooltip>
       </el-table-column>
       <el-table-column label="Status"
-                       width="80"
+                       width="120"
                        show-overflow-tooltip>
         <template slot-scope="scope">{{ scope.row.status | work_status }}</template>
       </el-table-column>

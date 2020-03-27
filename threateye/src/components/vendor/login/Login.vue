@@ -50,7 +50,7 @@ export default {
           //  let datas = resp.data;
           let { status, msg } = resp.data;
           if (status == 207) {
-            this.name = 'Register';
+            this.name = 'Sign Up';
             this.stu = false;
           } else {
             this.name = 'Login';

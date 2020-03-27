@@ -21,6 +21,7 @@
                        show-overflow-tooltip></el-table-column>
       <el-table-column prop="dest_ip"
                        label="Destination IP"
+                       min-width="100"
                        show-overflow-tooltip></el-table-column>
       <!--<el-table-column prop="application"
                        label="Protocol"
