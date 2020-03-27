@@ -109,7 +109,7 @@
                 </template>
               </el-table-column>
               <el-table-column label="Status"
-                               width="80">
+                               width="140">
                 <template slot-scope="scope">{{ scope.row.status | risk_status }}</template>
               </el-table-column>
             </el-table>
@@ -150,7 +150,7 @@
                 </template>
               </el-table-column>
               <el-table-column label="Status"
-                               width="80">
+                               width="140">
                 <template slot-scope="scope">{{ scope.row.status | alert_status }}</template>
               </el-table-column>
             </el-table>
