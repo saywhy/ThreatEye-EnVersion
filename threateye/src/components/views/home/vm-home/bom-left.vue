@@ -32,7 +32,7 @@ export default {
     tableData () {
       let tableData = this.bom_left;
 
-      console.log(tableData)
+      //console.log(tableData)
      // console.log(this.bom_left);
       let that = this;
       tableData.map(function (v, k) {

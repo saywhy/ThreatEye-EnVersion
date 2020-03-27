@@ -3,8 +3,7 @@
        v-cloak>
     <el-row :gutter="0"
             class="nav_user">
-      <el-col :span="3"
-              style="width: 11.2%;">
+      <el-col style="width: 13.4%">
         <div class="header-logo"
              align="left"
              @click="enter_home">
@@ -12,7 +11,7 @@
                :src="logoSrc">
         </div>
       </el-col>
-      <el-col :span="12">
+      <el-col :span="18">
         <el-menu :default-active="$route.meta.rootAuth"
                  class="el-menu-demo"
                  mode="horizontal">
@@ -28,8 +27,7 @@
           </router-link>
         </el-menu>
       </el-col>
-      <el-col :span="9"
-              style="width:38.8%;">
+      <el-col  style="width: 11.6%">
         <div class="header-basic"
              align="right">
           <el-badge is-dot
