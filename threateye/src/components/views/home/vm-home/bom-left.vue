@@ -10,10 +10,10 @@
                        align="center"
                        show-overflow-tooltip></el-table-column>
       <el-table-column prop="indicator"
-                       label="Indicator"
+                       label="Threat Indicators"
                        show-overflow-tooltip></el-table-column>
       <el-table-column prop="category"
-                       label="Type"
+                       label="Alert Type"
                        show-overflow-tooltip></el-table-column>
     </el-table>
   </el-col>

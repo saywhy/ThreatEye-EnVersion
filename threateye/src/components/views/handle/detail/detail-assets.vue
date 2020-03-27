@@ -77,7 +77,7 @@
         </li>
         <li>
           <span class="title">
-            <i class="b_i"></i>Category:</span>
+            <i class="b_i"></i>Assets Category:</span>
           <span class="content">
             <ul>
               <li class="tag_btn_box"
@@ -731,7 +731,7 @@ export default {
       network_times: [],
       network_detail: {},
       detail: {},
-      title_name: "Risk Asset Details",
+      title_name: "Risk Assets Details",
       activeName: 'first',
       assets_top: {},
       table: {

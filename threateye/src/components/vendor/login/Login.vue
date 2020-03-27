@@ -6,9 +6,9 @@
       <img class="l_product_logo"
            src="@/assets/images/login/logo.png"
            alt="logo" />
-       <!--<span class="l_product_title">ThreatEye</span>-->
-       <h4 class="l_product_name">ThreatEye Advanced Threat Detection System</h4>
-      <!--<p class="l_product_content">ThreatEye高级威胁检测系统</p>-->
+      <!-- <span class="l_product_title">ThreatEye</span> -->
+      <h4 class="l_product_name">ThreatEye高级威胁检测系统</h4>
+      <p class="l_product_content">ThreatEye Advanced Threat Detection System</p>
     </div>
 
     <div class="login-box">
@@ -18,7 +18,7 @@
         <Register v-if="!stu"></Register>
       </div>
     </div>
-    <p class="ty_copyright">©CETC Information Technology (Shanghai) Co., Ltd. All rights reserved</p>
+    <p class="ty_copyright">©Hoohoolab Information Technology (Shanghai) Co., Ltd. All rights reserved</p>
 
   </div>
 </template>

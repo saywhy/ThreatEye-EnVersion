@@ -78,7 +78,7 @@
           <div class="top_item">
             <div class="title">
               <p>
-                <span class="title_left">Alerts</span>
+                <span class="title_left">Alert</span>
                 <span class="title_right">
                   <span class="title_right_icon color3"></span>
                   <span>Low</span>
@@ -102,14 +102,14 @@
             <div class="title">
               <p>
                 <span class="title_left">Unresloved Alerts</span>
-               <!-- <span class="title_right_spetial">
+                <span class="title_right">
                   <span class="title_right_icon color3"></span>
                   <span>Low</span>
                   <span class="title_right_icon color5"></span>
                   <span>Medium</span>
                   <span class="title_right_icon color4"></span>
                   <span>High</span>
-                </span>-->
+                </span>
               </p>
             </div>
             <div class="bom_mid_content">
@@ -122,7 +122,7 @@
           <div class="top_item">
             <div class="title">
               <p>
-                <span class="title_left">Threat Categories</span>
+                <span class="title_left">Threat Category</span>
               </p>
             </div>
             <div class="bom_right_content">
