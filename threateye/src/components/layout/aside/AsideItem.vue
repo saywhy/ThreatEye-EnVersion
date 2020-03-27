@@ -186,7 +186,7 @@
             border-bottom: 8px solid transparent;
             border-left: 8px solid #0070FF;
             position: absolute;
-            top: 20px;
+            top: 18px;
             right: -8px;
             z-index: 999;
           }
