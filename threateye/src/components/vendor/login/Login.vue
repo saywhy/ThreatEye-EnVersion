@@ -18,8 +18,8 @@
         <Register v-if="!stu"></Register>
       </div>
     </div>
-    <p class="ty_copyright">©CETC Information Technology (Shanghai) Co., Ltd. All rights reserved</p>
-
+    <p class="ty_copyright">©CETC All rights reserved</p>
+    <!--<p class="ty_copyright">©CETC Information Technology (Shanghai) Co., Ltd. All rights reserved</p>-->
   </div>
 </template>
 

@@ -222,7 +222,8 @@ export default {
 </script>
 <style scoped lang="less">
 #UserLogin {
-  /deep/ .el-form {
+  /deep/
+  .el-form {
     .el-form-item {
       margin-top: 20px;
       margin-bottom: 0;
@@ -321,7 +322,6 @@ export default {
       }
     }
   }
-
   .forget_pass {
     line-height: 80px;
     text-align: center;
