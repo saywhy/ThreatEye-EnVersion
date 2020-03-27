@@ -93,7 +93,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
   #aside {
-    width: 210px;
+    width: 250px;
     position: relative;
     .aside-breadcrumb {
       height: 60px;
@@ -131,7 +131,7 @@
     }
     /deep/
     .el-menu {
-      width: 210px;
+      width: 250px;
       border-width: 0;
     }
   }

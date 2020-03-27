@@ -68,7 +68,7 @@ export default {
       position: fixed;
       left: 0;
       top: 60px;
-      width: 210px !important;
+      width: 250px !important;
       &.collapse {
         width: 56px !important;
         #aside {
@@ -95,7 +95,7 @@ export default {
     }
     .dashboard-list-main {
       padding: 0;
-      margin-left: 210px;
+      margin-left: 250px;
       background-color: #f4f4f4;
       min-height: 900px;
       &.collapse {
