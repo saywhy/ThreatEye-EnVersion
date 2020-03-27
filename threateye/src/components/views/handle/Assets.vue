@@ -22,8 +22,10 @@
         <div class="tog">
           <el-button class="assets-toggle"
                      @click="toggle_top_show = !toggle_top_show">
-            <span class="name" v-show="toggle_top_show">Collapse</span>
-            <span class="name" v-show="!toggle_top_show">More</span>
+            <span class="name"
+                  v-show="toggle_top_show">Collapse</span>
+            <span class="name"
+                  v-show="!toggle_top_show">More</span>
             <i class="icons"
                :class="{'top_down':!toggle_top_show}"></i>
           </el-button>
@@ -170,7 +172,8 @@
                     :data="table.tableData"
                     @row-click="detailClick"
                     @selection-change="handleSelChange">
-            <el-table-column prop="type" width="20"></el-table-column>
+            <el-table-column prop="type"
+                             width="20"></el-table-column>
             <el-table-column type="selection"
                              width="50"></el-table-column>
             <el-table-column prop="asset_ip"
@@ -401,7 +404,8 @@
                         tooltip-effect="dark"
                         style="width: 100%"
                         @selection-change="handle_sel_table_assets">
-                <el-table-column prop="type" width="20"></el-table-column>
+                <el-table-column prop="type"
+                                 width="20"></el-table-column>
                 <el-table-column type="selection"
                                  width="30"></el-table-column>
                 <el-table-column prop="asset_ip"
@@ -409,18 +413,19 @@
                                  show-overflow-tooltip></el-table-column>
                 <el-table-column prop="label_group"
                                  label="Asset Groups"
-
                                  show-overflow-tooltip></el-table-column>
-                <el-table-column label="Related Threats"  min-width="100" show-overflow-tooltip>
+                <el-table-column label="Related Threats"
+                                 min-width="100"
+                                 show-overflow-tooltip>
                   <template slot-scope="scope">
-                <span class="btn_tag_box"
-                      v-if="item!=''"
-                      v-for="item in scope.row.category">
-                  <el-button type="primary"
-                             class="btn_tag">
-                    {{item}}
-                  </el-button>
-                </span>
+                    <span class="btn_tag_box"
+                          v-if="item!=''"
+                          v-for="item in scope.row.category">
+                      <el-button type="primary"
+                                 class="btn_tag">
+                        {{item}}
+                      </el-button>
+                    </span>
                   </template>
                 </el-table-column>
                 <el-table-column label="Severity">
@@ -430,7 +435,8 @@
                       {{ scope.row.degree | degree }}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="Compromise" width="120">
+                <el-table-column label="Compromise"
+                                 width="120">
                   <template slot-scope="scope">
                     <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
                       {{ scope.row.fall_certainty | certainty }}</span>
@@ -488,8 +494,7 @@
                       v-loading="table_add_works.loading"
                       :data="table_add_works.tableData"
                       @selection-change="handle_sel_table_add_works">
-              <el-table-column
-                               width="20"></el-table-column>
+              <el-table-column width="20"></el-table-column>
               <el-table-column type="selection"
                                width="50"></el-table-column>
               <!--<el-table-column label="选择" width="55" align="left">
@@ -556,7 +561,7 @@ export default {
   data () {
     return {
       //
-      search_flag:false,
+      search_flag: false,
       //頂部數據
       data_top: {},
       data_top_show: false,
@@ -594,7 +599,7 @@ export default {
         },
         {
           value: "low",
-          label: "Medium"
+          label: "Low"
         }
       ],
       options_status: [
@@ -841,7 +846,7 @@ export default {
       }
 
 
-      if(!this.search_flag){
+      if (!this.search_flag) {
         this.params = {
           key: "",
           threat: "",
@@ -860,7 +865,7 @@ export default {
       let index = tags.findIndex(x => x.name == item.name);
       this.assets_all.tags.splice(index, 1);
 
-      if(!this.search_flag){
+      if (!this.search_flag) {
         this.params = {
           key: "",
           threat: "",
@@ -1415,8 +1420,7 @@ export default {
       }
       .tog {
         width: 124px;
-        /deep/
-        .assets-toggle {
+        /deep/ .assets-toggle {
           position: absolute;
           bottom: 0;
           right: 0;
@@ -1478,8 +1482,7 @@ export default {
             min-height: 48px;
             display: inline-block;
             border-bottom: 1px solid #ececec;
-            /deep/
-            .d_btn {
+            /deep/ .d_btn {
               width: 88px;
               height: 28px;
               border: 1px solid #ececec;
