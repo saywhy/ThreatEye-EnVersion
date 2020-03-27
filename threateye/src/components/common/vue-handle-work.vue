@@ -204,8 +204,6 @@
                 <el-table :data="table.tableData"
                           tooltip-effect="dark"
                           @selection-change="handle_sel_table_mul">
-                  <el-table-column label="Select All"
-                                   width="50"></el-table-column>
                   <el-table-column align='left'
                                    type="selection"
                                    width="40"></el-table-column>
@@ -246,9 +244,8 @@
                           tooltip-effect="dark"
                           style="width: 100%"
                           @selection-change="handle_sel_table_mul">
-                  <el-table-column label="Select All"
-                                   prop="type"
-                                   width="50">
+                  <el-table-column prop="type"
+                                   width="20">
                   </el-table-column>
                   <el-table-column type="selection"
                                    width="40"></el-table-column>

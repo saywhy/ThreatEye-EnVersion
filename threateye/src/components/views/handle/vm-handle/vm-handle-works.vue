@@ -58,7 +58,8 @@
                   class="common_btn_priority">
             <p class="item_list">
               <span class="item">Total
-                <span class="num">{{count.count}}</span></span>
+                <span class="num">{{count.count}}</span>
+              </span>
               <span class="item">Priority</span>
               <el-tag class="e_tag e-tag-1">Critical:
                 <span class="nums">{{count.highest}}</span>
@@ -130,9 +131,8 @@
               tooltip-effect="dark"
               @selection-change="handleSelChange"
               @row-click="detail_click">
-      <el-table-column label="Select All"
-                       prop="type"
-                       width="50">
+      <el-table-column prop="type"
+                       width="20">
         <template slot-scope="scope">
           <div class="new_dot"
                v-show="scope.row.if_new == '1'"></div>
@@ -363,8 +363,7 @@
                             ref="assetTableName"
                             :row-key="getRowKeys_assets"
                             @selection-change="handle_sel_table_assets">
-                    <el-table-column label="Select All"
-                                     width="50"></el-table-column>
+
                     <el-table-column align='left'
                                      type="selection"
                                      width="50"
@@ -409,10 +408,6 @@
                             style="width: 100%"
                             :row-key="getRowKeys_alerts"
                             @selection-change="handle_sel_table_alerts">
-                    <el-table-column label="Select All"
-                                     prop="type"
-                                     width="50">
-                    </el-table-column>
                     <el-table-column type="selection"
                                      width="50"
                                      :reserve-selection="true">
@@ -437,9 +432,9 @@
                                      width="120"
                                      show-overflow-tooltip>
                       <template slot-scope="scope">
-                      <span class="btn_alert_background"
-                            :class="{'high_background':scope.row.degree =='High risk','mid_background':scope.row.degree =='Medium risk','low_background':scope.row.degree =='Low risk'}">
-                        {{ scope.row.degree | degree_sino }}</span>
+                        <span class="btn_alert_background"
+                              :class="{'high_background':scope.row.degree =='High risk','mid_background':scope.row.degree =='Medium risk','low_background':scope.row.degree =='Low risk'}">
+                          {{ scope.row.degree | degree_sino }}</span>
                       </template>
                     </el-table-column>
                     <el-table-column label="Status"
@@ -617,8 +612,6 @@
                             ref="assetTable"
                             style="width: 100%"
                             @selection-change="handle_sel_assets">
-                    <el-table-column label="Select All"
-                                     width="50"></el-table-column>
                     <el-table-column align='left'
                                      :reserve-selection="true"
                                      type="selection"
@@ -661,10 +654,6 @@
                             ref="alertTable"
                             style="width: 100%"
                             @selection-change="handle_sel_alert">
-                    <el-table-column label="Select All"
-                                     prop="type"
-                                     width="50">
-                    </el-table-column>
                     <el-table-column type="selection"
                                      width="50">
                     </el-table-column>
@@ -692,9 +681,9 @@
                                      width="100"
                                      show-overflow-tooltip>
                       <template slot-scope="scope">
-                      <span class="btn_alert_background"
-                            :class="{'high_background':scope.row.degree =='High risk','mid_background':scope.row.degree =='Medium risk','low_background':scope.row.degree =='Low risk'}">
-                        {{ scope.row.degree | degree_sino }}</span>
+                        <span class="btn_alert_background"
+                              :class="{'high_background':scope.row.degree =='High risk','mid_background':scope.row.degree =='Medium risk','low_background':scope.row.degree =='Low risk'}">
+                          {{ scope.row.degree | degree_sino }}</span>
                       </template>
                     </el-table-column>
                     <el-table-column label="Status"

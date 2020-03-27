@@ -17,8 +17,6 @@
                     ref="multipleTable"
                     :data="tableData"
                     @selection-change="handleSelectionChange">
-            <el-table-column label="Select All"
-                             width="50"></el-table-column>
             <el-table-column align='left'
                              type="selection"
                              width="40"></el-table-column>

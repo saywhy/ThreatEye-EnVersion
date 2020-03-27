@@ -5,7 +5,8 @@
     <div class="outside-top">
       <div class="ost ost-1">
         <div class="ost-title">
-          Top5 <slot name="name"></slot> Threat Assets</div>
+          Top5
+          <slot name="name"></slot> Threat Assets</div>
         <div class="ost-progress">
           <vm-handle-progress :progress_data="progress_data_source5"
                               v-if="progress_data_source5_show"></vm-handle-progress>
@@ -13,7 +14,8 @@
       </div>
       <div class="ost ost-2">
         <div class="ost-title">
-          Top5 <slot name="name"></slot> Threat Categories</div>
+          Top5
+          <slot name="name"></slot> Threat Categories</div>
         <div class="ost-emerge">
           <vm-handle-form :form_data="form_data_threat5"
                           v-if="form_data_threat5_show"></vm-handle-form>
@@ -126,9 +128,8 @@
                     :row-style="{cursor:'pointer'}"
                     @selection-change="handleSelChange"
                     @row-click="detail_click">
-            <el-table-column label="Select All"
-                             prop="type"
-                             width="50">
+            <el-table-column prop="type"
+                             width="20">
               <template slot-scope="scope">
                 <div class="new_dot"
                      v-show="scope.row.new_alert=='1'"></div>
@@ -369,10 +370,6 @@
                           :data="table_alerts.tableData_new"
                           tooltip-effect="dark"
                           @selection-change="handle_sel_table_alerts">
-                  <el-table-column label="Select All"
-                                   prop="type"
-                                   width="50">
-                  </el-table-column>
                   <el-table-column type="selection"
                                    width="50"></el-table-column>
                   <el-table-column prop="category"

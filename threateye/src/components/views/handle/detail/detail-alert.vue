@@ -601,8 +601,7 @@
                     tooltip-effect="dark"
                     @selection-change="handleSelectionChange"
                     style="width: 100%">
-            <el-table-column label="Select All"
-                             width="50">
+            <el-table-column width="20">
               <template slot-scope="scope">
                 <el-radio v-model="worksheets_data.tableRadio"
                           :label="scope.row">

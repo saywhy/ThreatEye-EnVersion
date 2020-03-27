@@ -169,8 +169,6 @@
                     :data="table.tableData"
                     @row-click="detailClick"
                     @selection-change="handleSelChange">
-            <el-table-column label="Select All"
-                             width="50"></el-table-column>
             <el-table-column type="selection"
                              width="50"></el-table-column>
             <el-table-column prop="asset_ip"
@@ -401,8 +399,6 @@
                         tooltip-effect="dark"
                         style="width: 100%"
                         @selection-change="handle_sel_table_assets">
-                <el-table-column label="Select All"
-                                 width="50"></el-table-column>
                 <el-table-column type="selection"
                                  width="50"></el-table-column>
                 <el-table-column prop="asset_ip"

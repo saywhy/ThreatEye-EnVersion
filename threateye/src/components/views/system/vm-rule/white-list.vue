@@ -36,10 +36,6 @@
                 tooltip-effect="dark"
                 @selection-change="handleSelectionChange"
                 style="width: 100%">
-        <el-table-column label="Select All"
-                         prop=""
-                         width="50">
-        </el-table-column>
         <el-table-column type="selection"
                          width="50">
         </el-table-column>

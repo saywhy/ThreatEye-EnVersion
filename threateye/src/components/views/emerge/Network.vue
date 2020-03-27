@@ -118,9 +118,8 @@
                     tooltip-effect="dark"
                     @selection-change="handleSelChange"
                     @row-click="detail_click">
-            <el-table-column label="Select All"
-                             prop="type"
-                             width="50">
+            <el-table-column prop="type"
+                             width="20">
               <template slot-scope="scope">
                 <div class="new_dot"
                      v-show="scope.row.new_alert=='1'"></div>
@@ -154,9 +153,9 @@
             <el-table-column label="Severity"
                              width="100">
               <template slot-scope="scope">
-                      <span class="btn_alert_background"
-                            :class="{'high_background':scope.row.degree =='High risk','mid_background':scope.row.degree =='Medium risk','low_background':scope.row.degree =='Low risk'}">
-                        {{ scope.row.degree | degree_sino }}</span>
+                <span class="btn_alert_background"
+                      :class="{'high_background':scope.row.degree =='High risk','mid_background':scope.row.degree =='Medium risk','low_background':scope.row.degree =='Low risk'}">
+                  {{ scope.row.degree | degree_sino }}</span>
               </template>
             </el-table-column>
             <el-table-column label="Compromise"
@@ -355,10 +354,6 @@
                           :data="table_alerts.tableData_new"
                           tooltip-effect="dark"
                           @selection-change="handle_sel_table_alerts">
-                  <el-table-column label="Select All"
-                                   prop="type"
-                                   width="50">
-                  </el-table-column>
                   <el-table-column type="selection"
                                    width="50"></el-table-column>
                   <el-table-column prop="category"

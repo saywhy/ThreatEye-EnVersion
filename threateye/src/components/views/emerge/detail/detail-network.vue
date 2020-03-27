@@ -608,8 +608,6 @@
                     tooltip-effect="dark"
                     @selection-change="handle_sel_table_add_works"
                     style="width: 100%">
-            <el-table-column label="Select All"
-                             width="50"></el-table-column>
             <el-table-column type="selection"
                              width="50"></el-table-column>
             <el-table-column prop="name"
