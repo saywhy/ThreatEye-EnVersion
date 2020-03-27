@@ -744,7 +744,7 @@ export default {
           min-height: 164px;
           position: relative;
           .report-input {
-            width: 240px;
+            width: 250px;
           }
           .r_btn_group {
             position: absolute;
