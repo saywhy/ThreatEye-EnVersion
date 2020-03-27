@@ -733,6 +733,8 @@ export default {
           let { status, data } = resp.data;
 
           if (status == 0) {
+
+            //data.base_category = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
             data.base_category = data.base_category.map(function (v, k) {
               return { name: v, flag: false };
             });
@@ -1475,7 +1477,7 @@ export default {
             border-bottom: 1px solid #ececec;
             /deep/
             .d_btn {
-              width: 90px;
+              width: 88px;
               height: 28px;
               border: 1px solid #ececec;
               margin: 3px 2px;

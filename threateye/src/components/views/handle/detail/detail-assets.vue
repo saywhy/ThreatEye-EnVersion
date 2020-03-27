@@ -1238,7 +1238,6 @@ export default {
             data.new_department = data.label.department;
             data.new_business = data.label.business;
 
-            console.log(data)
             ///
             if (data.workorder_id == '0') {
               data.new_workorder_status = 'No ticket associated';
