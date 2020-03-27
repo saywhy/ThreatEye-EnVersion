@@ -196,7 +196,7 @@ export default {
           if (status == 0) {
             this.$message({
               type: 'success',
-              message: '开始更新！'
+              message: 'Start updating'
             });
             setTimeout(() => {
               this.get_data()

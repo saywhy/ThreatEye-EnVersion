@@ -35,7 +35,7 @@
           <p class="list_title_box">
             <span>URL:</span>
             <el-button class="btn_i"
-                       @click="add_url">ADD</el-button>
+                       @click="add_url">Add</el-button>
           </p>
           <div class="item_box"
                v-for="(item,index) in outside_list.url"

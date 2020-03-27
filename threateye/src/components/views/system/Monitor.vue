@@ -125,7 +125,7 @@
             </div>
             <div class="content_item">
               <p>
-                <span class="title">网段类型</span>
+                <span class="title">Subnet Type</span>
                 <span class="title_color">*</span>
               </p>
               <el-select class="select_box"
@@ -140,7 +140,7 @@
             </div>
             <div class="content_item">
               <p>
-                <span class="title">标签</span>
+                <span class="title">Labels</span>
               </p>
               <div class="item_addrs"
                    v-for="(item,index) in monitor_add.tag_list">
@@ -196,7 +196,7 @@
             </div>
             <div class="content_item">
               <p>
-                <span class="title">责任人</span>
+                <span class="title">Owner</span>
               </p>
               <el-input class="select_box"
                         placeholder="Please enter the owner"
