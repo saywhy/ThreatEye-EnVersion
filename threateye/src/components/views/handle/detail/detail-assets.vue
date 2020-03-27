@@ -77,7 +77,7 @@
         </li>
         <li>
           <span class="title">
-            <i class="b_i"></i>Assets Category:</span>
+            <i class="b_i"></i>Category:</span>
           <span class="content">
             <ul>
               <li class="tag_btn_box"
@@ -128,7 +128,7 @@
           </span>
         </li>
         <li>
-          <span class="title">Name:</span>
+          <span class="title">Ticket Name:</span>
           <span class="content Goto_workorder"
                 @click="Goto_workorder"
                 v-if="assets_top.new_workorder_name!=''">
@@ -334,7 +334,7 @@
 
       <el-tabs v-model="activeName">
         <!-- 网络风险视角 -->
-        <el-tab-pane label="Alert List"
+        <el-tab-pane label="Alerts"
                      class="tabs-item"
                      name="first">
           <el-table class="handle_table_detail"
@@ -350,7 +350,6 @@
             </el-table-column>
             <el-table-column prop="category"
                              label="Type"
-                             width="150"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="indicator"
@@ -359,21 +358,18 @@
             </el-table-column>
             <el-table-column prop="src_ip"
                              label="Source IP"
-                             width="150"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="dest_ip"
                              label="Destination IP"
-                             width="150"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="application"
                              label="Protocol"
-                             width="100"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column label="Severity"
-                             width="100">
+                             min-width="80">
               <template slot-scope="scope">
                 <span class="btn_alert_background"
                       :class="{'high_background':scope.row.degree =='High risk','mid_background':scope.row.degree =='Medium risk','low_background':scope.row.degree =='Low risk'}">
@@ -381,7 +377,7 @@
               </template>
             </el-table-column>
             <el-table-column label="Compromise"
-                             width="100">
+                             min-width="100">
               <template slot-scope="scope">
                 <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
                   {{ scope.row.fall_certainty | certainty }}</span>
@@ -731,7 +727,7 @@ export default {
       network_times: [],
       network_detail: {},
       detail: {},
-      title_name: "Risk Assets Details",
+      title_name: "Risk Asset Details",
       activeName: 'first',
       assets_top: {},
       table: {
@@ -1821,7 +1817,7 @@ export default {
         margin-bottom: 16px;
         line-height: 30px;
         .title {
-          width: 130px;
+          width: 150px;
           font-family: PingFang;
           font-size: 16px;
           color: #333333;
@@ -1910,14 +1906,17 @@ export default {
       justify-content: space-between;
       .stage_item_box {
         width: 104px;
-        height: 48px;
-        line-height: 48px;
+        height: 56px;
+       /* line-height: 48px;*/
         background: #eef6ff;
         border-radius: 2px;
         font-size: 16px;
         color: #aaaaaa;
         text-align: center;
         position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         .circle_box {
           display: block;
           font-size: 12px;
@@ -1942,7 +1941,7 @@ export default {
         height: 48px;
         line-height: 48px;
         img {
-          margin-top: 12px;
+          margin-top: 16px;
           width: 100%;
           height: 24px;
         }
@@ -2065,17 +2064,6 @@ export default {
         }
         td > .cell {
           font-family: PingFangMedium;
-          /*.fall_certainty {
-            color: #ff5f5c;
-          }*/
-          /*.degree_box {
-            button {
-              height: 30px;
-              width: 72px;
-              padding: 0;
-              border: 0;
-            }
-          }*/
           .high {
             color: #dc5f5f;
             /* button {

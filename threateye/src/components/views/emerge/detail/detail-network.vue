@@ -73,7 +73,7 @@
                   <i class="el-icon-arrow-down el-icon--right"></i>
                 </el-button>
                 <el-dropdown-menu slot="dropdown"
-                                  style="width200px;"
+                                  style="width:200px;"
                                   class="dropdown_ul_box_detail">
                   <el-dropdown-item command='1'
                                     class="select_item">Threat hunting</el-dropdown-item>
@@ -94,7 +94,7 @@
                   <i class="el-icon-arrow-down el-icon--right"></i>
                 </el-button>
                 <el-dropdown-menu slot="dropdown"
-                                  style="width200px;"
+                                  style="width:200px;"
                                   class="dropdown_ul_box_detail">
                   <el-dropdown-item command='1'
                                     class="select_item">Threat hunting</el-dropdown-item>
@@ -4131,14 +4131,17 @@ export default {
       justify-content: space-between;
       .stage_item_box {
         width: 104px;
-        height: 48px;
-        line-height: 48px;
+        height: 56px;
+        /* line-height: 48px;*/
         background: #eef6ff;
         border-radius: 2px;
         font-size: 16px;
         color: #aaaaaa;
         text-align: center;
         position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         .circle_box {
           display: block;
           font-size: 12px;
@@ -4163,7 +4166,7 @@ export default {
         height: 48px;
         line-height: 48px;
         img {
-          margin-top: 12px;
+          margin-top: 16px;
           width: 100%;
           height: 24px;
         }

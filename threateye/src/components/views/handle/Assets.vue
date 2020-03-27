@@ -22,7 +22,8 @@
         <div class="tog">
           <el-button class="assets-toggle"
                      @click="toggle_top_show = !toggle_top_show">
-            <span class="name">Collapse</span>
+            <span class="name" v-show="toggle_top_show">Collapse</span>
+            <span class="name" v-show="!toggle_top_show">More</span>
             <i class="icons"
                :class="{'top_down':!toggle_top_show}"></i>
           </el-button>
@@ -560,7 +561,7 @@ export default {
       assets_all: {
         tags: [],
         base: [
-          { name: 'Equipment Category', souce_value: [], value: [], toggle_show: false, pid: 0 },
+          { name: 'Category', souce_value: [], value: [], toggle_show: false, pid: 0 },
           { name: 'Application', souce_value: [], value: [], toggle_show: false, pid: 1 },
           { name: 'Branch', souce_value: [], value: [], toggle_show: false, pid: 2 },
           { name: 'Department', souce_value: [], value: [], toggle_show: false, pid: 3 },
@@ -755,6 +756,7 @@ export default {
             this.assets_all.base[2].value = this.assets_all.base[2].souce_value = data.branch;
             this.assets_all.base[3].value = this.assets_all.base[3].souce_value = data.department;
             this.assets_all.base[4].value = this.assets_all.base[4].souce_value = data.others;
+
           }
         });
     },
@@ -1387,7 +1389,7 @@ export default {
       display: flex;
       position: relative;
       .title {
-        width: 120px;
+        width: 136px;
         color: #333333;
         font-size: 18px;
         margin-top: 16px;
@@ -1407,7 +1409,8 @@ export default {
       }
       .tog {
         width: 124px;
-        /deep/ .assets-toggle {
+        /deep/
+        .assets-toggle {
           position: absolute;
           bottom: 0;
           right: 0;
@@ -1417,7 +1420,6 @@ export default {
           border-width: 0;
           background: #f8f8f8;
           text-align: center;
-
           .name {
             font-family: PingFang;
             font-size: 12px;
@@ -1452,7 +1454,7 @@ export default {
           display: flex;
           height: 100%;
           .title {
-            width: 120px;
+            width: 136px;
             display: inline-block;
             background: #f8f8f8;
             font-size: 14px;
@@ -1470,11 +1472,12 @@ export default {
             min-height: 48px;
             display: inline-block;
             border-bottom: 1px solid #ececec;
-            /deep/ .d_btn {
+            /deep/
+            .d_btn {
               width: 90px;
               height: 28px;
               border: 1px solid #ececec;
-              margin: 3px;
+              margin: 3px 2px;
               background-color: #fff;
               padding: 0 !important;
               color: #333;

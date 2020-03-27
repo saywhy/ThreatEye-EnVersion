@@ -136,35 +136,32 @@
               </template>
             </el-table-column>
             <el-table-column type="selection"
-                             align="left"
-                             width="50">
-            </el-table-column>
+                             width="50"></el-table-column>
             <el-table-column label="Time"
-                             width="180">
+                             width="180"
+                             show-overflow-tooltip>
               <template slot-scope="scope">{{ scope.row.alert_time | time }}</template>
             </el-table-column>
             <el-table-column prop="category"
                              label="Type"
-                             show-overflow-tooltip>
-            </el-table-column>
+                             min-width="100"
+                             show-overflow-tooltip></el-table-column>
             <el-table-column prop="indicator"
                              label="Indicator"
-                             show-overflow-tooltip>
-            </el-table-column>
+                             min-width="120"
+                             show-overflow-tooltip></el-table-column>
             <el-table-column prop="src_ip"
                              label="Source IP"
-                             show-overflow-tooltip>
-            </el-table-column>
+                             show-overflow-tooltip></el-table-column>
             <el-table-column prop="dest_ip"
                              label="Destination IP"
-                             show-overflow-tooltip>
-            </el-table-column>
+                             show-overflow-tooltip></el-table-column>
             <el-table-column prop="application"
                              label="Protocol"
-                             show-overflow-tooltip>
-            </el-table-column>
+                             min-width="80"
+                             show-overflow-tooltip></el-table-column>
             <el-table-column label="Severity"
-                             width="100">
+                             show-overflow-tooltip>
               <template slot-scope="scope">
                 <span class="btn_alert_background"
                       :class="{'high_background':scope.row.degree =='High risk','mid_background':scope.row.degree =='Medium risk','low_background':scope.row.degree =='Low risk'}">
@@ -172,7 +169,7 @@
               </template>
             </el-table-column>
             <el-table-column label="Compromise"
-                             width="100">
+                             min-width="100">
               <template slot-scope="scope">
                 <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
                   {{ scope.row.fall_certainty | certainty }}</span>

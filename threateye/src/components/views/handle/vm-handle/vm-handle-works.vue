@@ -2010,9 +2010,10 @@ export default {
             color: #0070ff;
           }
         }
-        /deep/ .el-tag {
+        /deep/
+        .el-tag {
           height: 24px;
-          width: 72px;
+          width: 120px;
           line-height: 24px;
           border-radius: 0;
           border-width: 0;
