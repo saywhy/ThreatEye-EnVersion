@@ -37,7 +37,7 @@
             </div>
             <div class="bom_item">
                 <li>
-                    <span class="title">状态:</span>
+                    <span class="title">Status:</span>
                     <span class="content">
                         <span class="status">断开</span>
                     </span>

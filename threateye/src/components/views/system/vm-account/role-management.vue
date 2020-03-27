@@ -45,7 +45,7 @@
           <template slot-scope="scope">{{ scope.row.created_at*1000 |formatDate }}</template>
         </el-table-column>
         <el-table-column prop="creatorname"
-                         label="Reporter"
+                         label="Created By"
                          width="180"
                          show-overflow-tooltip>
         </el-table-column>

@@ -8,7 +8,7 @@
         <img class="top_left_img"
              src="@/assets/images/handle/others/works.png"
              alt="">
-        <span class="top_left_title">Basic Information</span>
+        <span class="top_left_title">Basic Info</span>
       </div>
       <div class="top_right">
         <!--<el-link target="_blank" :href="loadlinks">
@@ -27,7 +27,7 @@
         </li>
         <li>
           <span class="title">
-            <i class="b_i"></i>Reporter:</span>
+            <i class="b_i"></i>Created By:</span>
           <span class="content">{{data.creator}}</span>
         </li>
         <li>
@@ -126,10 +126,10 @@
                 <template slot-scope="scope">{{ scope.row.alert_time | time }}</template>
               </el-table-column>
               <el-table-column prop="category"
-                               label="Alert Type"
+                               label="Type"
                                show-overflow-tooltip></el-table-column>
               <el-table-column prop="indicator"
-                               label="Threat Indicators"
+                               label="Indicator"
                                show-overflow-tooltip></el-table-column>
               <el-table-column prop="src_ip"
                                label="Source IP"

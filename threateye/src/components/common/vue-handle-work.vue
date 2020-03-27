@@ -250,10 +250,10 @@
                   <el-table-column type="selection"
                                    width="40"></el-table-column>
                   <el-table-column prop="category"
-                                   label="Alert Type"
+                                   label="Type"
                                    show-overflow-tooltip></el-table-column>
                   <el-table-column prop="indicator"
-                                   label="Threat Indicators"
+                                   label="Indicator"
                                    show-overflow-tooltip></el-table-column>
                   <el-table-column prop="application"
                                    label="Protocol"

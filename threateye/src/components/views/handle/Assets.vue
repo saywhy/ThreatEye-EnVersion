@@ -104,7 +104,7 @@
             <el-select class="s_key"
                        v-model="params.status"
                        clearable
-                       placeholder="Processing status">
+                       placeholder="Status">
               <el-option v-for="item in options_status"
                          :key="item.value"
                          :label="item.label"
@@ -128,7 +128,7 @@
                          size='148'>
               <el-button type="primary"
                          class="change_btn">
-                <span>Status change</span>
+                <span>Status</span>
                 <i class="el-icon-arrow-down el-icon--right"></i>
               </el-button>
               <el-dropdown-menu slot="dropdown"
@@ -148,7 +148,7 @@
                          trigger="click">
               <el-button type="primary"
                          class="change_btn">
-                <span>Ticket Task</span>
+                <span>Ticket</span>
                 <i class="el-icon-arrow-down el-icon--right"></i>
               </el-button>
               <el-dropdown-menu slot="dropdown"
@@ -239,7 +239,7 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">Status Change</span>
+        <span class="title_name">Status</span>
       </div>
       <div class="content">
         <p class="content_p"
@@ -276,7 +276,7 @@
       <div class="step_box">
         <div class="step_box1">
           <span class="step1_span"
-                :class="task.new_contet?'step_now':'step_past'">Basic Information</span>
+                :class="task.new_contet?'step_now':'step_past'">Basic Info</span>
           <img src="@/assets/images/emerge/selected01.png"
                class="selected_img"
                alt="">
@@ -369,7 +369,7 @@
               <el-table-column prop="department"
                                label="Department"></el-table-column>
               <el-table-column prop="email_addr"
-                               label="Mailbox"></el-table-column>
+                               label="Email"></el-table-column>
             </el-table>
           </div>
         </div>
@@ -499,7 +499,7 @@
                                show-overflow-tooltip>
               </el-table-column>
               <el-table-column prop="creator"
-                               label="Reporter"
+                               label="Created By"
                                show-overflow-tooltip>
               </el-table-column>
               <el-table-column label="Priority"

@@ -23,7 +23,7 @@
                            size='148'>
                 <el-button type="primary"
                            class="change_btn">
-                  <span>Status Change</span>
+                  <span>Status</span>
                   <i class="el-icon-arrow-down el-icon--right"></i>
                 </el-button>
                 <el-dropdown-menu slot="dropdown"
@@ -43,7 +43,7 @@
                            trigger="click">
                 <el-button type="primary"
                            class="change_btn">
-                  <span>Ticket Task</span>
+                  <span>Ticket</span>
                   <i class="el-icon-arrow-down el-icon--right"></i>
                 </el-button>
                 <el-dropdown-menu slot="dropdown"
@@ -130,11 +130,11 @@
               <span class="item_li_content">{{network_detail.alert_time}}</span>
             </li>
             <li class="item_li">
-              <span class="item_li_title">Threat Indicators:</span>
+              <span class="item_li_title">Indicator:</span>
               <span class="item_li_content">{{network_detail.indicator}}</span>
             </li>
             <li class="item_li">
-              <span class="item_li_title">Alert Type:</span>
+              <span class="item_li_title">Type:</span>
               <span class="item_li_content">{{network_detail.category}}</span>
             </li>
             <li class="item_li">
@@ -451,11 +451,11 @@
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="category"
-                             label="Alert Type"
+                             label="Type"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="indicator"
-                             label="Threat Indicators"
+                             label="Indicator"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="src_ip"
@@ -503,11 +503,11 @@
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="category"
-                             label="Alert Type"
+                             label="Type"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="indicator"
-                             label="Threat Indicators"
+                             label="Indicator"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="src_ip"
@@ -615,7 +615,7 @@
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="creator"
-                             label="Reporter"
+                             label="Created By"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column label="Priority"
@@ -668,7 +668,7 @@
       <div class="step_box">
         <div class="step_box1">
           <span class="step1_span"
-                :class="new_worksheets_data.new_contet?'step_now':'step_past'">Basic Information</span>
+                :class="new_worksheets_data.new_contet?'step_now':'step_past'">Basic Info</span>
           <img src="@/assets/images/emerge/selected01.png"
                class="selected_img"
                alt="">
@@ -762,7 +762,7 @@
               <el-table-column prop="department"
                                label="Department"></el-table-column>
               <el-table-column prop="email_addr"
-                               label="Mailbox"></el-table-column>
+                               label="Email"></el-table-column>
             </el-table>
           </div>
         </div>
@@ -791,11 +791,11 @@
                                  width="40">
                 </el-table-column> -->
                   <el-table-column prop="category"
-                                   label="Alert Type"
+                                   label="Type"
                                    show-overflow-tooltip>
                   </el-table-column>
                   <el-table-column prop="indicator"
-                                   label="Threat Indicators"
+                                   label="Indicator"
                                    show-overflow-tooltip>
                   </el-table-column>
                   <el-table-column prop="src_ip"
@@ -1728,7 +1728,7 @@ export default {
             });
           }
           console.log(this.network_times);
-          // 匹配Alert Type
+          // 匹配Type
           this.network_times.forEach(item => {
             item.info_list = []
             item.whois_list = [];

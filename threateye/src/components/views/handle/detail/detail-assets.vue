@@ -23,7 +23,7 @@
                          size='148'>
               <el-button type="primary"
                          class="change_btn">
-                <span>Status change</span>
+                <span>Status</span>
                 <i class="el-icon-arrow-down el-icon--right"></i>
               </el-button>
               <el-dropdown-menu slot="dropdown"
@@ -43,7 +43,7 @@
                          trigger="click">
               <el-button type="primary"
                          class="change_btn">
-                <span>Ticket Task</span>
+                <span>Ticket</span>
                 <i class="el-icon-arrow-down el-icon--right"></i>
               </el-button>
               <el-dropdown-menu slot="dropdown"
@@ -324,7 +324,7 @@
         <div style="margin-top:12px;"
              v-if="notes">
           <span class="suggest_bom_title"
-                style="color:#ff5f5c">Note: Here only provides recommendations for mitigation one alert of the asset. Please refer to the details of the following alerts for recommendations on mitigation all alerts.</span>
+                style="color:#ff5f5c">Please note: Only the mitigation recommendations of one of the asset’s alerts are provided here, please refer to the alert details in the below list to get all the alerts’ mitigation recommendations.</span>
         </div>
       </div>
     </div>
@@ -349,12 +349,12 @@
               <template slot-scope="scope">{{ scope.row.alert_time | time }}</template>
             </el-table-column>
             <el-table-column prop="category"
-                             label="Alert Type"
+                             label="Type"
                              width="150"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="indicator"
-                             label="Threat Indicators"
+                             label="Indicator"
                              show-overflow-tooltip>
             </el-table-column>
             <el-table-column prop="src_ip"
@@ -418,7 +418,7 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">Status change</span>
+        <span class="title_name">Status</span>
       </div>
       <div class="content">
         <p class="content_p"
@@ -455,7 +455,7 @@
       <div class="step_box">
         <div class="step_box1">
           <span class="step1_span"
-                :class="task.new_contet?'step_now':'step_past'">Basic Information</span>
+                :class="task.new_contet?'step_now':'step_past'">Basic Info</span>
           <img src="@/assets/images/emerge/selected01.png"
                class="selected_img"
                alt="">
@@ -548,7 +548,7 @@
               <el-table-column prop="department"
                                label="Department"></el-table-column>
               <el-table-column prop="email_addr"
-                               label="Mailbox"></el-table-column>
+                               label="Email"></el-table-column>
             </el-table>
           </div>
         </div>
@@ -675,7 +675,7 @@
                                show-overflow-tooltip>
               </el-table-column>
               <el-table-column prop="creator"
-                               label="Reporter"
+                               label="Created By"
                                show-overflow-tooltip>
               </el-table-column>
               <el-table-column label="Priority"
@@ -1231,8 +1231,8 @@ export default {
             this.table_assets.pageNow = 1;
             let base_category = data.label.base_category;
 
-            if (base_category.includes('Terminal')) {
-              data.new_base_category = ['Terminal'];
+            if (base_category.includes('workstation')) {
+              data.new_base_category = ['workstation'];
             } else if (base_category.includes('Server')) {
               data.new_base_category = ['Server'];
             } else if (base_category.includes('Network device')) {

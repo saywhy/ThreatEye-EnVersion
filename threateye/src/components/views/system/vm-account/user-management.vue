@@ -41,7 +41,7 @@
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="email_addr"
-                         label="Mailbox"
+                         label="Email"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column prop="role"
@@ -51,7 +51,7 @@
         </el-table-column>
         <el-table-column prop="creatorname"
                          width="120"
-                         label="Reporter"
+                         label="Created By"
                          show-overflow-tooltip>
         </el-table-column>
         <el-table-column label="Created"
@@ -127,7 +127,7 @@
         </div>
         <div class="content_item">
           <p>
-            <span class="title">Mailbox</span>
+            <span class="title">Email</span>
             <span class="red">*</span>
           </p>
           <el-input class="select_box"
@@ -215,7 +215,7 @@
         </div>
         <div class="content_item">
           <p>
-            <span class="title">Mailbox</span>
+            <span class="title">Email</span>
             <span class="red">*</span>
           </p>
           <el-input class="select_box"
@@ -421,7 +421,7 @@ export default {
         .then(response => {
           console.log(response);
           this.user_data.password = response.data.data
-          this.user_data.placeholder = 'Use at least' + response.data.data.min_passwd_len + 'and at most' + response.data.data.max_passwd_len + 'characters,including at least three types of characters:lowercase,uppercase,number and special character'
+          this.user_data.placeholder = 'Complex password required'
         })
         .catch(error => {
           console.log(error);
@@ -535,7 +535,7 @@ export default {
       if (this.user_edit.password != this.user_edit.Re_password) {
         this.$message(
           {
-            message: '两次输入密码不一致',
+            message: 'Password does not match',
             type: 'warning',
           }
         );
@@ -544,7 +544,7 @@ export default {
       if (!this.regex(this.user_edit.password) && this.user_edit.password != '') {
         this.$message(
           {
-            message: '密码必须同时包含大写、小写、数字和特殊字符其中三项',
+            message: 'Complex password required',
             type: 'warning',
           }
         );

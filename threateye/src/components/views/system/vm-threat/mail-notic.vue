@@ -99,7 +99,7 @@
         </div>
       </div>
       <p class="title">
-        Send a notification message to this mailbox when alerts generated
+        Send a notification message to this Email when alerts generated
         <el-switch v-model="mail.send">
         </el-switch>
       </p>

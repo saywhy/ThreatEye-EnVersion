@@ -36,7 +36,7 @@
             <el-select class="s_key"
                        v-model="params.status"
                        clearable
-                       placeholder="Processing Status">
+                       placeholder="Status">
               <el-option v-for="item in options_status"
                          :key="item.value"
                          :label="item.label"
@@ -86,7 +86,7 @@
                          placement='bottom-start'>
               <el-button type="primary"
                          class="change_btn">
-                <span>Status change</span>
+                <span>Status</span>
                 <i class="el-icon-arrow-down el-icon--right"></i>
               </el-button>
               <el-dropdown-menu slot="dropdown"
@@ -146,7 +146,7 @@
                        show-overflow-tooltip>
       </el-table-column>
       <el-table-column prop="creator"
-                       label="Reporter"
+                       label="Created By"
                        width="100"
                        show-overflow-tooltip>
       </el-table-column>
@@ -199,7 +199,7 @@
            alt="">
       <div class="title">
         <div class="mask"></div>
-        <span class="title_name">Status change</span>
+        <span class="title_name">Status</span>
       </div>
       <div class="content">
         <p class="content_p"
@@ -235,7 +235,7 @@
       <div class="step_box">
         <div class="step_box1">
           <span class="step1_span"
-                :class="task.new_contet?'step_now':'step_past'">Basic Information</span>
+                :class="task.new_contet?'step_now':'step_past'">Basic Info</span>
           <img src="@/assets/images/emerge/selected01.png"
                class="selected_img"
                alt="">
@@ -328,7 +328,7 @@
               <el-table-column prop="department"
                                label="Department"></el-table-column>
               <el-table-column prop="email_addr"
-                               label="Mailbox"></el-table-column>
+                               label="Email"></el-table-column>
             </el-table>
           </div>
         </div>
@@ -413,11 +413,11 @@
                                      :reserve-selection="true">
                     </el-table-column>
                     <el-table-column prop="category"
-                                     label="Alert Type"
+                                     label="Type"
                                      show-overflow-tooltip>
                     </el-table-column>
                     <el-table-column prop="indicator"
-                                     label="Threat Indicators"
+                                     label="Indicator"
                                      show-overflow-tooltip>
                     </el-table-column>
                     <!--<el-table-column prop="src_ip" label="Source IP" show-overflow-tooltip>
@@ -485,7 +485,7 @@
       <div class="step_box">
         <div class="step_box1">
           <span class="step1_span"
-                :class="edit.task.frist?'step_now':'step_past'">Basic Information</span>
+                :class="edit.task.frist?'step_now':'step_past'">Basic Info</span>
           <img src="@/assets/images/emerge/selected01.png"
                class="selected_img"
                alt="">
@@ -578,7 +578,7 @@
               <el-table-column prop="department"
                                label="Department"></el-table-column>
               <el-table-column prop="email_addr"
-                               label="Mailbox"></el-table-column>
+                               label="Email"></el-table-column>
             </el-table>
           </div>
         </div>
@@ -658,11 +658,11 @@
                                      width="50">
                     </el-table-column>
                     <el-table-column prop="category"
-                                     label="Alert Type"
+                                     label="Type"
                                      show-overflow-tooltip>
                     </el-table-column>
                     <el-table-column prop="indicator"
-                                     label="Threat Indicators"
+                                     label="Indicator"
                                      show-overflow-tooltip>
                     </el-table-column>
                     <el-table-column prop="src_ip"

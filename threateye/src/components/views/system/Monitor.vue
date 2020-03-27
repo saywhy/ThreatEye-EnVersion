@@ -514,7 +514,7 @@ export default {
       if (tag_test_str.indexOf("workstation") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
         this.$message(
           {
-            message: 'Only set one of the three types of tags:"terminal","server",or"network device".Please try again!',
+            message: 'Only set one of the three types of tags:"workstation","server",or"network device".Please try again!',
             type: 'warning',
           }
         );
@@ -523,7 +523,7 @@ export default {
       if (tag_test_str.indexOf("server") != -1 && (tag_test_str.indexOf("workstation") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
         this.$message(
           {
-            message: 'Only set one of the three types of tags:"terminal","server",or"network device".Please try again!',
+            message: 'Only set one of the three types of tags:"workstation","server",or"network device".Please try again!',
             type: 'warning',
           }
         );
@@ -532,7 +532,7 @@ export default {
       if (tag_test_str.indexOf("network equipment") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("workstation") != -1)) {
         this.$message(
           {
-            message: 'Only set one of the three types of tags:"terminal","server",or"network device".Please try again!',
+            message: 'Only set one of the three types of tags:"workstation","server",or"network device".Please try again!',
             type: 'warning',
           }
         );
@@ -690,7 +690,7 @@ export default {
       if (tag_test_str.indexOf("workstation") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
         this.$message(
           {
-            message: 'Only set one of the three types of tags:"terminal","server",or"network device".Please try again!',
+            message: 'Only set one of the three types of tags:"workstation","server",or"network device".Please try again!',
             type: 'warning',
           }
         );
@@ -699,7 +699,7 @@ export default {
       if (tag_test_str.indexOf("server") != -1 && (tag_test_str.indexOf("workstation") != -1 || tag_test_str.indexOf("network equipment") != -1)) {
         this.$message(
           {
-            message: 'Only set one of the three types of tags:"terminal","server",or"network device".Please try again!',
+            message: 'Only set one of the three types of tags:"workstation","server",or"network device".Please try again!',
             type: 'warning',
           }
         );
@@ -708,7 +708,7 @@ export default {
       if (tag_test_str.indexOf("network equipment") != -1 && (tag_test_str.indexOf("server") != -1 || tag_test_str.indexOf("workstation") != -1)) {
         this.$message(
           {
-            message: 'Only set one of the three types of tags:"terminal","server",or"network device".Please try again!',
+            message: 'Only set one of the three types of tags:"workstation","server",or"network device".Please try again!',
             type: 'warning',
           }
         );

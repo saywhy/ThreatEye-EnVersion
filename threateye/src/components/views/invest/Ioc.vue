@@ -71,7 +71,7 @@
                   <span>{{scope.row.create_percent+'%' }}</span>
                 </template>
               </el-table-column>
-              <el-table-column label="状态"
+              <el-table-column label="Status"
                                width="100"
                                show-overflow-tooltip>
                 <template slot-scope="scope">

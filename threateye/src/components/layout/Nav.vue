@@ -125,7 +125,7 @@
         <div class="content_item">
           <p>
             <span class="title">
-              Mailbox
+              Email
               <span class="it_m">*</span>
             </span>
           </p>
@@ -225,7 +225,7 @@ export default {
           //console.log(response);
 
           this.user_data.password = response.data.data
-          this.user_data.placeholder = 'Contains three types of characters: uppercase, lowercase, numbers, and special characters,' + response.data.data.min_passwd_len + '-' + response.data.data.max_passwd_len + '位密码'
+          this.user_data.placeholder = 'Complex password required'
           //!@#QWEasd123 Lele#easy123 Lele@19930901
 
           this.$axios.get('/yiiapi/site/get-self-password-reset-token')
@@ -333,7 +333,7 @@ export default {
       if (this.user_edit.email_addr == '') {
         this.$message(
           {
-            message: 'Mailbox is required',
+            message: 'Email is required',
             type: 'error',
           }
         );
@@ -437,7 +437,7 @@ export default {
         width: 264px;
         height: 48px;
         background-size: 264px 48px;
-        transform:scale(.6);
+        transform: scale(0.6);
         cursor: pointer;
         margin: 5px 0 5px -48px;
       }
