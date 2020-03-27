@@ -10,7 +10,7 @@
 
             <!--搜索关键词-->
             <el-input class="s_key"
-                      placeholder="Search keywords"
+                      placeholder="Search Keywords"
                       v-model="params.key"
                       clearable>
               <i slot="prefix"
@@ -364,6 +364,7 @@
                             :row-key="getRowKeys_assets"
                             @selection-change="handle_sel_table_assets">
 
+                    <el-table-column width="20"></el-table-column>
                     <el-table-column align='left'
                                      type="selection"
                                      width="50"
@@ -408,6 +409,7 @@
                             style="width: 100%"
                             :row-key="getRowKeys_alerts"
                             @selection-change="handle_sel_table_alerts">
+                    <el-table-column width="20"></el-table-column>
                     <el-table-column type="selection"
                                      width="50"
                                      :reserve-selection="true">
