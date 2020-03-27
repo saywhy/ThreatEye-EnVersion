@@ -2647,7 +2647,7 @@ export default {
 <style lang="less">
 body {
   > ul.dropdown_ul_box_124 {
-    width: 128px !important;
+    width: 156px !important;
   }
 }
 </style>

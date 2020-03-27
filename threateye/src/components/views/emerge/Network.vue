@@ -134,7 +134,7 @@
             </el-table-column>
             <el-table-column prop="category"
                              label="Type"
-                             width="100"
+                             min-width="100"
                              show-overflow-tooltip></el-table-column>
             <el-table-column prop="indicator"
                              label="Indicator"
@@ -148,10 +148,10 @@
                              show-overflow-tooltip></el-table-column>
             <el-table-column prop="application"
                              label="Protocol"
-                             width="60"
+                             min-width="80"
                              show-overflow-tooltip></el-table-column>
             <el-table-column label="Severity"
-                             width="100">
+                             show-overflow-tooltip>
               <template slot-scope="scope">
                 <span class="btn_alert_background"
                       :class="{'high_background':scope.row.degree =='High risk','mid_background':scope.row.degree =='Medium risk','low_background':scope.row.degree =='Low risk'}">
@@ -159,7 +159,7 @@
               </template>
             </el-table-column>
             <el-table-column label="Compromise"
-                             width="100">
+                             min-width="100">
               <template slot-scope="scope">
                 <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
                   {{ scope.row.fall_certainty | certainty }}</span>
