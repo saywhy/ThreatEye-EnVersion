@@ -174,7 +174,7 @@
               <div class="item_addrs"
                    v-for="(item,index) in monitor_add.ip_segment_list">
                 <el-input class="select_box"
-                          placeholder="Please enter IP subnets or IP addresses"
+                          placeholder="Please enter IP subnets (CIDR) or IP addresses"
                           v-model="item.name"
                           clearable>
                 </el-input>
@@ -291,7 +291,7 @@
               <div class="item_addrs"
                    v-for="(item,index) in monitor_edit.ip_segment_list">
                 <el-input class="select_box"
-                          placeholder="Please enter IP subnets or IP addresses"
+                          placeholder="Please enter IP subnets (CIDR) or IP addresses"
                           v-model="item.name"
                           clearable>
                 </el-input>
@@ -480,7 +480,7 @@ export default {
       if (isRepeat_ip_segment.length == 0) {
         this.$message(
           {
-            message: 'Please enter IP subnets or IP addresses',
+            message: 'Please enter IP subnets (CIDR) or IP addresses',
             type: 'warning',
           }
         );

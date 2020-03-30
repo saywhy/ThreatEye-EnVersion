@@ -177,7 +177,7 @@
             <el-table-column type="selection"
                              width="50"></el-table-column>
             <el-table-column prop="asset_ip"
-                             label="Assets"></el-table-column>
+                             label="Asset"></el-table-column>
             <el-table-column prop="label_group"
                              label="Asset Groups"
                              show-overflow-tooltip
@@ -409,7 +409,7 @@
                 <el-table-column type="selection"
                                  width="30"></el-table-column>
                 <el-table-column prop="asset_ip"
-                                 label="Assets"
+                                 label="Asset"
                                  show-overflow-tooltip></el-table-column>
                 <el-table-column prop="label_group"
                                  label="Asset Groups"

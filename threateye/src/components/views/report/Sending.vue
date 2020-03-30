@@ -24,7 +24,7 @@
         <el-row type="flex"
                 class="r_main_list">
           <el-col :span="3">
-            <span class="title">Cycle</span>
+            <span class="title">Frequency</span>
           </el-col>
           <el-col :span="21">
             <div class="r_radio">

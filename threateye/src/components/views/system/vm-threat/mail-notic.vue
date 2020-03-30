@@ -23,7 +23,7 @@
         </el-input>
       </div>
       <p class="title">
-        SSL Enable
+        Enable SSL
         <el-switch v-model="mail.ssl_switch">
         </el-switch>
       </p>

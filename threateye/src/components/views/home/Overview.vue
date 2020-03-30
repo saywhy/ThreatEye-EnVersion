@@ -57,7 +57,7 @@
           <div class="top_item">
             <div class="title">
               <p>
-                <span class="title_left">Protocal Statistics</span>
+                <span class="title_left">Protocol Statistics</span>
               </p>
             </div>
             <div class="legend">

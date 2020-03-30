@@ -9,7 +9,7 @@
                        width="60"
                        align="center"></el-table-column>
       <el-table-column prop="asset_ip"
-                       label="Risk Assets"
+                       label="Risk Asset"
                        show-overflow-tooltip></el-table-column>
       <el-table-column label="Risk Index">
         <template slot-scope="scope">

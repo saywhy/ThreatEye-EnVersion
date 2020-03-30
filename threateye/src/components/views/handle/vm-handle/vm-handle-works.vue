@@ -371,7 +371,7 @@
                                      width="50"
                                      :reserve-selection="true"></el-table-column>
                     <el-table-column prop="asset_ip"
-                                     label="Assets"
+                                     label="Asset"
                                      width="180"
                                      show-overflow-tooltip></el-table-column>
                     <el-table-column prop="label_group"
@@ -621,7 +621,7 @@
                                      type="selection"
                                      width="50"></el-table-column>
                     <el-table-column prop="asset_ip"
-                                     label="Assets"></el-table-column>
+                                     label="Asset"></el-table-column>
                     <el-table-column prop="label_group"
                                      label="Asset groups"
                                      show-overflow-tooltip></el-table-column>

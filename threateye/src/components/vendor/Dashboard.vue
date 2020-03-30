@@ -18,7 +18,7 @@
         </transition>
       </el-main>
     </el-container>
-    <el-footer>©CETC All Rights Reserved</el-footer>
+    <el-footer>©CETC All Rights Reserved.</el-footer>
   </el-container>
 </template>
 
