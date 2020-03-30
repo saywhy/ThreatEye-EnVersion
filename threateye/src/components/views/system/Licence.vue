@@ -38,7 +38,7 @@
                   @row-click="alert_detail">
           <el-table-column prop="index"
                            label="Item"
-                           width="50"
+                           width="60"
                            show-overflow-tooltip>
             <template slot-scope="scope">
               {{(license_data.page-1)*(license_data.rows) + scope.row.index_cn}}
