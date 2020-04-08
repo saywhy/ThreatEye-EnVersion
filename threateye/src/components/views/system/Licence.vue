@@ -49,7 +49,7 @@
                            label="Serial No."
                            show-overflow-tooltip>
           </el-table-column>
-          <el-table-column prop="product"
+          <el-table-column prop="orgName"
                            label="Organization"
                            show-overflow-tooltip>
           </el-table-column>
