@@ -1228,6 +1228,18 @@ export default {
             '3. Use network threat detection solutions to detect outreach threats as early as possible.',
           ],
         },
+         {
+          name: 'VPN地址vpn',
+          des: 'VPN addresses are IP addresses of public VPN providers’ VPN servers. Attackers use VPN to circumvent organizations’ security policies. There are a few legitimate uses of VPN in an organization.',
+          handle: [
+            '1. Verify that the user of the machine is using VPN legitimately;',
+            '2. If an attack is confirmed, it should be mitigated starting from the process that has visited the address by identifying the machine port in the "network event" in the alert details.',
+          ],
+          reinforce: [
+            '1. Install anti-virus software and update virus library in time;',
+            '2. Consider using network security devices to block that VPN address.',
+          ],
+        },
       ],
       // attack_stage
       network_detail: {

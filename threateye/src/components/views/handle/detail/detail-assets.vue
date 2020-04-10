@@ -574,7 +574,8 @@
                         tooltip-effect="dark"
                         style="width: 100%"
                         @selection-change="handle_sel_table_assets">
-                <el-table-column prop="type" width="20"></el-table-column>
+                <el-table-column prop="type"
+                                 width="20"></el-table-column>
                 <el-table-column type="selection"
                                  width="30"></el-table-column>
                 <el-table-column prop="asset_ip"
@@ -582,18 +583,19 @@
                                  show-overflow-tooltip></el-table-column>
                 <el-table-column prop="label_group"
                                  label="Asset Groups"
-
                                  show-overflow-tooltip></el-table-column>
-                <el-table-column label="Related Threats"  min-width="100" show-overflow-tooltip>
+                <el-table-column label="Related Threats"
+                                 min-width="100"
+                                 show-overflow-tooltip>
                   <template slot-scope="scope">
-                <span class="btn_tag_box"
-                      v-if="item!=''"
-                      v-for="item in scope.row.category">
-                  <el-button type="primary"
-                             class="btn_tag">
-                    {{item}}
-                  </el-button>
-                </span>
+                    <span class="btn_tag_box"
+                          v-if="item!=''"
+                          v-for="item in scope.row.category">
+                      <el-button type="primary"
+                                 class="btn_tag">
+                        {{item}}
+                      </el-button>
+                    </span>
                   </template>
                 </el-table-column>
                 <el-table-column label="Severity">
@@ -603,7 +605,8 @@
                       {{ scope.row.degree | degree }}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="Compromise" width="120">
+                <el-table-column label="Compromise"
+                                 width="120">
                   <template slot-scope="scope">
                     <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
                       {{ scope.row.fall_certainty | certainty }}</span>
@@ -1183,6 +1186,18 @@ export default {
             '1. Enhance endpoint security capabilities;',
             '2. Block the network connection of devices that do not need Internet access with network security devices;',
             '3. Use network threat detection solutions to detect outreach threats as early as possible.',
+          ],
+        },
+        {
+          name: 'VPN地址vpn',
+          des: 'VPN addresses are IP addresses of public VPN providers’ VPN servers. Attackers use VPN to circumvent organizations’ security policies. There are a few legitimate uses of VPN in an organization.',
+          handle: [
+            '1. Verify that the user of the machine is using VPN legitimately;',
+            '2. If an attack is confirmed, it should be mitigated starting from the process that has visited the address by identifying the machine port in the "network event" in the alert details.',
+          ],
+          reinforce: [
+            '1. Install anti-virus software and update virus library in time;',
+            '2. Consider using network security devices to block that VPN address.',
           ],
         },
       ],
@@ -1904,7 +1919,7 @@ export default {
       .stage_item_box {
         width: 114px;
         height: 56px;
-       /* line-height: 48px;*/
+        /* line-height: 48px;*/
         background: #eef6ff;
         border-radius: 2px;
         font-size: 16px;

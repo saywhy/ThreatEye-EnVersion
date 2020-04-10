@@ -126,7 +126,7 @@ axios.interceptors.response.use(response => {
   switch (response.data.status) {
     case 602:
       console.log(response.data.msg)
-      Message.warning(response.data.msg + ',请修改个人信息');
+      Message.warning(response.data.msg + ',Please modify personal information');
       //Message.warning('请修改个人信息');
       //删除token
       //removeToken();
@@ -165,6 +165,8 @@ axios.interceptors.response.use(response => {
         break;
       case 403:
         console.log('拒绝访问111')
+        let locate = window.sessionStorage;
+        locate.setItem('overtime', 'true');
         removeToken();
         location.reload();
         Vue.$router.push({

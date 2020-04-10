@@ -141,6 +141,10 @@ export default {
   },
   created () {
     this.setHeight();
+    if (window.sessionStorage.getItem('overtime')) {
+      this.$message.warning('Connection timed out,Please login again.');
+      window.sessionStorage.removeItem('overtime');
+    }
   },
   mounted () {
     this.identifyCode = "";
@@ -222,8 +226,7 @@ export default {
 </script>
 <style scoped lang="less">
 #UserLogin {
-  /deep/
-  .el-form {
+  /deep/ .el-form {
     .el-form-item {
       margin-top: 20px;
       margin-bottom: 0;
