@@ -616,8 +616,7 @@
                             style="width: 100%"
                             @selection-change="handle_sel_assets">
                     <el-table-column width="20"></el-table-column>
-                    <el-table-column
-                                     :reserve-selection="true"
+                    <el-table-column :reserve-selection="true"
                                      type="selection"
                                      width="50"></el-table-column>
                     <el-table-column prop="asset_ip"
@@ -1260,23 +1259,36 @@ export default {
 
         let stu = selected[0].status;
         if (stu == 1 || stu == 2) {
-          var url1 = "/yiiapi/site/download-test?id=" + (selected[0].id * 1);
-          this.$axios.get(url1)
-            .then(resp => {
-              let { status, msg, data } = resp.data;
+          this.$axios.get('/yiiapi/site/check-auth-exist', {
+            params: {
+              pathInfo: 'yararule/download',
+            }
+          })
+            .then(response => {
 
-              console.log(resp)
-              if (status == 0) {
-                var url2 = "/yiiapi/workorder/download?id=" + (selected[0].id * 1);
-                window.location.href = url2;
-              } else {
-                this.$message({ type: 'warning', message: msg });
-              }
-              /*this.$axios.get('/workorder/download?id='+(selected[0].id * 1))
+
+              var url1 = "/yiiapi/site/download-test?id=" + (selected[0].id * 1);
+              this.$axios.get(url1)
                 .then(resp => {
-                console.log(resp)
-              })*/
+                  let { status, msg, data } = resp.data;
+
+                  console.log(resp)
+                  if (status == 0) {
+                    var url2 = "/yiiapi/workorder/download?id=" + (selected[0].id * 1);
+                    window.location.href = url2;
+                  } else {
+                    this.$message({ type: 'warning', message: msg });
+                  }
+                  /*this.$axios.get('/workorder/download?id='+(selected[0].id * 1))
+                    .then(resp => {
+                    console.log(resp)
+                  })*/
+                })
             })
+            .catch(error => {
+              console.log(error);
+            })
+
         } else {
           this.$message({ message: 'Downloading tickets is not allowed in the current state', type: 'warning' });
         }
@@ -2017,8 +2029,7 @@ export default {
             color: #0070ff;
           }
         }
-        /deep/
-        .el-tag {
+        /deep/ .el-tag {
           height: 24px;
           width: 120px;
           line-height: 24px;

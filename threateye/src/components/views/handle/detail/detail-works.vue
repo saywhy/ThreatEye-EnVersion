@@ -144,9 +144,9 @@
                                width="100"
                                show-overflow-tooltip>
                 <template slot-scope="scope">
-                      <span class="btn_alert_background"
-                            :class="{'high_background':scope.row.degree =='High risk','mid_background':scope.row.degree =='Medium risk','low_background':scope.row.degree =='Low risk'}">
-                        {{ scope.row.degree | degree_sino }}</span>
+                  <span class="btn_alert_background"
+                        :class="{'high_background':scope.row.degree =='High risk','mid_background':scope.row.degree =='Medium risk','low_background':scope.row.degree =='Low risk'}">
+                    {{ scope.row.degree | degree_sino }}</span>
                 </template>
               </el-table-column>
               <el-table-column label="Status"
@@ -186,7 +186,7 @@
                  alt="">
             <span class="lst_left_title">{{item.username}}</span>
             <span class="lst_left_time">
-            <i class="lst_time"></i>{{item.created_at | time}}</span>
+              <i class="lst_time"></i>{{item.created_at | time}}</span>
             <p class="lst_left_content">{{item.comment}}</p>
           </li>
         </ul>
@@ -440,39 +440,49 @@ export default {
     worksdownload () {
       let stu = this.data.status;
       if (stu == 1 || stu == 2) {
-        var url1 = " /yiiapi/site/download-test?id=" + this.id * 1;
-        this.$axios.get(url1)
-          .then(resp => {
-            let { status, msg, data } = resp.data;
-            if (status == 0) {
-              var url2 = ''
-              switch (this.$route.query.type) {
-                case 'workorder':
-                  url2 = "/yiiapi/workorder/download?id="
-                  break;
-                case 'alert_detail':
-                  url2 = "/yiiapi/alert/download?id="
-                  break;
-                case 'asset':
-                  url2 = "/yiiapi/asset/download?id="
-                  break;
-                case 'lateral':
-                  url2 = "/yiiapi/horizontalthreat/download?id="
-                  break;
-                case 'outside':
-                  url2 = "/yiiapi/externalthreat/download?id="
-                  break;
-                case 'outreath':
-                  url2 = "/yiiapi/outreachthreat/download?id="
-                  break;
-                default:
-                  break;
-              }
-              var url3 = url2 + this.id * 1;
-              window.location.href = url3;
-            } else {
-              this.$message({ type: 'warning', message: msg });
-            }
+        this.$axios.get('/yiiapi/site/check-auth-exist', {
+          params: {
+            pathInfo: 'yararule/download',
+          }
+        })
+          .then(response => {
+            var url1 = " /yiiapi/site/download-test?id=" + this.id * 1;
+            this.$axios.get(url1)
+              .then(resp => {
+                let { status, msg, data } = resp.data;
+                if (status == 0) {
+                  var url2 = ''
+                  switch (this.$route.query.type) {
+                    case 'workorder':
+                      url2 = "/yiiapi/workorder/download?id="
+                      break;
+                    case 'alert_detail':
+                      url2 = "/yiiapi/alert/download?id="
+                      break;
+                    case 'asset':
+                      url2 = "/yiiapi/asset/download?id="
+                      break;
+                    case 'lateral':
+                      url2 = "/yiiapi/horizontalthreat/download?id="
+                      break;
+                    case 'outside':
+                      url2 = "/yiiapi/externalthreat/download?id="
+                      break;
+                    case 'outreath':
+                      url2 = "/yiiapi/outreachthreat/download?id="
+                      break;
+                    default:
+                      break;
+                  }
+                  var url3 = url2 + this.id * 1;
+                  window.location.href = url3;
+                } else {
+                  this.$message({ type: 'warning', message: msg });
+                }
+              })
+          })
+          .catch(error => {
+            console.log(error);
           })
       } else {
         this.$message({ message: 'Downloading tickets is not allowed in the current state', type: 'warning' });
@@ -519,7 +529,7 @@ export default {
             this.$message.success('successfully');
             this.reply = '';
             this.get_reply_works_detail();
-          }else {
+          } else {
             this.$message.error('failed');
           }
         });

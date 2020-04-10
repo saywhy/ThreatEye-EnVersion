@@ -1198,10 +1198,19 @@ export default {
         cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => {
-
-        var url1 = "/yiiapi/alert/export-alerts?status=" + this.params.status + '&start_time=' + this.params.startTime
-          + '&end_time=' + this.params.endTime + '&fall_certainty=' + this.params.threat + '&key_word=' + this.params.key;
-        window.location.href = url1;
+        this.$axios.get('/yiiapi/site/check-auth-exist', {
+          params: {
+            pathInfo: 'yararule/download',
+          }
+        })
+          .then(response => {
+            var url1 = "/yiiapi/alert/export-alerts?status=" + this.params.status + '&start_time=' + this.params.startTime
+              + '&end_time=' + this.params.endTime + '&fall_certainty=' + this.params.threat + '&key_word=' + this.params.key;
+            window.location.href = url1;
+          })
+          .catch(error => {
+            console.log(error);
+          })
 
 
       }).catch(() => {

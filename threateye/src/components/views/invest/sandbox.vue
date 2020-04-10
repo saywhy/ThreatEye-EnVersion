@@ -1,5 +1,6 @@
 <template>
-  <div id="sandbox" v-loading.fullscreen.lock="loading">
+  <div id="sandbox"
+       v-loading.fullscreen.lock="loading">
     <div class="container">
       <div class="invest_box">
         <el-tabs v-model="activeName"
@@ -102,7 +103,7 @@ export default {
   name: "sandbox",
   data () {
     return {
-      loading:true,
+      loading: true,
       activeName: 'first',
       options: {
         target: '/yiiapi/sandbox/upload',
@@ -117,7 +118,7 @@ export default {
       }
     };
   },
-  created (){
+  created () {
     this.get_version()
   },
   mounted () {
@@ -125,13 +126,13 @@ export default {
   },
   methods: {
     //获取当前版本
-    get_version(){
+    get_version () {
       this.$axios.get('/yiiapi/site/license-version')
         .then(response => {
           let { status, data } = response.data;
           console.log(data);
           this.loading = false;
-          if(data.edition == 1){
+          if (data.edition == 1) {
             this.$router.push({ path: '/401' });
           }
         })
@@ -158,6 +159,17 @@ export default {
       }
     },
     onFileSuccess (rootFile, file, response, chunk) {
+      this.$axios.get('/yiiapi/site/check-auth-exist', {
+        params: {
+          pathInfo: 'yararule/download',
+        }
+      })
+        .then(response => {
+
+        })
+        .catch(error => {
+          console.log(error);
+        })
       if (JSON.parse(response).status == 0) {
         console.log(file);
         this.$axios.get('/yiiapi/sandbox/move-file', {
@@ -199,8 +211,32 @@ export default {
       }
       console.log(chunk);
     },
-    onFileProgress (file) { },
-    onFileError () { },
+    onFileProgress (file) {
+      this.$axios.get('/yiiapi/site/check-auth-exist', {
+        params: {
+          pathInfo: 'yararule/download',
+        }
+      })
+        .then(response => {
+
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    },
+    onFileError () {
+      this.$axios.get('/yiiapi/site/check-auth-exist', {
+        params: {
+          pathInfo: 'yararule/download',
+        }
+      })
+        .then(response => {
+
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    },
     // 获取列表
     get_data () {
       this.$axios.get('/yiiapi/sandbox/list', {
@@ -239,8 +275,19 @@ export default {
     // 下载
     download (item) {
       console.log(item);
-      var url1 = '/yiiapi/sandbox/download-file?id=' + item.id;
-      window.location.href = url1;
+      this.$axios.get('/yiiapi/site/check-auth-exist', {
+        params: {
+          pathInfo: 'yararule/download',
+        }
+      })
+        .then(response => {
+          var url1 = '/yiiapi/sandbox/download-file?id=' + item.id;
+          window.location.href = url1;
+        })
+        .catch(error => {
+          console.log(error);
+        })
+
     },
     // 删除
     del_box (item) {
