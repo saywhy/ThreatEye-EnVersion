@@ -13,9 +13,7 @@ import {
   forRoleList,
   formatList
 } from './auth'
-import {
-  fetch
-} from "../../https/api";
+
 
 export default {
   state: {
@@ -28,7 +26,8 @@ export default {
     token: getToken(),
     roles: [],
     isCollapse: false,
-    sysMonitor: false
+    sysMonitor: false,
+    sandbox: false
   },
   getters: {
     token: state => state.token,
@@ -39,6 +38,10 @@ export default {
   mutations: {
     SET_TOKEN: (state, args) => {
       state.token = args;
+    },
+
+    SET_SANDBOX:(state, args) => {
+      state.sandbox = args;
     },
 
     SET_ROLES: (state, args) => {
@@ -69,8 +72,6 @@ export default {
           "LoginForm": userInfo,
           "login-button": ""
         }).then(resp => {
-
-          console.log(resp)
 
           //把工单中心上面tabs清空
           window.sessionStorage.removeItem('activeName');
@@ -113,15 +114,23 @@ export default {
       dispatch
     }) {
       try {
-        //测试数据
-        //let resp = await axios('/static/data/auth.json');
         //真实数据
         let resp = await axios('/yiiapi/site/menu');
 
         let roles = forRoleList(resp);
 
-        // console.log(roles);
+        //console.log(roles);
+
+        //roles.push('995');
+
+        if(!roles.includes('117')){
+          roles.push('117');
+          commit('SET_SANDBOX',false);
+        }else {
+          commit('SET_SANDBOX',true);
+        }
         commit('SET_ROLES', roles);
+
         return roles;
 
       }catch (err) {

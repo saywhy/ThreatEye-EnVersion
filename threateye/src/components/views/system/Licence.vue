@@ -285,15 +285,17 @@ export default {
                     }
                   );
                 } else {
-                  this.$message(
-                    {
-                      message: 'License imported successfully',
-                      type: 'success',
-                    }
-                  );
-                  location.reload();
-                  this.licence_pop.add = false;
-                  this.get_data();
+                  this.$store.dispatch('GetAuth').then(() => {
+                    this.$message(
+                      {
+                        message: 'License imported successfully',
+                        type: 'success',
+                      }
+                    );
+                    //location.reload();
+                    this.licence_pop.add = false;
+                    this.get_data();
+                  })
                 }
 
               })
