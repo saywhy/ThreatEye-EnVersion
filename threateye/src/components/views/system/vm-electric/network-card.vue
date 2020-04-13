@@ -302,7 +302,7 @@ export default {
             this.get_data()
             this.$message(
               {
-                message: '修改配置成功',
+                message: 'Configuration modified successfully',
                 type: 'success',
               }
             );

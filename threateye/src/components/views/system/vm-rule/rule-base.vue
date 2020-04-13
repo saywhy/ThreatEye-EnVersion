@@ -63,7 +63,7 @@
         <el-button @click="closed_upload_box"
                    class="cancel_btn">Cancel</el-button>
         <el-button class="ok_btn"
-                   @click="closed_upload_box">Confirm</el-button>
+                   @click="upload_ok">Confirm</el-button>
       </div>
     </el-dialog>
   </div>
@@ -84,7 +84,8 @@ export default {
       rule_data: {
         upload_pop: false,
       },
-      timer: null
+      timer: null,
+      file_content: ''
     };
   },
   props: {
@@ -177,6 +178,10 @@ export default {
     },
     closed_upload_box () {
       this.rule_data.upload_pop = false;
+      if (this.file_content != '') {
+        this.file_content.cancel()
+        this.file_content == ''
+      }
     },
     onBeforeUpload () {
 
@@ -213,9 +218,7 @@ export default {
       console.log(file.name);
       file.pause()
       if (file.name == 'sdk.tgz' || file.name == 'ids.tgz' || file.name == 'df.tgz') {
-        setTimeout(() => {
-          file.resume();
-        }, 100)
+        this.file_content = file
       } else {
         this.$message({
           message: 'Please upload files whose name are sdk.tgz, ids.tgz, df.tgz.',
@@ -229,15 +232,12 @@ export default {
     onFileSuccess (rootFile, file, response, chunk) {
       if (JSON.parse(response).status == 0) {
         console.log(file);
-        this.$axios.get('/yiiapi/sandbox/move-file', {
-          params: {
-            upload_name: file.name,
-          }
+        this.$axios.post('/yiiapi/rulebase/upload-success', {
+          "file_name": file.name
         })
           .then(response => {
             let { status, data } = response.data;
             if (status == 0) {
-              file.cancel()
               this.get_data();
               this.$message(
                 {
@@ -245,17 +245,34 @@ export default {
                   type: 'success',
                 }
               );
+              file.cancel()
+              this.rule_data.upload_pop = false;
             }
           })
           .catch(error => {
             console.log(error);
           })
 
+      } else {
+        this.$message(
+          {
+            message: JSON.parse(response).msg,
+            type: 'success',
+          }
+        );
+        file.cancel()
+        this.rule_data.upload_pop = false;
       }
       console.log(chunk);
     },
     onFileProgress (file) { },
     onFileError () { },
+    upload_ok () {
+      console.log(this.file_content);
+      setTimeout(() => {
+        this.file_content.resume();
+      }, 100)
+    }
   }
 };
 </script>
@@ -292,6 +309,18 @@ export default {
 <style lang='less'>
 @import '../../../../assets/css/less/reset_css/reset_pop.less';
 #rule_base {
+  .uploader-file-name {
+    width: 18% !important;
+  }
+  .uploader-file-size {
+    width: 20% !important;
+  }
+  .uploader-file-meta {
+    width: 0% !important;
+  }
+  .uploader-file-status {
+    width: 50% !important;
+  }
   .el-dialog {
     width: 440px;
     /deep/ .uploader-example {
