@@ -35,7 +35,7 @@
                         tooltip-effect="dark"
                         style="width: 100%">
                 <el-table-column label="Result"
-                                 width='120'
+                                 width='160'
                                  show-overflow-tooltip>
                   <template slot-scope="scope">
                     <span :class="scope.row.result==0?'color_red':''">{{scope.row.result_cn}}</span>
@@ -419,5 +419,17 @@ export default {
 <style lang="less">
 @import '../../../assets/css/less/reset_css/reset_table.less';
 @import '../../../assets/css/less/reset_css/reset_tab.less';
+.uploader-file-name {
+  width: 22% !important;
+}
+.uploader-file-size {
+  width: 25% !important;
+}
+.uploader-file-meta {
+  width: 0% !important;
+}
+.uploader-file-status {
+  width: 50% !important;
+}
 </style>
 

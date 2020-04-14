@@ -65,7 +65,7 @@
             <div class="item_addrs"
                  v-for="(item,index) in send_config.receiver_list">
               <el-input class="select_email"
-                        placeholder="Please enter the recipient's email, up to 5 emails can be set."
+                        placeholder="Please enter the recipient's email, up to 5 emails can be set"
                         v-model="item.name"
                         clearable>
               </el-input>

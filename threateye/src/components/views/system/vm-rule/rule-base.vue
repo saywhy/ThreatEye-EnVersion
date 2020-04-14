@@ -54,7 +54,7 @@
                alt="">
           <uploader-drop>
             <uploader-btn class="select_btn">Upload</uploader-btn>
-            <span>Please upload files whose name are sdk.tgz, ids.tgz, df.tgz.</span>
+            <span>Please upload files sdk.tgz, ids.tgz or df.tgz</span>
           </uploader-drop>
           <uploader-list></uploader-list>
         </uploader>
@@ -63,6 +63,8 @@
         <el-button @click="closed_upload_box"
                    class="cancel_btn">Cancel</el-button>
         <el-button class="ok_btn"
+                   :disabled="upload_btn"
+                   :class="upload_btn?'disabled_color':''"
                    @click="upload_ok">Confirm</el-button>
       </div>
     </el-dialog>
@@ -85,7 +87,8 @@ export default {
         upload_pop: false,
       },
       timer: null,
-      file_content: ''
+      file_content: '',
+      upload_btn: true,
     };
   },
   props: {
@@ -147,7 +150,6 @@ export default {
     get_data () {
       this.$axios.get('/yiiapi/rulebase/get-update-status')
         .then(response => {
-          console.log(response);
           if (response.data.status == 0) {
             this.rule = response.data.data
             this.rule.forEach(item => {
@@ -175,9 +177,11 @@ export default {
     },
     open_box () {
       this.rule_data.upload_pop = true;
+      this.upload_btn = true;
     },
     closed_upload_box () {
       this.rule_data.upload_pop = false;
+      this.upload_btn = true;
       if (this.file_content != '') {
         this.file_content.cancel()
         this.file_content == ''
@@ -187,6 +191,8 @@ export default {
 
     },
     onChange () {
+      console.log(121212);
+
     },
     uploadSuccess () {
       console.log("1111");
@@ -196,7 +202,6 @@ export default {
     update_online () {
       this.$axios.post('/yiiapi/rulebase/realtime-update')
         .then(response => {
-          console.log(response);
           let { status, data } = response.data;
           if (status == 0) {
             this.$message({
@@ -215,13 +220,15 @@ export default {
     // 离线更新
     // 上传
     onFileAdded (file) {
+      this.upload_btn = false
       console.log(file.name);
       file.pause()
       if (file.name == 'sdk.tgz' || file.name == 'ids.tgz' || file.name == 'df.tgz') {
         this.file_content = file
       } else {
+        this.upload_btn = true;
         this.$message({
-          message: 'Please upload files whose name are sdk.tgz, ids.tgz, df.tgz.',
+          message: 'Please upload files sdk.tgz, ids.tgz or df.tgz',
           type: 'warning'
         });
         setTimeout(() => {
@@ -230,6 +237,7 @@ export default {
       }
     },
     onFileSuccess (rootFile, file, response, chunk) {
+      this.upload_btn = true;
       if (JSON.parse(response).status == 0) {
         console.log(file);
         this.$axios.post('/yiiapi/rulebase/upload-success', {
@@ -266,7 +274,17 @@ export default {
       console.log(chunk);
     },
     onFileProgress (file) { },
-    onFileError () { },
+    onFileError () {
+      console.log('2222');
+      this.upload_btn = true;
+      this.file_content.cancel();
+      this.$message(
+        {
+          message: 'Upload failed, please upload again',
+          type: 'error',
+        }
+      );
+    },
     upload_ok () {
       console.log(this.file_content);
       setTimeout(() => {
@@ -310,10 +328,10 @@ export default {
 @import '../../../../assets/css/less/reset_css/reset_pop.less';
 #rule_base {
   .uploader-file-name {
-    width: 18% !important;
+    width: 20% !important;
   }
   .uploader-file-size {
-    width: 20% !important;
+    width: 25% !important;
   }
   .uploader-file-meta {
     width: 0% !important;
@@ -321,8 +339,11 @@ export default {
   .uploader-file-status {
     width: 50% !important;
   }
+  .disabled_color {
+    background: #ccc !important ;
+  }
   .el-dialog {
-    width: 440px;
+    width: 500px;
     /deep/ .uploader-example {
       width: 100%;
       margin: 0;

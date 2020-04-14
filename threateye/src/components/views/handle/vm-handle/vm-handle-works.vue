@@ -207,7 +207,10 @@
            style="font-size:0">
           <span style="font-size:14px">Please confirm to change the status of the selected</span>
           <span style="font-size:14px">{{table.multipleSelection.length}}</span>
-          <span style="font-size:14px"> terms to "</span>
+          <span style="font-size:14px"
+                v-if="table.multipleSelection.length==1"> &nbsp;item to "</span>
+          <span style="font-size:14px"
+                v-if="table.multipleSelection.length!=1"> &nbsp;items to "</span>
           <span style="font-size:14px">{{process_state}}</span>
           <span style="font-size:14px">"?</span>
         </p>
@@ -1215,13 +1218,13 @@ export default {
       let worker_id_group = selected.map(x => { return x.id; });
       //状态设置
       let process = this.process_state;
+      console.log(process);
       let change_status = 0;
-
-      if (process == '处置中') {
+      if (process == 'In Progress') {
         change_status = 2;
-      } else if (process == '已处置') {
+      } else if (process == 'Resolved') {
         change_status = 3;
-      } else if (process == '已取消') {
+      } else if (process == 'Cancelled') {
         change_status = 4;
       }
       this.$axios.put('/yiiapi/workorder/change-status', {
@@ -1229,7 +1232,9 @@ export default {
         status: change_status
       })
         .then(resp => {
-          let { status, data } = resp.data;
+          console.log(resp);
+          let { status, data, msg } = resp.data;
+
           if (status == 0) {
             this.$message.success('Change ticket status successfully');
             this.get_list_works();
@@ -1237,7 +1242,7 @@ export default {
             /******************************************************替换***********************************************/
             this.$emit('updateNum');
           } else {
-            this.$message.error('Change ticket status failed');
+            this.$message.error(msg);
             this.closed_state();
             /******************************************************替换***********************************************/
           }

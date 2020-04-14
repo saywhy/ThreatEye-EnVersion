@@ -212,7 +212,10 @@
            style="font-size:0">
           <span style="font-size:14px">Please confirm to change the status of the selected </span>
           <span style="font-size:14px">{{table.multipleSelection.length}}</span>
-          <span style="font-size:14px"> terms to "</span>
+             <span style="font-size:14px"
+                v-if="table.multipleSelection.length==1"> &nbsp;item to "</span>
+          <span style="font-size:14px"
+                v-if="table.multipleSelection.length!=1"> &nbsp;items to "</span>
           <span style="font-size:14px">{{process_state}}</span>
           <span style="font-size:14px">"?</span>
         </p>
