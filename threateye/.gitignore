@@ -1,8 +1,7 @@
 .DS_Store
 node_modules/
 /dist/
-/threateyefrontend/
-/threateyefrontend/index.html
+/threateyefrontend_cn/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

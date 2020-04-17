@@ -72,7 +72,7 @@
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="Please enter a ip"
+                    placeholder="Please enter an ip"
                     v-model="outside_pop.ip.ip"
                     clearable>
           </el-input>
@@ -101,11 +101,11 @@
       <div class="content">
         <div class="content_item">
           <p>
-            <span class="title">Domain</span>
+            <span class="title">URL</span>
             <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="Please enter Domain"
+                    placeholder="Please enter a URL"
                     v-model="outside_pop.url.url"
                     clearable>
           </el-input>
@@ -212,7 +212,7 @@ export default {
           if (this.outside_pop.ip.ip == '') {
             this.$message(
               {
-                message: 'Please enter a ip',
+                message: 'Please enter an ip',
                 type: 'warning',
               }
             );
@@ -224,7 +224,7 @@ export default {
           if (this.outside_pop.url.url == '') {
             this.$message(
               {
-                message: 'Please enter domain',
+                message: 'Please enter a URL',
                 type: 'warning',
               }
             );
@@ -265,7 +265,7 @@ export default {
                 this.outside_pop.url.show = false;
                 this.$message(
                   {
-                    message: 'Domain added successfully',
+                    message: 'URL added successfully',
                     type: 'success',
                   }
                 );

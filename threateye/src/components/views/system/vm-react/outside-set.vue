@@ -405,7 +405,7 @@ export default {
             this.outside_pop.edit.show = false
             this.$message(
               {
-                message: 'Account updated successfully',
+                message: 'Password updated successfully',
                 type: 'success',
               }
             );
