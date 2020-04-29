@@ -41,6 +41,18 @@
                          :value="item.value">
               </el-option>
             </el-select>
+            <!--威胁等级-->
+            <el-select class="s_key"
+                       v-model="params.degree"
+                       clearable
+                       placeholder="Severity"
+                       :popper-append-to-body="false">
+              <el-option v-for="item in options_degrees"
+                         :key="item.value"
+                         :label="item.label"
+                         :value="item.value">
+              </el-option>
+            </el-select>
 
             <!--处理状态-->
             <el-select class="s_key"

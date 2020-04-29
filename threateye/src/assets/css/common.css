@@ -170,11 +170,13 @@ input:-ms-input-placeholder {
 
 .btn_alert_background {
   width: 72px;
-  /*height: 30px;*/
+  /* height: 30px;
+  line-height: 30px;*/
+  height: auto;
+
   display: inline-block;
   color: #fff;
   text-align: center;
-  line-height: normal;
   border-radius: 2px;
 }
 

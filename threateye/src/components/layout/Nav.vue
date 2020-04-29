@@ -27,8 +27,7 @@
           </router-link>
         </el-menu>
       </el-col>
-      <el-col :span="9"
-              style="width:38.3%;">
+      <el-col style="width: 11.6%">
         <div class="header-basic"
              align="right">
           <el-badge is-dot
