@@ -3,6 +3,9 @@
     <el-table class="common-table"
               ref="multipleTable"
               @row-click="detail_click"
+              :row-style="{cursor:'pointer'}"
+              @mousedown.native="mousedown"
+              @mouseup.native="mouseup"
               :data="tableData">
       <el-table-column label="Time"
                        show-overflow-tooltip>
@@ -44,6 +47,19 @@
 <script type="text/ecmascript-6">
 export default {
   name: 'bom-right',
+  data () {
+    return {
+      detail_click_val: {},
+      oldPositon: {
+        x: '',
+        y: ''
+      },
+      newPositon: {
+        x: '',
+        y: ''
+      }
+    }
+  },
   props: {
     bom_right: {
       type: Array,
@@ -59,18 +75,39 @@ export default {
   methods: {
     //进入详情页面
     detail_click (val) {
-      this.$router.push({ path: "/detail/network", query: { detail: val.id, type: 'alert' } });
+      this.detail_click_val = val
+    },
+    mousedown (event) {
+      this.oldPositon = {
+        x: '',
+        y: ''
+      }
+      this.newPositon = {
+        x: '',
+        y: ''
+      }
+      this.oldPositon.x = event.clientX;
+      this.oldPositon.y = event.clientY;
+    },
+    mouseup (event) {
+      this.newPositon.x = event.clientX;
+      this.newPositon.y = event.clientY;
+      if (this.oldPositon.x == this.newPositon.x) {
+        setTimeout(() => {
+          this.$router.push({ path: "/detail/network", query: { detail: this.detail_click_val.id, type: 'alert' } });
+        }, 10);
+      } else {
+        console.log('复制');
+      }
     },
   }
 }
 </script>
 <style scoped lang="less">
-  .vm-move-threat{
-    /deep/
-    .btn_alert_background{
-      line-height: unset;
-      height: auto;
-    }
+.vm-move-threat {
+  /deep/ .btn_alert_background {
+    line-height: unset;
+    height: auto;
   }
-
+}
 </style>

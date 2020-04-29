@@ -7,12 +7,16 @@
 </template>
 
 <script>
+import config from '../package.json'
 export default {
   name: 'App',
   data () {
     return {
       transitionName: 'slide-right'
     }
+  },
+  created () {
+    console.log(config.version, '当前版本号')
   },
   computed: {
     key () {

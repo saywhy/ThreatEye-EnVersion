@@ -12,6 +12,7 @@
                  style="display: inline-block;"
                  :http-request="uploadSectionFile"
                  action="sdsdsdsa"
+                 accept=".key"
                  :on-preview="handlePreview"
                  :on-remove="handleRemove"
                  :before-remove="beforeRemove"
@@ -321,7 +322,7 @@ export default {
                   type: 'error',
                 }
               );
-            } else {
+            } else if (response.data.status == 0) {
               this.$message(
                 {
                   message: 'License imported successfully',
@@ -330,6 +331,13 @@ export default {
               );
               this.licence_pop.add = false;
               this.get_data();
+            } else {
+              this.$message(
+                {
+                  message: response.data.message,
+                  type: 'error',
+                }
+              );
             }
 
           })
@@ -376,6 +384,7 @@ export default {
       console.log(item);
     },
     onBeforeUpload (file) {
+      console.log(file);
       console.log(this.file_data.bin);
     },
     readData (file) {
@@ -393,7 +402,6 @@ export default {
     },
     onChange (item, file) {
     }
-
   },
   filters: {
     formatDate: function (value) {

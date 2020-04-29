@@ -129,6 +129,8 @@
                     :data="table.tableData"
                     :row-style="{cursor:'pointer'}"
                     tooltip-effect="dark"
+                    @mousedown.native="mousedown"
+                    @mouseup.native="mouseup"
                     @selection-change="handleSelChange"
                     @row-click="detail_click">
             <el-table-column prop="type"
@@ -148,7 +150,8 @@
             <el-table-column prop="category"
                              label="Type"
                              min-width="100"
-                             show-overflow-tooltip></el-table-column>
+                             show-overflow-tooltip>
+            </el-table-column>
             <el-table-column prop="indicator"
                              label="Indicator"
                              min-width="120"
@@ -525,7 +528,7 @@ export default {
         status: "",
         startTime: '',
         endTime: '',
-        degree:''
+        degree: ''
       },
       options_threat: [
         {
@@ -673,6 +676,16 @@ export default {
         remarks: "",
         multiple: [],
         old_as: [],
+      },
+      detail_click_val: {},
+      detail_click_column: {},
+      oldPositon: {
+        x: '',
+        y: ''
+      },
+      newPositon: {
+        x: '',
+        y: ''
       }
     };
   },
@@ -764,7 +777,7 @@ export default {
         status: "",
         startTime: '',
         endTime: '',
-        degree:''
+        degree: ''
       };
       $(document.querySelector('.el-button--text')).trigger('click');
       this.get_list_risk();
@@ -787,12 +800,36 @@ export default {
     handleSelChange (val) {
       this.table.multipleSelection = val;
     },
-
     //进入详情页面
-    detail_click (val) {
-      this.$router.push({ path: "/detail/network", query: { detail: val.id, type: 'alert' } });
+    detail_click (val, column, cell) {
+      this.detail_click_val = val
+      this.detail_click_column = column
     },
-
+    mousedown (event) {
+      this.oldPositon = {
+        x: '',
+        y: ''
+      }
+      this.newPositon = {
+        x: '',
+        y: ''
+      }
+      this.oldPositon.x = event.clientX;
+      this.oldPositon.y = event.clientY;
+    },
+    mouseup (event) {
+      this.newPositon.x = event.clientX;
+      this.newPositon.y = event.clientY;
+      if (this.oldPositon.x == this.newPositon.x) {
+        setTimeout(() => {
+          if (Object.keys(this.detail_click_column).length != 0 && this.detail_click_column.type != 'selection') {
+            this.$router.push({ path: "/detail/network", query: { detail: this.detail_click_val.id, type: 'alert' } });
+          }
+        }, 10);
+      } else {
+        console.log('复制');
+      }
+    },
     /***********************************以下是弹窗部分****************************************/
     /***********************************以下是弹窗部分****************************************/
 

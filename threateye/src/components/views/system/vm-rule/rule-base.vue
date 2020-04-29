@@ -53,7 +53,10 @@
                src="@/assets/images/setting/upload_s.png"
                alt="">
           <uploader-drop>
-            <uploader-btn class="select_btn">Upload</uploader-btn>
+            <uploader-btn class="select_btn"
+                          :directory="false"
+                          :attrs="attrs"
+                          :single='true'>Upload</uploader-btn>
             <span>Please upload files sdk.tgz, ids.tgz or df.tgz</span>
           </uploader-drop>
           <uploader-list></uploader-list>
@@ -80,7 +83,11 @@ export default {
       options: {
         target: '/yiiapi/rulebase/upload-package',
         chunkSize: '10048000',   //分块大小
+        singleFile: true,
         testChunks: false,     //是否开启服务器分片校验
+      },
+      attrs: {
+        accept: 'application/gzip'//接受文件类型
       },
       rule: {},
       rule_data: {
@@ -187,13 +194,6 @@ export default {
         this.file_content == ''
       }
     },
-    onBeforeUpload () {
-
-    },
-    onChange () {
-      console.log(121212);
-
-    },
     uploadSuccess () {
       console.log("1111");
       this.monitor_state.import_loading = false;
@@ -226,11 +226,11 @@ export default {
       if (file.name == 'sdk.tgz' || file.name == 'ids.tgz' || file.name == 'df.tgz') {
         this.file_content = file
       } else {
-        this.upload_btn = true;
         this.$message({
           message: 'Please upload files sdk.tgz, ids.tgz or df.tgz',
           type: 'warning'
         });
+        file.ignored = true
         setTimeout(() => {
           file.cancel()
         }, 100)
@@ -343,7 +343,7 @@ export default {
     background: #ccc !important ;
   }
   .el-dialog {
-    width: 500px;
+    width: 600px;
     /deep/ .uploader-example {
       width: 100%;
       margin: 0;

@@ -140,7 +140,9 @@
                     tooltip-effect="dark"
                     :row-style="{cursor:'pointer'}"
                     @selection-change="handleSelChange"
-                    @row-click="detail_click">
+                    @row-click="detail_click"
+                    @mousedown.native="mousedown"
+                    @mouseup.native="mouseup">
             <el-table-column prop="type"
                              width="20">
               <template slot-scope="scope">
@@ -225,7 +227,7 @@
            style="font-size:0">
           <span style="font-size:14px">Please confirm to change the status of the selected </span>
           <span style="font-size:14px">{{table.multipleSelection.length}}</span>
-             <span style="font-size:14px"
+          <span style="font-size:14px"
                 v-if="table.multipleSelection.length==1"> &nbsp;item to "</span>
           <span style="font-size:14px"
                 v-if="table.multipleSelection.length!=1"> &nbsp;items to "</span>
@@ -681,6 +683,16 @@ export default {
         multiple: [],
         old_as: [],
         remind: ['email']
+      },
+      detail_click_val: {},
+      detail_click_column: {},
+      oldPositon: {
+        x: '',
+        y: ''
+      },
+      newPositon: {
+        x: '',
+        y: ''
       }
     };
   },
@@ -794,7 +806,7 @@ export default {
         status: "",
         startTime: "",
         endTime: "",
-        degree:""
+        degree: ""
       }
       $(document.querySelector('.el-button--text')).trigger('click');
       this.get_list_threat();
@@ -805,12 +817,35 @@ export default {
     },
 
     //进入告警详情页面
-    detail_click (val) {
-      console.log(this.$router.history.current.name);
-      // lateral
-      // outside
-      // outreath
-      this.$router.push({ path: "/detail/network", query: { detail: val.id, type: this.$router.history.current.name } });
+    //进入详情页面
+    detail_click (val, column, cell) {
+      this.detail_click_val = val
+      this.detail_click_column = column
+    },
+    mousedown (event) {
+      this.oldPositon = {
+        x: '',
+        y: ''
+      }
+      this.newPositon = {
+        x: '',
+        y: ''
+      }
+      this.oldPositon.x = event.clientX;
+      this.oldPositon.y = event.clientY;
+    },
+    mouseup (event) {
+      this.newPositon.x = event.clientX;
+      this.newPositon.y = event.clientY;
+      if (this.oldPositon.x == this.newPositon.x) {
+        setTimeout(() => {
+          if (Object.keys(this.detail_click_column).length != 0 && this.detail_click_column.type != 'selection') {
+            this.$router.push({ path: "/detail/network", query: { detail: this.detail_click_val.id, type: this.$router.history.current.name } });
+          }
+        }, 10);
+      } else {
+        console.log('复制');
+      }
     },
 
     /***********************************以下是弹窗部分****************************************/
