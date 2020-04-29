@@ -58,7 +58,6 @@ export default {
     z-index: 1000;
     height: auto !important;
   }
-
   .dashboard-list {
     margin-top: 60px;
     min-height: 900px;
@@ -69,7 +68,7 @@ export default {
       position: fixed;
       left: 0;
       top: 60px;
-      width: 210px !important;
+      width: 250px !important;
       &.collapse {
         width: 56px !important;
         #aside {
@@ -96,7 +95,7 @@ export default {
     }
     .dashboard-list-main {
       padding: 0;
-      margin-left: 210px;
+      margin-left: 250px;
       background-color: #f4f4f4;
       min-height: auto;
       height: calc(100vh - 120px);

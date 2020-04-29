@@ -97,7 +97,7 @@
                        clearable
                        placeholder="Severity"
                        width="100">
-              <el-option v-for="item in options_degree"
+              <el-option v-for="item in options_degrees"
                          :key="item.value"
                          :label="item.label"
                          :value="item.value">
@@ -591,18 +591,18 @@ export default {
           label: "Compromised"
         }
       ],
-      options_degree: [
+      options_degrees: [
         {
-          value: "high",
-          label: "High"
+          value: "low",
+          label: "Low"
         },
         {
           value: "medium",
           label: "Medium"
         },
         {
-          value: "low",
-          label: "Low"
+          value: "high",
+          label: "High"
         }
       ],
       options_status: [

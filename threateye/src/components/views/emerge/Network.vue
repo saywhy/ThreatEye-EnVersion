@@ -41,6 +41,7 @@
                          :value="item.value">
               </el-option>
             </el-select>
+
             <!--威胁等级-->
             <el-select class="s_key"
                        v-model="params.degree"
@@ -523,7 +524,8 @@ export default {
         threat: "",
         status: "",
         startTime: '',
-        endTime: ''
+        endTime: '',
+        degree:''
       },
       options_threat: [
         {
@@ -532,6 +534,10 @@ export default {
         }
       ],
       options_status: [
+        {
+          value: "all",
+          label: "All"
+        },
         {
           value: "0",
           label: "New"
@@ -555,6 +561,20 @@ export default {
         {
           value: "5",
           label: "False positive"
+        }
+      ],
+      options_degrees: [
+        {
+          value: "low",
+          label: "Low"
+        },
+        {
+          value: "medium",
+          label: "Medium"
+        },
+        {
+          value: "high",
+          label: "High"
         }
       ],
       edit_tag: {
@@ -694,7 +714,7 @@ export default {
           key_word: this.params.key,
           fall_certainty: params_alert.threat,
           status: this.params.status,
-          degree: "",
+          degree: this.params.degree,
           page: this.table.pageNow,
           rows: this.table.eachPage,
         }
@@ -743,7 +763,8 @@ export default {
         threat: "",
         status: "",
         startTime: '',
-        endTime: ''
+        endTime: '',
+        degree:''
       };
       $(document.querySelector('.el-button--text')).trigger('click');
       this.get_list_risk();

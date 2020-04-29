@@ -57,6 +57,19 @@
                   </el-option>
                 </el-select>
 
+                <!--威胁等级-->
+                <el-select class="s_key"
+                           v-model="params.degree"
+                           clearable
+                           placeholder="Severity"
+                           :popper-append-to-body="false">
+                  <el-option v-for="item in options_degrees"
+                             :key="item.value"
+                             :label="item.label"
+                             :value="item.value">
+                  </el-option>
+                </el-select>
+
                 <!--处理状态-->
                 <el-select class="s_key"
                            v-model="params.status"
@@ -524,7 +537,19 @@ export default {
           label: "Compromised"
         }
       ],
+      params: {
+        key_word: "",
+        category: "",
+        status: "",
+        startTime: "",
+        endTime: "",
+        degree: ""
+      },
       options_status: [
+        {
+          value: "all",
+          label: "All"
+        },
         {
           value: "0",
           label: "New"
@@ -550,13 +575,20 @@ export default {
           label: "False positive"
         }
       ],
-      params: {
-        key_word: "",
-        category: "",
-        status: "",
-        startTime: "",
-        endTime: "",
-      },
+      options_degrees: [
+        {
+          value: "low",
+          label: "Low"
+        },
+        {
+          value: "medium",
+          label: "Medium"
+        },
+        {
+          value: "high",
+          label: "High"
+        }
+      ],
       table: {
         tableData: [],
         count: 0,
@@ -698,7 +730,7 @@ export default {
         params: {
           start_time: this.params.startTime,
           end_time: this.params.endTime,
-          degree: '',
+          degree: this.params.degree,
           fall_certainty: params_alert.threat,
           status: this.params.status,
           key_word: this.params.key_word,
@@ -762,6 +794,7 @@ export default {
         status: "",
         startTime: "",
         endTime: "",
+        degree:""
       }
       $(document.querySelector('.el-button--text')).trigger('click');
       this.get_list_threat();
