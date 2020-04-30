@@ -1797,7 +1797,7 @@ export default {
                     item.files_md5_cn.push(element.MD5);
                   });
                   item.sample_list.push({
-                    name: "Botnet samples info",
+                    name: "Botnet_samples_info",
                     value: item.files_md5_cn,
                   });
                 }
@@ -1807,7 +1807,7 @@ export default {
                     item.urls_list.push(element.url);
                   });
                   item.sample_list.push({
-                    name: "Download botnet samples",
+                    name: "Download_botnet_samples",
                     value: item.urls_list,
                   });
                 }
@@ -1845,7 +1845,7 @@ export default {
                     item.files_md5_cn.push(element.MD5);
                   });
                   item.sample_list.push({
-                    name: "Botnet samples info",
+                    name: "Botnet_samples_info",
                     value: item.files_md5_cn,
                   });
                 }
@@ -1855,7 +1855,7 @@ export default {
                     item.urls_list.push(element.url);
                   });
                   item.sample_list.push({
-                    name: "Download botnet samples",
+                    name: "Download_botnet_samples",
                     value: item.urls_list,
                   });
                 }
@@ -1890,7 +1890,7 @@ export default {
                     item.files_md5_cn.push(element.MD5);
                   });
                   item.sample_list.push({
-                    name: "Associated malicious files",
+                    name: "Associated_malicious_files",
                     value: item.files_md5_cn,
                   });
                 }
@@ -1925,11 +1925,11 @@ export default {
                 item.sample_list = [];
                 if (item.alert_description.urls) {
                   item.urls_cn = [];
-                  item.alert_description.files.forEach(element => {
+                  item.alert_description.urls.forEach(element => {
                     item.urls_cn.push(element.url);
                   });
                   item.sample_list.push({
-                    name: "Download samples",
+                    name: "Download_samples",
                     value: item.urls_cn,
                   });
                 }
