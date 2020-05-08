@@ -4,18 +4,14 @@
        v-cloak>
     <div class="outside-top">
       <div class="ost ost-1">
-        <div class="ost-title">
-          Top5
-          <slot name="name"></slot> Movement Assets</div>
+        <div class="ost-title"><slot name="name"></slot></div>
         <div class="ost-progress">
           <vm-handle-progress :progress_data="progress_data_source5"
                               v-if="progress_data_source5_show"></vm-handle-progress>
         </div>
       </div>
       <div class="ost ost-2">
-        <div class="ost-title">
-          Top5
-          <slot name="name"></slot> Movement Categories</div>
+        <div class="ost-title"><slot name="types"></slot></div>
         <div class="ost-emerge">
           <vm-handle-form :form_data="form_data_threat5"
                           v-if="form_data_threat5_show"></vm-handle-form>

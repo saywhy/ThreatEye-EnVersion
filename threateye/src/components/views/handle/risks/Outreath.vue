@@ -1,7 +1,8 @@
 <template>
   <div class="handle-outreach" v-cloak>
     <vm-handle-risks :threats = "threats">
-      <slot slot="name"><span>Outreach </span></slot>
+      <slot slot="name"><span>Top5 Outreach Threat Assets</span></slot>
+      <slot slot="types"><span>Top5 Outreach Threat Categories</span></slot>
       <slot>
         <div class="outside-middle">
           <div class="osm-top">
