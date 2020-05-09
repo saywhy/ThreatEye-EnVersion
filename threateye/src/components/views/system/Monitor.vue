@@ -75,7 +75,7 @@
                            show-overflow-tooltip>
             <template slot-scope="scope">{{ scope.row.updated_at*1000 |formatDate }}</template>
           </el-table-column>
-          <el-table-column label="Operation">
+          <el-table-column label="Action">
             <template slot-scope="scope">
               <el-button type="primary"
                          class="btn_edit"
@@ -804,7 +804,7 @@ export default {
         );
         return false
       }
-      this.$confirm('This operation deletes the item. Do you want to continue?', 'Message', {
+      this.$confirm('This action deletes the item. Do you want to continue?', 'Message', {
         confirmButtonText: 'Confirm',
         cancelButtonText: 'Cancel',
         type: 'warning'

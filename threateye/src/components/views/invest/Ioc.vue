@@ -293,7 +293,7 @@ export default {
         );
         return false
       }
-      this.$confirm('This operation deletes the item. Do you want to continue?', 'Message', {
+      this.$confirm('This action deletes the item. Do you want to continue?', 'Message', {
         confirmButtonText: 'Confirm',
         cancelButtonText: 'Cancel',
         type: 'warning'

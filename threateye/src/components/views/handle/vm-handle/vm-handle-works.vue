@@ -1310,7 +1310,7 @@ export default {
       if (selected.length == 0) {
         that.$message({ message: 'Please select the item to delete', type: 'warning' });
       } else {
-        this.$confirm('This operation deletes the item. Do you want to continue?', 'Message', {
+        this.$confirm('This action deletes the item. Do you want to continue?', 'Message', {
           confirmButtonText: 'Confirm',
           cancelButtonText: 'Cancel',
           type: 'warning'

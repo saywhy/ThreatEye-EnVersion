@@ -43,7 +43,7 @@
                          label="Password"
                          show-overflow-tooltip>
         </el-table-column>
-        <el-table-column label='Operation'>
+        <el-table-column label='Actions'>
           <template slot-scope="scope">
             <el-button type="primary"
                        class="btn_edit"
@@ -438,7 +438,7 @@ export default {
     // 删除
     del_box (item) {
       console.log(this.item);
-      this.$confirm('This operation deletes the item. Do you want to continue?', 'Message', {
+      this.$confirm('This action deletes the item. Do you want to continue?', 'Message', {
         confirmButtonText: 'Confirm',
         cancelButtonText: 'Cancel',
         type: 'warning'

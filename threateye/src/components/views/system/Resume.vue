@@ -66,12 +66,12 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: 'Operation cancelled'
+          message: 'Action cancelled'
         });
       });
     },
     reboot () {
-      this.$confirm('This operation will restart the platform. Do you want to continue?', 'Message', {
+      this.$confirm('This action will restart the platform. Do you want to continue?', 'Message', {
         confirmButtonText: 'Confirm',
         cancelButtonText: 'Cancel',
         type: 'warning'
@@ -98,7 +98,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: 'Operation cancelled'
+          message: 'Action cancelled'
         });
       });
     },

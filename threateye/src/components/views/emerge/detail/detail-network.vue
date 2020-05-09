@@ -2959,7 +2959,7 @@ export default {
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: 'Operation cancelled'
+            message: 'Action cancelled'
           });
         });
       }
@@ -3031,7 +3031,7 @@ export default {
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: 'Operation cancelled'
+            message: 'Action cancelled'
           });
         });
       }

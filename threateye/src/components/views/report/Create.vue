@@ -81,7 +81,7 @@
             </el-table-column>
             <el-table-column prop="report_type"
                              label="Format"></el-table-column>
-            <el-table-column label='Operation'>
+            <el-table-column label='Actions'>
               <template slot-scope="scope">
                 <img src="@/assets/images/common/download.png"
                      class="img_icon"
@@ -637,7 +637,7 @@ export default {
     },
     // 删除
     del_box (item) {
-      this.$confirm('This operation deletes the item. Do you want to continue?', 'Message', {
+      this.$confirm('This action deletes the item. Do you want to continue?', 'Message', {
         confirmButtonText: 'Confirm',
         cancelButtonText: 'Cancel',
         type: 'warning'
