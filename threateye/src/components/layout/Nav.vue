@@ -3,12 +3,16 @@
        v-cloak>
     <el-row :gutter="0"
             class="nav_user">
-      <el-col style="width: 13.4%">
+      <el-col class="header_box"
+              style="">
         <div class="header-logo"
              align="left"
              @click="enter_home">
           <img class="e-image"
                :src="logoSrc">
+          <span class="logo_name">
+            ThreatEye
+          </span>
         </div>
       </el-col>
       <el-col :span="18">
@@ -430,14 +434,35 @@ export default {
 <style scoped lang="less">
 #Nav {
   .nav_user {
+    .header_box {
+      width: 13.4%;
+      position: relative;
+      height: 60px;
+    }
     .header-logo {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 32px;
+      line-height: 32px;
+      cursor: pointer;
+      .logo_name {
+        margin-left: 10px;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 500;
+        vertical-align: middle;
+        height: 32px;
+        line-height: 32px;
+        display: inline-block;
+      }
       .e-image {
-        width: 264px;
-        height: 48px;
-        background-size: 264px 48px;
-        transform: scale(0.6);
+        float: left;
+        width: 80px;
+        height: 32px;
         cursor: pointer;
-        margin: 5px 0 5px -48px;
+        vertical-align: middle;
       }
     }
     .el-col {

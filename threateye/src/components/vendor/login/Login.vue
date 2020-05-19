@@ -101,7 +101,7 @@ export default {
     .l_product_logo {
       vertical-align: middle;
       width: 437px;
-      height: 80px;
+      // height: 180px;
     }
     .l_product_title {
       font-family: HelveticaNeue-Bold;
