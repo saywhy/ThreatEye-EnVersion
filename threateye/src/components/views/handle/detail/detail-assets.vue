@@ -337,9 +337,10 @@
         <el-tab-pane label="Alerts"
                      class="tabs-item"
                      name="first">
-          <el-table class="handle_table_detail"
+          <el-table class="handle_table_detail common-table"
                     ref="multipleTable"
                     align="center"
+                    border
                     :data="table.tableData"
                     @row-click="detail_click"
                     tooltip-effect="dark"
@@ -421,7 +422,7 @@
            style="font-size:0">
           <span style="font-size:14px">Please confirm to change the status of the selected</span>
           <span style="font-size:14px">{{table.multipleSelection.length}}</span>
-             <span style="font-size:14px"
+          <span style="font-size:14px"
                 v-if="table.multipleSelection.length==1"> &nbsp;item to "</span>
           <span style="font-size:14px"
                 v-if="table.multipleSelection.length!=1"> &nbsp;items to "</span>
@@ -541,6 +542,9 @@
           </div>
           <div class="content_table">
             <el-table :data="table_operator.tableData"
+                      class="common-table"
+                      align="center"
+                      border
                       style="width: 100%">
               <el-table-column prop="username"
                                label="Assignee"></el-table-column>
@@ -573,6 +577,8 @@
             </ul>
             <div v-show="handle.active == 0">
               <el-table class="common-table"
+                        align="center"
+                        border
                         :data="table_assets.tableData_new"
                         tooltip-effect="dark"
                         style="width: 100%"
@@ -663,6 +669,8 @@
         <el-row class="common-table-pattern">
           <el-col :span="24">
             <el-table class="common-table"
+                      align="center"
+                      border
                       highlight-current-row
                       v-loading="table_add_works.loading"
                       :data="table_add_works.tableData"

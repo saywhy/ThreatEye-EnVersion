@@ -466,7 +466,8 @@
         <el-tab-pane label="Current Risk Assets"
                      class="tabs-item"
                      name="first">
-          <el-table class="emerge_table"
+          <el-table class="emerge_table reset_table"
+                    border
                     ref="multipleTable"
                     align="center"
                     :data="emerge_list.now.data"
@@ -518,9 +519,10 @@
         <el-tab-pane label="Historical Risk Assets"
                      class="tabs-item"
                      name="second">
-          <el-table class="emerge_table"
+          <el-table class="emerge_table reset_table"
                     ref="multipleTable"
                     align="center"
+                    border
                     :data="emerge_list.old.data"
                     tooltip-effect="dark"
                     style="width: 100%"
@@ -631,6 +633,7 @@
           <el-table ref="multipleTable"
                     class="reset_table"
                     align="center"
+                    border
                     :data="table_add_works.tableData"
                     tooltip-effect="dark"
                     @selection-change="handle_sel_table_add_works"
@@ -783,6 +786,9 @@
           </div>
           <div class="content_table">
             <el-table :data="new_worksheets_data.table_operator.tableData"
+                      class="reset_table"
+                      align="center"
+                      border
                       style="width: 100%">
               <el-table-column prop="username"
                                label="Assignee"></el-table-column>
@@ -809,7 +815,9 @@
           <div class='table_box'>
             <div>
               <div>
-                <el-table align="center"
+                <el-table class="reset_table"
+                          align="center"
+                          border
                           :data="new_worksheets_data.network_detail"
                           @selection-change="select_alert_new"
                           tooltip-effect="dark"
@@ -3454,24 +3462,8 @@ export default {
 <style lang="less">
 @import '../../../../assets/css/less/reset_css/reset_tab.less';
 @import '../../../../assets/css/less/reset_css/reset_pop.less';
-
+@import '../../../../assets/css/less/reset_css/reset_table.less';
 @import '../../../../assets/css/less/common-dropdown.less';
-.reset_table {
-  .el-table__header-wrapper {
-    .el-table__header {
-      thead.has-gutter {
-        th {
-          background: #f8f8f8;
-          .cell {
-            font-family: PingFangMedium;
-            color: #333;
-            font-size: 14px;
-          }
-        }
-      }
-    }
-  }
-}
 .el-input__inner {
   background: #f8f8f8;
   border: 0;
@@ -3482,23 +3474,6 @@ export default {
   width: 320px !important;
   .el-dropdown-menu__item:hover {
     color: #606266;
-  }
-}
-// tab栏
-.emerge_table {
-  th {
-    .cell {
-      font-family: PingFangMedium;
-      font-size: 14px;
-      color: #333333;
-    }
-  }
-  td {
-    .cell {
-      font-family: PingFang;
-      font-size: 14px;
-      color: #666;
-    }
   }
 }
 .detail-network {

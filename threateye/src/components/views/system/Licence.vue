@@ -32,6 +32,7 @@
         <el-table ref="multipleTable"
                   class="reset_table"
                   align="center"
+                  border
                   :data="license_list.list"
                   tooltip-effect="dark"
                   style="width: 100%"

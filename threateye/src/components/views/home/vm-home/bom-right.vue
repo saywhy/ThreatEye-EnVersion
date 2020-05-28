@@ -1,6 +1,8 @@
 <template>
   <el-col class="vm-move-threat">
     <el-table class="common-table"
+              align="center"
+              border
               ref="multipleTable"
               @row-click="detail_click"
               :row-style="{cursor:'pointer'}"
@@ -110,4 +112,7 @@ export default {
     height: auto;
   }
 }
+</style>
+<style lang="less" scoped>
+@import '../../../../assets/css/less/common-table-pattern.less';
 </style>

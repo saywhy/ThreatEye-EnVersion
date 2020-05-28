@@ -1,6 +1,8 @@
 <template>
   <el-col class="vm-move-threat">
     <el-table class="common-table"
+              align="center"
+              border
               ref="multipleTable"
               @row-click="detail_click"
               @mousedown.native="mousedown"
@@ -87,5 +89,6 @@ export default {
   }
 }
 </script>
-<style lang="less">
+<style lang="less" scoped>
+@import '../../../../assets/css/less/common-table-pattern.less';
 </style>

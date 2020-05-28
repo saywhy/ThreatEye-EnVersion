@@ -14,6 +14,8 @@
       <el-row class="message-bottom common-table-pattern">
         <el-col :span="24">
           <el-table class="common-table"
+                    align="center"
+                    border
                     ref="multipleTable"
                     :data="tableData"
                     @selection-change="handleSelectionChange">

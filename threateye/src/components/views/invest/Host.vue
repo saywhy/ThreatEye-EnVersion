@@ -37,6 +37,7 @@
               <el-table ref="multipleTable"
                         class="reset_table"
                         align="center"
+                        border
                         :data="host_network_data.data"
                         tooltip-effect="dark"
                         style="width: 100%">
@@ -91,6 +92,7 @@
               <el-table ref="multipleTable"
                         class="reset_table"
                         align="center"
+                        border
                         :data="host_file_data.data"
                         tooltip-effect="dark"
                         style="width: 100%">
@@ -136,6 +138,7 @@
               <el-table ref="multipleTable"
                         class="reset_table"
                         align="center"
+                        border
                         :data="host_user_data.data"
                         tooltip-effect="dark"
                         style="width: 100%">

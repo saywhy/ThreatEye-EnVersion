@@ -130,7 +130,8 @@
           </el-form>
           <el-table ref="multipleTable"
                     class="common-table"
-                    align="center"
+                     align="center"
+                    border
                     v-loading="table.loading"
                     :data="table.tableData"
                     tooltip-effect="dark"
@@ -344,6 +345,8 @@
           </div>
           <div class="content_table">
             <el-table :data="table_operator.tableData"
+                align="center"
+                    border
                       style="width: 100%">
               <el-table-column prop="username"
                                label="Assignee"></el-table-column>

@@ -40,8 +40,9 @@
           </div>
           <div class="invest_bom">
             <el-table ref="multipleTable"
-                      class="reset_table"
                       align="center"
+                      border
+                      class="reset_table"
                       :data="dns_list.data"
                       tooltip-effect="dark"
                       style="width: 100%">

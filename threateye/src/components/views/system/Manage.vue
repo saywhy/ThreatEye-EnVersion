@@ -106,6 +106,7 @@
           <el-table ref="multipleTable"
                     class="reset_table"
                     align="center"
+                    border
                     :data="equipment_list.list"
                     tooltip-effect="dark"
                     style="width: 100%"

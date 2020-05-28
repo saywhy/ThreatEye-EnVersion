@@ -166,6 +166,8 @@
       <el-row class="common-table-pattern">
         <el-col :span="24">
           <el-table ref="multipleTable"
+              align="center"
+                    border
                     class="common-table"
                     :row-style="{cursor:'pointer'}"
                     v-loading="table.loading"
@@ -373,6 +375,8 @@
           </div>
           <div class="content_table">
             <el-table :data="table_operator.tableData"
+                align="center"
+                    border
                       style="width: 100%">
               <el-table-column prop="username"
                                label="Assignee"></el-table-column>
@@ -405,6 +409,8 @@
             </ul>
             <div v-show="handle.active == 0">
               <el-table class="common-table"
+                  align="center"
+                    border
                         :data="table_assets.tableData_new"
                         tooltip-effect="dark"
                         style="width: 100%"
@@ -495,6 +501,8 @@
         <el-row class="common-table-pattern">
           <el-col :span="24">
             <el-table class="common-table"
+                align="center"
+                    border
                       highlight-current-row
                       v-loading="table_add_works.loading"
                       :data="table_add_works.tableData"

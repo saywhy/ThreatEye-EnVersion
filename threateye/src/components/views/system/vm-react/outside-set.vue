@@ -30,6 +30,7 @@
       <el-table ref="multipleTable"
                 class="reset_table"
                 align="center"
+                border
                 :data="user_list.data"
                 tooltip-effect="dark"
                 style="width: 100%"

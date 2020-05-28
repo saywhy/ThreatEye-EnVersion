@@ -31,6 +31,7 @@
       <el-table ref="multipleTable"
                 class="reset_table"
                 align="center"
+                border
                 :data="white_list.data"
                 tooltip-effect="dark"
                 @selection-change="handleSelectionChange"

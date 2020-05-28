@@ -435,7 +435,8 @@
                      name="first">
           <el-table class="emerge_table"
                     ref="multipleTable"
-                    align="center"
+                       align="center"
+                    border
                     :data="emerge_list.now.data"
                     tooltip-effect="dark"
                     style="width: 100%"
@@ -487,7 +488,8 @@
                      name="second">
           <el-table class="emerge_table"
                     ref="multipleTable"
-                    align="center"
+               align="center"
+                    border
                     :data="emerge_list.old.data"
                     tooltip-effect="dark"
                     style="width: 100%"
@@ -596,7 +598,8 @@
         <div class="add_works">
           <el-table ref="multipleTable"
                     class="reset_table"
-                    align="center"
+                   align="center"
+                    border
                     :data="worksheets_list.data"
                     tooltip-effect="dark"
                     @selection-change="handleSelectionChange"
@@ -755,6 +758,8 @@
           </div>
           <div class="content_table">
             <el-table :data="new_worksheets_data.table_operator.tableData"
+                align="center"
+                    border
                       style="width: 100%">
               <el-table-column prop="username"
                                label="Assignee"></el-table-column>
@@ -782,7 +787,8 @@
           <div class='table_box'>
             <div>
               <div>
-                <el-table align="center"
+                <el-table     align="center"
+                    border
                           :data="new_worksheets_data.network_detail"
                           @selection-change="select_alert_new"
                           tooltip-effect="dark"

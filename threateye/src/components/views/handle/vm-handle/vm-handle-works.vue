@@ -124,6 +124,8 @@
       </el-form>
     </div>
     <el-table ref="multipleTable"
+              align="center"
+              border
               class="common-table"
               v-loading="table.loading"
               :data="table.tableData"
@@ -326,6 +328,8 @@
           </div>
           <div class="content_table">
             <el-table :data="table_operator.tableData"
+                      align="center"
+                      border
                       style="width: 100%">
               <el-table-column prop="username"
                                label="Assignee"></el-table-column>
@@ -360,6 +364,7 @@
               <div v-show="handle.active == 0">
                 <div class="tb_tolling">
                   <el-table align="center"
+                            border
                             class="common-table"
                             :data="table_assets.tableData"
                             tooltip-effect="dark"
@@ -406,6 +411,7 @@
               <div v-show="handle.active == 1">
                 <div class="tb_tolling">
                   <el-table align="center"
+                            border
                             class="common-table"
                             :data="table_alerts.tableData"
                             tooltip-effect="dark"
@@ -578,6 +584,8 @@
           </div>
           <div class="content_table">
             <el-table :data="edit.table_operator"
+                      align="center"
+                      border
                       style="width: 100%">
               <el-table-column prop="username"
                                label="Assignee"></el-table-column>
@@ -611,6 +619,7 @@
               <div v-if="edit.data.type == 'asset'">
                 <div class="tb_tolling">
                   <el-table align="center"
+                            border
                             class="common-table"
                             :data="edit.asset_list.data"
                             tooltip-effect="dark"
@@ -654,6 +663,7 @@
               <div v-if="edit.data.type == 'alert'">
                 <div class="tb_tolling">
                   <el-table align="center"
+                            border
                             class="common-table"
                             :data="edit.alert_list.data"
                             tooltip-effect="dark"

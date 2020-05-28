@@ -13,6 +13,7 @@
       <el-table ref="multipleTable"
                 class="reset_table"
                 align="center"
+                border
                 :data="role_list.data"
                 tooltip-effect="dark"
                 @selection-change="handleSelectionChange"

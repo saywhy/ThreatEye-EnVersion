@@ -173,6 +173,8 @@
           </div>
           <div class="content_table">
             <el-table :data="table_operator.tableData"
+                      align="center"
+                      border
                       style="width: 100%">
               <el-table-column prop="username"
                                label="经办人"></el-table-column>
@@ -202,6 +204,8 @@
             <div>
               <div v-show="handle.cagetory == 0">
                 <el-table :data="table.tableData"
+                          align="center"
+                          border
                           tooltip-effect="dark"
                           @selection-change="handle_sel_table_mul">
                   <el-table-column align='left'
@@ -240,6 +244,8 @@
               </div>
               <div v-show="handle.cagetory == 1">
                 <el-table :data="table.tableData"
+                          align="center"
+                          border
                           class="common-table"
                           tooltip-effect="dark"
                           style="width: 100%"
@@ -320,6 +326,8 @@
         <el-row class="common-table-pattern">
           <el-col :span="24">
             <el-table class="common-table"
+                      align="center"
+                      border
                       highlight-current-row
                       v-loading="table_add_works.loading"
                       :data="table_add_works.tableData"

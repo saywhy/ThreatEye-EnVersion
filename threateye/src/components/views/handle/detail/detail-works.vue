@@ -70,6 +70,8 @@
           <!-- 资产 -->
           <div v-show="table.tabsFlag == 0">
             <el-table ref="multipleTable"
+                align="center"
+                    border
                       class="common-table handle_table_detail"
                       tooltip-effect="dark"
                       :data="table.tableData">
@@ -117,6 +119,8 @@
           <!-- 告警 -->
           <div v-show="table.tabsFlag == 1">
             <el-table ref="multipleTable"
+                align="center"
+                    border
                       class="handle_table_detail"
                       :data="table.tableData"
                       tooltip-effect="dark">

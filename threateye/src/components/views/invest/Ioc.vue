@@ -46,6 +46,7 @@
             <el-table ref="multipleTable"
                       class="reset_table"
                       align="center"
+                      border
                       :data="ioc_list.data"
                       tooltip-effect="dark"
                       @selection-change="handleSelectionChange"

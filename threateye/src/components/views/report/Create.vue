@@ -58,6 +58,8 @@
       <el-row class="common-table-pattern">
         <el-col :span="24">
           <el-table class="reset_table"
+                    align="center"
+                    border
                     ref="multipleTable"
                     :data="report_lsit.data"
                     style="width: 100%;"
@@ -755,13 +757,13 @@ export default {
           min-height: 164px;
           position: relative;
           .report-input {
-            width: 250px;
+            width: 280px;
           }
           .r_btn_group {
             position: absolute;
-            right: 0;
+            left: 0;
             bottom: 24px;
-            text-align: right;
+            text-align: left;
             height: 42px;
             z-index: 999;
             font-size: 0;

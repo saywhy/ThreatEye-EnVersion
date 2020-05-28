@@ -42,6 +42,7 @@
             <el-table ref="multipleTable"
                       class="reset_table"
                       align="center"
+                      border
                       :data="url_list_data.data"
                       tooltip-effect="dark"
                       style="width: 100%">
