@@ -40,7 +40,7 @@
                          show-overflow-tooltip>
         </el-table-column>
 
-        <el-table-column label="Created"
+        <el-table-column label="Created Time"
                          width="220"
                          show-overflow-tooltip>
           <template slot-scope="scope">{{ scope.row.created_at*1000 |formatDate }}</template>
@@ -195,6 +195,7 @@
 
 <script type="text/ecmascript-6">
 import moment from 'moment'
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: "role_management",
   data () {
@@ -391,10 +392,31 @@ export default {
   },
   mounted () {
     this.get_data();
+    this.check_passwd();
     this.get_version();
   },
 
   methods: {
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
     // 获取license版本
     get_version () {
       this.$axios.get('/yiiapi/site/license-version')
@@ -482,9 +504,6 @@ export default {
     // tree
     // 添加角色
     add_role () {
-
-
-
       if (this.role_add.name == '') {
         this.$message(
           {

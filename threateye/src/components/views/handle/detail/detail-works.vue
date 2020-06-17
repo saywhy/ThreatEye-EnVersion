@@ -70,9 +70,9 @@
           <!-- 资产 -->
           <div v-show="table.tabsFlag == 0">
             <el-table ref="multipleTable"
-                align="center"
-                    border
-                      class="common-table handle_table_detail"
+                      align="center"
+                      border
+                      class="common-table handle_table_detail reset_table"
                       tooltip-effect="dark"
                       :data="table.tableData">
               <el-table-column prop="asset_ip"
@@ -104,7 +104,7 @@
                 </template>
               </el-table-column>
               <el-table-column label="Compromise"
-                               min-width="100">
+                               min-width="120">
                 <template slot-scope="scope">
                   <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
                     {{ scope.row.fall_certainty | certainty }}</span>
@@ -119,9 +119,9 @@
           <!-- 告警 -->
           <div v-show="table.tabsFlag == 1">
             <el-table ref="multipleTable"
-                align="center"
-                    border
-                      class="handle_table_detail"
+                      align="center"
+                      border
+                      class="handle_table_detail reset_table"
                       :data="table.tableData"
                       tooltip-effect="dark">
               <el-table-column label="Time"
@@ -867,4 +867,7 @@ export default {
     }
   }
 }
+</style>
+<style lang="less">
+@import '../../../../assets/css/less/reset_css/reset_table.less';
 </style>

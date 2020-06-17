@@ -46,6 +46,7 @@
 
 <script type="text/ecmascript-6">
 import moment from 'moment'
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: "fault_log",
   data () {
@@ -66,10 +67,31 @@ export default {
     }
   },
   mounted () {
+    this.check_passwd()
     this.get_data()
   },
 
   methods: {
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
     // 获取列表
     get_data () {
       this.loading = true

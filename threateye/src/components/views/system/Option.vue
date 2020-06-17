@@ -101,6 +101,7 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: "system_control_option",
   data () {
@@ -288,15 +289,39 @@ export default {
     }
   },
   mounted () {
+    this.check_passwd()
     this.get_data()
     this.get_login_ip()
   },
   methods: {
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
     // 获取数据
     get_data () {
       this.$axios.get('/yiiapi/seting/time-synchronization')
         .then(response => {
           let { status, data } = response.data;
+          if (status == '602') {
+            return false
+          }
           console.log(data.data[0]);
           switch (data.data[0].type) {
             case 1:

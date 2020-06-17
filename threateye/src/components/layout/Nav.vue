@@ -34,9 +34,10 @@
       <el-col style="width: 11.1%">
         <div class="header-basic"
              align="right">
-          <el-badge is-dot
-                    class="item"
-                    v-show="false">
+          <el-badge class="item"
+                    :value="news_count"
+                    :max="99"
+                    v-show="true">
             <img :src="messageSrc"
                  class="va-image"
                  @click.once="messageClick();">
@@ -120,7 +121,7 @@
             </span>
           </p>
           <el-input class="select_box"
-                    placeholder="Please enter the old password again"
+                    placeholder="Please enter the old password"
                     v-model="user_edit.old_password"
                     show-password></el-input>
         </div>
@@ -171,6 +172,7 @@
 <script type="text/ecmascript-6">
 import { mapState, mapGetters } from 'vuex';
 import { getToken, setToken, removeToken } from "@/store/layout/cookie";
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: 'Nav',
   data () {
@@ -196,6 +198,7 @@ export default {
         id: "",
         allow_ip: ''
       },
+      news_count: 0
     };
   },
   computed: {
@@ -205,6 +208,17 @@ export default {
     ...mapGetters([
       'addRouters'
     ])
+  },
+  mounted () {
+    this.get_news();
+
+    this.timer = setInterval(() => {
+      this.get_news();
+    }, 5000);
+
+    eventBus.$on('reset', () => {
+      this.modifyPassword()
+    })
   },
   methods: {
     /*login(){
@@ -425,8 +439,28 @@ export default {
       } else {
         this.$router.push('/message')
       }
-    }
-  }
+    },
+    // 获取新消息
+    get_news () {
+      this.$axios.get('/yiiapi/news/count')
+        .then((resp) => {
+          let { status, data } = resp.data;
+          let datas = data;
+          this.news_count = datas.count
+          console.log('8888');
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+  },
+  beforeDestroy () {
+    console.log('77777');
+    clearInterval(this.timer); //关闭
+  },
+  destroyed () {
+    console.log('33333');
+  },
 }
 </script>
 
@@ -452,7 +486,7 @@ export default {
         color: #fff;
         font-size: 18px;
         font-weight: 500;
-        vertical-align: middle;
+        vertical-align: text-top;
         height: 32px;
         line-height: 32px;
         display: inline-block;
@@ -539,15 +573,15 @@ export default {
         }
       }
       .avatar-container {
-        min-width: 140px;
-        margin: 14px 0 14px 14px;
+        padding: 0 10px;
         .avatar-wrapper {
-          line-height: 32px;
+          height: 60px;
+          line-height: 60px;
           color: #fff;
           cursor: pointer;
           outline: none;
           .user-avatar {
-            width: 32px;
+            padding: 0 5px;
             height: 32px;
           }
           .avatar-name {

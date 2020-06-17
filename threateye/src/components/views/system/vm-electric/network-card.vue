@@ -106,6 +106,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: "network-card",
   data () {
@@ -142,9 +143,30 @@ export default {
   },
   mounted () {
     this.get_data()
+    this.check_passwd()
   },
 
   methods: {
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
     change_role (item) {
       console.log(item);
       if (item == 'Mirror port') {
@@ -236,9 +258,9 @@ export default {
       this.network_loading = true
       this.$axios.get('/yiiapi/seting/get-network')
         .then(response => {
+          this.network_loading = false
           this.network = response.data.data.data;
           this.change_name(this.network[0].NAME)
-          this.network_loading = false
         })
         .catch(error => {
           console.log(error);

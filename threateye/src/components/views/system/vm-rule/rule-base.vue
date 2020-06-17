@@ -75,6 +75,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: "rule_base",
   data () {
@@ -107,6 +108,7 @@ export default {
   activated () { },
   deactivated () { },
   mounted () {
+    this.check_passwd();
     this.get_data();
     this.timer = setInterval(() => {
       this.get_data();
@@ -124,6 +126,26 @@ export default {
 
   },
   methods: {
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
     // 定时更新
     update_status () {
       this.$axios.get('/yiiapi/rulebase/get-update-status')

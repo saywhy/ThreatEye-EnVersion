@@ -29,7 +29,7 @@
                   :type="passwordType"
                   v-model="loginForm.password"
                   auto-complete="off"
-                  placeholder="Please enter Your password">
+                  placeholder="Please enter your password">
           <i class="el-icon-view el-input__icon"
              slot="suffix"
              @click="showPassword"></i>
@@ -127,11 +127,13 @@ export default {
       loginRules: {
         username: [
           { required: true, message: 'User name is required', trigger: 'blur' },
+          { required: true, message: ' ', trigger: 'change' },
           /*{ min: 2, max: 16, message: '用户名长度为2~16个字符', trigger: 'blur' },*/
           /*{ required: true, trigger: 'blur', validator: validateUsername }*/
         ],
         password: [
           { required: true, message: 'Password is required', trigger: 'blur' },
+          { required: true, message: ' ', trigger: 'change' },
           /*{ min: 6, message: '密码长度最少为6位', trigger: 'blur' },*/
           /*{ required: true, trigger: 'blur', validator: validatePassword }*/
         ]

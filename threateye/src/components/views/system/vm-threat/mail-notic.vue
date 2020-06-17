@@ -57,7 +57,7 @@
       </div>
     </div>
     <div class="mid">
-      <p class="title">Recipient</p>
+      <p class="title">Recipient email</p>
       <div class="mid_item">
         <p>Email Address
           <span class="red_necessary">*</span>
@@ -109,6 +109,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: "mail-notic",
   data () {
@@ -137,10 +138,31 @@ export default {
     }
   },
   mounted () {
+    this.check_passwd();
     this.get_data();
   },
 
   methods: {
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
     get_data () {
       this.$axios.get('/yiiapi/email/get')
         .then(response => {
@@ -368,6 +390,8 @@ export default {
         height: 42px;
       }
       .test_btn {
+        width: 136px;
+        height: 42px;
         background: #fff;
         border-color: #0070ff;
         color: #0070ff;

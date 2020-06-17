@@ -25,11 +25,14 @@
           <el-col :span="21">
             <div class="r_radio">
               <el-radio v-model="report.type"
+                        label="csv"
+                        class="r_radio_item">Excel</el-radio>
+              <el-radio v-model="report.type"
                         label="doc"
                         class="r_radio_item">Word</el-radio>
               <el-radio v-model="report.type"
-                        label="csv"
-                        class="r_radio_item">Excel</el-radio>
+                        label="pdf"
+                        class="r_radio_item">PDF</el-radio>
             </div>
           </el-col>
         </el-row>
@@ -71,7 +74,7 @@
               </template>
             </el-table-column>
             <el-table-column prop="create_time"
-                             label="Created"></el-table-column>
+                             label="Created Time"></el-table-column>
             <el-table-column prop="report_name"
                              label="Name"></el-table-column>
             <el-table-column label='Time Range'>
@@ -125,13 +128,14 @@
 </template>
 <script type="text/ecmascript-6">
 import VmEmergePicker from "@/components/common/vm-emerge-picker";
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: "report_create",
   data () {
     return {
       report: {
         name: '',
-        type: 'doc',
+        type: 'csv',
         start_time: '',
         end_time: '',
         loading: false
@@ -167,12 +171,31 @@ export default {
   components: { VmEmergePicker },
   mounted () {
     this.get_data()
+    this.check_passwd()
   },
   methods: {
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
     // 生成报表
     create () {
-      console.log(this.report);
-
       if (this.report.name == '') {
         this.$message(
           {
@@ -280,6 +303,74 @@ export default {
                 }
               );
             }
+          })
+          .catch(error => {
+            console.log(error);
+          })
+      }
+      if (this.report.type == 'pdf') {
+        this.$axios.get('/yiiapi/report/create-echarts-img', {
+          params: {
+            stime: this.report.start_time,
+            etime: this.report.end_time,
+            report_name: this.report.name,
+            report_type: 'pdf',
+          }
+        })
+          .then(response => {
+            let { status, data } = response.data;
+            console.log(data);
+            // 未处理告警
+            if (data.threat_level) {
+              this.untreatedAlarm(data.threat_level);
+            }
+            //威胁使用应用协议
+            if (data.threat_protocol) {
+              this.application_protocol(data.threat_protocol);
+            }
+            //告警趋势
+            if (data.alert_trend) {
+              this.alert_trend(data.alert_trend);
+            }
+            //告警类型
+            if (data.alert_type) {
+              this.alert_type(data.alert_type);
+            }
+            setTimeout(() => {
+              this.$axios.post('/yiiapi/report/create-report', {
+                stime: this.report.start_time,
+                etime: this.report.end_time,
+                report_name: this.report.name,
+                report_type: 'pdf',
+                threat_level: this.untreatedAlarm_data.base64,
+                threat_protocol: this.application_protocol_data.base64,
+                alert_type: this.alert_type_data.base64,
+                alert_trend: this.alert_trend_data.base64,
+              })
+                .then(response => {
+                  this.report.loading = false
+                  let { status, data, msg } = response.data;
+                  if (status == 0) {
+                    this.get_data();
+                    this.$message(
+                      {
+                        message: 'Report generated successfully',
+                        type: 'success',
+                      }
+                    );
+                  } else {
+                    this.$message(
+                      {
+                        message: msg,
+                        type: 'warning',
+                      }
+                    );
+                  }
+                })
+                .catch(error => {
+                  console.log(error);
+                })
+            }, 100);
           })
           .catch(error => {
             console.log(error);
@@ -440,30 +531,34 @@ export default {
       myChart.setOption(option);
       this.application_protocol_data.base64 = myChart.getDataURL();
     },
+
     alert_trend (params) {
+      console.log(params);
       this.alert_trend_data.alert_trend_name = [];
       this.alert_trend_data.alert_trend_value = [];
       params.forEach(element => {
         this.alert_trend_data.alert_trend_name.push(element.date_time);
         this.alert_trend_data.alert_trend_value.push(element.count - 0);
       });
+      console.log(this.alert_trend_data);
       var myChart = this.$echarts.init(document.getElementById("alert_trend"));
       var option_file = {
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+          }
+        },
         grid: {
-          left: 100,
-          right: 70,
-          top: 15,
-          bottom: 100
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          top: '5%',
+          containLabel: true
         },
         xAxis: {
           type: 'category',
           data: this.alert_trend_data.alert_trend_name,
-          boundaryGap: false,
-          splitLine: {
-            show: false,
-            interval: 'auto', //0：表示全部显示不间隔；auto:表示自动根据刻度个数和宽度自动设置间隔个数
-            maxInterval: 3600 * 24 * 1000,
-          },
           axisTick: {
             show: false
           },
@@ -476,7 +571,7 @@ export default {
             }
           }
         },
-        yAxis: {
+        yAxis: [{
           type: 'value',
           axisTick: {
             show: false
@@ -487,37 +582,20 @@ export default {
               fontSize: 16
             }
           }
-        },
+        }],
         series: [{
-          name: 'file',
-          type: 'line',
-          smooth: true,
+          // name: '高危',
+          type: 'bar',
+          barWidth: 20,
           animation: false,
-          showSymbol: false,
-          symbol: 'circle',
-          symbolSize: 6,
-          data: this.alert_trend_data.alert_trend_value,
-          areaStyle: {
-            normal: {
-              color: this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                offset: 0,
-                color: 'rgba(150,33,22,.8)'
-              }, {
-                offset: 1,
-                color: 'rgba(150,33,22,.2)'
-              }], false)
-            }
-          },
+          stack: '111',
           itemStyle: {
             normal: {
-              color: 'rgba(150,33,22,1)'
+              barBorderRadius: [4, 4, 4, 4], //柱形图圆角，初始化效果
+              color: 'rgba(150,33,22,.8)'
             }
           },
-          lineStyle: {
-            normal: {
-              width: 3
-            }
-          }
+          data: this.alert_trend_data.alert_trend_value
         }]
       };
       myChart.setOption(option_file);
@@ -599,7 +677,6 @@ export default {
       this.report.end_time = ''
       $(document.querySelector('.el-button--text')).trigger('click');
     },
-
     // 获取列表
     get_data () {
       this.$axios.get('/yiiapi/report/list', {

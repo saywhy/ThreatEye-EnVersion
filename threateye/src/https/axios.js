@@ -126,7 +126,7 @@ axios.interceptors.response.use(response => {
   switch (response.data.status) {
     case 602:
       console.log(response.data.msg)
-      Message.warning(response.data.msg + ',Please modify personal information');
+      //   Message.warning(response.data.msg);
       //Message.warning('请修改个人信息');
       //删除token
       //removeToken();

@@ -67,7 +67,7 @@
               <el-tag class="e_tag e-tag-2">High:
                 <span class="nums">{{count.high}}</span>
               </el-tag>
-              <el-tag class="e_tag e-tag-3">Medium：
+              <el-tag class="e_tag e-tag-3">Medium:
                 <span class="nums">{{count.medium}}</span>
               </el-tag>
               <el-tag class="e_tag e-tag-4">Low:
@@ -99,11 +99,26 @@
                                   class="select_item">Cancelled</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
-            <el-button type="primary"
+
+            <el-dropdown @command="add_new_task"
+                         placement='bottom-start'
+                         trigger="click">
+              <el-button type="primary"
+                         class="change_btn">
+                <span>Add</span>
+                <i class="el-icon-arrow-down el-icon--right"></i>
+              </el-button>
+              <el-dropdown-menu slot="dropdown"
+                                class="dropdown_ul_box">
+                <el-dropdown-item command="告警工单">Alert</el-dropdown-item>
+                <el-dropdown-item command="资产工单">Asset</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+            <!-- <el-button type="primary"
                        class="bw_btn bw_btn_add"
                        @click="open_task_new();">
-              <span>Add</span>
-            </el-button>
+              <span>新增</span>
+            </el-button> -->
             <el-button type="primary"
                        class="bw_btn bw_btn_edit"
                        @click="edit_task_pop();">
@@ -133,7 +148,9 @@
               tooltip-effect="dark"
               @selection-change="handleSelChange"
               @row-click="detail_click">
-      <el-table-column prop="type"
+      <el-table-column label=" "
+                       prop="type"
+                       align="center"
                        width="20">
         <template slot-scope="scope">
           <div class="new_dot"
@@ -141,41 +158,52 @@
         </template>
       </el-table-column>
       <el-table-column type="selection"
+                       align="center"
                        width="50">
       </el-table-column>
       <el-table-column prop="name"
+                       align="center"
                        label="Name"
-                       width="100"
                        show-overflow-tooltip>
       </el-table-column>
       <el-table-column prop="creator"
+                       align="center"
                        label="Created By"
-                       width="140"
+                       width="100"
                        show-overflow-tooltip>
       </el-table-column>
-      <el-table-column label="Created"
+      <el-table-column label="Created Time"
+                       align="center"
                        width="180"
                        show-overflow-tooltip>
         <template slot-scope="scope">{{ scope.row.created_at | time }}</template>
       </el-table-column>
-      <el-table-column label="Priority">
-        <template slot-scope="scope">{{ scope.row.priority | priority }}</template>
+      <el-table-column label="Priority"
+                       align="center">
+        <template slot-scope="scope">
+          <span class="priority_box"
+                :class="scope.row.priority+'_priority'"> {{ scope.row.priority | priority }}</span>
+        </template>
       </el-table-column>
       <el-table-column prop="new_perator"
+                       align="center"
                        label="Assignee"
                        show-overflow-tooltip>
       </el-table-column>
       <el-table-column label="Updated"
+                       align="center"
                        width="180"
                        show-overflow-tooltip>
         <template slot-scope="scope">{{ scope.row.updated_at | time }}</template>
       </el-table-column>
       <el-table-column prop="remarks"
+                       align="center"
                        label="Remarks"
                        show-overflow-tooltip>
       </el-table-column>
       <el-table-column label="Status"
-                       width="120"
+                       align="center"
+                       width="80"
                        show-overflow-tooltip>
         <template slot-scope="scope">{{ scope.row.status | work_status }}</template>
       </el-table-column>
@@ -208,13 +236,12 @@
         <p class="content_p"
            style="font-size:0">
           <span style="font-size:14px">Please confirm to change the status of the selected</span>
-          <span style="font-size:14px">{{table.multipleSelection.length}}</span>
           <span style="font-size:14px"
                 v-if="table.multipleSelection.length==1"> &nbsp;item to "</span>
           <span style="font-size:14px"
                 v-if="table.multipleSelection.length!=1"> &nbsp;items to "</span>
           <span style="font-size:14px">{{process_state}}</span>
-          <span style="font-size:14px">"?</span>
+          <span style="font-size:14px">”?</span>
         </p>
       </div>
       <div class="btn_box">
@@ -311,7 +338,8 @@
                                value="email">Mail notification</el-checkbox>
                   <el-checkbox label="message"
                                value="message">SMS notification</el-checkbox>
-                  <!--<el-checkbox label="news" value="news">消息中心通知</el-checkbox>-->
+                  <el-checkbox label="news"
+                               value="news">消息中心通知</el-checkbox>
                 </el-checkbox-group>
               </li>
             </div>
@@ -332,10 +360,13 @@
                       border
                       style="width: 100%">
               <el-table-column prop="username"
+                               align="center"
                                label="Assignee"></el-table-column>
               <el-table-column prop="department"
+                               align="center"
                                label="Department"></el-table-column>
               <el-table-column prop="email_addr"
+                               align="center"
                                label="Email"></el-table-column>
             </el-table>
           </div>
@@ -361,7 +392,7 @@
               </li>
             </ul>
             <div>
-              <div v-show="handle.active == 0">
+              <div v-show="handle.table_title =='Assets'">
                 <div class="tb_tolling">
                   <el-table align="center"
                             border
@@ -372,20 +403,21 @@
                             ref="assetTableName"
                             :row-key="getRowKeys_assets"
                             @selection-change="handle_sel_table_assets">
-
-                    <el-table-column width="20"></el-table-column>
-                    <el-table-column align='left'
+                    <el-table-column align="center"
                                      type="selection"
                                      width="50"
                                      :reserve-selection="true"></el-table-column>
                     <el-table-column prop="asset_ip"
+                                     align="center"
                                      label="Asset"
                                      width="180"
                                      show-overflow-tooltip></el-table-column>
                     <el-table-column prop="label_group"
+                                     align="center"
                                      label="Asset groups"
                                      show-overflow-tooltip></el-table-column>
                     <el-table-column label="Severity"
+                                     align="center"
                                      width="140">
                       <template slot-scope="scope">
                         <span class="btn_alert_background"
@@ -394,6 +426,7 @@
                       </template>
                     </el-table-column>
                     <el-table-column label="Status"
+                                     align="center"
                                      width="80">
                       <template slot-scope="scope">{{ scope.row.status | risk_status }}</template>
                     </el-table-column>
@@ -408,7 +441,7 @@
                                layout="total, prev, pager, next">
                 </el-pagination>
               </div>
-              <div v-show="handle.active == 1">
+              <div v-show="handle.table_title =='Alerts'">
                 <div class="tb_tolling">
                   <el-table align="center"
                             border
@@ -419,28 +452,28 @@
                             style="width: 100%"
                             :row-key="getRowKeys_alerts"
                             @selection-change="handle_sel_table_alerts">
-                    <el-table-column width="20"></el-table-column>
                     <el-table-column type="selection"
+                                     align="center"
                                      width="50"
                                      :reserve-selection="true">
                     </el-table-column>
                     <el-table-column prop="category"
+                                     align="center"
                                      label="Type"
                                      show-overflow-tooltip>
                     </el-table-column>
                     <el-table-column prop="indicator"
+                                     align="center"
                                      label="Indicator"
                                      show-overflow-tooltip>
                     </el-table-column>
-                    <!--<el-table-column prop="src_ip" label="Source IP" show-overflow-tooltip>
-                     </el-table-column>
-                     <el-table-column prop="dest_ip" label="Destination IP" show-overflow-tooltip>
-                     </el-table-column>-->
                     <el-table-column prop="application"
+                                     align="center"
                                      label="Protocol"
                                      show-overflow-tooltip>
                     </el-table-column>
                     <el-table-column label="Severity"
+                                     align="center"
                                      width="120"
                                      show-overflow-tooltip>
                       <template slot-scope="scope">
@@ -450,6 +483,7 @@
                       </template>
                     </el-table-column>
                     <el-table-column label="Status"
+                                     align="center"
                                      width="80">
                       <template slot-scope="scope">{{ scope.row.status | alert_status }}</template>
                     </el-table-column>
@@ -567,7 +601,8 @@
                                value="email">Mail notification</el-checkbox>
                   <el-checkbox label="message"
                                value="message">SMS notification</el-checkbox>
-                  <!--<el-checkbox label="news" value="news">消息中心通知</el-checkbox>-->
+                  <el-checkbox label="news"
+                               value="news">消息中心通知</el-checkbox>
                 </el-checkbox-group>
               </li>
             </div>
@@ -588,10 +623,13 @@
                       border
                       style="width: 100%">
               <el-table-column prop="username"
+                               align="center"
                                label="Assignee"></el-table-column>
               <el-table-column prop="department"
+                               align="center"
                                label="Department"></el-table-column>
               <el-table-column prop="email_addr"
+                               align="center"
                                label="Email"></el-table-column>
             </el-table>
           </div>
@@ -618,25 +656,28 @@
               <!-- 资产列表 -->
               <div v-if="edit.data.type == 'asset'">
                 <div class="tb_tolling">
-                  <el-table align="center"
+                  <el-table class="common-table"
+                            align="center"
                             border
-                            class="common-table"
                             :data="edit.asset_list.data"
                             tooltip-effect="dark"
-                            :row-key="getRowKeys"
+                            :row-key="getRowKeys_edit_assets"
                             ref="assetTable"
                             style="width: 100%"
                             @selection-change="handle_sel_assets">
-                    <el-table-column width="20"></el-table-column>
-                    <el-table-column :reserve-selection="true"
+                    <el-table-column align="center"
+                                     :reserve-selection="true"
                                      type="selection"
                                      width="50"></el-table-column>
                     <el-table-column prop="asset_ip"
+                                     align="center"
                                      label="Asset"></el-table-column>
                     <el-table-column prop="label_group"
+                                     align="center"
                                      label="Asset groups"
                                      show-overflow-tooltip></el-table-column>
                     <el-table-column label="Severity"
+                                     align="center"
                                      width="100">
                       <template slot-scope="scope">
                         <span class="btn_alert_background"
@@ -645,6 +686,7 @@
                       </template>
                     </el-table-column>
                     <el-table-column label="Status"
+                                     align="center"
                                      width="80">
                       <template slot-scope="scope">{{ scope.row.status | risk_status }}</template>
                     </el-table-column>
@@ -662,41 +704,47 @@
               <!-- 告警列表 -->
               <div v-if="edit.data.type == 'alert'">
                 <div class="tb_tolling">
-                  <el-table align="center"
+                  <el-table class="common-table"
+                            align="center"
                             border
-                            class="common-table"
                             :data="edit.alert_list.data"
                             tooltip-effect="dark"
+                            :row-key="getRowKeys_edit_alert"
                             ref="alertTable"
                             style="width: 100%"
                             @selection-change="handle_sel_alert">
-
-                    <el-table-column width="20"></el-table-column>
                     <el-table-column type="selection"
                                      :reserve-selection="true"
+                                     align="center"
                                      width="50">
                     </el-table-column>
                     <el-table-column prop="category"
+                                     align="center"
                                      label="Type"
                                      show-overflow-tooltip>
                     </el-table-column>
                     <el-table-column prop="indicator"
+                                     align="center"
                                      label="Indicator"
                                      show-overflow-tooltip>
                     </el-table-column>
                     <el-table-column prop="src_ip"
+                                     align="center"
                                      label="Source IP"
                                      show-overflow-tooltip>
                     </el-table-column>
                     <el-table-column prop="dest_ip"
+                                     align="center"
                                      label="Destination IP"
                                      show-overflow-tooltip>
                     </el-table-column>
                     <el-table-column prop="application"
+                                     align="center"
                                      label="Protocol"
                                      show-overflow-tooltip>
                     </el-table-column>
                     <el-table-column label="Severity"
+                                     align="center"
                                      width="100"
                                      show-overflow-tooltip>
                       <template slot-scope="scope">
@@ -706,6 +754,7 @@
                       </template>
                     </el-table-column>
                     <el-table-column label="Status"
+                                     align="center"
                                      width="80">
                       <template slot-scope="scope">{{ scope.row.status | alert_status }}</template>
                     </el-table-column>
@@ -752,6 +801,7 @@ export default {
   },
   data () {
     return {
+      selected_list: [],
       options_priority: [
         {
           value: "highest",
@@ -1197,6 +1247,22 @@ export default {
       this.open_state();
     },
 
+    // 新增工单
+    add_new_task (command) {
+      console.log(command);
+      switch (command) {
+        case '告警工单':
+          this.open_task_new('alert')
+          this.handle.table_title = ["Alerts"]
+          break;
+        case '资产工单':
+          this.open_task_new('asset')
+          this.handle.table_title = ["Assets"]
+          break;
+        default:
+          break;
+      }
+    },
     /***************状态变更*****************/
     //打开状态变更弹窗
     open_state () {
@@ -1228,7 +1294,6 @@ export default {
       let worker_id_group = selected.map(x => { return x.id; });
       //状态设置
       let process = this.process_state;
-      console.log(process);
       let change_status = 0;
       if (process == 'In Progress') {
         change_status = 2;
@@ -1242,9 +1307,7 @@ export default {
         status: change_status
       })
         .then(resp => {
-          console.log(resp);
           let { status, data, msg } = resp.data;
-
           if (status == 0) {
             this.$message.success('Change ticket status successfully');
             this.get_list_works();
@@ -1280,13 +1343,10 @@ export default {
             }
           })
             .then(response => {
-
-
               var url1 = "/yiiapi/site/download-test?id=" + (selected[0].id * 1);
               this.$axios.get(url1)
                 .then(resp => {
                   let { status, msg, data } = resp.data;
-
                   console.log(resp)
                   if (status == 0) {
                     var url2 = "/yiiapi/workorder/download?id=" + (selected[0].id * 1);
@@ -1303,7 +1363,6 @@ export default {
             .catch(error => {
               console.log(error);
             })
-
         } else {
           this.$message({ message: 'Downloading tickets is not allowed in the current state', type: 'warning' });
         }
@@ -1355,7 +1414,7 @@ export default {
     /************************************************新增*****************************************************/
 
     //新增
-    open_task_new () {
+    open_task_new (type) {
       //新增
       this.task_params = {
         name: "",
@@ -1364,7 +1423,7 @@ export default {
         new_operator: [],
         notice: ['email'],
         textarea: "",
-        type: 'asset'
+        type: type
       };
       this.table_operator.tableData = [];
       this.open_task();
@@ -1386,7 +1445,6 @@ export default {
         })
         .catch(err => {
           console.log('User list error');
-          console.log(err);
         })
     },
 
@@ -1410,16 +1468,23 @@ export default {
 
     //下一步时候验证工单名称，优先级、经办人等参数
     next_task_new () {
+      var pattern = new RegExp("[`~!#%$^&*()=|{}':;',\\[\\]<>《》/?~！#￥……&*（）|{}【】‘；：”“'。，、？]");
       if (this.task_params.name == '') {
         this.$message.error('Ticket name is required');
-      } else if (this.task_params.level == '') {
+        return false
+      }
+      if (pattern.test(this.task_params.name)) {
+        console.log(true);
+        this.$message.error("Tickets' name can't contain special characters");
+        return false
+      }
+      if (this.task_params.level == '') {
         this.$message.error('Please select the priority');
       } else if (this.table_operator.tableData.length == 0) {
         this.$message.error('Please select the assignee');
       } else {
         this.task.new_contet = false;
         this.handle.active = 0;
-
         this.get_list_assets_info();
         this.get_list_alerts_info();
       }
@@ -1480,6 +1545,16 @@ export default {
     getRowKeys_alerts (row) {
       return row.id;
     },
+    //资产匹配
+    getRowKeys_edit_alert (row) {
+      // console.log(row)
+      return row.id;
+    },
+
+    //告警匹配
+    getRowKeys_edit_assets (row) {
+      return row.asset_ip;
+    },
 
     //tab下第一个table多选
     handle_sel_table_assets (val) {
@@ -1508,7 +1583,7 @@ export default {
 
       if (this.task_params.type == 'asset') {
         if (multiple_assets.length == 0) {
-          this.$message({ message: 'At least select one asset or alert', type: 'warning' });
+          this.$message({ message: 'At least select one asset', type: 'warning' });
         } else {
           multiple_alerts = [];
           let all_params = {
@@ -1525,7 +1600,7 @@ export default {
         }
       } else if (this.task_params.type == 'alert') {
         if (multiple_alerts.length == 0) {
-          this.$message({ message: 'At least select one asset or alert', type: 'warning' });
+          this.$message({ message: 'At least select one asset', type: 'warning' });
         } else {
           multiple_assets = [];
 
@@ -1572,7 +1647,7 @@ export default {
 
       if (this.task_params.type == 'asset') {
         if (multiple_assets.length == 0) {
-          this.$message({ message: 'At least select one asset or alert', type: 'warning' });
+          this.$message({ message: 'At least select one asset', type: 'warning' });
         } else {
           multiple_alerts = [];
           let all_params = {
@@ -1589,7 +1664,7 @@ export default {
         }
       } else if (this.task_params.type == 'alert') {
         if (multiple_alerts.length == 0) {
-          this.$message({ message: 'At least select one asset or alert', type: 'warning' });
+          this.$message({ message: 'At least select one alert', type: 'warning' });
         } else {
           multiple_assets = [];
           let all_params = {
@@ -1656,7 +1731,6 @@ export default {
         })
         .catch(err => {
           console.log('User list error');
-          console.log(err);
         })
     },
     // 关闭弹窗
@@ -1696,6 +1770,7 @@ export default {
         }
       })
         .then(resp => {
+          this.selected_list = []
           let { status, data } = resp.data;
           console.log(data);
           // 储存资产数组
@@ -1706,7 +1781,8 @@ export default {
               var obj = {
                 id: item
               }
-              this.edit.handle_sel.push(obj)
+              // this.edit.handle_sel.push(obj)
+              this.selected_list.push(obj)
             })
           } else {
             this.edit.data.risk_asset_cn = []
@@ -1722,7 +1798,8 @@ export default {
                 var obj = {
                   id: item
                 }
-                this.edit.handle_sel.push(obj)
+                // this.edit.handle_sel.push(obj)
+                this.selected_list.push(obj)
               });
             });
           } else {
@@ -1754,9 +1831,17 @@ export default {
     },
     //下一步时候验证工单名称，优先级、经办人等参数
     next_task_edit () {
+      var pattern = new RegExp("[`~!#%$^&*()=|{}':;',\\[\\]<>《》/?~！#￥……&*（）|{}【】‘；：”“'。，、？]");
       if (this.edit.data.name == '') {
         this.$message.error('Ticket name is required');
-      } else if (this.edit.data.level == '') {
+        return false
+      }
+      if (pattern.test(this.edit.data.name)) {
+        console.log(true);
+        this.$message.error("Tickets' name can't contain special characters");
+        return false
+      }
+      if (this.edit.data.level == '') {
         this.$message.error('Please select the priority');
       } else if (this.edit.table_operator.length == 0) {
         this.$message.error('Please select the assignee');
@@ -1798,15 +1883,18 @@ export default {
               v.label_group = '';
             }
           });
+          if (this.edit.handle_sel.length != 0) {
+            this.selected_list.concat(this.edit.handle_sel)
+          }
           // 显示选择
-          this.edit.handle_sel.forEach(element => {
-            this.edit.asset_list.data.forEach((item, index) => {
-              if (element.id == item.id) {
-                this.$nextTick(() => {
+          this.$nextTick(() => {
+            this.selected_list.forEach(element => {
+              this.edit.asset_list.data.forEach((item, index) => {
+                if (element.id == item.id) {
                   this.$refs.assetTable.toggleRowSelection(item, true);
-                })
-              }
-            });
+                }
+              });
+            })
           });
         });
     },
@@ -1820,18 +1908,20 @@ export default {
         }
       })
         .then((resp) => {
-          console.log(this.edit.data.risk_alert_cn);
           let { status, data } = resp.data;
           this.edit.alert_list = data;
+          if (this.edit.handle_sel.length != 0) {
+            this.selected_list.concat(this.edit.handle_sel)
+          }
           // 显示选择
-          this.edit.handle_sel.forEach(element => {
-            this.edit.alert_list.data.forEach((item, index) => {
-              if (element.id == item.id) {
-                this.$nextTick(() => {
+          this.$nextTick(() => {
+            this.selected_list.forEach(element => {
+              this.edit.alert_list.data.forEach((item, index) => {
+                if (element.id == item.id) {
                   this.$refs.alertTable.toggleRowSelection(item, true);
-                })
-              }
-            });
+                }
+              });
+            })
           });
         });
     },
@@ -1859,21 +1949,13 @@ export default {
     // 资产分页
     current_change_assets (val) {
       this.edit.page = val
-    },
-    // 封装数组去重
-    arr_repeat (arr1, arr2) {
-      //合并两个数组
-      arr1.push(...arr2)//或者arr1 = [...arr1,...arr2]
-      //去重
-      let arr3 = Array.from(new Set(arr1))//let arr3 = [...new Set(arr1)]
-      return arr3
+      this.get_list_assets();
     },
     // 告警分页
     current_change_alert (val) {
       this.edit.page = val
       this.get_list_alert();
     },
-
     //编辑工单保存
     prev_task_handle_save_edit () {
       console.log(this.edit.handle_sel);
@@ -1884,7 +1966,8 @@ export default {
       this.edit.handle_sel.forEach(element => {
         handle_sel_list.push(element.id)
       });
-
+      handle_sel_list = handle_sel_list.concat(this.selected_list)
+      handle_sel_list = [...new Set(handle_sel_list)];
       let all_params = {
         workorder_edit: '1',
         id: this.edit.data.id,
@@ -1938,7 +2021,8 @@ export default {
       this.edit.handle_sel.forEach(element => {
         handle_sel_list.push(element.id)
       });
-
+      handle_sel_list = handle_sel_list.concat(this.selected_list)
+      handle_sel_list = [...new Set(handle_sel_list)];
       let all_params = {
         workorder_edit: '1',
         id: this.edit.data.id,
@@ -1989,6 +2073,31 @@ export default {
 <style scoped lang="less">
 @import '../../../../assets/css/less/common-tabs-pattern.less';
 @import '../../../../assets/css/less/common-table-pattern.less';
+.priority_box {
+  width: 72px;
+  /*height: 30px;*/
+  display: inline-block;
+  color: #fff;
+  text-align: center;
+  line-height: normal;
+  border-radius: 2px;
+}
+.highest_priority {
+  background: #dc5f5f;
+  color: #fff;
+}
+.high_priority {
+  background: #e0c840;
+  color: #fff;
+}
+.medium_priority {
+  background: #5389e0;
+  color: #fff;
+}
+.low_priority {
+  background: #47cad9;
+  color: #fff;
+}
 .common-pattern {
   .common_btn {
     .common_box {
@@ -2046,7 +2155,7 @@ export default {
         }
         /deep/ .el-tag {
           height: 24px;
-          width: 120px;
+          width: 72px;
           line-height: 24px;
           border-radius: 0;
           border-width: 0;

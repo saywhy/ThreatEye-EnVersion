@@ -124,7 +124,7 @@
       <el-row class="common-table-pattern">
         <el-col :span="24">
           <el-table ref="multipleTable"
-              align="center"
+                    align="center"
                     border
                     class="common-table"
                     v-loading="table.loading"
@@ -177,7 +177,7 @@
               </template>
             </el-table-column>
             <el-table-column label="Compromise"
-                             min-width="100">
+                             min-width="120">
               <template slot-scope="scope">
                 <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
                   {{ scope.row.fall_certainty | certainty }}</span>
@@ -338,8 +338,8 @@
           </div>
           <div class="content_table">
             <el-table :data="table_operator.tableData"
-                align="center"
-                    border
+                      align="center"
+                      border
                       style="width: 100%">
               <el-table-column prop="username"
                                label="Assignee"></el-table-column>
@@ -374,8 +374,8 @@
             <div>
               <div v-show="handle.active == 0">
                 <el-table class="common-table"
-                    align="center"
-                    border
+                          align="center"
+                          border
                           :data="table_alerts.tableData_new"
                           tooltip-effect="dark"
                           @selection-change="handle_sel_table_alerts">
@@ -400,7 +400,7 @@
                     </template>
                   </el-table-column>
                   <el-table-column label="Compromise"
-                                   width="100">
+                                   width="120">
                     <template slot-scope="scope">
                       <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
                         {{ scope.row.fall_certainty | certainty }}</span>
@@ -454,8 +454,8 @@
         <el-row class="common-table-pattern">
           <el-col :span="24">
             <el-table class="common-table"
-                align="center"
-                    border
+                      align="center"
+                      border
                       highlight-current-row
                       v-loading="table_add_works.loading"
                       :data="table_add_works.tableData"
@@ -514,6 +514,7 @@
 <script type="text/ecmascript-6">
 import vmEmergeLine from "./vm-emerge/vm-emerge-line";
 import vmEmergePicker from "@/components/common/vm-emerge-picker";
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: "Network",
   components: {
@@ -698,10 +699,31 @@ export default {
     };
   },
   mounted () {
+    this.check_passwd();
     this.get_echarts();
     this.get_list_risk();
   },
   methods: {
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
     // 获取折现图表
     get_echarts () {
       this.$axios.get('/yiiapi/alert/alert-trend')
@@ -1204,7 +1226,7 @@ export default {
       let multipe = this.table_add_works.multipleSelection;
 
       if (multipe.length == 0) {
-        this.$message({ message: 'Please select the alerts that need to be added to the ticket', type: 'warning' });
+        this.$message({ message: 'Please select the alert that need to be added to the ticket', type: 'warning' });
       } else if (multipe.length > 1) {
         this.$message({ message: 'Assets or alerts cannot be added to multiple tickets, please try again.', type: 'warning' });
       } else {

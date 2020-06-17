@@ -92,6 +92,7 @@
 </template>
 <script type="text/ecmascript-6">
 import VmEmergePicker from "@/components/common/vm-emerge-picker";
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: "invest_data",
   components: {
@@ -121,7 +122,45 @@ export default {
       }
     };
   },
+  mounted () {
+    this.test()
+    this.check_passwd();
+  },
   methods: {
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
+    // 测试600专用
+    test () {
+      this.$axios.get('/yiiapi/site/check-auth-exist', {
+        params: {
+          pathInfo: 'investigate/flowsize-timelength-investigation',
+        }
+      })
+        .then(response => {
+
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    },
     handleClick () { },
     search () {
       this.get_data();
@@ -144,13 +183,16 @@ export default {
         .then(response => {
           this.data_search.loading = false
           let { status, data } = response.data;
-          if (data.count > 10000) {
-            this.$message({
-              type: 'warning',
-              message: 'Over 10,000 search results returned, please narrow the search conditions.'
-            });
+          if (status == '602') {
             return false
           }
+          // if (data.count > 10000) {
+          //   this.$message({
+          //     type: 'warning',
+          //     message: 'Over 10,000 search results returned, please narrow the search conditions.'
+          //   });
+          //   return false
+          // }
           this.data_list = data
           this.data_list_data = data.data
           this.data_list_data.data.forEach((item, index) => {
@@ -179,13 +221,13 @@ export default {
         });
         return false
       }
-      if (this.data_list.count > 1000) {
-        this.$message({
-          type: 'warning',
-          message: 'Downloaded data cannot exceed 1000 records!'
-        });
-        return false
-      }
+      // if (this.data_list.count > 1000) {
+      //   this.$message({
+      //     type: 'warning',
+      //     message: 'Downloaded data cannot exceed 1000 records!'
+      //   });
+      //   return false
+      // }
       this.$axios.get('/yiiapi/site/check-auth-exist', {
         params: {
           pathInfo: 'yararule/download',

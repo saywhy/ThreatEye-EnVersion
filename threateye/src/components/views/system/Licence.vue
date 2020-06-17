@@ -20,11 +20,11 @@
                  :before-upload="onBeforeUpload"
                  :on-change="onChange"
                  :data='file_data'
-                 multiple
                  :auto-upload='true'
                  :on-success='onsuccess'
                  :on-exceed="handleExceed"
-                 :file-list="fileList">
+                 :file-list="fileList"
+                 :multiple="false">
         <el-button class="btn_o"
                    type="primary">Import</el-button>
       </el-upload>
@@ -132,6 +132,7 @@
 </template>
 <script type="text/ecmascript-6">
 import moment from 'moment'
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: "system_control_licence",
   data () {
@@ -174,11 +175,32 @@ export default {
     };
   },
   mounted () {
+    this.check_passwd();
     this.get_data();
     this.get_license();
     this.get_version();
   },
   methods: {
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
     get_data () {
       this.$axios.get('/yiiapi/license/get', {
         params: {

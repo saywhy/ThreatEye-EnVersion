@@ -65,6 +65,7 @@
 
 <script type="text/ecmascript-6">
 import vmEmergePicker from "@/components/common/vm-emerge-picker";
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   components: {
     vmEmergePicker,
@@ -95,9 +96,29 @@ export default {
   },
   mounted () {
     this.get_data()
+    this.check_passwd()
   },
 
   methods: {
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
     get_data () {
       this.loading = true;
       this.$axios.get('/yiiapi/userlog/page', {

@@ -9,12 +9,12 @@
           <el-tab-pane label="Mail Notification"
                        class="tabs-item"
                        name="first">
-            <mail-notic></mail-notic>
+            <mail-notic v-if="tab_show.first"></mail-notic>
           </el-tab-pane>
           <el-tab-pane label="SMS Notification"
                        class="tabs-item"
                        name="second">
-            <short-message></short-message>
+            <short-message v-if="tab_show.second"></short-message>
           </el-tab-pane>
         </el-tabs>
       </div>
@@ -32,13 +32,29 @@ export default {
   name: "system_control_electric",
   data () {
     return {
-      activeName: "first"
+      activeName: "first",
+      tab_show: {
+        first: true,
+        second: false,
+      }
     };
   },
 
   methods: {
     handleClick (tab, event) {
-      console.log(tab.label);
+      console.log(tab);
+      switch (tab.name) {
+        case "first":
+          this.tab_show.first = true;
+          this.tab_show.second = false;
+          break;
+        case "second":
+          this.tab_show.first = false;
+          this.tab_show.second = true;
+          break;
+        default:
+          break;
+      }
     }
   }
 };

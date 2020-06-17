@@ -4,14 +4,18 @@
        v-cloak>
     <div class="outside-top">
       <div class="ost ost-1">
-        <div class="ost-title"><slot name="name"></slot></div>
+        <div class="ost-title">
+          <slot name="name"></slot>
+        </div>
         <div class="ost-progress">
           <vm-handle-progress :progress_data="progress_data_source5"
                               v-if="progress_data_source5_show"></vm-handle-progress>
         </div>
       </div>
       <div class="ost ost-2">
-        <div class="ost-title"><slot name="types"></slot></div>
+        <div class="ost-title">
+          <slot name="types"></slot>
+        </div>
         <div class="ost-emerge">
           <vm-handle-form :form_data="form_data_threat5"
                           v-if="form_data_threat5_show"></vm-handle-form>
@@ -130,7 +134,7 @@
           </el-form>
           <el-table ref="multipleTable"
                     class="common-table"
-                     align="center"
+                    align="center"
                     border
                     v-loading="table.loading"
                     :data="table.tableData"
@@ -181,7 +185,7 @@
               </template>
             </el-table-column>
             <el-table-column label="Compromise"
-                             min-width="100">
+                             min-width="120">
               <template slot-scope="scope">
                 <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
                   {{ scope.row.fall_certainty | certainty }}</span>
@@ -345,8 +349,8 @@
           </div>
           <div class="content_table">
             <el-table :data="table_operator.tableData"
-                align="center"
-                    border
+                      align="center"
+                      border
                       style="width: 100%">
               <el-table-column prop="username"
                                label="Assignee"></el-table-column>
@@ -404,7 +408,7 @@
                     </template>
                   </el-table-column>
                   <el-table-column label="Compromise"
-                                   width="100">
+                                   width="120">
                     <template slot-scope="scope">
                       <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
                         {{ scope.row.fall_certainty | certainty }}</span>
@@ -1149,7 +1153,7 @@ export default {
       let sel_table_data = this.table.multipleSelection;
       let sel_table_attr = sel_table_data.map(x => { return x.status });
       if (sel_table_data.length == 0) {
-        this.$message({ message: 'Please select the alerts that need to be added to the ticket', type: 'warning' });
+        this.$message({ message: 'Please select the alert that need to be added to the ticket', type: 'warning' });
         return false;
       } else {
         if (sel_table_attr.includes('3')
@@ -1229,7 +1233,7 @@ export default {
       console.log(multipe)
 
       if (multipe.length == 0) {
-        this.$message({ message: 'Please select the alerts that need to be added to the ticket', type: 'warning' });
+        this.$message({ message: 'Please select the alert that need to be added to the ticket', type: 'warning' });
       } else if (multipe.length > 1) {
         this.$message({ message: 'Assets or alerts cannot be added to multiple tickets, please try again.', type: 'warning' });
       } else {

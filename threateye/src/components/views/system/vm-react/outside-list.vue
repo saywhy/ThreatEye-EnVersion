@@ -122,6 +122,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: "outside_list",
   data () {
@@ -153,10 +154,31 @@ export default {
     this.get_list('1')
     this.get_list('2')
     this.get_ip()
+    this.check_passwd()
     // 必填；只能是1和2；动态类型，1Ip，2url
   },
 
   methods: {
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
     // 获取当前IP
     get_ip () {
       this.$axios.get('/yiiapi/linkage/get-hostip')

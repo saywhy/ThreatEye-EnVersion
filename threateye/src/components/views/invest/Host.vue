@@ -179,6 +179,7 @@
 </template>
 <script type="text/ecmascript-6">
 import VmEmergePicker from "@/components/common/vm-emerge-picker";
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: "invest_host",
   data () {
@@ -226,8 +227,45 @@ export default {
   components: {
     VmEmergePicker
   },
+  mounted () {
+    this.test()
+    this.check_passwd();
+  },
   methods: {
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
+    // 测试600专用
+    test () {
+      this.$axios.get('/yiiapi/site/check-auth-exist', {
+        params: {
+          pathInfo: 'investigate/host-network-investigation',
+        }
+      })
+        .then(response => {
 
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    },
     search_data () {
       switch (this.activeButGroup) {
         case '1':
@@ -261,14 +299,17 @@ export default {
         .then(response => {
           this.host_search.loading = false
           let { status, data } = response.data;
-          console.log(data);
-          if (data.count > 10000) {
-            this.$message({
-              type: 'warning',
-              message: 'Over 10,000 search results returned, please narrow the search conditions.'
-            });
+          if (status == '602') {
             return false
           }
+          console.log(data);
+          // if (data.count > 10000) {
+          //   this.$message({
+          //     type: 'warning',
+          //     message: 'Over 10,000 search results returned, please narrow the search conditions.'
+          //   });
+          //   return false
+          // }
           this.host_network = data
           this.host_network_data = data.data
           this.host_network_data.data.forEach((item, index) => {
@@ -294,14 +335,16 @@ export default {
         .then(response => {
           this.host_search.loading = false
           let { status, data } = response.data;
-          console.log(data);
-          if (data.count > 10000) {
-            this.$message({
-              type: 'warning',
-              message: 'Over 10,000 search results returned, please narrow the search conditions.'
-            });
+          if (status == '602') {
             return false
           }
+          // if (data.count > 10000) {
+          //   this.$message({
+          //     type: 'warning',
+          //     message: 'Over 10,000 search results returned, please narrow the search conditions.'
+          //   });
+          //   return false
+          // }
           this.host_file = data
           this.host_file_data = data.data
           this.host_file_data.data.forEach((item, index) => {
@@ -327,13 +370,16 @@ export default {
         .then(response => {
           this.host_search.loading = false
           let { status, data } = response.data;
-          if (data.count > 10000) {
-            this.$message({
-              type: 'warning',
-              message: 'Over 10,000 search results returned, please narrow the search conditions.'
-            });
+          if (status == '602') {
             return false
           }
+          // if (data.count > 10000) {
+          //   this.$message({
+          //     type: 'warning',
+          //     message: 'Over 10,000 search results returned, please narrow the search conditions.'
+          //   });
+          //   return false
+          // }
           console.log(data);
           this.host_user = data
           this.host_user_data = data.data
@@ -363,13 +409,13 @@ export default {
             });
             return false
           }
-          if (this.host_network.count > 1000) {
-            this.$message({
-              type: 'warning',
-              message: 'Downloaded data cannot exceed 1000 records!'
-            });
-            return false
-          }
+          // if (this.host_network.count > 1000) {
+          //   this.$message({
+          //     type: 'warning',
+          //     message: 'Downloaded data cannot exceed 1000 records!'
+          //   });
+          //   return false
+          // }
 
           this.$axios.get('/yiiapi/site/check-auth-exist', {
             params: {
@@ -393,13 +439,13 @@ export default {
             });
             return false
           }
-          if (this.host_file.count > 1000) {
-            this.$message({
-              type: 'warning',
-              message: 'Downloaded data cannot exceed 1000 records!'
-            });
-            return false
-          }
+          // if (this.host_file.count > 1000) {
+          //   this.$message({
+          //     type: 'warning',
+          //     message: 'Downloaded data cannot exceed 1000 records!'
+          //   });
+          //   return false
+          // }
 
           this.$axios.get('/yiiapi/site/check-auth-exist', {
             params: {
@@ -423,13 +469,13 @@ export default {
             });
             return false
           }
-          if (this.host_user.count > 1000) {
-            this.$message({
-              type: 'warning',
-              message: 'Downloaded data cannot exceed 1000 records!'
-            });
-            return false
-          }
+          // if (this.host_user.count > 1000) {
+          //   this.$message({
+          //     type: 'warning',
+          //     message: 'Downloaded data cannot exceed 1000 records!'
+          //   });
+          //   return false
+          // }
           this.$axios.get('/yiiapi/site/check-auth-exist', {
             params: {
               pathInfo: 'yararule/download',

@@ -166,7 +166,7 @@
       <el-row class="common-table-pattern">
         <el-col :span="24">
           <el-table ref="multipleTable"
-              align="center"
+                    align="center"
                     border
                     class="common-table"
                     :row-style="{cursor:'pointer'}"
@@ -209,7 +209,7 @@
               </template>
             </el-table-column>
             <el-table-column label="Compromise"
-                             min-width="100">
+                             min-width="120">
               <template slot-scope="scope">
                 <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
                   {{ scope.row.fall_certainty | certainty }}</span>
@@ -375,8 +375,8 @@
           </div>
           <div class="content_table">
             <el-table :data="table_operator.tableData"
-                align="center"
-                    border
+                      align="center"
+                      border
                       style="width: 100%">
               <el-table-column prop="username"
                                label="Assignee"></el-table-column>
@@ -409,8 +409,8 @@
             </ul>
             <div v-show="handle.active == 0">
               <el-table class="common-table"
-                  align="center"
-                    border
+                        align="center"
+                        border
                         :data="table_assets.tableData_new"
                         tooltip-effect="dark"
                         style="width: 100%"
@@ -501,8 +501,8 @@
         <el-row class="common-table-pattern">
           <el-col :span="24">
             <el-table class="common-table"
-                align="center"
-                    border
+                      align="center"
+                      border
                       highlight-current-row
                       v-loading="table_add_works.loading"
                       :data="table_add_works.tableData"
@@ -564,7 +564,7 @@
 
 <script type="text/ecmascript-6">
 import VmHandleTabs from "./vm-handle/vm-handle-tabs";
-
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: 'assets',
   components: {
@@ -732,17 +732,35 @@ export default {
     };
   },
   created () {
+    this.check_passwd();
     //頂部
     this.get_list_top();
-
     //全部資產
     this.get_list_all();
-
     //風險資產
     this.get_list_risk();
-
   },
   methods: {
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
     //资产頂部
     get_list_top () {
       this.$axios.get('/yiiapi/alert/risk-asset-top')
@@ -1013,7 +1031,7 @@ export default {
     open_state () {
       let sel_table_data = this.table.multipleSelection;
       if (sel_table_data.length == 0) {
-        this.$message({ message: 'Please select the assets to be changed', type: 'warning' });
+        this.$message({ message: 'Please select the asset to be changed', type: 'warning' });
         return false;
       } else {
         this.state_change = true;

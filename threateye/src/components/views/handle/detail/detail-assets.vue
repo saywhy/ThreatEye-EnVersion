@@ -378,7 +378,7 @@
               </template>
             </el-table-column>
             <el-table-column label="Compromise"
-                             min-width="100">
+                             min-width="120">
               <template slot-scope="scope">
                 <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
                   {{ scope.row.fall_certainty | certainty }}</span>
@@ -1025,7 +1025,7 @@ export default {
         },
         {
           name: "恶意程序	malwarefile",
-          des: '下Download a malicious program to the machine, may be malicious file download, malicious file copy or malicious email attachments and so on.',
+          des: 'Download a malicious program to the machine, may be malicious file download, malicious file copy or malicious email attachments and so on.',
           handle: [
             '1. Refer to machine port of the "network event" in the alert details to locate the process that has downloaded malicious programs;',
             '2. If anti-virus software is installed on the machine, verify whether the malicious program has been quarantined according to the filename or hash value detected by the system;',
@@ -1100,7 +1100,7 @@ export default {
         },
         {
           name: '移动恶意软件	mobilemalware',
-          des: '下Download a malicious program to the machine, may be malicious file download, malicious file copy or malicious email attachments and so on.',
+          des: 'Download a malicious program to the machine, may be malicious file download, malicious file copy or malicious email attachments and so on.',
           handle: [
             '1. Refer to machine port of the "network event" in the alert details to locate the process that has downloaded malicious programs;',
             '2. If anti-virus software is installed on the machine, verify whether the malicious program has been quarantined according to the filename or hash value detected by the system;',

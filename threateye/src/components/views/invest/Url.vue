@@ -95,6 +95,7 @@
 </template>
 <script type="text/ecmascript-6">
 import VmEmergePicker from "@/components/common/vm-emerge-picker";
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: "invest_url",
   components: {
@@ -127,6 +128,7 @@ export default {
     };
   },
   mounted () {
+    this.check_passwd();
     console.log(this.$route.query);
     if (this.$route.query.src_ip && this.$route.query.src_ip != '') {
       this.url_search.src_ip = this.$route.query.src_ip;
@@ -136,8 +138,43 @@ export default {
       this.url_search.dst_ip = this.$route.query.dest_ip;
       this.get_data();
     }
+    this.test()
   },
   methods: {
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
+    // 测试600专用
+    test () {
+      this.$axios.get('/yiiapi/site/check-auth-exist', {
+        params: {
+          pathInfo: 'investigate/ipurl-communication-investigation',
+        }
+      })
+        .then(response => {
+
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    },
     search () {
       this.url_search.page = 1
       this.url_list.pageNow = 1
@@ -159,15 +196,21 @@ export default {
         }
       })
         .then(response => {
+          // this.$set(this.url_search, 'loading', false)
           this.url_search.loading = false
+          console.log(this.url_search.loading);
+          console.log(response);
           let { status, data } = response.data;
-          if (data.count > 10000) {
-            this.$message({
-              type: 'warning',
-              message: 'Over 10,000 search results returned, please narrow the search conditions.'
-            });
+          if (status == '602') {
             return false
           }
+          // if (data.count > 10000) {
+          //   this.$message({
+          //     type: 'warning',
+          //     message: 'Over 10,000 search results returned, please narrow the search conditions.'
+          //   });
+          //   return false
+          // }
           this.url_list = data
           this.url_list_data = data.data
           this.url_list_data.data.forEach((item, index) => {
@@ -175,6 +218,7 @@ export default {
           });
         })
         .catch(error => {
+          this.url_search.loading = false
           console.log(error);
         })
     },
@@ -197,13 +241,13 @@ export default {
         });
         return false
       }
-      if (this.url_list.count > 1000) {
-        this.$message({
-          type: 'warning',
-          message: 'Downloaded data cannot exceed 1000 records!'
-        });
-        return false
-      }
+      // if (this.url_list.count > 1000) {
+      //   this.$message({
+      //     type: 'warning',
+      //     message: 'Downloaded data cannot exceed 1000 records!'
+      //   });
+      //   return false
+      // }
       this.$axios.get('/yiiapi/site/check-auth-exist', {
         params: {
           pathInfo: 'yararule/download',
@@ -223,7 +267,6 @@ export default {
         .catch(error => {
           console.log(error);
         })
-
     },
     // 分页
     handleSizeChange (val) {

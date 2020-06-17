@@ -251,9 +251,9 @@ textarea {
   border-right: 1px solid #EBEEF5;
 }
 
-.el-table--border th:nth-child(1) {
+/* .el-table--border th:nth-child(1) {
   border-left: 1px solid #EBEEF5;
-}
+} */
 
 .el-table::before {
   height: 0;
@@ -267,5 +267,3 @@ textarea {
 .el-table--border::after {
   width: 0;
 }
-
-.common-table {}

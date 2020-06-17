@@ -127,15 +127,15 @@
             </li>
             <li class="item_li">
               <span class="item_li_title">Time:</span>
-              <span class="item_li_content">{{network_detail.alert_time}}</span>
+              <span class="item_li_content">{{network_times_active.alert_time}}</span>
             </li>
             <li class="item_li">
               <span class="item_li_title">Indicator:</span>
-              <span class="item_li_content">{{network_detail.indicator}}</span>
+              <span class="item_li_content">{{network_times_active.indicator}}</span>
             </li>
             <li class="item_li">
               <span class="item_li_title">Type:</span>
-              <span class="item_li_content">{{network_detail.category}}</span>
+              <span class="item_li_content">{{network_times_active.category}}</span>
             </li>
             <li class="item_li">
               <span class="item_li_title">Status:</span>
@@ -147,16 +147,16 @@
           <ul>
             <li class="item_li">
               <span class="item_li_title">Protocol:</span>
-              <span class="item_li_content">{{network_detail.application}}</span>
+              <span class="item_li_content">{{network_times_active.application}}</span>
             </li>
             <li class="item_li">
               <span class="item_li_title">Detection Engine:</span>
-              <span class="item_li_content">{{network_detail.detect_engine}}</span>
+              <span class="item_li_content">{{network_times_active.detect_engine}}</span>
             </li>
             <li class="item_li">
               <span class="item_li_title">Compromise:</span>
-              <span :class="network_detail.fall_certainty == '0'?'':'fall_certainty'">
-                {{network_detail.fall_certainty == '0'?'':'Compromised'}}</span>
+              <span :class="network_times_active.fall_certainty == '0'?'':'fall_certainty'">
+                {{network_times_active.fall_certainty == '0'?'':'Compromised'}}</span>
             </li>
             <li class="item_li">
               <span class="item_li_title">Labels:</span>
@@ -171,7 +171,7 @@
             </li>
             <li class="item_li">
               <span class="item_li_title">Attack Phase:</span>
-              <span class="item_li_content">{{network_detail.attack_stage_cn }}</span>
+              <span class="item_li_content">{{network_times_active.attack_stage_cn }}</span>
             </li>
             <li class="item_li">
               <span class="item_li_title">Ticket Name:</span>
@@ -208,6 +208,7 @@
               </div>
               <div class="time_item_right">
                 <p>{{item.alert_time}} </p>
+                <p>{{item.detect_engine}}</p>
               </div>
             </li>
           </ul>
@@ -226,7 +227,8 @@
                     v-for="value in item.info_list"
                     v-if="value.name !='File_behavior'&&value.name !='taskID'">
                   <span class="info_top_item_title">{{value.name}}</span>
-                  <span v-if="value.name=='File_size'">
+                  <span v-if="value.name=='File_size'"
+                        class="info_top_item_content">
                     {{value.value | filterType }}
                   </span>
                   <span class="info_top_item_content"
@@ -291,132 +293,84 @@
       </div>
       <div class="attack_stage_bom">
         <div class="stage_item_box">
-          <span class="circle_box"
-                v-if="attack_stage_list[0].count>1">
-            {{attack_stage_list[0].count}}
-          </span>
-          <span :class="attack_stage_list[0].count>0?'count_color':''">Initial Access</span>
+          <span :class="network_times_active.attack_stage_cn =='Initial Access'?'count_color':''">Initial Access</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
                alt="">
         </div>
         <div class="stage_item_box">
-          <span class="circle_box"
-                v-if="attack_stage_list[1].count>1">
-            {{attack_stage_list[1].count}}
-          </span>
-          <span :class="attack_stage_list[1].count>0?'count_color':''">Execution</span>
+          <span :class="network_times_active.attack_stage_cn =='Execution'?'count_color':''">Execution</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
                alt="">
         </div>
         <div class="stage_item_box">
-          <span class="circle_box"
-                v-if="attack_stage_list[2].count>1">
-            {{attack_stage_list[2].count}}
-          </span>
-          <span :class="attack_stage_list[2].count>0?'count_color':''">Persistence</span>
+          <span :class="network_times_active.attack_stage_cn =='Persistence'?'count_color':''">Persistence</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
                alt="">
         </div>
         <div class="stage_item_box">
-          <span class="circle_box"
-                v-if="attack_stage_list[3].count>1">
-            {{attack_stage_list[3].count}}
-          </span>
-          <span :class="attack_stage_list[3].count>0?'count_color':''">Privilege Escalation</span>
+          <span :class="network_times_active.attack_stage_cn =='Privilege Escalation'?'count_color':''">Privilege Escalation</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
                alt="">
         </div>
         <div class="stage_item_box">
-          <span class="circle_box"
-                v-if="attack_stage_list[4].count>1">
-            {{attack_stage_list[4].count}}
-          </span>
-          <span :class="attack_stage_list[4].count>0?'count_color':''">Defense Evasion</span>
+          <span :class="network_times_active.attack_stage_cn =='Defense Evasion'?'count_color':''">Defense Evasion</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
                alt="">
         </div>
         <div class="stage_item_box">
-          <span class="circle_box"
-                v-if="attack_stage_list[5].count>1">
-            {{attack_stage_list[5].count}}
-          </span>
-          <span :class="attack_stage_list[5].count>0?'count_color':''">Credential Access</span>
+          <span :class="network_times_active.attack_stage_cn =='Credential Access'?'count_color':''">Credential Access</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
                alt="">
         </div>
         <div class="stage_item_box">
-          <span class="circle_box"
-                v-if="attack_stage_list[6].count>1">
-            {{attack_stage_list[6].count}}
-          </span>
-          <span :class="attack_stage_list[6].count>0?'count_color':''">Discovery</span>
+          <span :class="network_times_active.attack_stage_cn =='Discovery'?'count_color':''">Discovery</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
                alt="">
         </div>
         <div class="stage_item_box">
-          <span class="circle_box"
-                v-if="attack_stage_list[7].count>1">
-            {{attack_stage_list[7].count}}
-          </span>
-          <span :class="attack_stage_list[7].count>0?'count_color':''">Lateral Movement</span>
+          <span :class="network_times_active.attack_stage_cn =='Lateral Movement'?'count_color':''">Lateral Movement</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
                alt="">
         </div>
         <div class="stage_item_box">
-          <span class="circle_box"
-                v-if="attack_stage_list[8].count>1">
-            {{attack_stage_list[8].count}}
-          </span>
-          <span :class="attack_stage_list[8].count>0?'count_color':''">Collection</span>
+          <span :class="network_times_active.attack_stage_cn =='Collection'?'count_color':''">Collection</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
                alt="">
         </div>
         <div class="stage_item_box">
-          <span class="circle_box"
-                v-if="attack_stage_list[9].count>1">
-            {{attack_stage_list[9].count}}
-          </span>
-          <span :class="attack_stage_list[9].count>0?'count_color':''">Command and Control</span>
+          <span :class="network_times_active.attack_stage_cn =='Command and Control'?'count_color':''">Command and Control</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
                alt="">
         </div>
         <div class="stage_item_box">
-          <span class="circle_box"
-                v-if="attack_stage_list[10].count>1">
-            {{attack_stage_list[10].count}}
-          </span>
-          <span :class="attack_stage_list[10].count>0?'count_color':''">Exfiltration</span>
+          <span :class="network_times_active.attack_stage_cn =='Exfiltration'?'count_color':''">Exfiltration</span>
         </div>
         <div class="stage_img_box">
           <img src="@/assets/images/emerge/detail_jiantou.png"
                alt="">
         </div>
         <div class="stage_item_box">
-          <span class="circle_box"
-                v-if="attack_stage_list[11].count>1">
-            {{attack_stage_list[11].count}}
-          </span>
-          <span :class="attack_stage_list[11].count>0?'count_color':''">Impact</span>
+          <span :class="network_times_active.attack_stage_cn =='Impact'?'count_color':''">Impact</span>
         </div>
       </div>
     </div>
@@ -430,7 +384,7 @@
       </div>
       <div class="suggest_bom">
         <p class="suggest_bom_title">Threat description</p>
-        <p class="suggest_bom_des">{{suggest_list[network_detail.safety_suggestion].des}}</p>
+        <p class="suggest_bom_des">{{suggest_list[network_times_active.safety_suggestion].des}}</p>
         <p class="suggest_bom_title">Security Recommendations</p>
         <p class="suggest_bom_list">
           <img src="@/assets/images/emerge/detail_suggest.png"
@@ -440,7 +394,7 @@
         </p>
         <div>
           <p class="suggest_bom_li"
-             v-for="item in suggest_list[network_detail.safety_suggestion].handle">
+             v-for="item in suggest_list[network_times_active.safety_suggestion].handle">
             {{item}}
           </p>
         </div>
@@ -452,7 +406,7 @@
         </p>
         <div>
           <p class="suggest_bom_li"
-             v-for="item in suggest_list[network_detail.safety_suggestion].reinforce">
+             v-for="item in suggest_list[network_times_active.safety_suggestion].reinforce">
             {{item}}
           </p>
         </div>
@@ -504,6 +458,12 @@
                       :class="{'high_background':scope.row.degree =='High risk','mid_background':scope.row.degree =='Medium risk','low_background':scope.row.degree =='Low risk'}">
                   {{ scope.row.degree | degree_sino }}</span>
               </template>
+            </el-table-column>
+            <el-table-column label="Status"
+                             align="center"
+                             width="80"
+                             show-overflow-tooltip>
+              <template slot-scope="scope">{{ scope.row.status | alert_status }}</template>
             </el-table-column>
           </el-table>
           <el-pagination class="pagination_box"
@@ -557,6 +517,12 @@
                       :class="{'high_background':scope.row.degree =='High risk','mid_background':scope.row.degree =='Medium risk','low_background':scope.row.degree =='Low risk'}">
                   {{ scope.row.degree | degree_sino }}</span>
               </template>
+            </el-table-column>
+            <el-table-column label="Status"
+                             align="center"
+                             width="80"
+                             show-overflow-tooltip>
+              <template slot-scope="scope">{{ scope.row.status | alert_status }}</template>
             </el-table-column>
           </el-table>
           <el-pagination class="pagination_box"
@@ -855,7 +821,7 @@
                     </template>
                   </el-table-column>
                   <el-table-column label="Compromise"
-                                   width="100"
+                                   width="120"
                                    show-overflow-tooltip>
                     <template slot-scope="scope">
                       <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
@@ -897,6 +863,9 @@ export default {
         work_name: '',
         workorder_id: '',
         work_order_status: '',
+      },
+      network_times_active: {
+        alert_description: {}
       },
       attack_stage_list: [
         {
@@ -1087,7 +1056,7 @@ export default {
         },
         {
           name: "恶意程序	malwarefile",
-          des: '下Download a malicious program to the machine, may be malicious file download, malicious file copy or malicious email attachments and so on.',
+          des: 'Download a malicious program to the machine, may be malicious file download, malicious file copy or malicious email attachments and so on.',
           handle: [
             '1. Refer to machine port of the "network event" in the alert details to locate the process that has downloaded malicious programs;',
             '2. If anti-virus software is installed on the machine, verify whether the malicious program has been quarantined according to the filename or hash value detected by the system;',
@@ -1162,7 +1131,7 @@ export default {
         },
         {
           name: '移动恶意软件	mobilemalware',
-          des: '下Download a malicious program to the machine, may be malicious file download, malicious file copy or malicious email attachments and so on.',
+          des: 'Download a malicious program to the machine, may be malicious file download, malicious file copy or malicious email attachments and so on.',
           handle: [
             '1. Refer to machine port of the "network event" in the alert details to locate the process that has downloaded malicious programs;',
             '2. If anti-virus software is installed on the machine, verify whether the malicious program has been quarantined according to the filename or hash value detected by the system;',
@@ -2490,9 +2459,10 @@ export default {
               }
             });
           });
-
-          this.new_list();
-          this.old_list();
+          this.network_times_active = this.network_times[0]
+          console.log(this.network_times_active);
+          this.new_list(this.network_times_active.indicator);
+          this.old_list(this.network_times_active.indicator);
           // this.network_times.push(item_obj)
         })
         .catch(error => {
@@ -2630,7 +2600,7 @@ export default {
         })
     },
     // Current Risk Assets
-    new_list () {
+    new_list (indicator) {
       var new_list = ''
       // horizontalthreat  横向威胁告警  lateral
       // externalthreat  外部威胁告警  outside
@@ -2657,7 +2627,7 @@ export default {
 
       this.$axios.get(new_list, {
         params: {
-          indicator: this.network_detail.indicator,
+          indicator: indicator,
           is_deal: 0,
           page: this.emerge_list.now_data.page,
           rows: this.emerge_list.now_data.rows,
@@ -2681,7 +2651,7 @@ export default {
       this.new_list();
     },
     // Historical Risk Assets
-    old_list () {
+    old_list (indicator) {
       var new_list = ''
       // horizontalthreat  横向威胁告警  lateral
       // externalthreat  外部威胁告警  outside
@@ -2707,7 +2677,7 @@ export default {
       }
       this.$axios.get(new_list, {
         params: {
-          indicator: this.network_detail.indicator,
+          indicator: indicator,
           is_deal: 2,
           page: this.emerge_list.old_data.page,
           rows: this.emerge_list.old_data.rows
@@ -3045,8 +3015,12 @@ export default {
       }
     },
     time_active (index) {
-      console.log("111");
       this.time_choose = index;
+      console.log(this.network_times);
+      this.network_times_active = this.network_times[index]
+      console.log(this.network_times_active);
+      this.new_list(this.network_times_active.indicator);
+      this.old_list(this.network_times_active.indicator);
     },
     emerge_list_active (index) {
       this.emerge_list.choose = index;
@@ -4041,10 +4015,11 @@ export default {
             }
             .tag_btn {
               height: 20px;
-              font-size: 10px;
+              font-size: 14px;
+              padding: 0 3px;
               line-height: 20px;
               font-family: PingFang;
-              transform: scale(0.8);
+              // transform: scale(0.8);
               display: block;
             }
           }
@@ -4114,14 +4089,14 @@ export default {
         }
         .time_item {
           z-index: 999;
-          height: 60px;
+          height: 80px;
           width: 95%;
           display: flex;
           position: relative;
           cursor: pointer;
           .time_item_left {
             width: 52px;
-            padding: 20px 0;
+            padding: 28px 0;
           }
           .time_item_right {
             flex: 1;
@@ -4142,7 +4117,7 @@ export default {
           border-bottom: 8px solid transparent;
           border-left: 8px solid #0070ff;
           position: absolute;
-          top: 20px;
+          top: 32px;
           right: -8px;
           z-index: 999;
         }
@@ -4191,10 +4166,14 @@ export default {
                 color: #333333;
               }
               .info_top_item_content {
+                word-break: break-all;
                 flex: 1;
                 font-family: PingFang;
                 font-size: 16px;
                 color: #666666;
+                .num {
+                  color: #666666;
+                }
               }
             }
           }

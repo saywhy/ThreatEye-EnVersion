@@ -42,7 +42,7 @@
                     <span :class="scope.row.result==0?'color_red':''">{{scope.row.result_cn}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="Created"
+                <el-table-column label="Created Time"
                                  width='180'
                                  show-overflow-tooltip>
                   <template slot-scope="scope">
@@ -100,6 +100,7 @@
 </template>
 <script type="text/ecmascript-6">
 import moment from 'moment'
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: "sandbox",
   data () {
@@ -124,8 +125,29 @@ export default {
   },
   mounted () {
     this.get_data();
+    this.check_passwd();
   },
   methods: {
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
     //获取当前版本
     get_version () {
       this.$axios.get('/yiiapi/site/license-version')

@@ -2,9 +2,7 @@
   <div id="equipment">
     <div class="container">
       <div class="top">
-        <div class="item"
-             :class="{'left_active':activeDiv=='1'}"
-             @click="chooseDiv('1')">
+        <div class="item">
           <div class="item_left">
             <img class="img_box"
                  src="@/assets/images/setting/yq.png"
@@ -24,9 +22,7 @@
             </p>
           </div>
         </div>
-        <div class="mid item "
-             :class="{'left_active':activeDiv=='2'}"
-             @click="chooseDiv('2')">
+        <div class="mid item">
           <div class="item_left">
             <img class="img_box"
                  src="@/assets/images/setting/yt.png"
@@ -46,9 +42,7 @@
             </p>
           </div>
         </div>
-        <div class="mid item "
-             :class="{'left_active':activeDiv=='3'}"
-             @click="chooseDiv('3')">
+        <div class="mid item">
           <div class="item_left">
             <img class="img_box"
                  src="@/assets/images/setting/tz.png"
@@ -68,9 +62,7 @@
             </p>
           </div>
         </div>
-        <div class="right item "
-             :class="{'left_active':activeDiv=='4'}"
-             @click="chooseDiv('4')"
+        <div class="right item"
              v-if="sandbox_show">
           <div class="item_left">
             <img class="img_box"
@@ -123,8 +115,7 @@
             </el-table-column>
             <el-table-column label='Device Name'>
               <template slot-scope="scope">
-                <span class="color_span"
-                      @click.stop='alert_detail(scope.row)'>{{scope.row.name}}</span>
+                <span class="color_span">{{scope.row.name}}</span>
               </template>
             </el-table-column>
             <el-table-column prop="type"
@@ -139,8 +130,7 @@
             </el-table-column>
             <el-table-column label='Device IP'>
               <template slot-scope="scope">
-                <span class="color_span"
-                      @click.stop='alert_detail(scope.row)'>{{scope.row.ip}}</span>
+                <span class="color_span">{{scope.row.ip}}</span>
               </template>
             </el-table-column>
             <el-table-column label="Device Status">
@@ -264,6 +254,7 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: "system_control_orient",
   data () {
@@ -309,13 +300,31 @@ export default {
     };
   },
   mounted () {
+    this.check_passwd();
     this.get_data();
     this.get_top();
     this.get_version();
   },
   methods: {
-    chooseDiv (index) {
-      this.activeDiv = index
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
     },
     // 获取列表
     get_data () {
@@ -919,14 +928,13 @@ export default {
       border-radius: 8px;
     }
     .color_span {
-      color: #0070ff;
-      cursor: pointer;
+      // cursor: pointer;
     }
     .top {
       display: flex;
       margin-bottom: 24px;
       .item {
-        cursor: pointer;
+        // cursor: pointer;
         width: 324px;
         height: 108px;
         background: #ffffff;

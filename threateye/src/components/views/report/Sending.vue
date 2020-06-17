@@ -48,18 +48,21 @@
           <el-col :span="21">
             <div class="r_radio">
               <el-radio v-model="send_config.report_type"
+                        label="excel"
+                        class="r_radio_item">Excel</el-radio>
+              <el-radio v-model="send_config.report_type"
                         label="doc"
                         class="r_radio_item">Word</el-radio>
               <el-radio v-model="send_config.report_type"
-                        label="excel"
-                        class="r_radio_item">Excel</el-radio>
+                        label="pdf"
+                        class="r_radio_item">PDF</el-radio>
             </div>
           </el-col>
         </el-row>
         <el-row type="flex"
                 class="r_main_list r_special_list">
           <el-col :span="3">
-            <span class="title">Recipient</span>
+            <span class="title">Recipient email</span>
           </el-col>
           <el-col :span="21">
             <div class="item_addrs"
@@ -93,6 +96,7 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: "report-sending",
   data () {
@@ -100,7 +104,10 @@ export default {
       send_config: {
         cycle: "daily",
         receiver: [],
-        receiver_list: [],
+        receiver_list: [{
+          name: "",
+          icon: true
+        }],
         report_type: '',
         status: '',
         receiver_edit: [],
@@ -109,8 +116,29 @@ export default {
   },
   mounted () {
     this.get_data()
+    this.check_passwd()
   },
   methods: {
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
     get_data () {
       this.$axios.get('/yiiapi/report/get-config')
         .then(response => {
@@ -119,14 +147,15 @@ export default {
           this.send_config.cycle = data.cycle;
           this.send_config.receiver = data.receiver;
           this.send_config.report_type = data.report_type;
-          this.send_config.receiver_list = [];
           console.log(this.send_config);
           if (this.send_config.receiver.length == 0) {
+            this.send_config.receiver_list = [];
             this.send_config.receiver_list.push({
               name: '',
               icon: true
             })
           } else {
+            this.send_config.receiver_list = [];
             this.send_config.receiver.forEach(item => {
               this.send_config.receiver_list.push({
                 name: item,

@@ -30,6 +30,7 @@
 import ruleBase from "@/components/views/system/vm-rule/rule-base";
 import yaraRule from "@/components/views/system/vm-rule/yara-rule";
 import whiteList from "@/components/views/system/vm-rule/white-list";
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   components: {
     ruleBase,
@@ -47,7 +48,6 @@ export default {
       }
     };
   },
-
   methods: {
     handleClick (tab, event) {
       console.log(tab);

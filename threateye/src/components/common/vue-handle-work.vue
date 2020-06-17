@@ -272,7 +272,7 @@
                     </template>
                   </el-table-column>
                   <el-table-column label="Compromise"
-                                   width="100">
+                                   width="120">
                     <template slot-scope="scope">
                       <span :class="{'fall_certainty':scope.row.fall_certainty == '1'}">
                         {{ scope.row.fall_certainty | certainty }}</span>

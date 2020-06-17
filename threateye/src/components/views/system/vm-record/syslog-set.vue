@@ -189,6 +189,7 @@
 
 <script type="text/ecmascript-6">
 import vmEmergePicker from "@/components/common/vm-emerge-picker";
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   components: {
     vmEmergePicker,
@@ -229,10 +230,31 @@ export default {
     }
   },
   mounted () {
+    this.check_passwd()
     this.get_data()
   },
 
   methods: {
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
     // 获取列表
     get_data () {
       this.syslog_data.loading = true;

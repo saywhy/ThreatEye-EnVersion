@@ -55,7 +55,7 @@
                          label="Created By"
                          show-overflow-tooltip>
         </el-table-column>
-        <el-table-column label="Created"
+        <el-table-column label="Created Time"
                          width="180"
                          show-overflow-tooltip>
           <template slot-scope="scope">{{ scope.row.updated_at*1000 |formatDate }}</template>
@@ -273,6 +273,7 @@
 
 <script type="text/ecmascript-6">
 import moment from 'moment'
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: "user_management",
   data () {
@@ -322,6 +323,7 @@ export default {
     }
   },
   mounted () {
+    this.check_passwd();
     this.get_data();
     this.role_list();
     this.get_menu()
@@ -329,6 +331,26 @@ export default {
   },
 
   methods: {
+    // 测试密码过期
+    check_passwd () {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
+        })
+    },
     // 修改密码
     edit_pswd () {
       this.$axios.get('/yiiapi/site/get-self-password-reset-token')
