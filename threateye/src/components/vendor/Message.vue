@@ -7,7 +7,7 @@
         <el-col :span="24">
           <div>
             <el-button class="e-btn e-btn-read"
-                       @click="batch_marking">标为已读</el-button>
+                       @click="batch_marking">Marked</el-button>
             <el-button class="e-btn e-btn-remove"
                        @click="del">Delete</el-button>
           </div>
@@ -42,12 +42,12 @@
             </el-table-column>
             <el-table-column width="240"
                              align="center"
-                             label="消息来源"
+                             label="Message from"
                              show-overflow-tooltip>
               <template slot-scope="scope">
                 <span v-if="scope.row.type=='1'">Password</span>
-                <span v-if="scope.row.type=='2'">许可证</span>
-                <span v-if="scope.row.type=='3'">工单</span>
+                <span v-if="scope.row.type=='2'">Licence</span>
+                <span v-if="scope.row.type=='3'">Ticket</span>
               </template>
             </el-table-column>
             <el-table-column prop="content"
@@ -77,7 +77,7 @@ export default {
   name: 'message-container',
   data () {
     return {
-      title_name: "通知消息",
+      title_name: "Notification",
       multipleSelection: [],
       news_data: {
         page: 1,
@@ -179,7 +179,7 @@ export default {
     batch_marking () {
       console.log(this.multipleSelection);
       if (this.multipleSelection.length == 0) {
-        this.$message({ message: '请选择需要标记的消息', type: 'warning' });
+        this.$message({ message: 'Please select the message to be marked', type: 'warning' });
         return false
       }
       var id_list = []
@@ -201,7 +201,7 @@ export default {
               break;
             case 0:
               this.get_news()
-              this.$message({ message: '标记成功', type: 'success' });
+              this.$message({ message: 'Marked successful', type: 'success' });
               break;
             default:
               this.$message({ message: msg, type: 'error' });
@@ -215,7 +215,7 @@ export default {
     del () {
       console.log(this.multipleSelection);
       if (this.multipleSelection.length == 0) {
-        this.$message({ message: '请选择需要删除的消息', type: 'warning' });
+        this.$message({ message: 'Please select the message to be deleted', type: 'warning' });
         return false
       }
       this.$confirm('This action deletes the item. Do you want to continue?', 'Message', {

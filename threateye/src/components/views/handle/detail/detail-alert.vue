@@ -435,7 +435,7 @@
                      name="first">
           <el-table class="emerge_table"
                     ref="multipleTable"
-                       align="center"
+                    align="center"
                     border
                     :data="emerge_list.now.data"
                     tooltip-effect="dark"
@@ -488,7 +488,7 @@
                      name="second">
           <el-table class="emerge_table"
                     ref="multipleTable"
-               align="center"
+                    align="center"
                     border
                     :data="emerge_list.old.data"
                     tooltip-effect="dark"
@@ -598,7 +598,7 @@
         <div class="add_works">
           <el-table ref="multipleTable"
                     class="reset_table"
-                   align="center"
+                    align="center"
                     border
                     :data="worksheets_list.data"
                     tooltip-effect="dark"
@@ -740,8 +740,8 @@
                                value="email">Mail notification</el-checkbox>
                   <el-checkbox label="message"
                                value="message">SMS notification</el-checkbox>
-                  <!-- <el-checkbox label="news"
-                             value="news">消息中心通知</el-checkbox> -->
+                  <el-checkbox label="news"
+                             value="news">Message Center Notification</el-checkbox>
                 </el-checkbox-group>
               </li>
             </div>
@@ -758,8 +758,8 @@
           </div>
           <div class="content_table">
             <el-table :data="new_worksheets_data.table_operator.tableData"
-                align="center"
-                    border
+                      align="center"
+                      border
                       style="width: 100%">
               <el-table-column prop="username"
                                label="Assignee"></el-table-column>
@@ -787,8 +787,8 @@
           <div class='table_box'>
             <div>
               <div>
-                <el-table     align="center"
-                    border
+                <el-table align="center"
+                          border
                           :data="new_worksheets_data.network_detail"
                           @selection-change="select_alert_new"
                           tooltip-effect="dark"
@@ -1234,7 +1234,7 @@ export default {
             '3. Use network threat detection solutions to detect outreach threats as early as possible.',
           ],
         },
-         {
+        {
           name: 'VPN地址vpn',
           des: 'VPN addresses are IP addresses of public VPN providers’ VPN servers. Attackers use VPN to circumvent organizations’ security policies. There are a few legitimate uses of VPN in an organization.',
           handle: [
@@ -2615,8 +2615,14 @@ export default {
     },
     //下一步时候验证工单名称，优先级、经办人等参数
     next_task () {
+
+      var pattern = new RegExp("[`~!#%$^&*()=|{}':;',\\[\\]<>《》/?~！#￥……&*（）|{}【】‘；：”“'。，、？]");
       if (this.new_worksheets_list.name == '') {
         this.$message.error('Ticket name is required');
+        return false
+      }
+      if (pattern.test(this.new_worksheets_list.name)) {
+        this.$message.error("Tickets' name can't contain special characters");
         return false
       }
       if (this.new_worksheets_list.level == '') {
@@ -3470,7 +3476,7 @@ export default {
                 color: #333333;
               }
               .info_top_item_content {
-                  word-break: break-all;
+                word-break: break-all;
                 flex: 1;
                 font-family: PingFang;
                 font-size: 16px;

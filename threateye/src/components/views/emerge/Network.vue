@@ -1010,9 +1010,17 @@ export default {
 
     //下一步时候验证工单名称，优先级、经办人等参数
     next_task_new () {
+      var pattern = new RegExp("[`~!#%$^&*()=|{}':;',\\[\\]<>《》/?~！#￥……&*（）|{}【】‘；：”“'。，、？]");
       if (this.task_params.name == '') {
         this.$message.error('Ticket name is required');
-      } else if (this.task_params.level == '') {
+        return false
+      }
+      if (pattern.test(this.task_params.name)) {
+        console.log(true);
+        this.$message.error("Tickets' name can't contain special characters");
+        return false
+      }
+      if (this.task_params.level == '') {
         this.$message.error('Please select the priority');
       } else if (this.task_params.operator == '') {
         this.$message.error('Please select the assignee');

@@ -734,8 +734,8 @@
                                value="email">Mail notification</el-checkbox>
                   <el-checkbox label="message"
                                value="message">SMS notification</el-checkbox>
-                  <!-- <el-checkbox label="news"
-                             value="news">消息中心通知</el-checkbox> -->
+                  <el-checkbox label="news"
+                             value="news">Message Center Notification</el-checkbox>
                 </el-checkbox-group>
               </li>
             </div>
@@ -3268,8 +3268,15 @@ export default {
     },
     //下一步时候验证工单名称，优先级、经办人等参数
     next_task () {
+
+      var pattern = new RegExp("[`~!#%$^&*()=|{}':;',\\[\\]<>《》/?~！#￥……&*（）|{}【】‘；：”“'。，、？]");
       if (this.new_worksheets_list.name == '') {
         this.$message.error('Ticket name is required');
+        return false
+      }
+      if (pattern.test(this.new_worksheets_list.name)) {
+        console.log(true);
+        this.$message.error("Tickets' name can't contain special characters");
         return false
       }
       if (this.new_worksheets_list.level == '') {

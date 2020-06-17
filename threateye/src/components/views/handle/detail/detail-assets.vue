@@ -525,7 +525,7 @@
                                value="email">Mail notification</el-checkbox>
                   <el-checkbox label="message"
                                value="message">SMS notification</el-checkbox>
-                  <!--<el-checkbox label="news" value="news">消息中心通知</el-checkbox>-->
+                  <el-checkbox label="news" value="news">Message Center Notification</el-checkbox>
                 </el-checkbox-group>
               </li>
             </div>
@@ -1481,10 +1481,16 @@ export default {
 
     //下一步时候验证工单名称，优先级、经办人等参数
     next_task_new () {
-
+      var pattern = new RegExp("[`~!#%$^&*()=|{}':;',\\[\\]<>《》/?~！#￥……&*（）|{}【】‘；：”“'。，、？]");
       if (this.task_params.name == '') {
         this.$message.error('Ticket name is required');
-      } else if (this.task_params.level == '') {
+        return false
+      }
+      if (pattern.test(this.task_params.name)) {
+        this.$message.error("Tickets' name can't contain special characters");
+        return false
+      }
+      if (this.task_params.level == '') {
         this.$message.error('Please select the priority');
       } else if (this.task_params.operator == '') {
         this.$message.error('Please select the assignee');

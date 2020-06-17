@@ -18,7 +18,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: '通知消息'
+      default: 'Notification'
     }
   },
   directives: {

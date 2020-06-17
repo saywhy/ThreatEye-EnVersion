@@ -158,7 +158,8 @@
                                value="email">Mail Notification</el-checkbox>
                   <el-checkbox label="message"
                                value="message">SMS Notification</el-checkbox>
-                  <!--<el-checkbox label="news" value="news">消息中心通知</el-checkbox>-->
+                  <el-checkbox label="news"
+                               value="news">Message Center Notification</el-checkbox>
                 </el-checkbox-group>
               </li>
             </div>
