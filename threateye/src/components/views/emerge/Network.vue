@@ -319,11 +319,13 @@
                 </el-select>
               </li>
               <li class="right_item">
-                <el-checkbox-group v-model="task_params.notice">
+                <el-checkbox-group v-model="task_params.notice"  class="checkbox_group">
                   <el-checkbox label="email"
-                               value="email">Mail notification</el-checkbox>
+                               value="email">Mail Notification</el-checkbox>
                   <el-checkbox label="message"
-                               value="message">SMS notification</el-checkbox>
+                               value="message">SMS Notification</el-checkbox>
+                  <el-checkbox label="news"
+                               value="news">Message Center Notification</el-checkbox>
                 </el-checkbox-group>
               </li>
             </div>
@@ -1304,32 +1306,47 @@ export default {
     /***************************导出*****************************/
     //导出
     export_box () {
-      this.$confirm('Please confirm to export the alert list!', 'Message', {
-        confirmButtonText: 'Confirm',
-        cancelButtonText: 'Cancel',
-        type: 'warning'
-      }).then(() => {
-        this.$axios.get('/yiiapi/site/check-auth-exist', {
-          params: {
-            pathInfo: 'yararule/download',
+
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          } else {
+            this.$confirm('Please confirm to export the alert list!', 'Message', {
+              confirmButtonText: 'Confirm',
+              cancelButtonText: 'Cancel',
+              type: 'warning'
+            }).then(() => {
+              this.$axios.get('/yiiapi/site/check-auth-exist', {
+                params: {
+                  pathInfo: 'yararule/download',
+                }
+              })
+                .then(response => {
+                  var url1 = "/yiiapi/alert/export-alerts?status=" + this.params.status + '&start_time=' + this.params.startTime
+                    + '&end_time=' + this.params.endTime + '&fall_certainty=' + this.params.threat + '&key_word=' + this.params.key;
+                  window.location.href = url1;
+                })
+                .catch(error => {
+                  console.log(error);
+                })
+            }).catch(() => {
+              this.$message({ type: 'info', message: 'Export cancelled' });
+              this.$refs.multipleTable.clearSelection();
+            });
           }
         })
-          .then(response => {
-            var url1 = "/yiiapi/alert/export-alerts?status=" + this.params.status + '&start_time=' + this.params.startTime
-              + '&end_time=' + this.params.endTime + '&fall_certainty=' + this.params.threat + '&key_word=' + this.params.key;
-            window.location.href = url1;
-          })
-          .catch(error => {
-            console.log(error);
-          })
-
-
-      }).catch(() => {
-
-        this.$message({ type: 'info', message: 'Export cancelled' });
-
-        this.$refs.multipleTable.clearSelection();
-      });
     }
   }
 };

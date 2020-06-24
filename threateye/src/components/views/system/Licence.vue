@@ -209,6 +209,9 @@ export default {
         }
       })
         .then(response => {
+          if (response.data.status == 602) {
+            return false
+          }
           this.license_list = response.data.data.license
           this.licence_pop.key = response.data.data.key
           this.license_list.list.forEach((item, index) => {
@@ -225,6 +228,9 @@ export default {
         .then(response => {
           let { status, data } = response.data;
           console.log(data);
+          if (response.data.status == 602) {
+            return false
+          }
           this.license_version = data.version
         })
         .catch(error => {
@@ -243,8 +249,26 @@ export default {
         })
     },
     online_active_pop () {
-      this.licence_pop.add = true;
-      this.licence_pop.cdk = '';
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          } else {
+            this.licence_pop.add = true;
+            this.licence_pop.cdk = '';
+          }
+        })
     },
     closed_add_box () {
       this.licence_pop.add = false;
@@ -354,6 +378,11 @@ export default {
               );
               this.licence_pop.add = false;
               this.get_data();
+            } else if (response.data.status == 602) {
+              this.$message({
+                type: 'warning',
+                message: response.data.msg
+              });
             } else {
               this.$message(
                 {

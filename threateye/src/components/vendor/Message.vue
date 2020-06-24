@@ -52,7 +52,7 @@
             </el-table-column>
             <el-table-column prop="content"
                              align="center"
-                             label="Describe"></el-table-column>
+                             label="Description"></el-table-column>
           </el-table>
         </el-col>
         <el-col :span="24"

@@ -527,17 +527,35 @@ export default {
         })
     },
     add_box () {
-      this.user_state.add = true;
-      this.user_add.username = '';
-      this.user_add.password = '';
-      this.user_add.Re_password = '';
-      this.user_add.department = '';
-      this.user_add.mobile = '';
-      this.user_add.email_addr = '';
-      this.user_add.role = '';
-      this.user_add.allow_ip = '';
-      this.getPwdLength()
-      this.role_list()
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          } else {
+            this.user_state.add = true;
+            this.user_add.username = '';
+            this.user_add.password = '';
+            this.user_add.Re_password = '';
+            this.user_add.department = '';
+            this.user_add.mobile = '';
+            this.user_add.email_addr = '';
+            this.user_add.role = '';
+            this.user_add.allow_ip = '';
+            this.getPwdLength()
+            this.role_list()
+          }
+        })
     },
     // 编辑用户
     edit_box (item) {

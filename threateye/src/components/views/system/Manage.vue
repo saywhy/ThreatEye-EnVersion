@@ -336,6 +336,10 @@ export default {
       })
         .then(response => {
           console.log(response);
+          let { status, data, msg } = response.data;
+          if (status == 602) {
+            return false
+          }
           this.equipment_list = response.data.data
           this.equipment_list.pageNow *= 1
           this.equipment_list.rows *= 1
@@ -367,6 +371,10 @@ export default {
       this.$axios.get('/yiiapi/dev/top')
         .then(response => {
           console.log(response);
+          let { status, data, msg } = response.data;
+          if (status == 602) {
+            return false
+          }
           this.equipment_top = response.data.data;
         })
         .catch(error => {
@@ -375,10 +383,28 @@ export default {
     },
     // 添加设备
     add_box () {
-      this.equipment_pop.show = true
-      this.equipment_pop.name = ''
-      this.equipment_pop.type = '4'
-      this.equipment_pop.ip = ''
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          } else {
+            this.equipment_pop.show = true
+            this.equipment_pop.name = ''
+            this.equipment_pop.type = '4'
+            this.equipment_pop.ip = ''
+          }
+        })
     },
     add_equipment () {
       console.log(1212);

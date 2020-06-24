@@ -267,3 +267,7 @@ textarea {
 .el-table--border::after {
   width: 0;
 }
+
+.checkbox_group {
+  text-align: left;
+}

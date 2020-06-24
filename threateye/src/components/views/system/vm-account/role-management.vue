@@ -459,11 +459,30 @@ export default {
         })
     },
     add_box () {
-      this.role_state.add = true;
-      this.role_add.name = ''
-      this.role_add.describe = ''
-      this.role_add.permissions_id = []
-      this.resetChecked()
+
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          } else {
+            this.role_state.add = true;
+            this.role_add.name = ''
+            this.role_add.describe = ''
+            this.role_add.permissions_id = []
+            this.resetChecked()
+          }
+        })
     },
     edit_box (item) {
       this.role_edit = {}

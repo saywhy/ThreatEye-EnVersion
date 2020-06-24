@@ -335,10 +335,29 @@ export default {
     },
     // 添加外部访问用户
     add_box () {
-      this.outside_pop.add.show = true
-      this.outside_pop.add.user = ''
-      this.outside_pop.add.pswd = ''
-      this.passw_add = "password";
+
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          } else {
+            this.outside_pop.add.show = true
+            this.outside_pop.add.user = ''
+            this.outside_pop.add.pswd = ''
+            this.passw_add = "password";
+          }
+        })
     },
     add_user () {
       if (this.outside_pop.add.user == '') {

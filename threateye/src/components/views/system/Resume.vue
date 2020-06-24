@@ -61,68 +61,105 @@ export default {
         })
     },
     restore () {
-      this.$confirm('This action will restore factory settings. Do you want to continue?', 'Message', {
-        confirmButtonText: 'Confirm',
-        cancelButtonText: 'Cancel',
-        type: 'warning'
-      }).then(() => {
-        this.loading = true
-        this.$axios.put('/yiiapi/seting/restore')
-          .then(response => {
-            this.loading = false
-            let { status, data } = response.data;
-            if (status == 0) {
-              this.$message(
-                {
-                  message: 'Factory settings restored successfully',
-                  type: 'success',
-                }
-              );
-              location.reload();
-              this.$router.push('/login');
-            }
-          })
-          .catch(error => {
-            console.log(error);
-          })
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: 'Action cancelled'
-        });
-      });
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          } else {
+            this.$confirm('This action will restore factory settings. Do you want to continue?', 'Message', {
+              confirmButtonText: 'Confirm',
+              cancelButtonText: 'Cancel',
+              type: 'warning'
+            }).then(() => {
+              this.loading = true
+              this.$axios.put('/yiiapi/seting/restore')
+                .then(response => {
+                  this.loading = false
+                  let { status, data } = response.data;
+                  if (status == 0) {
+                    this.$message(
+                      {
+                        message: 'Factory settings restored successfully',
+                        type: 'success',
+                      }
+                    );
+                    location.reload();
+                    this.$router.push('/login');
+                  }
+                })
+                .catch(error => {
+                  console.log(error);
+                })
+            }).catch(() => {
+              this.$message({
+                type: 'info',
+                message: 'Action cancelled'
+              });
+            });
+          }
+        })
     },
     reboot () {
-      this.$confirm('This action will restart the platform. Do you want to continue?', 'Message', {
-        confirmButtonText: 'Confirm',
-        cancelButtonText: 'Cancel',
-        type: 'warning'
-      }).then(() => {
-        this.loading = true
-        this.$axios.put('/yiiapi/seting/reboot')
-          .then(response => {
-            this.loading = false
-            let { status, data } = response.data;
-            if (status == 0) {
-              this.$message(
-                {
-                  message: 'Platform restarted successfully',
-                  type: 'success',
-                }
-              );
-              location.reload();
-              this.$router.push('/login');
-            }
-          })
-          .catch(error => {
-            console.log(error);
-          })
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: 'Action cancelled'
-        });
-      });
+
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          } else {
+            this.$confirm('This action will restart the platform. Do you want to continue?', 'Message', {
+              confirmButtonText: 'Confirm',
+              cancelButtonText: 'Cancel',
+              type: 'warning'
+            }).then(() => {
+              this.loading = true
+              this.$axios.put('/yiiapi/seting/reboot')
+                .then(response => {
+                  this.loading = false
+                  let { status, data } = response.data;
+                  if (status == 0) {
+                    this.$message(
+                      {
+                        message: 'Platform restarted successfully',
+                        type: 'success',
+                      }
+                    );
+                    location.reload();
+                    this.$router.push('/login');
+                  }
+                })
+                .catch(error => {
+                  console.log(error);
+                })
+            }).catch(() => {
+              this.$message({
+                type: 'info',
+                message: 'Action cancelled'
+              });
+            });
+          }
+        })
     },
   }
 }

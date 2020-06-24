@@ -397,7 +397,7 @@ export default {
       console.log(this.option);
       this.$axios.put('/yiiapi/seting/' + url, set_data)
         .then(response => {
-          let { status, data } = response.data;
+          let { status, data, msg } = response.data;
           console.log(status);
           if (status == 0) {
             this.get_data()
@@ -407,16 +407,22 @@ export default {
                 type: 'success',
               }
             );
+          } else if (status == 602) {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
           } else {
             this.$message(
               {
-                message: data.msg,
+                message: msg,
                 type: 'error',
               }
             );
           }
-
-
 
         })
         .catch(error => {
@@ -471,7 +477,7 @@ export default {
         ip: ip_list
       })
         .then(response => {
-          let { status, data } = response.data;
+          let { status, data, msg } = response.data;
           console.log(data);
           console.log(status);
           if (status == 0) {
@@ -482,6 +488,14 @@ export default {
                 type: 'success',
               }
             );
+          } else if (status == 602) {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
           }
         })
         .catch(error => {

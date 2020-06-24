@@ -224,8 +224,26 @@ export default {
     },
     // 添加ip
     add_ip () {
-      this.outside_pop.ip.show = true;
-      this.outside_pop.ip.ip = ''
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          } else {
+            this.outside_pop.ip.show = true;
+            this.outside_pop.ip.ip = ''
+          }
+        })
     },
     add_list (num) {
       var addr_params = ''
@@ -302,7 +320,27 @@ export default {
         })
     },
     add_url () {
-      this.outside_pop.url.show = true;
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          } else {
+            this.outside_pop.url.show = true;
+            this.outside_pop.url.url = ''
+          }
+        })
+
     },
     // 删除ip
     del_list (item) {

@@ -268,77 +268,95 @@ export default {
     },
     // 设置网络
     set_network () {
-      var BOOTPROTO = ''
-      var ONBOOT = ''
-      var PORT = ""
-      switch (this.network_model.obtain) {
-        case 'Static':
-          BOOTPROTO = 'static'
-          break;
-        case 'DHCP':
-          BOOTPROTO = 'dhcp'
-          break;
-        default:
-          BOOTPROTO = 'none'
-          break;
-      }
-      if (this.network_model.switch) {
-        ONBOOT = 'yes'
-      } else {
-        ONBOOT = 'no'
-      }
-      switch (this.network_model.role_name) {
-        case '':
-          PORT = 0;
-          break;
-        case 'Management port':
-          PORT = 1;
-          break;
-        case 'Communication port':
-          PORT = 2;
-          break;
-        case 'Mirror port':
-          PORT = 3;
-          break;
-        case 'Sandbox port':
-          PORT = 4;
-          break;
-        default:
-          break;
-      }
-      this.network_loading = true
-      this.$axios.put('/yiiapi/seting/set-network', {
-        NAME: this.network_model.name,
-        ONBOOT: ONBOOT,
-        BOOTPROTO: BOOTPROTO,
-        IPADDR: this.network_model.IPADDR,
-        MASK: this.network_model.MASK,
-        GATEWAY: this.network_model.GATEWAY,
-        DNS1: this.network_model.DNS1,
-        DNS2: this.network_model.DNS2,
-        PORT: PORT,
-      })
-        .then(response => {
-          this.network_loading = false
-          if (response.data.status == 0) {
-            this.get_data()
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
             this.$message(
               {
-                message: 'Configuration modified successfully',
-                type: 'success',
+                message: msg,
+                type: 'warning',
               }
             );
+            eventBus.$emit('reset')
           } else {
-            this.$message(
-              {
-                message: response.data.msg,
-                type: 'error',
-              }
-            );
+            var BOOTPROTO = ''
+            var ONBOOT = ''
+            var PORT = ""
+            switch (this.network_model.obtain) {
+              case 'Static':
+                BOOTPROTO = 'static'
+                break;
+              case 'DHCP':
+                BOOTPROTO = 'dhcp'
+                break;
+              default:
+                BOOTPROTO = 'none'
+                break;
+            }
+            if (this.network_model.switch) {
+              ONBOOT = 'yes'
+            } else {
+              ONBOOT = 'no'
+            }
+            switch (this.network_model.role_name) {
+              case '':
+                PORT = 0;
+                break;
+              case 'Management port':
+                PORT = 1;
+                break;
+              case 'Communication port':
+                PORT = 2;
+                break;
+              case 'Mirror port':
+                PORT = 3;
+                break;
+              case 'Sandbox port':
+                PORT = 4;
+                break;
+              default:
+                break;
+            }
+            this.network_loading = true
+            this.$axios.put('/yiiapi/seting/set-network', {
+              NAME: this.network_model.name,
+              ONBOOT: ONBOOT,
+              BOOTPROTO: BOOTPROTO,
+              IPADDR: this.network_model.IPADDR,
+              MASK: this.network_model.MASK,
+              GATEWAY: this.network_model.GATEWAY,
+              DNS1: this.network_model.DNS1,
+              DNS2: this.network_model.DNS2,
+              PORT: PORT,
+            })
+              .then(response => {
+                this.network_loading = false
+                if (response.data.status == 0) {
+                  this.get_data()
+                  this.$message(
+                    {
+                      message: 'Configuration modified successfully',
+                      type: 'success',
+                    }
+                  );
+                } else {
+                  this.$message(
+                    {
+                      message: response.data.msg,
+                      type: 'error',
+                    }
+                  );
+                }
+              })
+              .catch(error => {
+                console.log(error);
+              })
           }
-        })
-        .catch(error => {
-          console.log(error);
         })
     }
   }

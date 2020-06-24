@@ -193,9 +193,27 @@ export default {
         })
     },
     open_add_box () {
-      this.white_add.add = true;
-      this.white_add.indicator = '';
-      this.white_add.type = 'MD5';
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          } else {
+            this.white_add.add = true;
+            this.white_add.indicator = '';
+            this.white_add.type = 'MD5';
+          }
+        })
     },
     // 添加
     add_white () {

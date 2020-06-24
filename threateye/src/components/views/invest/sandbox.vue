@@ -165,21 +165,42 @@ export default {
     },
     // 上传
     onFileAdded (file) {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            file.ignored = true
+            file.cancel()
+            eventBus.$emit('reset')
+          } else {
+            file.pause()
+            if (file.size > 100 * 1024 * 1024) {
+              this.$message({
+                message: 'File size cannot exceed 100 MB',
+                type: 'warning'
+              });
+              setTimeout(() => {
+                file.cancel()
+              }, 100)
+            } else {
+              setTimeout(() => {
+                file.resume();
+              }, 100)
+            }
+          }
+        })
       console.log(file);
-      file.pause()
-      if (file.size > 100 * 1024 * 1024) {
-        this.$message({
-          message: 'File size cannot exceed 100 MB',
-          type: 'warning'
-        });
-        setTimeout(() => {
-          file.cancel()
-        }, 100)
-      } else {
-        setTimeout(() => {
-          file.resume();
-        }, 100)
-      }
+
     },
     onFileSuccess (rootFile, file, response, chunk) {
       this.$axios.get('/yiiapi/site/check-auth-exist', {
@@ -223,7 +244,13 @@ export default {
           .catch(error => {
             console.log(error);
           })
-
+      } else if (JSON.parse(response).status == 602) {
+        this.$message(
+          {
+            message: JSON.parse(response).msg,
+            type: 'warning',
+          }
+        );
       } else {
         this.$message(
           {

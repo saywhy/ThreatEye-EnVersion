@@ -57,7 +57,7 @@
       </div>
     </div>
     <div class="mid">
-      <p class="title">Recipient email</p>
+      <p class="title">Recipient Email</p>
       <div class="mid_item">
         <p>Email Address
           <span class="red_necessary">*</span>
@@ -103,6 +103,20 @@
         <el-switch v-model="mail.send">
         </el-switch>
       </p>
+      <div class="mid_item">
+        <p>
+          Threat Level
+          <span class="red_necessary">*</span>
+        </p>
+        <p style="margin-top: 10px;">
+          <el-checkbox-group v-model="checkList"
+                             @change="handleCheckedCitiesChange">
+            <el-checkbox label="High"></el-checkbox>
+            <el-checkbox label="Midium"></el-checkbox>
+            <el-checkbox label="Low"></el-checkbox>
+          </el-checkbox-group>
+        </p>
+      </div>
     </div>
     <div class="right"></div>
   </div>
@@ -114,6 +128,7 @@ export default {
   name: "mail-notic",
   data () {
     return {
+      checkList: ['High'],
       mail: {
         alertEmail_list: [{
           name: "",
@@ -143,6 +158,7 @@ export default {
   },
 
   methods: {
+
     // 测试密码过期
     check_passwd () {
       this.$axios.get('/yiiapi/site/check-passwd-reset')
@@ -173,13 +189,18 @@ export default {
           this.mail.host = data.host
           this.mail.username = data.username
           this.mail.send = data.send
-          if (data.encryption == 'ssl') {
-            this.ssl_switch = true
-          } else {
-            this.ssl_switch = false
+          console.log(status);
+          if (status == 602) {
+            console.log('1111');
+            return false
           }
-          this.mail.alertEmail_list = []
-          if (data.alertEmail.length == 0) {
+          if (data.encryption == 'ssl') {
+            this.mail.ssl_switch = true
+          } else {
+            this.mail.ssl_switch = false
+          }
+          if (data.alertEmail && data.alertEmail.length == 0) {
+            this.mail.alertEmail_list = []
             this.mail.alertEmail_list.push(
               {
                 name: '',
@@ -187,6 +208,7 @@ export default {
               }
             )
           } else {
+            this.mail.alertEmail_list = []
             data.alertEmail.forEach(element => {
               var obj = {
                 name: element,
@@ -196,141 +218,220 @@ export default {
             });
             this.mail.alertEmail_list[this.mail.alertEmail_list.length - 1].icon = true
           }
-
         })
         .catch(error => {
           console.log(error);
         })
+    },
+    handleCheckedCitiesChange (value) {
+      console.log(value);
+      if (value.length == 0) {
+        this.$message(
+          {
+            message: 'Please select at least one threat level to set alert mail notifications',
+            type: 'warning',
+          }
+        );
+      }
     },
     // 发送测试
     send_test () {
-      var encryption = ''
-      var alertEmail = []
-      this.mail.alertEmail_list.forEach(element => {
-        if (element.name != '') {
-          alertEmail.push(element.name)
-        }
-      });
-      if (alertEmail.length == 0) {
-        this.$message(
-          {
-            message: 'Please enter your email address',
-            type: 'warning',
-          }
-        );
-        return false;
-      }
-      if (this.mail.password == '') {
-        this.$message(
-          {
-            message: 'Please enter your email password',
-            type: 'warning',
-          }
-        );
-        return false;
-      }
-      if (this.mail.ssl_switch) {
-        encryption = 'ssl'
-      } else {
-        encryption = ''
-      }
-      this.$axios.post('/yiiapi/email/test', {
-        encryption: encryption,
-        host: this.mail.host,
-        port: this.mail.port,
-        username: this.mail.username,
-        password: this.mail.password,
-        send: this.mail.send,
-        content: this.mail.content,
-        alertEmail: alertEmail,
-      })
-        .then(response => {
-          let { status, data } = response.data;
-          console.log(status);
-          console.log(data);
-          if (status == 0) {
-            // this.get_data()
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
             this.$message(
               {
-                message: 'Send test mail notification successfully',
-                type: 'success',
+                message: msg,
+                type: 'warning',
               }
             );
+            eventBus.$emit('reset')
           } else {
-            this.$message(
-              {
-                message: response.data.msg,
-                type: 'error',
+            var encryption = ''
+            var alertEmail = []
+            this.mail.alertEmail_list.forEach(element => {
+              if (element.name != '') {
+                alertEmail.push(element.name)
               }
-            );
-          }
+            });
+            if (alertEmail.length == 0) {
+              this.$message(
+                {
+                  message: 'Please enter your email address',
+                  type: 'warning',
+                }
+              );
+              return false;
+            }
+            if (this.mail.password == '') {
+              this.$message(
+                {
+                  message: 'Please enter your email password',
+                  type: 'warning',
+                }
+              );
+              return false;
+            }
+            if (this.mail.ssl_switch) {
+              encryption = 'ssl'
+            } else {
+              encryption = ''
+            }
+            var degree_list = []
+            this.checkList.forEach(element => {
+              switch (element) {
+                case 'High':
+                  degree_list.push('high')
+                  break;
+                case 'Midium':
+                  degree_list.push('midium')
+                  break;
+                case 'Low':
+                  degree_list.push('low')
+                  break;
+                default:
+                  break;
+              }
+            });
+            this.$axios.post('/yiiapi/email/test', {
+              encryption: encryption,
+              host: this.mail.host,
+              port: this.mail.port,
+              username: this.mail.username,
+              password: this.mail.password,
+              send: this.mail.send,
+              content: this.mail.content,
+              alertEmail: alertEmail,
+              degree: degree_list
+            })
+              .then(response => {
+                let { status, data } = response.data;
+                console.log(status);
+                console.log(data);
+                if (status == 0) {
+                  // this.get_data()
+                  this.$message(
+                    {
+                      message: 'Send test mail notification successfully',
+                      type: 'success',
+                    }
+                  );
+                } else {
+                  this.$message(
+                    {
+                      message: response.data.msg,
+                      type: 'error',
+                    }
+                  );
+                }
 
+              })
+              .catch(error => {
+                console.log(error);
+              })
+            console.log(this.mail);
+          }
         })
-        .catch(error => {
-          console.log(error);
-        })
-      console.log(this.mail);
     },
     // 保存配置
     send_save () {
-      var encryption = ''
-      var alertEmail = []
-      console.log(this.mail.alertEmail_list);
-      this.mail.alertEmail_list.forEach(element => {
-        if (element.name != '') {
-          alertEmail.push(element.name)
-        }
-      });
-      if (alertEmail.length == 0) {
-        this.$message(
-          {
-            message: 'Please enter your email address',
-            type: 'warning',
-          }
-        );
-        return false;
-      }
-      if (this.mail.password == '') {
-        this.$message(
-          {
-            message: 'Please enter your email password',
-            type: 'warning',
-          }
-        );
-        return false;
-      }
-      if (this.mail.ssl_switch) {
-        encryption = 'ssl'
-      } else {
-        encryption = ''
-      }
-      this.$axios.post('/yiiapi/email/save', {
-        encryption: encryption,
-        host: this.mail.host,
-        port: this.mail.port,
-        username: this.mail.username,
-        password: this.mail.password,
-        send: this.mail.send,
-        content: this.mail.content,
-        alertEmail: alertEmail,
-      })
-        .then(response => {
-          let { status, data } = response.data;
-          console.log(status);
-          console.log(data);
-          if (status == 0) {
-            this.get_data()
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
             this.$message(
               {
-                message: 'Mail notifications setting success',
-                type: 'success',
+                message: msg,
+                type: 'warning',
               }
             );
+            eventBus.$emit('reset')
+          } else {
+            var encryption = ''
+            var alertEmail = []
+            console.log(this.mail.alertEmail_list);
+            this.mail.alertEmail_list.forEach(element => {
+              if (element.name != '') {
+                alertEmail.push(element.name)
+              }
+            });
+            if (alertEmail.length == 0) {
+              this.$message(
+                {
+                  message: 'Please enter your email address',
+                  type: 'warning',
+                }
+              );
+              return false;
+            }
+            if (this.mail.password == '') {
+              this.$message(
+                {
+                  message: 'Please enter your email password',
+                  type: 'warning',
+                }
+              );
+              return false;
+            }
+            if (this.mail.ssl_switch) {
+              encryption = 'ssl'
+            } else {
+              encryption = ''
+            }
+            var degree_list = []
+            this.checkList.forEach(element => {
+              switch (element) {
+                case 'High':
+                  degree_list.push('high')
+                  break;
+                case 'Midium':
+                  degree_list.push('midium')
+                  break;
+                case 'Low':
+                  degree_list.push('low')
+                  break;
+                default:
+                  break;
+              }
+            });
+            this.$axios.post('/yiiapi/email/save', {
+              encryption: encryption,
+              host: this.mail.host,
+              port: this.mail.port,
+              username: this.mail.username,
+              password: this.mail.password,
+              send: this.mail.send,
+              content: this.mail.content,
+              alertEmail: alertEmail,
+              degree: degree_list
+            })
+              .then(response => {
+                let { status, data } = response.data;
+                console.log(status);
+                console.log(data);
+                if (status == 0) {
+                  this.get_data()
+                  this.$message(
+                    {
+                      message: 'Mail notifications setting success',
+                      type: 'success',
+                    }
+                  );
+                }
+              })
+              .catch(error => {
+                console.log(error);
+              })
           }
-
-        })
-        .catch(error => {
-          console.log(error);
         })
     },
     //  添加邮箱

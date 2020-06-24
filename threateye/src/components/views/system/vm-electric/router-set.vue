@@ -270,10 +270,28 @@ export default {
 
     // 添加
     add_box () {
-      this.router_state.add = true;
-      this.router_add.ip = '';
-      this.router_add.net_mask = '';
-      this.router_add.next_step = '';
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          } else {
+            this.router_state.add = true;
+            this.router_add.ip = '';
+            this.router_add.net_mask = '';
+            this.router_add.next_step = '';
+          }
+        })
     },
     add_router () {
       this.$axios.post('/yiiapi/seting/route-add', {

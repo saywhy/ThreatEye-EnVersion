@@ -333,11 +333,12 @@
                 </el-select>
               </li>
               <li class="right_item">
-                <el-checkbox-group v-model="task_params.notice">
+                <el-checkbox-group v-model="task_params.notice"
+                                   class="checkbox_group">
                   <el-checkbox label="email"
-                               value="email">Mail notification</el-checkbox>
+                               value="email">Mail Notification</el-checkbox>
                   <el-checkbox label="message"
-                               value="message">SMS notification</el-checkbox>
+                               value="message">SMS Notification</el-checkbox>
                   <el-checkbox label="news"
                                value="news">Message Center Notification</el-checkbox>
                 </el-checkbox-group>
@@ -596,11 +597,12 @@
                 </el-select>
               </li>
               <li class="right_item">
-                <el-checkbox-group v-model="edit.notice">
+                <el-checkbox-group v-model="edit.notice"
+                                   class="checkbox_group">
                   <el-checkbox label="email"
-                               value="email">Mail notification</el-checkbox>
+                               value="email">Mail Notification</el-checkbox>
                   <el-checkbox label="message"
-                               value="message">SMS notification</el-checkbox>
+                               value="message">SMS Notification</el-checkbox>
                   <el-checkbox label="news"
                                value="news">Message Center Notification</el-checkbox>
                 </el-checkbox-group>
@@ -1711,6 +1713,7 @@ export default {
           if (status == 0) {
             console.log(this.edit);
             this.edit.operator_list = data;
+            this.edit.table_operator = []
             if (this.edit.data.perator && this.edit.data.perator.length != 0) {
               this.edit.operator_list.forEach(element => {
                 this.edit.data.perator.forEach(item => {

@@ -324,11 +324,29 @@ export default {
       this.get_data();
     },
     open_add () {
-      this.syslog_pop.add.show = true
-      this.syslog_pop.add.switch = true;
-      this.syslog_pop.add.protocol = 'udp';
-      this.syslog_pop.add.server_ip = '';
-      this.syslog_pop.add.server_port = '';
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          } else {
+            this.syslog_pop.add.show = true
+            this.syslog_pop.add.switch = true;
+            this.syslog_pop.add.protocol = 'udp';
+            this.syslog_pop.add.server_ip = '';
+            this.syslog_pop.add.server_port = '';
+          }
+        })
     },
     // 添加
     addsyslog () {

@@ -478,14 +478,32 @@ export default {
     },
     // 添加IP
     add_box () {
-      this.monitor_state.add = true;
-      this.monitor_add.name = '';
-      this.monitor_add.type = 'static';
-      this.monitor_add.person = '';
-      this.monitor_add.tag = [];
-      this.monitor_add.ip_segment = [];
-      this.monitor_add.tag_list = [{ name: '', icon: true }]
-      this.monitor_add.ip_segment_list = [{ name: '', icon: true }]
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          } else {
+            this.monitor_state.add = true;
+            this.monitor_add.name = '';
+            this.monitor_add.type = 'static';
+            this.monitor_add.person = '';
+            this.monitor_add.tag = [];
+            this.monitor_add.ip_segment = [];
+            this.monitor_add.tag_list = [{ name: '', icon: true }]
+            this.monitor_add.ip_segment_list = [{ name: '', icon: true }]
+          }
+        })
     },
     add_data () {
       this.monitor_add.tag = [];
@@ -871,7 +889,26 @@ export default {
       });
     },
     import_box () {
-      this.monitor_state.import = true;
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          } else {
+            this.monitor_state.import = true;
+          }
+        })
+
     },
     closed_add_box () {
       this.monitor_state.add = false;

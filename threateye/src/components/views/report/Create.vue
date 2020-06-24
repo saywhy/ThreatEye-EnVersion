@@ -255,9 +255,9 @@ export default {
                 alert_trend: this.alert_trend_data.base64,
               })
                 .then(response => {
-                  let { status, data } = response.data;
+                  let { status, data, msg } = response.data;
+                  this.report.loading = false
                   if (status == 0) {
-                    this.report.loading = false
                     this.get_data();
                     this.$message(
                       {
@@ -265,8 +265,21 @@ export default {
                         type: 'success',
                       }
                     );
+                  } else if (status == 602) {
+                    this.$message(
+                      {
+                        message: msg,
+                        type: 'warning',
+                      }
+                    );
+                  } else {
+                    this.$message(
+                      {
+                        message: msg,
+                        type: 'error',
+                      }
+                    );
                   }
-
                 })
                 .catch(error => {
                   console.log(error);
@@ -285,9 +298,9 @@ export default {
           report_type: 'csv',
         })
           .then(response => {
-            let { status, data } = response.data;
+            this.report.loading = false
+            let { status, data, msg } = response.data;
             if (status == 0) {
-              this.report.loading = false
               this.get_data();
               this.$message(
                 {
@@ -295,10 +308,17 @@ export default {
                   type: 'success',
                 }
               );
+            } else if (status == 602) {
+              this.$message(
+                {
+                  message: msg,
+                  type: 'warning',
+                }
+              );
             } else {
               this.$message(
                 {
-                  message: data.msg,
+                  message: msg,
                   type: 'error',
                 }
               );
@@ -358,11 +378,18 @@ export default {
                         type: 'success',
                       }
                     );
-                  } else {
+                  } else if (status == 602) {
                     this.$message(
                       {
                         message: msg,
                         type: 'warning',
+                      }
+                    );
+                  } else {
+                    this.$message(
+                      {
+                        message: msg,
+                        type: 'error',
                       }
                     );
                   }
@@ -671,8 +698,7 @@ export default {
     // 取消
     reseet () {
       this.report.name = ''
-      this.report.type = 'doc'
-      this.report.type = 'doc'
+      this.report.type = 'csv'
       this.report.start_time = ''
       this.report.end_time = ''
       $(document.querySelector('.el-button--text')).trigger('click');

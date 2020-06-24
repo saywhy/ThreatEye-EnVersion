@@ -328,11 +328,14 @@
                 </el-select>
               </li>
               <li class="right_item">
-                <el-checkbox-group v-model="task_params.notice">
+                <el-checkbox-group v-model="task_params.notice"
+                                   class="checkbox_group">
                   <el-checkbox label="email"
-                               value="email">Mail notification</el-checkbox>
+                               value="email">Mail Notification</el-checkbox>
                   <el-checkbox label="message"
-                               value="message">SMS notification</el-checkbox>
+                               value="message">SMS Notification</el-checkbox>
+                  <el-checkbox label="news"
+                               value="news">Message Center Notification</el-checkbox>
                 </el-checkbox-group>
               </li>
             </div>

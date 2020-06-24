@@ -148,49 +148,67 @@ export default {
         })
     },
     set_proxy () {
-      var proxy_switch = ''
-      var verify_passwd = ''
-      if (this.proxy.proxy_switch) {
-        proxy_switch = 'yes'
-      } else {
-        proxy_switch = 'no'
-      }
-      if (this.proxy.verify_passwd) {
-        verify_passwd = 'yes'
-      } else {
-        verify_passwd = 'no'
-      }
-      this.$axios.put('/yiiapi/seting/set-proxy-server', {
-        proxy_switch: proxy_switch,
-        type: this.proxy.type,
-        ip: this.proxy.ip,
-        port: this.proxy.port,
-        verify_passwd: verify_passwd,
-        user: this.proxy.user,
-        password: this.proxy.password
-      })
-        .then(response => {
-          let { status, data } = response.data;
-          if (status == 0) {
-            this.get_data();
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
             this.$message(
               {
-                message: 'Proxy updated successfully',
-                type: 'success',
+                message: msg,
+                type: 'warning',
               }
             );
+            eventBus.$emit('reset')
           } else {
-            this.$message(
-              {
-                message: response.data.msg,
-                type: 'error',
-              }
-            );
+            var proxy_switch = ''
+            var verify_passwd = ''
+            if (this.proxy.proxy_switch) {
+              proxy_switch = 'yes'
+            } else {
+              proxy_switch = 'no'
+            }
+            if (this.proxy.verify_passwd) {
+              verify_passwd = 'yes'
+            } else {
+              verify_passwd = 'no'
+            }
+            this.$axios.put('/yiiapi/seting/set-proxy-server', {
+              proxy_switch: proxy_switch,
+              type: this.proxy.type,
+              ip: this.proxy.ip,
+              port: this.proxy.port,
+              verify_passwd: verify_passwd,
+              user: this.proxy.user,
+              password: this.proxy.password
+            })
+              .then(response => {
+                let { status, data } = response.data;
+                if (status == 0) {
+                  this.get_data();
+                  this.$message(
+                    {
+                      message: 'Proxy updated successfully',
+                      type: 'success',
+                    }
+                  );
+                } else {
+                  this.$message(
+                    {
+                      message: response.data.msg,
+                      type: 'error',
+                    }
+                  );
+                }
+                console.log(data.data);
+              })
+              .catch(error => {
+                console.log(error);
+              })
           }
-          console.log(data.data);
-        })
-        .catch(error => {
-          console.log(error);
         })
     }
   }

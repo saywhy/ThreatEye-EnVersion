@@ -161,41 +161,60 @@ export default {
         })
     },
     set_data () {
-      if (this.security_policy_status.switch) {
-        this.security_policy.status = '1'
-      } else {
-        this.security_policy.status = '0'
-      }
-      console.log(this.security_policy);
-      this.$axios.put('/yiiapi/securitypolicy/set-security-policy', {
-        min_passwd_len: this.security_policy.min_passwd_len,
-        max_passwd_len: this.security_policy.max_passwd_len,
-        passwd_regular_edit_time: this.security_policy.passwd_regular_edit_time,
-        admin_faild_logon_time: this.security_policy.admin_faild_logon_time,
-        admin_logon_delay_time: this.security_policy.admin_logon_delay_time,
-        session_timeout: this.security_policy.session_timeout,
-        admin_online_count: this.security_policy.admin_online_count,
-        status: this.security_policy.status,
-      })
-        .then(response => {
-          console.log(response);
-          if (response.data.status == 0) {
-            this.get_data();
-            this.$message({
-              message: 'Update successfully',
-              type: 'success'
-            });
-          } else {
-            this.$message.error(
+
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
               {
-                message: response.data.msg,
-                type: 'error',
+                message: msg,
+                type: 'warning',
               }
             );
+            eventBus.$emit('reset')
+          } else {
+            if (this.security_policy_status.switch) {
+              this.security_policy.status = '1'
+            } else {
+              this.security_policy.status = '0'
+            }
+            console.log(this.security_policy);
+            this.$axios.put('/yiiapi/securitypolicy/set-security-policy', {
+              min_passwd_len: this.security_policy.min_passwd_len,
+              max_passwd_len: this.security_policy.max_passwd_len,
+              passwd_regular_edit_time: this.security_policy.passwd_regular_edit_time,
+              admin_faild_logon_time: this.security_policy.admin_faild_logon_time,
+              admin_logon_delay_time: this.security_policy.admin_logon_delay_time,
+              session_timeout: this.security_policy.session_timeout,
+              admin_online_count: this.security_policy.admin_online_count,
+              status: this.security_policy.status,
+            })
+              .then(response => {
+                console.log(response);
+                if (response.data.status == 0) {
+                  this.get_data();
+                  this.$message({
+                    message: 'Update successfully',
+                    type: 'success'
+                  });
+                } else {
+                  this.$message.error(
+                    {
+                      message: response.data.msg,
+                      type: 'error',
+                    }
+                  );
+                }
+              })
+              .catch(error => {
+                console.log(error);
+              })
           }
-        })
-        .catch(error => {
-          console.log(error);
         })
     },
     reset_data () {

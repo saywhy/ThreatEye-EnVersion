@@ -62,7 +62,7 @@
         <el-row type="flex"
                 class="r_main_list r_special_list">
           <el-col :span="3">
-            <span class="title">Recipient email</span>
+            <span class="title">Recipient Email</span>
           </el-col>
           <el-col :span="21">
             <div class="item_addrs"
@@ -193,7 +193,7 @@ export default {
         receiver: this.send_config.receiver_edit,
       })
         .then(response => {
-          let { status, data } = response.data;
+          let { status, data, msg } = response.data;
           console.log(data);
           console.log(status);
           if (status == 'success') {
@@ -202,6 +202,20 @@ export default {
               {
                 message: 'Update successfully',
                 type: 'success',
+              }
+            );
+          } else if (status == 602) {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+          } else {
+            this.$message(
+              {
+                message: msg,
+                type: 'error',
               }
             );
           }

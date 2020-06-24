@@ -151,7 +151,14 @@ export default {
       this.$axios.get('/yiiapi/rulebase/get-update-status')
         .then(response => {
           console.log(response);
-          if (response.data.status == 0) {
+          let {
+            status,
+            msg,
+            data
+          } = response.data;
+          console.log(status);
+
+          if (status == 0) {
             this.rule = response.data.data
             this.rule.forEach(item => {
               switch (item.status) {
@@ -168,8 +175,21 @@ export default {
                   break;
               }
             });
-          } else if (response.data.status == 1) {
-
+          } else if (status == 602) {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          } else {
+            this.$message(
+              {
+                message: msg,
+                type: 'error',
+              }
+            );
           }
         })
         .catch(error => {
@@ -205,8 +225,26 @@ export default {
         })
     },
     open_box () {
-      this.rule_data.upload_pop = true;
-      this.upload_btn = true;
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          } else {
+            this.rule_data.upload_pop = true;
+            this.upload_btn = true;
+          }
+        })
     },
     closed_upload_box () {
       this.rule_data.upload_pop = false;
@@ -224,7 +262,7 @@ export default {
     update_online () {
       this.$axios.post('/yiiapi/rulebase/realtime-update')
         .then(response => {
-          let { status, data } = response.data;
+          let { status, data, msg } = response.data;
           if (status == 0) {
             this.$message({
               type: 'success',
@@ -233,6 +271,21 @@ export default {
             setTimeout(() => {
               this.get_data()
             }, 100);
+          } else if (status == 602) {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          } else {
+            this.$message(
+              {
+                message: msg,
+                type: 'error',
+              }
+            );
           }
         })
         .catch(error => {

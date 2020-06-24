@@ -123,6 +123,11 @@ export default {
               type: 'success',
               message: 'Detection success'
             });
+          } else if (response.data.status == 602) {
+            this.$message({
+              type: 'warning',
+              message: response.data.msg
+            });
           } else {
             this.$message({
               type: 'error',

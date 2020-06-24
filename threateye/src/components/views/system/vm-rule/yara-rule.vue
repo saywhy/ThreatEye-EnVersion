@@ -163,8 +163,13 @@ export default {
     handlePreview () { },
     handleRemove () { },
     beforeRemove () { },
-    onBeforeUpload () { },
+    onBeforeUpload (params) {
+      console.log(6666);
+      console.log(params);
+
+    },
     onChange (params) {
+      console.log(99999);
       console.log(params);
       if (params.status == 'fail') {
         this.$message(
@@ -200,6 +205,7 @@ export default {
           }
         })
         .catch(error => {
+          console.log(2222);
           console.log(error);
         })
 
@@ -221,7 +227,17 @@ export default {
           }
         })
         .catch(error => {
+          console.log(1111);
           console.log(error);
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            eventBus.$emit('reset')
+          }
         })
 
     },

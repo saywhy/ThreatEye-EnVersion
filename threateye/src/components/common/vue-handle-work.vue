@@ -153,7 +153,8 @@
                 </el-select>
               </li>
               <li class="right_item">
-                <el-checkbox-group v-model="task_params.notice">
+                <el-checkbox-group v-model="task_params.notice"
+                                   class="checkbox_group">
                   <el-checkbox label="email"
                                value="email">Mail Notification</el-checkbox>
                   <el-checkbox label="message"

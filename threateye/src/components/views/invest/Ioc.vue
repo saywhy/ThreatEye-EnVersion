@@ -216,19 +216,38 @@ export default {
     },
     // 上传
     onFileAdded (file) {
+      this.$axios.get('/yiiapi/site/check-passwd-reset')
+        .then((resp) => {
+          let {
+            status,
+            msg,
+            data
+          } = resp.data;
+          if (status == '602') {
+            this.$message(
+              {
+                message: msg,
+                type: 'warning',
+              }
+            );
+            file.ignored = true
+            file.cancel()
+            eventBus.$emit('reset')
+          } else {
+            if (file.name.indexOf('.txt') < 0 && file.name.indexOf('.ioc') < 0) {
+              this.$message({
+                message: 'Please choose .txt or .ioc format file ',
+                type: 'warning'
+              });
+              file.ignored = true
+            }
+          }
+        })
       console.log(file);
-      if (file.name.indexOf('.txt') < 0 && file.name.indexOf('.ioc') < 0) {
-        this.$message({
-          message: 'Please choose .txt or .ioc format file ',
-          type: 'warning'
-        });
-        file.ignored = true
-      }
     },
     onFileSuccess (rootFile, file, params_response, chunk) {
       console.log(rootFile);
       console.log(file);
-
       console.log(params_response);
       console.log(chunk);
       this.$axios.get('/yiiapi/site/check-auth-exist', {
