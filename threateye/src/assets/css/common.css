@@ -106,27 +106,27 @@ th {
 }
 
 input::-webkit-input-placeholder {
-  color: #bbb;
   font-size: 14px;
   line-height: 38px;
+  color: #999!important;
 }
 
 input::-moz-placeholder {
   /* Mozilla Firefox 19+ */
-  color: #bbb;
   font-size: 14px;
+  color: #999!important;
 }
 
 input:-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
-  color: #bbb;
   font-size: 14px;
+  color: #999!important;
 }
 
 input:-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: #bbb;
   font-size: 14px;
+  color: #999!important;
 }
 
 .el-message {
