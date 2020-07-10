@@ -48,7 +48,7 @@
       <div class="mid_item">
         <p>User Name</p>
         <el-input class="select_box"
-                  placeholder="Please enter a UserName"
+                  placeholder="Please enter a user name"
                   v-model="proxy.user"
                   clearable>
         </el-input>

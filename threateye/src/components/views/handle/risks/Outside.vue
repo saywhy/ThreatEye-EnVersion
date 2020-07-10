@@ -26,7 +26,7 @@
                 <ul>
                   <li>1. Update patches in time, especially the first few days of critical vulnerability released is a high incidence period of advanced attacks;</li>
                   <li>2. Use security gateway and endpoint security for defense-in-depth;</li>
-                  <li>3. Using threat intelligence to identify popular phishing addresses, malicious certificates to do timely blocking;</li>
+                  <li>3. Use threat intelligence to identify phishing addresses, malicious certificates with timely blocking;</li>
                   <li>4. Enhance threat detection and response capabilities on top of solid security defenses.</li>
                 </ul>
               </dd>

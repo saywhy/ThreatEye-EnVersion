@@ -44,7 +44,7 @@
                          label="Password"
                          show-overflow-tooltip>
         </el-table-column>
-        <el-table-column label='Actions'>
+        <el-table-column label='Action'>
           <template slot-scope="scope">
             <el-button type="primary"
                        class="btn_edit"

@@ -86,7 +86,7 @@
             </el-table-column>
             <el-table-column prop="report_type"
                              label="Format"></el-table-column>
-            <el-table-column label='Actions'>
+            <el-table-column label='Action'>
               <template slot-scope="scope">
                 <img src="@/assets/images/common/download.png"
                      class="img_icon"

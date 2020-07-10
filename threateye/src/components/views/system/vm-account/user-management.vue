@@ -99,7 +99,7 @@
             <span class="red">*</span>
           </p>
           <el-input class="select_box"
-                    placeholder="Please enter a username"
+                    placeholder="Please enter a user name"
                     v-model="user_add.username"
                     clearable>
           </el-input>
@@ -263,8 +263,10 @@
       </div>
       <div class="btn_box">
         <el-button @click="closed_edit_box"
+                   type="primary"
                    class="cancel_btn">Cancel</el-button>
         <el-button class="ok_btn"
+                   type="primary"
                    @click="edit_user">Confirm</el-button>
       </div>
     </el-dialog>
@@ -641,7 +643,7 @@ export default {
       if (this.select_list.length == 0) {
         this.$message(
           {
-            message: 'Please select the username to delete',
+            message: 'Please select the user name to delete.',
             type: 'warning',
           }
         );

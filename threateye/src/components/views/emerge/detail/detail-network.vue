@@ -729,13 +729,14 @@
                 </el-select>
               </li>
               <li class="right_item">
-                <el-checkbox-group v-model="new_worksheets_list.notice"  class="checkbox_group">
+                <el-checkbox-group v-model="new_worksheets_list.notice"
+                                   class="checkbox_group">
                   <el-checkbox label="email"
                                value="email">Mail Notification</el-checkbox>
                   <el-checkbox label="message"
                                value="message">SMS Notification</el-checkbox>
                   <el-checkbox label="news"
-                             value="news">Message Center Notification</el-checkbox>
+                               value="news">Message Center Notification</el-checkbox>
                 </el-checkbox-group>
               </li>
             </div>
@@ -1516,7 +1517,7 @@ export default {
       let multipe = this.table_add_works.multipleSelection;
 
       if (multipe.length == 0) {
-        this.$message({ message: 'Please select the assets that need to be added to the ticket', type: 'warning' });
+        this.$message({ message: 'Please select the asset that need to be added to the ticket', type: 'warning' });
       } else if (multipe.length > 1) {
         this.$message({ message: 'Alerts cannot be aAssets or alerts cannot be added to multiple tickets, please try again.dded to multiple tickets, please try again.', type: 'warning' });
       } else {
@@ -3978,7 +3979,7 @@ export default {
         }
         .item_li {
           display: flex;
-          height: 22px;
+          // height: 22px;
           margin-bottom: 16px;
           position: relative;
           .src_ul {

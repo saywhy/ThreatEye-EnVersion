@@ -1238,7 +1238,7 @@ export default {
           }
         })
         .then((resp) => {
-          //console.log(resp)
+          console.log(resp)
           let { status, data, msg } = resp.data;
 
           if (status == 0) {
@@ -1310,8 +1310,18 @@ export default {
             });
 
           } else if (status == 9) {
+            console.log(this.$route.query.type);
             // this.$message.error(msg);
-            this.$router.push({ path: "/handle/assets" });
+            switch (this.$route.query.type) {
+              case 'home':
+                this.$router.push({ path: "/home/overview" });
+                break;
+              case 'assets':
+                this.$router.push({ path: "/handle/assets" });
+                break;
+              default:
+                break;
+            }
           }
         });
     },
@@ -1714,7 +1724,7 @@ export default {
       let multipe = this.table_add_works.multipleSelection;
 
       if (multipe.length == 0) {
-        this.$message({ message: 'Please select the assets that need to be added to the ticket', type: 'warning' });
+        this.$message({ message: 'Please select the asset that need to be added to the ticket', type: 'warning' });
       } else if (multipe.length > 1) {
         this.$message({ message: 'Assets or alerts cannot be added to multiple tickets, please try again.', type: 'warning' });
       } else {
@@ -1887,7 +1897,7 @@ export default {
               font-size: 10px;
               line-height: 20px;
               font-family: PingFang;
-              transform: scale(0.8);
+              // transform: scale(0.8);
               display: block;
             }
           }

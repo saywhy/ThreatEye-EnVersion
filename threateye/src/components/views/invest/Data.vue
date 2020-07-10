@@ -31,7 +31,8 @@
             <el-button class="btn_i"
                        @click="search">Search</el-button>
             <span class="reset"
-                  @click="reset">Reset</span>
+                  @click="reset"
+                  style="cursor: pointer">Reset</span>
             <el-button class="btn_right"
                        @click="download">Download</el-button>
           </div>

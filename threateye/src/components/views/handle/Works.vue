@@ -73,6 +73,11 @@ export default {
       window.sessionStorage.removeItem('activeName');
     }
   },
+  mounted () {
+    eventBus.$on('num', () => {
+      this.get_top_num()
+    })
+  },
   methods: {
     // 测试密码过期
     check_passwd () {

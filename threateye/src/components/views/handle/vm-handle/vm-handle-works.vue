@@ -46,8 +46,9 @@
 
             <el-button class="s_btn"
                        @click="submitClick();">Search</el-button>
-            <el-link class="s_link"
-                     @click="resetClick();">Reset</el-link>
+            <span class="s_link"
+                  @click="resetClick();"
+                  style="cursor: pointer">Reset</span>
           </el-col>
         </el-row>
 
@@ -793,6 +794,7 @@
 
 <script type="text/ecmascript-6">
 import VmEmergePicker from "@/components/common/vm-emerge-picker";
+import { eventBus } from '@/components/common/eventBus.js';
 export default {
   name: 'vm-handle-tabs',
   props: {
@@ -1630,6 +1632,7 @@ export default {
           let { status, msg, data } = resp.data;
           if (status == 0) {
             this.$message.success('Assigned successfully');
+            eventBus.$emit('num')
             this.closed_task_new();
             this.get_list_works();
             this.$emit('updateNum');
@@ -2004,6 +2007,7 @@ export default {
           // "存在已被创建工单的资产"
           if (resp.data.status == 0) {
             this.$message.success('Update successfully');
+
             this.get_list_works();
             this.edit.pop = false
           } else {
@@ -2059,6 +2063,7 @@ export default {
           // "存在已被创建工单的资产"
           if (resp.data.status == 0) {
             this.$message.success('Update successfully');
+            eventBus.$emit('num')
             this.get_list_works();
             this.edit.pop = false
           } else {
@@ -2158,7 +2163,7 @@ export default {
         }
         /deep/ .el-tag {
           height: 24px;
-          width: 72px;
+          min-width: 100px;
           line-height: 24px;
           border-radius: 0;
           border-width: 0;

@@ -7,7 +7,7 @@
         <el-col :span="24">
           <div>
             <el-button class="e-btn e-btn-read"
-                       @click="batch_marking">Marked</el-button>
+                       @click="batch_marking">Mark</el-button>
             <el-button class="e-btn e-btn-remove"
                        @click="del">Delete</el-button>
           </div>
@@ -179,7 +179,7 @@ export default {
     batch_marking () {
       console.log(this.multipleSelection);
       if (this.multipleSelection.length == 0) {
-        this.$message({ message: 'Please select the message to be marked', type: 'warning' });
+        this.$message({ message: 'Please select the message to mark.', type: 'warning' });
         return false
       }
       var id_list = []
@@ -215,7 +215,7 @@ export default {
     del () {
       console.log(this.multipleSelection);
       if (this.multipleSelection.length == 0) {
-        this.$message({ message: 'Please select the message to be deleted', type: 'warning' });
+        this.$message({ message: 'Please select the message to delete.', type: 'warning' });
         return false
       }
       this.$confirm('This action deletes the item. Do you want to continue?', 'Message', {

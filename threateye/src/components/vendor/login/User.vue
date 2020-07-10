@@ -144,7 +144,7 @@ export default {
   created () {
     this.setHeight();
     if (window.sessionStorage.getItem('overtime')) {
-      this.$message.warning('Connection timed out,Please login again.');
+      this.$message.warning('Connection times out, and please login again.');
       window.sessionStorage.removeItem('overtime');
     }
   },
@@ -203,7 +203,7 @@ export default {
             .then((resp) => {
               //返回成功跳转
               if (resp[0]) {
-                this.$message.success('Login successful');
+                this.$message.success('Login successfully');
                 this.$router.push('/', () => { });//登录成功之后重定向到首页
                 this.count = 0;
                 //失败

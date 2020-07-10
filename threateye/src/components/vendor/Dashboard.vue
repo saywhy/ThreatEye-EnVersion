@@ -50,22 +50,28 @@ export default {
 
 <style scoped lang="less">
 #dashboard {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
   .el-header {
     background-color: #2e3f60;
     padding: 0 24px;
     position: fixed;
     width: 100%;
     z-index: 1000;
+    // height: 60px;
     height: auto !important;
   }
   .dashboard-list {
-    margin-top: 60px;
-    min-height: 900px;
-    margin-bottom: 60px;
+    overflow-y: scroll;
+    flex: 1;
+    // min-height: 900px;
+    // margin-bottom: 60px;
     margin-top: 60px;
     .dashboard-list-aside {
-      overflow: inherit;
-      position: fixed;
+      height: 100%;
+      // overflow: inherit;
+      // position: fixed;
       left: 0;
       top: 60px;
       width: 250px !important;
@@ -95,10 +101,10 @@ export default {
     }
     .dashboard-list-main {
       padding: 0;
-      margin-left: 250px;
+      // margin-left: 250px;
       background-color: #f4f4f4;
-      min-height: auto;
-      height: calc(100vh - 120px);
+      // min-height: auto;
+      // height: calc(100vh - 120px);
       &::-webkit-scrollbar {
         /*滚动条整体样式*/
         width: 10px;
@@ -127,7 +133,7 @@ export default {
     line-height: 60px;
     font-family: PingFangSC-Regular;
     color: #999;
-    position: fixed;
+    // position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;

@@ -110,7 +110,7 @@ export default {
         direction_list: [
           { name: 'Intranet to extranet', type: '0' },
           { name: 'Extranet to intranet', type: '1' },
-          { name: 'Intranet to intrane', type: '2' },
+          { name: 'Intranet to intranet', type: '2' },
           { name: 'Others', type: '3' },
         ],
         direction: '0',

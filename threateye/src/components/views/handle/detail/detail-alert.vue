@@ -735,7 +735,8 @@
                 </el-select>
               </li>
               <li class="right_item">
-                <el-checkbox-group v-model="new_worksheets_list.notice"  class="checkbox_group">
+                <el-checkbox-group v-model="new_worksheets_list.notice"
+                                   class="checkbox_group">
                   <el-checkbox label="email"
                                value="email">Mail Notification</el-checkbox>
                   <el-checkbox label="message"
@@ -3286,7 +3287,7 @@ export default {
         }
         .item_li {
           display: flex;
-          height: 22px;
+          // height: 22px;
           margin-bottom: 16px;
           position: relative;
           .src_ul {
@@ -3333,7 +3334,7 @@ export default {
               font-size: 10px;
               line-height: 20px;
               font-family: PingFang;
-              transform: scale(0.8);
+              // transform: scale(0.8);
               display: block;
             }
           }

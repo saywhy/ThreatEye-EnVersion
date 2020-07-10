@@ -85,8 +85,9 @@
 
                 <el-button class="s_btn"
                            @click="submitClick();">Search</el-button>
-                <el-link class="s_link"
-                         @click="resetClick();">Reset</el-link>
+                <span class="s_link"
+                      @click="resetClick();"
+                      style="cursor: pointer">Reset</span>
               </el-col>
             </el-row>
 

@@ -187,7 +187,6 @@
         <div class="content_item">
           <p>
             <span class="title">Device Type</span>
-            <span class="red_necessary">*</span>
           </p>
           <el-input class="select_box"
                     placeholder="Please select the device type"

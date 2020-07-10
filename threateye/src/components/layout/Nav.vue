@@ -340,7 +340,7 @@ export default {
       if (this.user_edit.mobile == '') {
         this.$message(
           {
-            message: 'Mobile number is required',
+            message: 'Cellphone number is required',
             type: 'error',
           }
         );

@@ -85,7 +85,7 @@ export default {
       if (this.oldPositon.x == this.newPositon.x) {
         setTimeout(() => {
           this.$router.push({            path: '/detail/assets', name: 'detail_assets',
-            query: { id: this.detail_click_val.id, asset_ip: this.detail_click_val.asset_ip, status: this.detail_click_val.status }          });
+            query: { id: this.detail_click_val.id, asset_ip: this.detail_click_val.asset_ip, status: this.detail_click_val.status, type: 'home' }          });
         }, 10);
       } else {
         console.log('复制');

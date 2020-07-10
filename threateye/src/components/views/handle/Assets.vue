@@ -117,8 +117,9 @@
 
             <el-button class="s_btn"
                        @click="submitClick();">Search</el-button>
-            <el-link class="s_link"
-                     @click="resetClick();">Reset</el-link>
+            <span class="s_link"
+                  style="cursor: pointer"
+                  @click="resetClick();">Reset</span>
           </el-col>
         </el-row>
         <!--按钮组-->
@@ -353,7 +354,8 @@
                 </el-select>
               </li>
               <li class="right_item">
-                <el-checkbox-group v-model="task_params.notice"  class="checkbox_group">
+                <el-checkbox-group v-model="task_params.notice"
+                                   class="checkbox_group">
                   <el-checkbox label="email"
                                value="email">Mail Notification</el-checkbox>
                   <el-checkbox label="message"
@@ -1001,7 +1003,13 @@ export default {
         setTimeout(() => {
           if (Object.keys(this.detail_click_column).length != 0 && this.detail_click_column.type != 'selection') {
             this.$router.push({              path: '/detail/assets', name: 'detail_assets',
-              query: { id: this.detail_click_val.id, asset_ip: this.detail_click_val.asset_ip, status: this.detail_click_val.status }            });
+              query: {
+                id: this.detail_click_val.id,
+                asset_ip: this.detail_click_val.asset_ip,
+                status: this.detail_click_val.status,
+                type: 'assets'
+              }
+            });
           }
         }, 10);
       } else {
@@ -1097,7 +1105,7 @@ export default {
       let sel_table_data = this.table.multipleSelection;
       let sel_table_attr = sel_table_data.map(x => { return x.status });
       if (sel_table_data.length == 0) {
-        this.$message({ message: 'Please select the assets to be edited', type: 'warning' });
+        this.$message({ message: 'Please select the asset to be edited', type: 'warning' });
         return false;
       } else {
         if (sel_table_attr.includes('3')
@@ -1292,7 +1300,7 @@ export default {
       let sel_table_data = this.table.multipleSelection;
       let sel_table_attr = sel_table_data.map(x => { return x.status });
       if (sel_table_data.length == 0) {
-        this.$message({ message: 'Please select the assets that need to be added to the ticket', type: 'warning' });
+        this.$message({ message: 'Please select the asset that need to be added to the ticket', type: 'warning' });
         return false;
       } else {
         if (sel_table_attr.includes('3')
@@ -1365,7 +1373,7 @@ export default {
       let multipe = this.table_add_works.multipleSelection;
 
       if (multipe.length == 0) {
-        this.$message({ message: 'Please select the assets that need to be added to the ticket', type: 'warning' });
+        this.$message({ message: 'Please select the asset that need to be added to the ticket', type: 'warning' });
       } else if (multipe.length > 1) {
         this.$message({ message: 'Assets or alerts cannot be added to multiple tickets, please try again.', type: 'warning' });
       } else {

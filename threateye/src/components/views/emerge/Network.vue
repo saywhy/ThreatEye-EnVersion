@@ -70,9 +70,8 @@
 
             <el-button class="s_btn"
                        @click="submitClick();">Search</el-button>
-            <el-link class="s_link"
-                     @click="resetClick();">Reset</el-link>
-
+            <span class="s_link"
+                  @click="resetClick();">Reset</span>
             <el-button class="s_btn_edit"
                        @click="export_box">Export</el-button>
           </el-col>
@@ -319,7 +318,8 @@
                 </el-select>
               </li>
               <li class="right_item">
-                <el-checkbox-group v-model="task_params.notice"  class="checkbox_group">
+                <el-checkbox-group v-model="task_params.notice"
+                                   class="checkbox_group">
                   <el-checkbox label="email"
                                value="email">Mail Notification</el-checkbox>
                   <el-checkbox label="message"
@@ -1358,6 +1358,9 @@ export default {
 #Network {
   text-align: left;
   padding: 24px;
+  .s_link {
+    cursor: pointer;
+  }
   .e_line {
     height: 322px;
     background: #ffffff;
