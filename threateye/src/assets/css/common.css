@@ -108,25 +108,25 @@ th {
 input::-webkit-input-placeholder {
   font-size: 14px;
   line-height: 38px;
-  color: #999!important;
+  color: #999 !important;
 }
 
 input::-moz-placeholder {
   /* Mozilla Firefox 19+ */
   font-size: 14px;
-  color: #999!important;
+  color: #999 !important;
 }
 
 input:-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
   font-size: 14px;
-  color: #999!important;
+  color: #999 !important;
 }
 
 input:-ms-input-placeholder {
   /* Internet Explorer 10-11 */
   font-size: 14px;
-  color: #999!important;
+  color: #999 !important;
 }
 
 .el-message {
@@ -142,6 +142,7 @@ input:-ms-input-placeholder {
   background-color: #f8f8f8;
   border-width: 0;
   outline: none;
+  color: #333;
 }
 
 .el-table thead {

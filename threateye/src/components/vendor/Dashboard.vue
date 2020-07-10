@@ -63,8 +63,12 @@ export default {
     height: auto !important;
   }
   .dashboard-list {
+    overflow-x: hidden;
     overflow-y: scroll;
     flex: 1;
+    .el-aside {
+      overflow-x: hidden;
+    }
     // min-height: 900px;
     // margin-bottom: 60px;
     margin-top: 60px;
