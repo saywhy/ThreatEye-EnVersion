@@ -108,25 +108,50 @@ th {
 input::-webkit-input-placeholder {
   font-size: 14px;
   line-height: 38px;
-  color: #999 !important;
+  color: #666 !important;
 }
 
 input::-moz-placeholder {
   /* Mozilla Firefox 19+ */
   font-size: 14px;
-  color: #999 !important;
+  color: #666 !important;
 }
 
 input:-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
   font-size: 14px;
-  color: #999 !important;
+  color: #666 !important;
 }
 
 input:-ms-input-placeholder {
   /* Internet Explorer 10-11 */
   font-size: 14px;
-  color: #999 !important;
+  color: #666 !important;
+}
+
+textarea::-webkit-input-placeholder {
+  font-size: 14px;
+  line-height: 38px;
+  color: #666 !important;
+}
+
+
+textarea::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  font-size: 14px;
+  color: #666 !important;
+}
+
+textarea:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  font-size: 14px;
+  color: #666 !important;
+}
+
+textarea:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  font-size: 14px;
+  color: #666 !important;
 }
 
 .el-message {

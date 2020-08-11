@@ -520,7 +520,7 @@ export default {
             show: false
           },
           axisLabel: {
-            interval: 0,
+            // interval: 0,
             rotate: '60',
             margin: 5,
             textStyle: {
@@ -590,7 +590,7 @@ export default {
             show: false
           },
           axisLabel: {
-            interval: 0,
+            // interval: 0,
             rotate: '60',
             margin: 5,
             textStyle: {
@@ -657,7 +657,7 @@ export default {
             show: false
           },
           axisLabel: {
-            interval: 0,
+            // interval: 0,
             rotate: '60',
             margin: 5,
             textStyle: {

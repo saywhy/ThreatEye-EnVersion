@@ -71,7 +71,7 @@
                            width="100"
                            show-overflow-tooltip>
           </el-table-column>
-          <el-table-column label="Updated"
+          <el-table-column label="Updated Time"
                            width="180"
                            show-overflow-tooltip>
             <template slot-scope="scope">{{ scope.row.updated_at*1000 |formatDate }}</template>
