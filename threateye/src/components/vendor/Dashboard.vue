@@ -18,7 +18,7 @@
         </transition>
       </el-main>
     </el-container>
-    <el-footer>©CETC All Rights Reserved.</el-footer>
+    <el-footer>©虎特信息科技（上海）有限公司  版权所有</el-footer>
   </el-container>
 </template>
 
@@ -50,27 +50,18 @@ export default {
 
 <style scoped lang="less">
 #dashboard {
-  display: flex;
-  flex-flow: column;
-  height: 100%;
   .el-header {
     background-color: #2e3f60;
     padding: 0 24px;
     position: fixed;
     width: 100%;
     z-index: 1000;
-    // height: 60px;
     height: auto !important;
   }
   .dashboard-list {
-    overflow-x: hidden;
-    overflow-y: scroll;
-    flex: 1;
-    .el-aside {
-      overflow-x: hidden;
-    }
-    // min-height: 900px;
-    // margin-bottom: 60px;
+    margin-top: 60px;
+    min-height: 900px;
+    margin-bottom: 60px;
     margin-top: 60px;
     .dashboard-list-aside {
       height: 100%;
@@ -137,7 +128,7 @@ export default {
     line-height: 60px;
     font-family: PingFangSC-Regular;
     color: #999;
-    // position: fixed;
+    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
